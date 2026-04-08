@@ -1,0 +1,349 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+const benefits = [
+  {
+    icon: "\u{1F4B0}",
+    title: "Generous Commissions",
+    description:
+      "Earn 10-20% of the setup fee for every referred deal that closes. Plus ongoing residual on monthly retainers for the life of the client.",
+  },
+  {
+    icon: "\u{1F4E6}",
+    title: "Marketing Collateral",
+    description:
+      "Access branded pitch decks, one-pagers, case studies, and ROI calculators. Everything you need to have the conversation with confidence.",
+  },
+  {
+    icon: "\u{1F4CA}",
+    title: "Lead Tracking Dashboard",
+    description:
+      "Real-time visibility into your referrals. See where each lead stands in the pipeline, from introduction to deployment.",
+  },
+  {
+    icon: "\u{1F91D}",
+    title: "Co-Selling Support",
+    description:
+      "Bring us into the conversation when you need technical depth. We'll join calls, run demos, and help close — you keep the full commission.",
+  },
+  {
+    icon: "\u{1F393}",
+    title: "Partner Training",
+    description:
+      "Monthly webinars on AI trends, product updates, and sales techniques. Become the AI expert in your network.",
+  },
+  {
+    icon: "\u{1F680}",
+    title: "Priority Access",
+    description:
+      "Partners get first look at new verticals, features, and pricing tiers. Your referrals also get priority onboarding.",
+  },
+];
+
+const partnerTypes = [
+  {
+    type: "IT Consultants & MSPs",
+    description:
+      "You already manage their infrastructure. Now offer AI as a service. TechFides deploys, you earn recurring revenue on a client you already own.",
+  },
+  {
+    type: "Business Consultants",
+    description:
+      "Your clients trust your strategic advice. Recommending sovereign AI positions you as forward-thinking and earns you a commission on every deal.",
+  },
+  {
+    type: "Industry Specialists",
+    description:
+      "If you serve legal, medical, auto, or trades verticals, you know the pain points. Connect your clients with the solution and get paid for it.",
+  },
+  {
+    type: "Accountants & Financial Advisors",
+    description:
+      "You see the cloud spend on their P&L. Show them a better way. The ROI calculator practically sells itself.",
+  },
+];
+
+export default function PartnersPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    partnerType: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In production, this would POST to your API/CRM
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="grid-pattern">
+      {/* Hero */}
+      <section className="relative flex min-h-[60vh] items-center justify-center px-6 pt-32">
+        <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="mb-4 inline-flex items-center rounded-full border border-accent-amber/30 bg-accent-amber/10 px-4 py-1.5 text-sm font-semibold text-accent-amber">
+            Referral Partner Program
+          </div>
+          <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+            Earn by Referring{" "}
+            <span className="text-electric-400">Sovereign AI</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+            Your network needs AI that keeps their data local. You deserve to
+            get paid for making the introduction. Join the TechFides Partner
+            Program and turn your relationships into recurring revenue.
+          </p>
+          <a
+            href="#apply"
+            className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
+          >
+            Apply to Become a Partner
+          </a>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="mx-auto max-w-5xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          How the Program <span className="text-electric-400">Works</span>
+        </h2>
+        <div className="mt-12 grid gap-8 md:grid-cols-4">
+          {[
+            {
+              step: "01",
+              title: "Apply",
+              desc: "Fill out the form below. We'll review and onboard you within 48 hours.",
+            },
+            {
+              step: "02",
+              title: "Refer",
+              desc: "Introduce TechFides to businesses in your network who need local AI.",
+            },
+            {
+              step: "03",
+              title: "We Close",
+              desc: "Our team handles the technical sale, demo, and deployment. You stay informed.",
+            },
+            {
+              step: "04",
+              title: "Get Paid",
+              desc: "Earn commission on the setup fee + residual on every monthly retainer payment.",
+            },
+          ].map((item) => (
+            <div key={item.step} className="text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-electric-500/30 bg-electric-500/10 text-xl font-bold text-electric-400">
+                {item.step}
+              </div>
+              <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm text-slate-400">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          Partner <span className="text-electric-400">Benefits</span>
+        </h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((b) => (
+            <div
+              key={b.title}
+              className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6 transition-all hover:border-electric-500/30"
+            >
+              <div className="text-3xl">{b.icon}</div>
+              <h3 className="mt-3 text-lg font-semibold">{b.title}</h3>
+              <p className="mt-2 text-sm text-slate-400">{b.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Ideal Partners */}
+      <section className="mx-auto max-w-5xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          Ideal <span className="text-electric-400">Partners</span>
+        </h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {partnerTypes.map((p) => (
+            <div
+              key={p.type}
+              className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6"
+            >
+              <h3 className="text-lg font-bold text-electric-400">{p.type}</h3>
+              <p className="mt-2 text-sm text-slate-400">{p.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Commission Structure */}
+      <section className="mx-auto max-w-3xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          Commission <span className="text-electric-400">Structure</span>
+        </h2>
+        <div className="mt-12 overflow-hidden rounded-2xl border border-slate-800">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-800 bg-navy-900/80">
+                <th className="p-4 font-semibold text-slate-400">Tier</th>
+                <th className="p-4 font-semibold text-slate-400">
+                  Setup Commission
+                </th>
+                <th className="p-4 font-semibold text-slate-400">
+                  Monthly Residual
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800/50">
+              <tr className="bg-slate-950/50">
+                <td className="p-4 font-medium">Sovereign S ($5K setup)</td>
+                <td className="p-4 text-accent-green">$500 - $1,000</td>
+                <td className="p-4 text-accent-green">$50/mo</td>
+              </tr>
+              <tr className="bg-slate-950/50">
+                <td className="p-4 font-medium">Sovereign M ($10K setup)</td>
+                <td className="p-4 text-accent-green">$1,000 - $2,000</td>
+                <td className="p-4 text-accent-green">$100/mo</td>
+              </tr>
+              <tr className="bg-slate-950/50">
+                <td className="p-4 font-medium">Sovereign L ($15K+ setup)</td>
+                <td className="p-4 text-accent-green">$1,500 - $3,000+</td>
+                <td className="p-4 text-accent-green">$250+/mo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-center text-xs text-slate-500">
+          Commission rates increase with volume. Top partners earn 20% on setup
+          + enhanced residuals.
+        </p>
+      </section>
+
+      {/* Application Form */}
+      <section id="apply" className="mx-auto max-w-2xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          Apply to <span className="text-electric-400">Partner</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
+          Fill out the form below and we&apos;ll get you onboarded within 48
+          hours.
+        </p>
+
+        {submitted ? (
+          <div className="mt-12 rounded-2xl border border-accent-green/30 bg-accent-green/5 p-8 text-center">
+            <div className="text-4xl">&#10003;</div>
+            <h3 className="mt-4 text-xl font-bold text-accent-green">
+              Application Received!
+            </h3>
+            <p className="mt-2 text-slate-400">
+              We&apos;ll review your application and reach out within 48 hours.
+              Welcome to the TechFides partner ecosystem.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-12 space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-300">
+                Full Name
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder-slate-500 focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-300">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder-slate-500 focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-300">
+                Company / Organization
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder-slate-500 focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
+                placeholder="Your company name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-300">
+                Partner Type
+              </label>
+              <select
+                required
+                value={formData.partnerType}
+                onChange={(e) =>
+                  setFormData({ ...formData, partnerType: e.target.value })
+                }
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
+              >
+                <option value="">Select your type</option>
+                <option value="it-consultant">IT Consultant / MSP</option>
+                <option value="business-consultant">
+                  Business Consultant
+                </option>
+                <option value="industry-specialist">
+                  Industry Specialist
+                </option>
+                <option value="accountant">
+                  Accountant / Financial Advisor
+                </option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-300">
+                Tell us about your network
+              </label>
+              <textarea
+                rows={4}
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder-slate-500 focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
+                placeholder="How many potential clients could you refer? What industries do they serve?"
+              />
+            </div>
+            <button
+              type="submit"
+              className="glow-blue w-full rounded-lg bg-electric-500 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
+            >
+              Submit Application
+            </button>
+          </form>
+        )}
+      </section>
+    </div>
+  );
+}

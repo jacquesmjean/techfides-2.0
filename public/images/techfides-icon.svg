@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" fill="none">
+  <!-- Circuit-board F icon -->
+  <g>
+    <!-- Three horizontal circuit lines -->
+    <path d="M2 12 H28" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M2 24 H36" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M2 36 H28" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Vertical connector on right side -->
+    <path d="M28 12 V36" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Circuit nodes (dots) -->
+    <circle cx="2" cy="12" r="2.5" fill="#38bdf8"/>
+    <circle cx="2" cy="24" r="2.5" fill="#38bdf8"/>
+    <circle cx="2" cy="36" r="2.5" fill="#38bdf8"/>
+    <circle cx="28" cy="12" r="2.5" fill="#3b82f6"/>
+    <circle cx="36" cy="24" r="2.5" fill="#2563eb"/>
+    <circle cx="28" cy="36" r="2.5" fill="#3b82f6"/>
+
+    <!-- Branch lines -->
+    <path d="M14 12 V6 H22" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="22" cy="6" r="2" fill="#38bdf8"/>
+    <path d="M14 36 V42 H22" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="22" cy="42" r="2" fill="#2563eb"/>
+  </g>
+
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+</svg>

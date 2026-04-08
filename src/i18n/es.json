@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "solutions": "Soluciones",
+    "theStack": "La Plataforma",
+    "pricingRoi": "Precios y ROI",
+    "partnerPortal": "Portal de Socios",
+    "becomePartner": "Ser Socio"
+  },
+  "hero": {
+    "badge": "INSTALACIÓN $0",
+    "title1": "IA Empresarial.",
+    "title2": "Infraestructura Local.",
+    "title3": "Soberanía Total.",
+    "subtitle": "Despliega modelos de IA en tu propio hardware. Sin dependencia de la nube. Sin fuga de datos. Sin impuesto mensual de cómputo. Control total.",
+    "cta1": "Ver Precios y ROI",
+    "cta2": "Explorar La Plataforma"
+  },
+  "problem": {
+    "title": "El Problema",
+    "cloudTax": "El Impuesto de la Nube",
+    "cloudTaxDesc": "Estás pagando $2,000–$15,000/mes por APIs de IA que entrenan con tus datos y aumentan precios anualmente. Tu ventaja competitiva está financiando la infraestructura de otro.",
+    "dataLeakage": "Fuga de Datos",
+    "dataLeakageDesc": "Cada llamada API envía tus datos propietarios a servidores de terceros. Registros de clientes, secretos comerciales e inteligencia competitiva — expuestos con cada consulta."
+  },
+  "solution": {
+    "title": "La Solución",
+    "localStack": "La Plataforma Local TechFides",
+    "localStackDesc": "IA de grado empresarial ejecutándose en hardware que posees, en un edificio que controlas, con modelos que eliges. Ningún dato sale de tus instalaciones.",
+    "agnostic": "Agnóstica de Modelos",
+    "agnosticDesc": "Despliega Llama 3, Mistral, Claude o cualquier modelo abierto. Cambia libremente. Sin dependencia de proveedor. Tu infraestructura, tu elección."
+  },
+  "verticals": {
+    "title": "IA Soberana para",
+    "titleHighlight": "Cada Vertical",
+    "legal": "Legal",
+    "legalDesc": "Privilegio abogado-cliente preservado. Análisis de contratos, eDiscovery e investigación legal impulsados por IA — todo en tus instalaciones.",
+    "medical": "Médico",
+    "medicalDesc": "IA compatible con HIPAA para documentación clínica, codificación médica y comunicación con pacientes — ningún PHI sale de tu red.",
+    "auto": "Automotriz",
+    "autoDesc": "Cumplimiento con la Regla de Salvaguardas FTC. IA para inventario, mesa de negociación y atención al cliente en cada concesionaria.",
+    "trades": "Oficios",
+    "tradesDesc": "IA para estimaciones, programación y gestión de equipos para contratistas. Funciona sin conexión. Se integra con ServiceTitan.",
+    "explore": "Explorar"
+  },
+  "pricing": {
+    "title": "Precios",
+    "titleHighlight": "Transparentes",
+    "subtitle": "Sin tarifas ocultas. Sin \"llame para cotizar.\" IA de grado empresarial a precios accesibles para PyMEs.",
+    "zeroInstall": "Instalación $0",
+    "setup": "Implementación (SOW)",
+    "monthly": "Retención Mensual",
+    "sovereignS": "Sovereign S",
+    "sovereignSDesc": "Solo / Boutique",
+    "sovereignM": "Sovereign M",
+    "sovereignMDesc": "Sitio Único Mediano",
+    "sovereignL": "Sovereign L",
+    "sovereignLDesc": "Multi-Sitio / Empresarial",
+    "cta": "Calcula Tu ROI"
+  },
+  "cta": {
+    "title": "¿Listo para Ser Dueño de Tu",
+    "titleHighlight": "Infraestructura de IA",
+    "subtitle": "Deja de alquilar inteligencia. Empieza a ser dueño. Agenda una consulta técnica para ver la Plataforma TechFides ejecutándose en hardware que controlas.",
+    "button": "Comienza Hoy"
+  },
+  "footer": {
+    "tagline": "IA Empresarial. Infraestructura Local. Soberanía Total.",
+    "solutions": "Soluciones",
+    "platform": "Plataforma",
+    "consulting": "Consultoría",
+    "theStack": "La Plataforma",
+    "pricingRoi": "Precios y ROI",
+    "partnerPortal": "Portal de Socios",
+    "aiReadiness": "AI Readiness 360",
+    "aiTransformation": "Transformación IA",
+    "tedos": "TEDOS OS",
+    "aboutJacques": "Sobre Jacques",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio"
+  },
+  "solutions": {
+    "pageTitle": "IA Soberana por",
+    "pageTitleHighlight": "Industria",
+    "pageSubtitle": "Cada vertical tiene requisitos únicos de cumplimiento, flujos de trabajo y puntos de dolor. Construimos despliegues de IA soberana adaptados a tu industria.",
+    "dontSeeTitle": "¿No Ves Tu Industria?",
+    "dontSeeDesc": "Nuestro Motor Agnóstico se despliega en cualquier vertical. Si tu negocio maneja datos sensibles y estás cansado del impuesto de la nube — podemos ayudar.",
+    "contactUs": "Contáctanos"
+  },
+  "stack": {
+    "pageTitle": "El Motor",
+    "pageTitleHighlight": "Agnóstico",
+    "pageSubtitle": "Una plataforma de despliegue de IA full-stack y agnóstica de modelos. Cada capa está diseñada para seguridad, rendimiento y soberanía total."
+  },
+  "partners": {
+    "pageTitle": "Portal de",
+    "pageTitleHighlight": "Socios",
+    "pageSubtitle": "Gana ingresos recurrentes conectando negocios con infraestructura de IA soberana. No se requieren habilidades técnicas."
+  },
+  "consulting": {
+    "pageTitle": "Estrategia de",
+    "pageTitleHighlight": "Grado Empresarial",
+    "pageSubtitle": "Antes de desplegar IA soberana, algunas organizaciones necesitan trabajo estratégico previo. Los marcos de consultoría de TechFides — construidos a partir de décadas de liderazgo Fortune 500 — preparan tu negocio para la transformación."
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "solutions": "Solutions",
+    "theStack": "The Stack",
+    "pricingRoi": "Pricing & ROI",
+    "partnerPortal": "Partner Portal",
+    "becomePartner": "Become a Partner"
+  },
+  "hero": {
+    "badge": "$0 INSTALLATION",
+    "title1": "Enterprise AI.",
+    "title2": "Local Infrastructure.",
+    "title3": "Total Sovereignty.",
+    "subtitle": "Deploy AI models on your own hardware. No cloud dependency. No data leakage. No monthly compute tax. Full control.",
+    "cta1": "See Pricing & ROI",
+    "cta2": "Explore The Stack"
+  },
+  "problem": {
+    "title": "The Problem",
+    "cloudTax": "The Cloud Tax",
+    "cloudTaxDesc": "You're paying $2,000–$15,000/month for AI APIs that train on your data and raise prices annually. Your competitive advantage is funding someone else's infrastructure.",
+    "dataLeakage": "Data Leakage",
+    "dataLeakageDesc": "Every API call sends your proprietary data to third-party servers. Client records, trade secrets, and competitive intelligence — exposed with every query."
+  },
+  "solution": {
+    "title": "The Solution",
+    "localStack": "The TechFides Local Stack",
+    "localStackDesc": "Enterprise-grade AI running on hardware you own, in a building you control, with models you choose. Zero data leaves your premises.",
+    "agnostic": "Model Agnostic",
+    "agnosticDesc": "Deploy Llama 3, Mistral, Claude, or any open model. Switch freely. No vendor lock-in. Your infrastructure, your choice."
+  },
+  "verticals": {
+    "title": "Sovereign AI for",
+    "titleHighlight": "Every Vertical",
+    "legal": "Legal",
+    "legalDesc": "Attorney-client privilege preserved. AI-powered contract analysis, eDiscovery, and legal research — all on-premises.",
+    "medical": "Medical",
+    "medicalDesc": "HIPAA-compliant AI for clinical documentation, medical coding, and patient communication — no PHI leaves your network.",
+    "auto": "Auto",
+    "autoDesc": "FTC Safeguards Rule compliant. AI for inventory, deal desk, and customer engagement across every rooftop.",
+    "trades": "Trades",
+    "tradesDesc": "AI estimating, scheduling, and crew management for contractors. Works offline. Integrates with ServiceTitan.",
+    "explore": "Explore"
+  },
+  "pricing": {
+    "title": "Transparent",
+    "titleHighlight": "Pricing",
+    "subtitle": "No hidden fees. No \"call for quote.\" Enterprise-grade AI at SMB-accessible pricing.",
+    "zeroInstall": "$0 Installation",
+    "setup": "Setup (SOW)",
+    "monthly": "Monthly Retainer",
+    "sovereignS": "Sovereign S",
+    "sovereignSDesc": "Solo / Boutique",
+    "sovereignM": "Sovereign M",
+    "sovereignMDesc": "Single-Site Mid",
+    "sovereignL": "Sovereign L",
+    "sovereignLDesc": "Multi-Site / Enterprise",
+    "cta": "Calculate Your ROI"
+  },
+  "cta": {
+    "title": "Ready to Own Your",
+    "titleHighlight": "AI Infrastructure",
+    "subtitle": "Stop renting intelligence. Start owning it. Book a technical consultation to see the TechFides Stack running on hardware you control.",
+    "button": "Get Started Today"
+  },
+  "footer": {
+    "tagline": "Enterprise AI. Local Infrastructure. Total Sovereignty.",
+    "solutions": "Solutions",
+    "platform": "Platform",
+    "consulting": "Consulting",
+    "theStack": "The Stack",
+    "pricingRoi": "Pricing & ROI",
+    "partnerPortal": "Partner Portal",
+    "aiReadiness": "AI Readiness 360",
+    "aiTransformation": "AI Transformation",
+    "tedos": "TEDOS OS",
+    "aboutJacques": "About Jacques",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "solutions": {
+    "pageTitle": "Sovereign AI by",
+    "pageTitleHighlight": "Industry",
+    "pageSubtitle": "Every vertical has unique compliance requirements, workflows, and pain points. We build sovereign AI deployments tailored to your industry.",
+    "dontSeeTitle": "Don't See Your Industry?",
+    "dontSeeDesc": "Our Agnostic Engine deploys to any vertical. If your business handles sensitive data and you're tired of the cloud tax — we can help.",
+    "contactUs": "Contact Us"
+  },
+  "stack": {
+    "pageTitle": "The Agnostic",
+    "pageTitleHighlight": "Engine",
+    "pageSubtitle": "A full-stack, model-agnostic AI deployment platform. Every layer is designed for security, performance, and total sovereignty."
+  },
+  "partners": {
+    "pageTitle": "Partner",
+    "pageTitleHighlight": "Portal",
+    "pageSubtitle": "Earn recurring revenue by connecting businesses with sovereign AI infrastructure. No technical skills required."
+  },
+  "consulting": {
+    "pageTitle": "Enterprise-Grade",
+    "pageTitleHighlight": "Strategy",
+    "pageSubtitle": "Before deploying sovereign AI, some organizations need strategic groundwork. TechFides' consulting frameworks — built from decades of Fortune 500 leadership — prepare your business for transformation."
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  }
+}
