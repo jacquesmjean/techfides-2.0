@@ -1,0 +1,24 @@
+# TechFides 2.0 Code Owners
+# These owners will be automatically requested for review on PRs
+
+# Default owner for everything
+* @jacquesmjean
+
+# Frontend / UI
+/src/components/ @jacquesmjean
+/src/app/ @jacquesmjean
+
+# Infrastructure & Config
+/next.config.mjs @jacquesmjean
+/tailwind.config.ts @jacquesmjean
+
+# Security-sensitive files
+/SECURITY.md @jacquesmjean
+/.github/ @jacquesmjean
+
+# Internationalization
+/src/i18n/ @jacquesmjean
+
+# GSE (Internal Sales Engine)
+/src/app/gse/ @jacquesmjean
+/src/lib/gse/ @jacquesmjean
