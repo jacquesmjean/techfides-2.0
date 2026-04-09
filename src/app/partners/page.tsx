@@ -204,17 +204,17 @@ export default function PartnersPage() {
             </thead>
             <tbody className="divide-y divide-slate-800/50">
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Sovereign S ($5K setup)</td>
+                <td className="p-4 font-medium">Silver ($5K setup)</td>
                 <td className="p-4 text-accent-green">$500 - $1,000</td>
                 <td className="p-4 text-accent-green">$50/mo</td>
               </tr>
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Sovereign M ($10K setup)</td>
+                <td className="p-4 font-medium">Gold ($10K setup)</td>
                 <td className="p-4 text-accent-green">$1,000 - $2,000</td>
                 <td className="p-4 text-accent-green">$100/mo</td>
               </tr>
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Sovereign L ($15K+ setup)</td>
+                <td className="p-4 font-medium">Platinum ($15K+ setup)</td>
                 <td className="p-4 text-accent-green">$1,500 - $3,000+</td>
                 <td className="p-4 text-accent-green">$250+/mo</td>
               </tr>

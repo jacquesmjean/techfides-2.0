@@ -29,20 +29,20 @@ const verticals = [
 
 const tiers = [
   {
-    name: "Sovereign S",
+    name: "Silver",
     target: "Solo / Boutique",
     setup: "$5,000",
     monthly: "$500",
   },
   {
-    name: "Sovereign M",
+    name: "Gold",
     target: "Single-Site Mid",
     setup: "$10,000",
     monthly: "$1,000",
     featured: true,
   },
   {
-    name: "Sovereign L",
+    name: "Platinum",
     target: "Multi-Site / Enterprise",
     setup: "$15,000+",
     monthly: "$2,500+",

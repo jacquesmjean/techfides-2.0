@@ -795,22 +795,22 @@ function StepPayment({
 
   const tiers = [
     {
-      id: "sovereign-s",
-      name: "Sovereign S",
+      id: "silver",
+      name: "Silver",
       desc: "Solo / Boutique",
       setup: "$5,000",
       monthly: "$500/mo",
     },
     {
-      id: "sovereign-m",
-      name: "Sovereign M",
+      id: "gold",
+      name: "Gold",
       desc: "Single-Site Mid",
       setup: "$10,000",
       monthly: "$1,000/mo",
     },
     {
-      id: "sovereign-l",
-      name: "Sovereign L",
+      id: "platinum",
+      name: "Platinum",
       desc: "Multi-Site / Enterprise",
       setup: "$15,000+",
       monthly: "$2,500+/mo",
