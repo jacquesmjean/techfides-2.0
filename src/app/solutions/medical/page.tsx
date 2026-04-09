@@ -67,7 +67,7 @@ export default function MedicalPage() {
         },
       ]}
       complianceBadges={[
-        "HIPAA Compliant",
+        "HIPAA Aligned",
         "PHI On-Premise",
         "BAA Available",
         "HITECH Act Ready",

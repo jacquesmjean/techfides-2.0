@@ -78,7 +78,7 @@ const values = [
     icon: "\u{1F4A1}",
     title: "Model Agnosticism",
     description:
-      "We don\u2019t lock you into one vendor. Deploy Llama, Mistral, Claude, or any model. Switch freely as the landscape evolves.",
+      "We don\u2019t lock you into one vendor. Deploy Llama, Mistral, Phi, or any open model. Switch freely as the landscape evolves.",
   },
   {
     icon: "\u{1F4B0}",
@@ -182,7 +182,7 @@ export default function AboutPage() {
                     <p className="text-2xl font-bold text-electric-400">
                       {item.stat}
                     </p>
-                    <p className="mt-1 text-xs text-slate-500">{item.label}</p>
+                    <p className="mt-1 text-xs text-slate-400">{item.label}</p>
                   </div>
                 ))}
               </div>
@@ -260,7 +260,7 @@ export default function AboutPage() {
               <div className="text-4xl">{office.flag}</div>
               <h3 className="mt-3 text-lg font-bold">{office.country}</h3>
               <p className="mt-1 text-electric-400">{office.city}</p>
-              <p className="mt-2 text-xs text-slate-500">{office.role}</p>
+              <p className="mt-2 text-xs text-slate-400">{office.role}</p>
             </div>
           ))}
         </div>

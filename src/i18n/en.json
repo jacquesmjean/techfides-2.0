@@ -27,7 +27,7 @@
     "localStack": "The TechFides Local Stack",
     "localStackDesc": "Enterprise-grade AI running on hardware you own, in a building you control, with models you choose. Zero data leaves your premises.",
     "agnostic": "Model Agnostic",
-    "agnosticDesc": "Deploy Llama 3, Mistral, Claude, or any open model. Switch freely. No vendor lock-in. Your infrastructure, your choice."
+    "agnosticDesc": "Deploy Llama 3, Mistral, Phi, or any open model. Switch freely. No vendor lock-in. Your infrastructure, your choice."
   },
   "verticals": {
     "title": "Sovereign AI for",

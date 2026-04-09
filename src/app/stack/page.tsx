@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The Agnostic Engine | TechFides Stack",
   description:
-    "Technical deep-dive into the TechFides Local Stack. Model-agnostic AI infrastructure running Llama 3, Mistral, or Claude on your own hardware.",
+    "Technical deep-dive into the TechFides Local Stack. Model-agnostic AI infrastructure running Llama 3, Mistral, or Phi on your own hardware.",
 };
 
 const stackLayers = [

@@ -462,7 +462,7 @@ export default function DealRoomPage() {
         <BackButton />
         <div className="text-center py-16">
           <p className="text-2xl font-semibold text-slate-300 mb-2">Deal Room Not Found</p>
-          <p className="text-slate-400">The deal room you're looking for doesn't exist.</p>
+          <p className="text-slate-400">The deal room you&apos;re looking for doesn&apos;t exist.</p>
           <Link
             href="/gse/deal-room"
             className="inline-block mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg"

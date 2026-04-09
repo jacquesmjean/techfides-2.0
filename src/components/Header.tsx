@@ -39,6 +39,7 @@ export function Header() {
 
   const navigation = [
     { name: t("nav.solutions"), href: "/solutions" },
+    { name: "Consulting", href: "/consulting" },
     { name: t("nav.theStack"), href: "/stack" },
     { name: t("nav.pricingRoi"), href: "/pricing" },
     { name: t("nav.partnerPortal"), href: "/partners" },
@@ -57,7 +58,7 @@ export function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-end gap-4 px-6 py-1.5">
           <a
             href="mailto:engage@techfides.com"
-            className="text-[11px] text-slate-500 transition-colors hover:text-electric-400"
+            className="text-[11px] text-slate-400 transition-colors hover:text-electric-400"
           >
             engage@techfides.com
           </a>
@@ -67,9 +68,12 @@ export function Header() {
           <div className="relative" ref={langRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1 text-[11px] text-slate-500 transition-colors hover:text-electric-400"
+              aria-expanded={langOpen}
+              aria-haspopup="listbox"
+              aria-label="Select language"
+              className="flex items-center gap-1 text-[11px] text-slate-400 transition-colors hover:text-electric-400"
             >
-              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="h-3 w-3" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
@@ -135,6 +139,7 @@ export function Header() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <svg
             className="h-6 w-6 text-slate-300"

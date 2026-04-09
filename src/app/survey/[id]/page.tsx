@@ -369,7 +369,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
                   )}
                 {(data.referralName || data.referralEmail || data.referralCompany) && (
                   <p className="rounded-lg bg-electric-500/10 p-4 text-sm text-electric-400">
-                    Thanks for the referral! We'll reach out to{' '}
+                    Thanks for the referral! We&apos;ll reach out to{" "}
                     <strong>{data.referralName}</strong> personally.
                   </p>
                 )}
@@ -696,7 +696,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
             {data.nps >= 9 && (
               <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-8">
                 <h3 className="text-lg font-bold text-slate-100">
-                  You're a TechFides Champion!
+                  You&apos;re a TechFides Champion!
                 </h3>
                 <p className="mt-2 text-sm text-slate-300">
                   Know someone who could benefit from sovereign AI?
@@ -731,7 +731,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
                     className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-slate-100 placeholder-slate-500 transition-all focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
                   />
                   <p className="text-xs text-slate-500">
-                    We'll reach out personally — no spam, ever.
+                    We&apos;ll reach out personally — no spam, ever.
                   </p>
                 </div>
               </div>

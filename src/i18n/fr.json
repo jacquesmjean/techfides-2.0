@@ -27,7 +27,7 @@
     "localStack": "La Plateforme Locale TechFides",
     "localStackDesc": "IA de qualité entreprise fonctionnant sur du matériel que vous possédez, dans un bâtiment que vous contrôlez, avec des modèles que vous choisissez. Aucune donnée ne quitte vos locaux.",
     "agnostic": "Agnostique de Modèles",
-    "agnosticDesc": "Déployez Llama 3, Mistral, Claude ou tout modèle ouvert. Changez librement. Aucune dépendance fournisseur. Votre infrastructure, votre choix."
+    "agnosticDesc": "Déployez Llama 3, Mistral, Phi ou tout modèle ouvert. Changez librement. Aucune dépendance fournisseur. Votre infrastructure, votre choix."
   },
   "verticals": {
     "title": "IA Souveraine pour",

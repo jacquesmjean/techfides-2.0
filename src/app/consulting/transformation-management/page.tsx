@@ -182,7 +182,7 @@ export default function TransformationManagementPage() {
                 {pillar.description}
               </p>
               <div className="mt-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Focus Areas
                 </p>
                 <ul className="mt-2 space-y-1">
@@ -198,7 +198,7 @@ export default function TransformationManagementPage() {
                 </ul>
               </div>
               <div className="mt-4 border-t border-slate-700/50 pt-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Outcome
                 </p>
                 <p className={`mt-1 text-sm font-semibold ${pillar.color}`}>
@@ -242,7 +242,7 @@ export default function TransformationManagementPage() {
                 {model.description}
               </p>
               <div className="mt-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Key Benefits
                 </p>
                 <ul className="mt-2 space-y-1">
@@ -321,16 +321,16 @@ export default function TransformationManagementPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-4">
           {/* Strategic Advisory */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6 transition-all hover:border-electric-500/20">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Tier 1
             </p>
             <h3 className="mt-2 text-lg font-bold">Strategic Advisory</h3>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-400">
               Ongoing executive guidance
             </p>
             <div className="mt-5">
               <p className="text-3xl font-bold text-electric-400">$50,000</p>
-              <p className="mt-1 text-xs text-slate-500">Starting engagement</p>
+              <p className="mt-1 text-xs text-slate-400">Starting engagement</p>
             </div>
             <div className="mt-1 text-sm text-slate-400">
               Up to <span className="font-semibold text-slate-300">$95,000</span>
@@ -365,12 +365,12 @@ export default function TransformationManagementPage() {
             <h3 className="mt-2 text-lg font-bold text-electric-400">
               Transformation Mgmt
             </h3>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-400">
               End-to-end program leadership
             </p>
             <div className="mt-5">
               <p className="text-3xl font-bold text-electric-400">$125,000</p>
-              <p className="mt-1 text-xs text-slate-500">Starting engagement</p>
+              <p className="mt-1 text-xs text-slate-400">Starting engagement</p>
             </div>
             <div className="mt-1 text-sm text-slate-400">
               Up to{" "}
@@ -398,16 +398,16 @@ export default function TransformationManagementPage() {
 
           {/* Capability Building */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6 transition-all hover:border-electric-500/20">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Tier 3
             </p>
             <h3 className="mt-2 text-lg font-bold">Capability Building</h3>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-400">
               Internal CoE development
             </p>
             <div className="mt-5">
               <p className="text-3xl font-bold text-electric-400">$175,000</p>
-              <p className="mt-1 text-xs text-slate-500">Starting engagement</p>
+              <p className="mt-1 text-xs text-slate-400">Starting engagement</p>
             </div>
             <div className="mt-1 text-sm text-slate-400">
               Up to{" "}
@@ -441,12 +441,12 @@ export default function TransformationManagementPage() {
             <h3 className="mt-2 text-lg font-bold text-accent-amber">
               Rescue &amp; Turnaround
             </h3>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-400">
               Rapid intervention for stalled programs
             </p>
             <div className="mt-5">
               <p className="text-3xl font-bold text-accent-amber">$85,000</p>
-              <p className="mt-1 text-xs text-slate-500">Starting engagement</p>
+              <p className="mt-1 text-xs text-slate-400">Starting engagement</p>
             </div>
             <div className="mt-1 text-sm text-slate-400">
               Up to{" "}
@@ -474,7 +474,7 @@ export default function TransformationManagementPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-400">
             All pricing is fixed-scope SOW based. No hourly billing. No scope
             creep. Final investment determined by organizational complexity and
             engagement duration.

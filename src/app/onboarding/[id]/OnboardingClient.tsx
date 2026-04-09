@@ -435,7 +435,7 @@ const SERVICE_CATALOG = [
       "End-to-end deployment of enterprise AI on your local infrastructure. Full data sovereignty with no cloud dependency.",
     scope: [
       "Assessment of current IT infrastructure and AI readiness",
-      "Selection and configuration of AI models (Llama 3, Mistral, Claude, etc.) based on client requirements",
+      "Selection and configuration of AI models (Llama 3, Mistral, Phi, etc.) based on client requirements",
       "Deployment of the TechFides Local Stack on client-owned hardware",
       "Integration with existing business workflows and applications",
       "Staff training and comprehensive documentation",

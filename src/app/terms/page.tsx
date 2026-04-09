@@ -17,7 +17,7 @@ export default function TermsOfServicePage() {
         <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
           Terms of <span className="text-electric-400">Service</span>
         </h1>
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-slate-400">
           Effective Date: January 1, 2026 &middot; Last Updated: January 1, 2026
         </p>
 

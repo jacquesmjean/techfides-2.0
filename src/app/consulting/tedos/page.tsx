@@ -382,7 +382,7 @@ export default function TEDOSPage() {
               <p className="mt-1 text-xs text-slate-400">{tier.subtitle}</p>
 
               <div className="mt-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Initial Deployment / Setup
                 </p>
                 <p className="text-xl font-bold text-electric-400">
@@ -437,7 +437,7 @@ export default function TEDOSPage() {
         >
           Request Documentation Package
         </Link>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-400">
           Available to qualified enterprise teams.
         </p>
       </section>

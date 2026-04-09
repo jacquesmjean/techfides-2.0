@@ -304,7 +304,7 @@ export default function AIReadiness360Page() {
             </p>
             <div className="mt-6 space-y-4">
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Starting from
                 </p>
                 <p className="text-3xl font-bold text-electric-400">$45,000</p>
@@ -313,7 +313,7 @@ export default function AIReadiness360Page() {
                 </p>
               </div>
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-xs uppercase tracking-wider text-slate-400">
                   Enterprise
                 </p>
                 <p className="text-3xl font-bold text-electric-400">

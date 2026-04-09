@@ -157,10 +157,10 @@ export default function PricingPage() {
                   )}
                 </div>
                 <p className="mt-1 text-sm text-slate-400">{t.target}</p>
-                <p className="text-xs text-slate-500">{t.employees}</p>
+                <p className="text-xs text-slate-400">{t.employees}</p>
 
                 <div className="mt-6">
-                  <p className="text-xs uppercase tracking-wider text-slate-500">
+                  <p className="text-xs uppercase tracking-wider text-slate-400">
                     Setup (SOW)
                   </p>
                   <p className="text-3xl font-bold">
@@ -170,7 +170,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mt-4">
-                  <p className="text-xs uppercase tracking-wider text-slate-500">
+                  <p className="text-xs uppercase tracking-wider text-slate-400">
                     Monthly Retainer
                   </p>
                   <p className="text-3xl font-bold">
@@ -184,7 +184,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mt-3 rounded-lg bg-slate-800/50 px-3 py-2 text-center">
-                  <p className="text-[10px] uppercase tracking-wider text-slate-500">Est. Hardware</p>
+                  <p className="text-[10px] uppercase tracking-wider text-slate-400">Est. Hardware</p>
                   <p className="text-sm font-semibold text-slate-300">{t.hardwareEstimate}</p>
                 </div>
 
@@ -251,7 +251,7 @@ export default function PricingPage() {
                 ${cloudSpend.toLocaleString()}
               </span>
             </div>
-            <div className="mt-1 flex justify-between text-xs text-slate-500">
+            <div className="mt-1 flex justify-between text-xs text-slate-400">
               <span>$750/mo</span>
               <span>$15,000/mo</span>
             </div>
@@ -287,11 +287,11 @@ export default function PricingPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-500 mt-0.5">{t.target}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{t.target}</p>
                     <div className="mt-2 pt-2 border-t border-slate-800">
-                      <p className="text-xs text-slate-500">Setup</p>
+                      <p className="text-xs text-slate-400">Setup</p>
                       <p className="text-sm font-semibold text-slate-200">${t.setup.toLocaleString()}{t.plusPricing && "+"}</p>
-                      <p className="text-xs text-slate-500 mt-1">Monthly</p>
+                      <p className="text-xs text-slate-400 mt-1">Monthly</p>
                       <p className="text-sm font-semibold text-slate-200">${t.monthly.toLocaleString()}{t.plusPricing && "+"}/mo</p>
                     </div>
                   </button>
@@ -325,17 +325,17 @@ export default function PricingPage() {
           {/* Comparison Summary */}
           <div className="mt-6 rounded-xl border border-electric-500/20 bg-slate-950/50 p-4 flex items-center justify-between">
             <div>
-              <p className="text-xs uppercase tracking-wider text-slate-500">
+              <p className="text-xs uppercase tracking-wider text-slate-400">
                 Comparing
               </p>
               <p className="text-sm text-slate-300 mt-1">
                 <span className="text-red-400 font-semibold">${cloudSpend.toLocaleString()}/mo</span> cloud spend vs{" "}
                 <span className={`font-semibold ${tierColors[tier.name].text}`}>{tier.name}</span>{" "}
-                <span className="text-slate-500">({tier.target})</span>
+                <span className="text-slate-400">({tier.target})</span>
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-slate-500">TechFides cost</p>
+              <p className="text-xs text-slate-400">TechFides cost</p>
               <p className="text-sm font-semibold text-slate-200">${tier.monthly.toLocaleString()}/mo + ${tier.setup.toLocaleString()} setup</p>
             </div>
           </div>
@@ -343,7 +343,7 @@ export default function PricingPage() {
           {/* Results */}
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-500">
+              <p className="text-xs uppercase tracking-wider text-slate-400">
                 Monthly Savings
               </p>
               <p
@@ -359,7 +359,7 @@ export default function PricingPage() {
               )}
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-500">
+              <p className="text-xs uppercase tracking-wider text-slate-400">
                 36-Month Net Savings
               </p>
               <p
@@ -369,10 +369,10 @@ export default function PricingPage() {
               >
                 {savings36 > 0 ? "+" : "-"}${Math.abs(savings36).toLocaleString()}
               </p>
-              <p className="mt-1 text-[10px] text-slate-500">Includes setup fee</p>
+              <p className="mt-1 text-[10px] text-slate-400">Includes setup fee</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-500">
+              <p className="text-xs uppercase tracking-wider text-slate-400">
                 Break-Even
               </p>
               <p className={`mt-2 text-3xl font-bold ${breakEvenMonths <= 12 ? "text-accent-green" : breakEvenMonths <= 24 ? "text-electric-400" : "text-amber-400"}`}>
@@ -381,7 +381,7 @@ export default function PricingPage() {
                   : `${breakEvenMonths} mo`}
               </p>
               {breakEvenMonths !== Infinity && breakEvenMonths <= 36 && (
-                <p className="mt-1 text-[10px] text-slate-500">
+                <p className="mt-1 text-[10px] text-slate-400">
                   {breakEvenMonths <= 6 ? "Excellent ROI" : breakEvenMonths <= 12 ? "Strong ROI" : breakEvenMonths <= 24 ? "Good ROI" : "Long payback"}
                 </p>
               )}
@@ -424,7 +424,7 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <p className="mt-6 text-center text-xs text-slate-500">
+          <p className="mt-6 text-center text-xs text-slate-400">
             * Calculations based on your inputs. Hardware costs are purchased by you separately (estimated ranges shown above).
             Actual savings depend on deployment scope and usage. Setup fee is one-time.
           </p>
@@ -456,7 +456,7 @@ export default function PricingPage() {
             },
             {
               q: "Can I switch AI models later?",
-              a: "Absolutely. The TechFides Agnostic Engine supports Llama 3, Mistral, Claude, and other open models. You can swap or run multiple models simultaneously as your needs evolve.",
+              a: "Absolutely. The TechFides Agnostic Engine supports Llama 3, Mistral, Phi, and other open models. You can swap or run multiple models simultaneously as your needs evolve.",
             },
             {
               q: "What if I need more capacity later?",

@@ -27,7 +27,7 @@
     "localStack": "La Plataforma Local TechFides",
     "localStackDesc": "IA de grado empresarial ejecutándose en hardware que posees, en un edificio que controlas, con modelos que eliges. Ningún dato sale de tus instalaciones.",
     "agnostic": "Agnóstica de Modelos",
-    "agnosticDesc": "Despliega Llama 3, Mistral, Claude o cualquier modelo abierto. Cambia libremente. Sin dependencia de proveedor. Tu infraestructura, tu elección."
+    "agnosticDesc": "Despliega Llama 3, Mistral, Phi o cualquier modelo abierto. Cambia libremente. Sin dependencia de proveedor. Tu infraestructura, tu elección."
   },
   "verticals": {
     "title": "IA Soberana para",

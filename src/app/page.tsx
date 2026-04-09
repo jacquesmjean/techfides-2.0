@@ -69,7 +69,7 @@ export default function Home() {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
             Stop paying the <strong className="text-slate-200">Cloud Tax</strong>.
             Eliminate <strong className="text-slate-200">Data Leakage</strong>.
-            Deploy Llama, Mistral, or Claude on{" "}
+            Deploy Llama, Mistral, or Phi on{" "}
             <em>your</em> hardware with the TechFides Local Stack.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -124,7 +124,7 @@ export default function Home() {
               </li>
               <li className="flex gap-3">
                 <span className="text-accent-green">&#10003;</span>
-                Model-agnostic: swap Llama, Mistral, or Claude as your needs evolve.
+                Model-agnostic: swap Llama, Mistral, or Phi as your needs evolve.
               </li>
             </ul>
           </div>

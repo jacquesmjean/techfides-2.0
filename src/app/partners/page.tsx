@@ -221,7 +221,7 @@ export default function PartnersPage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-4 text-center text-xs text-slate-500">
+        <p className="mt-4 text-center text-xs text-slate-400">
           Commission rates increase with volume. Top partners earn 20% on setup
           + enhanced residuals.
         </p>

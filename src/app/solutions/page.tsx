@@ -24,7 +24,7 @@ const verticals = [
     headline: "HIPAA-Compliant AI",
     description:
       "Patient data is sacred. Every cloud API call is a potential HIPAA violation waiting to happen. TechFides keeps PHI on-premise while enabling AI-powered clinical documentation, coding assistance, and patient communication — without the compliance risk.",
-    badges: ["HIPAA Compliant", "PHI Protection", "BAA Available"],
+    badges: ["HIPAA Aligned", "PHI Protection", "BAA Available"],
   },
   {
     name: "Auto",
