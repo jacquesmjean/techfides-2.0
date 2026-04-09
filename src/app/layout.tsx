@@ -94,9 +94,9 @@ const organizationJsonLd = {
   sameAs: [
     "https://www.linkedin.com/company/techfides/",
     "https://x.com/tech_fides",
-    "https://www.youtube.com/@Tech_Fides",
     "https://www.facebook.com/TechFidesTX/",
     "https://www.instagram.com/tech_fides/",
+    "https://www.youtube.com/@Tech_Fides",
   ],
   address: [
     {
