@@ -248,6 +248,46 @@ export default function PartnersPage() {
         </p>
       </section>
 
+      {/* Client Referral Program */}
+      <section className="mx-auto max-w-4xl px-6 py-24">
+        <div className="rounded-2xl border border-accent-green/30 bg-accent-green/5 p-8 md:p-12">
+          <h2 className="text-center text-3xl font-bold">
+            Already a <span className="text-accent-green">TechFides Client?</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
+            Refer a business and earn credit on your retainer. Simple.
+          </p>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
+              <p className="text-3xl font-bold text-accent-green">$500</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Silver referral</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
+              <p className="text-3xl font-bold text-accent-green">$1,000</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Gold referral</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
+              <p className="text-3xl font-bold text-accent-green">$2,500</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Platinum referral</p>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-slate-300">
+              Credits applied directly to your monthly retainer once the referred client signs.
+              No limits on referrals. Stack credits month over month.
+            </p>
+            <a
+              href="mailto:engage@techfides.com?subject=Client Referral&body=I'd like to refer a business to TechFides.%0A%0AReferred Business:%0AContact Name:%0AContact Email:%0AIndustry:"
+              className="glow-blue mt-6 inline-block rounded-xl bg-accent-green px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-green-600"
+            >
+              Submit a Referral
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Application Form */}
       <section id="apply" className="mx-auto max-w-2xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">

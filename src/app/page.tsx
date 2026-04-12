@@ -54,16 +54,16 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/pricing"
+              href="/assess"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
             >
-              See Pricing &amp; ROI
+              Free AI Readiness Score
             </Link>
             <Link
-              href="/stack"
+              href="/pricing"
               className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
             >
-              Explore the Stack
+              See Pricing &amp; ROI
             </Link>
           </div>
         </div>

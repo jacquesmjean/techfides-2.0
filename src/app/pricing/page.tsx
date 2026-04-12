@@ -433,6 +433,34 @@ export default function PricingPage() {
             * Calculations based on your inputs. Hardware costs are purchased by you separately (estimated ranges shown above).
             Actual savings depend on deployment scope and usage. Setup fee is one-time.
           </p>
+
+          {/* Share Results */}
+          {savings36 > 0 && (
+            <div className="mt-8 rounded-xl border border-electric-500/20 bg-electric-500/5 p-6 text-center">
+              <p className="text-sm font-semibold text-slate-300">Share your savings calculation</p>
+              <div className="mt-3 flex items-center justify-center gap-3">
+                <button
+                  onClick={() => {
+                    const text = `We could save $${savings36.toLocaleString()} over 3 years by switching from cloud AI to TechFides Sovereign AI (${tier.name} tier). Break-even in ${breakEvenMonths} months.\n\nRun your own numbers: https://techfides.com/pricing\n\n#AI #DataSovereignty #CloudTax #TechFides`;
+                    navigator.clipboard.writeText(text);
+                    alert("LinkedIn post copied to clipboard!");
+                  }}
+                  className="rounded-lg bg-[#0A66C2] px-4 py-2 text-xs font-semibold text-white hover:bg-[#004182]"
+                >
+                  Copy for LinkedIn
+                </button>
+                <button
+                  onClick={() => {
+                    const text = encodeURIComponent(`We could save $${savings36.toLocaleString()} over 3 years by ditching cloud AI. ${tier.name} tier, ${breakEvenMonths}-month break-even. Check yours: https://techfides.com/pricing #CloudTax`);
+                    window.open(`https://x.com/intent/tweet?text=${text}`, "_blank");
+                  }}
+                  className="rounded-lg bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700"
+                >
+                  Share on X
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

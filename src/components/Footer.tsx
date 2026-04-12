@@ -119,6 +119,7 @@ export function Footer() {
                 { name: "Transformation", href: "/consulting/transformation-management" },
                 { name: "TEDOS\u2122 OS", href: "/consulting/tedos" },
                 { name: "Pricing", href: "/pricing" },
+                { name: "AI Readiness Score", href: "/assess" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
