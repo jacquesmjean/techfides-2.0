@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     "AI for auto dealers",
     "AI for contractors",
   ],
+  icons: {
+    icon: "/images/techfides-icon.svg",
+    apple: "/images/techfides-icon.png",
+  },
   authors: [{ name: "TechFides", url: "https://techfides.com" }],
   creator: "TechFides",
   openGraph: {

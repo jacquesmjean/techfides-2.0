@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
 
 // Routes that should NOT show the global Header/Footer
 const STANDALONE_ROUTES = ["/gse", "/survey"];
@@ -23,6 +24,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
       <Header />
       <main id="main-content">{children}</main>
       <Footer />
+      <CookieConsent />
     </>
   );
 }

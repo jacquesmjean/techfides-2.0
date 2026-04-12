@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
           Privacy <span className="text-electric-400">Policy</span>
         </h1>
         <p className="mt-4 text-sm text-slate-400">
-          Effective Date: January 1, 2026 &middot; Last Updated: January 1, 2026
+          Effective Date: April 11, 2026 &middot; Last Updated: April 11, 2026
         </p>
 
         <div className="mt-12 space-y-10 text-slate-300">

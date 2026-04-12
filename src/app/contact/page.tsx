@@ -52,10 +52,22 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would POST to your API/CRM
-    setSubmitted(true);
+    setSending(true);
+    try {
+      await fetch("/api/v1/forms/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ form: "contact", data: formData }),
+      });
+      setSubmitted(true);
+    } catch {
+      alert("Failed to send. Please try again or email engage@techfides.com directly.");
+    }
+    setSending(false);
   };
 
   const inputClasses =
