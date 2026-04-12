@@ -187,10 +187,10 @@ export default function PrivacyPolicyPage() {
               processing is based on consent. To exercise these rights, contact
               us at{" "}
               <a
-                href="mailto:engage@techfides.com"
+                href="mailto:legal@techfides.com"
                 className="text-electric-400 hover:text-electric-300"
               >
-                engage@techfides.com
+                legal@techfides.com
               </a>
               . We will respond within 30 days.
             </p>
@@ -253,10 +253,10 @@ export default function PrivacyPolicyPage() {
               <p className="mt-1 text-sm text-slate-400">
                 Email:{" "}
                 <a
-                  href="mailto:engage@techfides.com"
+                  href="mailto:legal@techfides.com"
                   className="text-electric-400 hover:text-electric-300"
                 >
-                  engage@techfides.com
+                  legal@techfides.com
                 </a>
               </p>
             </div>

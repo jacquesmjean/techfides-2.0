@@ -133,10 +133,10 @@ function AccessGate({
         <p className="mt-6 text-center text-xs text-slate-500">
           Need help?{" "}
           <a
-            href="mailto:engage@techfides.com"
+            href="mailto:support@techfides.com"
             className="text-electric-400 hover:text-electric-300"
           >
-            engage@techfides.com
+            support@techfides.com
           </a>
         </p>
       </div>
@@ -1638,7 +1638,7 @@ function StepComplete({
                     </style></head><body>
                     ${el.innerHTML}
                     <div class="footer">
-                      TechFides LLC &bull; Frisco, Texas &bull; engage@techfides.com &bull; techfides.com
+                      TechFides LLC &bull; Frisco, Texas &bull; support@techfides.com &bull; techfides.com
                     </div>
                     </body></html>
                   `);
@@ -1666,7 +1666,7 @@ function StepComplete({
               <p className="mt-1 text-xs text-slate-500">
                 TechFides LLC &bull; Frisco, TX 75034
               </p>
-              <p className="text-xs text-slate-500">engage@techfides.com</p>
+              <p className="text-xs text-slate-500">support@techfides.com</p>
             </div>
             <div className="text-left sm:text-right">
               <p className="text-lg font-bold text-white">
@@ -1823,7 +1823,7 @@ function StepComplete({
           <p className="mt-4 text-[10px] text-slate-600">
             This {payMethod === "stripe" ? "receipt" : "invoice"} is issued by
             TechFides LLC. All fees are in USD. For questions, contact
-            engage@techfides.com. Terms subject to the signed Statement of Work.
+            support@techfides.com. Terms subject to the signed Statement of Work.
           </p>
         </div>
       </div>
@@ -1922,7 +1922,7 @@ function StepComplete({
 
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <a
-          href="mailto:engage@techfides.com"
+          href="mailto:support@techfides.com"
           className="w-full rounded-lg border border-slate-700 px-6 py-3 text-center text-sm font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white active:scale-[0.98] sm:w-auto sm:py-2.5"
         >
           Contact Your {(() => {

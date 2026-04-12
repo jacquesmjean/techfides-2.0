@@ -140,6 +140,7 @@ export function Footer() {
             <ul className="mt-3 space-y-2">
               {[
                 { name: "About Us", href: "/about" },
+                { name: "Careers", href: "/careers" },
                 { name: "Partner Portal", href: "/partners" },
                 { name: "Contact Us", href: "/contact" },
               ].map((link) => (

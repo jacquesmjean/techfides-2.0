@@ -49,7 +49,7 @@ export function renderBrandedEmail(
     senderName,
     senderTitle,
     subject,
-    unsubscribeUrl = "mailto:engage@techfides.com?subject=Unsubscribe",
+    unsubscribeUrl = "mailto:support@techfides.com?subject=Unsubscribe",
   } = props;
 
   const logoUrl =

@@ -345,10 +345,10 @@ export default function TermsOfServicePage() {
               <p className="mt-1 text-sm text-slate-400">
                 Email:{" "}
                 <a
-                  href="mailto:engage@techfides.com"
+                  href="mailto:legal@techfides.com"
                   className="text-electric-400 hover:text-electric-300"
                 >
-                  engage@techfides.com
+                  legal@techfides.com
                 </a>
               </p>
             </div>

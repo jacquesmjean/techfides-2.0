@@ -15,7 +15,7 @@ TechFides takes security seriously. If you discover a security vulnerability, pl
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, please email us at: **engage@techfides.com**
+Instead, please email us at: **security@techfides.com**
 
 Include the following in your report:
 - Description of the vulnerability
@@ -49,4 +49,4 @@ This project implements the following security measures:
 
 ## Scope
 
-This security policy applies to the TechFides 2.0 web application codebase. For security concerns related to deployed TechFides infrastructure or client environments, please contact us directly at engage@techfides.com.
+This security policy applies to the TechFides 2.0 web application codebase. For security concerns related to deployed TechFides infrastructure or client environments, please contact us directly at security@techfides.com.
