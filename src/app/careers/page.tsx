@@ -411,12 +411,15 @@ export default function CareersPage() {
           We&apos;re always looking for exceptional people. Send us your resume
           and tell us how you&apos;d contribute to sovereign AI.
         </p>
-        <a
-          href="mailto:careers@techfides.com?subject=General Application"
+        <button
+          onClick={() => {
+            setSelectedJob({ id: "general", title: "General Application", department: "engineering", type: "full-time", location: "Any TechFides Office", remote: true, description: "", responsibilities: [], requirements: [], niceToHave: [] });
+            setApplying(true);
+          }}
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
           Send General Application
-        </a>
+        </button>
       </section>
 
       {/* Application Modal */}
