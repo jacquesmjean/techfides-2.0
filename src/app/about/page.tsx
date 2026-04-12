@@ -122,7 +122,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-3">
             <div className="md:col-span-1">
               <img
-                src="/images/jacques-jean.jpg"
+                src="/images/jacques-jean.png"
                 alt="Jacques Jean — Founder & CEO of TechFides"
                 className="h-48 w-48 rounded-2xl object-cover border border-slate-700"
               />
