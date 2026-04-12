@@ -168,7 +168,7 @@ export default function TEDOSPage() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/pricing"
+              href="/contact"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
             >
               Request Technical Documentation
@@ -432,7 +432,7 @@ export default function TEDOSPage() {
           security whitepapers, API references, and deployment guides.
         </p>
         <Link
-          href="/pricing"
+          href="/contact"
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
           Request Documentation Package

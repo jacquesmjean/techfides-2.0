@@ -117,7 +117,7 @@ export default function SolutionsPage() {
           stack.
         </p>
         <Link
-          href="/pricing"
+          href="/contact"
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
           Talk to Us About Your Industry
