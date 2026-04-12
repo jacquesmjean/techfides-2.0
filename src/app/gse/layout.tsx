@@ -39,6 +39,8 @@ const NAV_SECTIONS: NavSection[] = [
     title: "CLIENT DELIVERY",
     items: [
       { label: "Projects", icon: "\uD83D\uDCC2", href: "/gse/projects" },
+      { label: "Client Accounts", icon: "\uD83C\uDFE2", href: "/gse/clients" },
+      { label: "Support Tickets", icon: "\uD83C\uDFAB", href: "/gse/tickets" },
       { label: "Deal Rooms", icon: "\uD83D\uDD10", href: "/gse/deal-room" },
       { label: "Surveys", icon: "\u2B50", href: "/gse/surveys" },
     ],

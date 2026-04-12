@@ -795,4 +795,104 @@ enum ProjectUpdateType {
   HOURS_LOGGED
   COMPLETED
   CLIENT_FEEDBACK
+  CLIENT_SIGNOFF
+}
+
+// ============================================================
+// CLIENT ACCOUNT, SIGN-OFF, & SUPPORT TICKETS
+// ============================================================
+
+model ClientAccount {
+  id          String              @id @default(cuid())
+  companyName String
+  contactName String
+  email       String              @unique
+  phone       String?
+  tier        String              // Silver, Gold, Platinum
+  service     ServiceType
+  status      ClientAccountStatus @default(ACTIVE)
+  retainerAmount Float            @default(0)
+  retainerStart  DateTime?
+  retainerEnd    DateTime?
+  leadId      String?             // original lead
+  projectId   String?             // linked project
+  notes       String?             @db.Text
+
+  tickets     SupportTicket[]
+
+  activatedAt   DateTime  @default(now())
+  deactivatedAt DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([status])
+  @@index([email])
+}
+
+enum ClientAccountStatus {
+  ACTIVE
+  PAUSED       // temporarily suspended (payment issue, etc.)
+  DEACTIVATED  // retainer ended
+  CHURNED      // client left permanently
+}
+
+model ClientSignoff {
+  id          String   @id @default(cuid())
+  projectId   String
+  clientName  String
+  clientEmail String
+  signedAt    DateTime @default(now())
+  satisfaction Int?    // 1-5 rating
+  feedback    String?  @db.Text
+  signature   String?  // typed name as signature
+  ipAddress   String?
+
+  @@index([projectId])
+}
+
+model SupportTicket {
+  id              String       @id @default(cuid())
+  clientAccountId String
+  subject         String
+  description     String       @db.Text
+  priority        TicketPriority @default(MEDIUM)
+  status          TicketStatus   @default(OPEN)
+  category        String?      // "technical", "billing", "feature-request", "training"
+
+  // Assignment
+  assignedTo      String?      // consultant name
+  assignedEmail   String?
+
+  // Resolution
+  resolution      String?      @db.Text
+  resolvedAt      DateTime?
+  hoursSpent      Float?
+
+  // Satisfaction
+  clientRating    Int?         // 1-5
+
+  clientAccount ClientAccount @relation(fields: [clientAccountId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientAccountId])
+  @@index([status])
+  @@index([priority])
+  @@index([assignedTo])
+}
+
+enum TicketPriority {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_CLIENT
+  RESOLVED
+  CLOSED
 }
