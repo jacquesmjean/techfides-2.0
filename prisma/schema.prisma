@@ -1,0 +1,576 @@
+// TechFides 2.0 + Velocity Engine — Database Schema
+// Extends src/lib/gse/types.ts with autonomous AI sales engine tables
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// AUTH (NextAuth.js v5)
+// ============================================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole  @default(VIEWER)
+  mfaEnabled    Boolean   @default(false)
+  mfaSecret     String?
+
+  accounts      Account[]
+  sessions      Session[]
+  auditLogs     AuditLog[]
+  assignedLeads Lead[]    @relation("AssignedTo")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum UserRole {
+  ADMIN
+  CLOSER
+  VIEWER
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  resource  String
+  metadata  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// ============================================================
+// CORE GSE ENTITIES (from src/lib/gse/types.ts)
+// ============================================================
+
+model Lead {
+  id String @id @default(cuid())
+
+  // Contact (denormalized for query speed)
+  firstName String
+  lastName  String
+  email     String  @unique
+  phone     String?
+  title     String?
+  company   String
+
+  // Classification
+  vertical Vertical
+  service  ServiceType
+  stage    PipelineStage @default(PROSPECT)
+  source   LeadSource
+  region   Region
+  currency Currency      @default(USD)
+
+  // Deal financials
+  dealValue       Float @default(0)
+  sowCost         Float @default(0)
+  monthlyRetainer Float @default(0)
+  probability     Int   @default(0)
+  grossMargin     Float @default(0)
+
+  // Dates
+  expectedCloseDate DateTime?
+  staleDays         Int       @default(0)
+  lastActivity      DateTime  @default(now())
+
+  // Metadata
+  tags            String[]
+  notes           String? @db.Text
+  referralPartner String?
+
+  // GPS / Territory
+  salesStatus SalesStatus @default(NOT_CONTACTED)
+  lat         Float?
+  lng         Float?
+  city        String?
+  state       String?
+  zip         String?
+  address     String?
+
+  // Velocity Engine fields
+  heatScore      Int      @default(0)
+  tier           LeadTier @default(UNKNOWN)
+  linkedinUrl    String?
+  enrichmentJson Json?
+
+  // Relations
+  assignedToId String?
+  assignedTo   User?   @relation("AssignedTo", fields: [assignedToId], references: [id])
+
+  activities         Activity[]
+  enrichments        Enrichment[]
+  signals            Signal[]
+  dossiers           Dossier[]
+  nurtureSequences   NurtureSequence[]
+  dealRooms          DealRoom[]
+  surveys            SurveyResponse[]
+  lookalikeJobs      LookalikeJob[]
+  outreachSequences  OutreachSequence[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([stage])
+  @@index([heatScore])
+  @@index([assignedToId])
+  @@index([vertical])
+  @@index([tier])
+}
+
+enum PipelineStage {
+  PROSPECT
+  QUALIFIED
+  PROPOSAL
+  NEGOTIATION
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+enum LeadSource {
+  WEBSITE
+  REFERRAL
+  LINKEDIN
+  COLD_OUTREACH
+  PARTNER
+  EVENT
+  INBOUND_CALL
+}
+
+enum ServiceType {
+  SOVEREIGN_AI
+  AI_READINESS_360
+  TRANSFORMATION_MANAGEMENT
+  TEDOS
+}
+
+enum Vertical {
+  LEGAL
+  MEDICAL
+  AUTO
+  TRADES
+  PROPERTY_MANAGEMENT
+  OTHER
+}
+
+enum Region {
+  US
+  MX
+  CEMAC
+}
+
+enum Currency {
+  USD
+  MXN
+  XAF
+}
+
+enum SalesStatus {
+  NOT_CONTACTED
+  CONTACTED
+  PROSPECT
+  APPOINTMENT_SCHEDULED
+  PROPOSAL_SENT
+  ACCEPTED
+  CLIENT
+  LOST
+}
+
+enum LeadTier {
+  TIER_1 // $250K - $250M
+  TIER_2 // $250M - $2B
+  REJECTED
+  UNKNOWN
+}
+
+model Activity {
+  id          String       @id @default(cuid())
+  leadId      String
+  type        ActivityType
+  title       String
+  description String       @db.Text
+  automated   Boolean      @default(false)
+  metadata    Json?
+  createdAt   DateTime     @default(now())
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+  @@index([createdAt])
+}
+
+enum ActivityType {
+  EMAIL_SENT
+  EMAIL_RECEIVED
+  EMAIL_OPENED
+  EMAIL_CLICKED
+  CALL
+  MEETING
+  NOTE
+  STAGE_CHANGE
+  DEAL_ROOM_CREATED
+  DOCUMENT_SENT
+  DOCUMENT_SIGNED
+  PAYMENT_RECEIVED
+  TASK_COMPLETED
+  AUTO_NURTURE
+  WEBSITE_VISIT
+  LINKEDIN_VIEW
+}
+
+// ============================================================
+// VELOCITY ENGINE — NEW TABLES
+// ============================================================
+
+model Enrichment {
+  id     String @id @default(cuid())
+  leadId String
+
+  // Firmographic
+  companyRevenue      String?
+  companyEmployees    Int?
+  companyIndustry     String?
+  companyTechStack    String[]
+
+  // Recent signals
+  recentNews          Json?
+  linkedinActivity    Json?
+  jobPostings         Json?
+
+  // Source provider
+  provider            String  // "apollo" | "clay" | "manual"
+  rawJson             Json
+  enrichedAt          DateTime @default(now())
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+}
+
+model Signal {
+  id        String     @id @default(cuid())
+  leadId    String
+  type      SignalType
+  source    String     // "instantly" | "postmark" | "website-pixel" | "linkedin"
+  url       String?
+  metadata  Json?
+  createdAt DateTime   @default(now())
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+  @@index([createdAt])
+}
+
+enum SignalType {
+  EMAIL_OPEN
+  EMAIL_CLICK
+  EMAIL_REPLY
+  WEBSITE_VISIT
+  PRICING_PAGE_VIEW
+  CALCULATOR_USE
+  DEAL_ROOM_VIEW
+  LINKEDIN_VIEW
+  CONTACT_FORM_SUBMIT
+}
+
+model Dossier {
+  id              String   @id @default(cuid())
+  leadId          String
+  intentScore     Int
+  triggerEvent    String
+  painPoints      String[]
+  recommendedHook String   @db.Text
+  recommendedTier String?
+  estimatedDeal   Float?
+  snapshotJson    Json
+  generatedAt     DateTime @default(now())
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+  @@index([intentScore])
+}
+
+model OutreachSequence {
+  id              String          @id @default(cuid())
+  leadId          String
+  templateId      String?
+  channel         OutreachChannel
+  status          SequenceStatus  @default(DRAFT)
+  currentStep     Int             @default(0)
+  totalSteps      Int
+  startedAt       DateTime?
+  completedAt     DateTime?
+  pausedReason    String?
+
+  steps OutreachStep[]
+  lead  Lead           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leadId])
+  @@index([status])
+}
+
+enum OutreachChannel {
+  EMAIL
+  LINKEDIN
+  SMS
+}
+
+enum SequenceStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+  STOPPED
+}
+
+model OutreachStep {
+  id                   String       @id @default(cuid())
+  sequenceId           String
+  order                Int
+  delayDays            Int          @default(0)
+  subject              String?
+  body                 String       @db.Text
+  personalizationAnchor String?
+  cta                  String?
+  scheduledFor         DateTime?
+  sentAt               DateTime?
+  status               StepStatus   @default(PENDING)
+
+  sequence OutreachSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
+
+  @@index([sequenceId])
+  @@index([scheduledFor])
+}
+
+enum StepStatus {
+  PENDING
+  SCHEDULED
+  SENT
+  FAILED
+  SKIPPED
+}
+
+model SequenceTemplate {
+  id           String   @id @default(cuid())
+  name         String
+  vertical     Vertical?
+  channel      OutreachChannel
+  promptJson   Json
+  performanceJson Json? // open rate, reply rate, conversion rate
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ScoringWeights {
+  id        String   @id @default(cuid())
+  version   Int      @unique
+  weights   Json
+  active    Boolean  @default(false)
+  notes     String?
+  createdAt DateTime @default(now())
+}
+
+model LossReason {
+  id          String   @id @default(cuid())
+  category    String
+  description String
+  count       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model LookalikeJob {
+  id           String   @id @default(cuid())
+  sourceLeadId String
+  status       String   // "queued" | "running" | "completed" | "failed"
+  resultsCount Int      @default(0)
+  createdAt    DateTime @default(now())
+  completedAt  DateTime?
+
+  sourceLead Lead @relation(fields: [sourceLeadId], references: [id], onDelete: Cascade)
+
+  @@index([sourceLeadId])
+}
+
+// ============================================================
+// EXISTING GSE — Nurture, Deal Room, Survey
+// ============================================================
+
+model NurtureSequence {
+  id            String         @id @default(cuid())
+  leadId        String
+  name          String
+  status        NurtureStatus  @default(SCHEDULED)
+  currentStep   Int            @default(0)
+  triggerReason String
+  startedAt     DateTime?
+
+  lead  Lead           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  steps NurtureStep[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leadId])
+}
+
+enum NurtureStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+  SCHEDULED
+}
+
+model NurtureStep {
+  id         String   @id @default(cuid())
+  sequenceId String
+  order      Int
+  type       String   // "email" | "wait" | "task" | "condition"
+  subject    String?
+  body       String?  @db.Text
+  waitDays   Int?
+  completed  Boolean  @default(false)
+  sentAt     DateTime?
+
+  sequence NurtureSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
+}
+
+model DealRoom {
+  id         String         @id @default(cuid())
+  leadId     String
+  status     DealRoomStatus @default(DRAFT)
+  accessCode String         @unique
+  expiresAt  DateTime
+
+  lead      Lead                @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  documents DealRoomDocument[]
+  payments  DealRoomPayment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leadId])
+}
+
+enum DealRoomStatus {
+  DRAFT
+  SENT
+  VIEWED
+  SIGNED
+  PAID
+  COMPLETED
+}
+
+model DealRoomDocument {
+  id         String  @id @default(cuid())
+  dealRoomId String
+  name       String
+  type       String  // "sow" | "contract" | "technical" | "nda" | "invoice"
+  status     String  @default("draft")
+  url        String?
+  signedAt   DateTime?
+
+  dealRoom DealRoom @relation(fields: [dealRoomId], references: [id], onDelete: Cascade)
+}
+
+model DealRoomPayment {
+  id            String   @id @default(cuid())
+  dealRoomId    String
+  amount        Float
+  currency      Currency @default(USD)
+  method        String   // "stripe" | "wire" | "ach" | "check"
+  status        String   @default("pending")
+  invoiceNumber String
+  paidAt        DateTime?
+
+  dealRoom DealRoom @relation(fields: [dealRoomId], references: [id], onDelete: Cascade)
+}
+
+model SurveyResponse {
+  id          String   @id @default(cuid())
+  leadId      String
+  status      String   @default("pending")
+  locale      String   @default("en")
+  sentAt      DateTime @default(now())
+  completedAt DateTime?
+
+  scores Json?
+  nps    Int?
+
+  testimonial             String? @db.Text
+  improvementSuggestions  String? @db.Text
+
+  consentTestimonial Boolean @default(false)
+  consentLogo        Boolean @default(false)
+  consentSocial      Boolean @default(false)
+  consentVideo       Boolean @default(false)
+  consentCaseStudy   Boolean @default(false)
+
+  referralName    String?
+  referralEmail   String?
+  referralCompany String?
+
+  successCreditApplied   Boolean @default(false)
+  socialProofPublished   Boolean @default(false)
+  executiveAlertTriggered Boolean @default(false)
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+}
