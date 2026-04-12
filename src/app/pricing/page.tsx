@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const tiers = [
@@ -95,8 +96,12 @@ const tierColors: Record<string, { ring: string; bg: string; text: string; badge
 };
 
 export default function PricingPage() {
+  const searchParams = useSearchParams();
+  const initialTier = Number(searchParams.get("tier") ?? 1);
   const [cloudSpend, setCloudSpend] = useState(3000);
-  const [selectedTier, setSelectedTier] = useState(1);
+  const [selectedTier, setSelectedTier] = useState(
+    initialTier >= 0 && initialTier <= 2 ? initialTier : 1
+  );
 
   const recommended = getRecommendedTier(cloudSpend);
   const tier = tiers[selectedTier];

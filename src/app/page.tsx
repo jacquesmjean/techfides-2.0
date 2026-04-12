@@ -136,7 +136,7 @@ export default function Home() {
           SMB owners.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {tiers.map((tier) => (
+          {tiers.map((tier, i) => (
             <div
               key={tier.name}
               className={`rounded-2xl border p-8 ${
@@ -159,7 +159,7 @@ export default function Home() {
                 Installation: $0
               </div>
               <Link
-                href="/pricing"
+                href={`/pricing?tier=${i}`}
                 className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"
               >
                 Calculate Your ROI
