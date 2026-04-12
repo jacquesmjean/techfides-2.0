@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { GSEProvider } from "@/lib/gse/store";
+import { ToastNotifications } from "@/components/gse/ToastNotifications";
 
 interface NavItem {
   label: string;
@@ -166,6 +167,7 @@ function GSELayout({ children }: { children: React.ReactNode }) {
           <main className="flex-1 overflow-auto">
             <div className="h-full">{children}</div>
           </main>
+          <ToastNotifications />
         </div>
       </div>
     </GSEProvider>
