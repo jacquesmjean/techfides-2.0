@@ -121,16 +121,18 @@ export default function AboutPage() {
         <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-8 md:p-12">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="md:col-span-1">
-              <div className="flex h-48 w-48 items-center justify-center rounded-2xl bg-gradient-to-br from-electric-500/20 to-electric-500/5 text-6xl">
-                JJ
-              </div>
+              <img
+                src="/images/jacques-jean.jpg"
+                alt="Jacques Jean — Founder & CEO of TechFides"
+                className="h-48 w-48 rounded-2xl object-cover border border-slate-700"
+              />
               <h2 className="mt-4 text-2xl font-bold">Jacques Jean</h2>
               <p className="text-sm text-electric-400">
                 Founder &amp; CEO
               </p>
               <div className="mt-3 flex gap-2">
                 <a
-                  href="https://www.linkedin.com/in/jacquesjean/"
+                  href="https://www.linkedin.com/in/jacques-m-jean/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg border border-slate-700 px-3 py-1.5 text-xs text-slate-400 transition-colors hover:border-electric-500/50 hover:text-electric-400"

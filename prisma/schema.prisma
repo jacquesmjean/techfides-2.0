@@ -645,3 +645,59 @@ model OutreachConfig {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// ============================================================
+// SOCIAL MEDIA CONTENT MANAGEMENT
+// ============================================================
+
+model SocialPost {
+  id          String          @id @default(cuid())
+  title       String
+  body        String          @db.Text
+  category    PostCategory
+  platforms   String[]
+  status      PostStatus      @default(DRAFT)
+  scheduledAt DateTime?
+  publishedAt DateTime?
+  approvedAt  DateTime?
+  approvedBy  String?
+
+  hashtags    String[]
+  imageUrl    String?
+  ctaUrl      String?
+  ctaText     String?
+
+  impressions Int @default(0)
+  clicks      Int @default(0)
+  likes       Int @default(0)
+  comments    Int @default(0)
+  shares      Int @default(0)
+
+  reviewNotes String? @db.Text
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([scheduledAt])
+  @@index([category])
+}
+
+enum PostCategory {
+  CLIENT_SUCCESS
+  CLIENT_CHALLENGE
+  TECH_INSIGHT
+  COMPANY_CULTURE
+  INDUSTRY_COMMENTARY
+  LESSONS_LEARNED
+  THOUGHT_LEADERSHIP
+}
+
+enum PostStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  REJECTED
+}

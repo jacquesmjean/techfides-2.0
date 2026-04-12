@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { label: "Analytics", icon: "📉", href: "/gse/analytics" },
   { label: "Nurture", icon: "🌱", href: "/gse/nurture" },
   { label: "Outreach", icon: "📧", href: "/gse/outreach" },
+  { label: "Social Media", icon: "📱", href: "/gse/social" },
 ];
 
 function GSELayout({ children }: { children: React.ReactNode }) {
