@@ -1,336 +1,136 @@
 "use client";
 
+import Link from "next/link";
 import { useGSE } from "@/lib/gse/store";
-import { STAGE_CONFIG } from "@/lib/gse/types";
-import type { PipelineStage, Lead, Activity } from "@/lib/gse/types";
-import { useMemo } from "react";
 
-// Utility: Format currency
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
+export default function CEOCockpit() {
+  const { leads, activities, getPipelineMetrics, getRevenueMetrics } = useGSE();
+  const pipeline = getPipelineMetrics();
+  const revenue = getRevenueMetrics();
 
-// Utility: Format relative time
-function getRelativeTime(dateString: string): string {
-  const date = new Date(dateString);
-  const now = new Date();
-  const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  if (seconds < 60) return "just now";
-  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
-  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
-  if (seconds < 604800) return `${Math.floor(seconds / 86400)}d ago`;
-  return date.toLocaleDateString();
-}
-
-// Top Metrics Cards
-function MetricsRow() {
-  const { getPipelineMetrics, getRevenueMetrics, leads } = useGSE();
-  const pipelineMetrics = getPipelineMetrics();
-  const revenueMetrics = getRevenueMetrics();
-  const activeLeads = leads.filter((l) => l.stage !== "closed-won" && l.stage !== "closed-lost");
-
-  const metrics = [
-    {
-      label: "Active Pipeline",
-      value: formatCurrency(pipelineMetrics.totalValue),
-      subvalue: `${pipelineMetrics.totalLeads} leads`,
-      icon: "📊",
-      trend: "+12%",
-      trendColor: "text-green-400",
-    },
-    {
-      label: "Weighted Forecast",
-      value: formatCurrency(pipelineMetrics.weightedValue),
-      subvalue: "Probability-adjusted",
-      icon: "🎯",
-      trend: "+8%",
-      trendColor: "text-green-400",
-    },
-    {
-      label: "Monthly Recurring Revenue",
-      value: formatCurrency(revenueMetrics.mrr),
-      subvalue: `${revenueMetrics.totalClosed} closed deals`,
-      icon: "💰",
-      trend: "+15%",
-      trendColor: "text-green-400",
-    },
-    {
-      label: "Conversion Rate",
-      value: `${pipelineMetrics.conversionRate.toFixed(1)}%`,
-      subvalue: "Won vs. Decided",
-      icon: "✅",
-      trend: "industry avg 35%",
-      trendColor: "text-sky-400",
-    },
-  ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {metrics.map((metric, idx) => (
-        <div
-          key={idx}
-          className="bg-slate-900 border border-slate-800 rounded-lg p-6 hover:border-slate-700 transition-colors"
-        >
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-sm text-slate-400 font-medium">{metric.label}</p>
-              <p className="text-3xl font-bold text-slate-100 mt-2">{metric.value}</p>
-              <p className="text-xs text-slate-500 mt-1">{metric.subvalue}</p>
-            </div>
-            <span className="text-3xl">{metric.icon}</span>
-          </div>
-          <div className={`text-xs mt-4 ${metric.trendColor} font-medium`}>{metric.trend}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Pipeline Funnel
-function PipelineFunnel() {
-  const { leads } = useGSE();
-
-  const stages: PipelineStage[] = ["prospect", "qualified", "proposal", "negotiation", "closed-won"];
-  const stageData = stages.map((stage) => {
-    const stageLeads = leads.filter((l) => l.stage === stage);
-    const count = stageLeads.length;
-    const value = stageLeads.reduce((sum, l) => sum + l.dealValue, 0);
-    return { stage, count, value, config: STAGE_CONFIG[stage] };
-  });
-
-  const maxValue = Math.max(...stageData.map((s) => s.value));
-
-  return (
-    <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
-      <h2 className="text-lg font-bold text-slate-100 mb-6">Pipeline Funnel</h2>
-      <div className="space-y-4">
-        {stageData.map((stage) => {
-          const percentage = maxValue > 0 ? (stage.value / maxValue) * 100 : 0;
-          return (
-            <div key={stage.stage}>
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">{stage.config.icon}</span>
-                  <span className="text-sm font-medium text-slate-300">{stage.config.label}</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs">
-                  <span className="text-slate-400">{stage.count} deals</span>
-                  <span className="text-sky-400 font-bold">{formatCurrency(stage.value)}</span>
-                </div>
-              </div>
-              <div className="h-8 bg-slate-800 rounded-lg overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-sky-500 to-cyan-500 flex items-center justify-end pr-3 transition-all"
-                  style={{ width: `${percentage}%` }}
-                >
-                  {percentage > 15 && (
-                    <span className="text-xs font-bold text-slate-950">{percentage.toFixed(0)}%</span>
-                  )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// Hot Leads Section
-function HotLeads() {
-  const { leads } = useGSE();
-
-  const topLeads = leads
-    .filter((l) => l.stage !== "closed-lost")
-    .sort((a, b) => b.heatScore - a.heatScore)
-    .slice(0, 5);
-
-  const getHeatColor = (score: number) => {
-    if (score >= 80) return "bg-red-500";
-    if (score >= 60) return "bg-amber-500";
-    if (score >= 40) return "bg-yellow-500";
-    return "bg-blue-500";
-  };
-
-  return (
-    <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
-      <h2 className="text-lg font-bold text-slate-100 mb-4">Hot Leads</h2>
-      <div className="space-y-4">
-        {topLeads.map((lead) => (
-          <div key={lead.id} className="p-3 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:border-slate-600 transition-colors">
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <p className="text-sm font-bold text-slate-100">{lead.contact.firstName} {lead.contact.lastName}</p>
-                <p className="text-xs text-slate-400">{lead.contact.company}</p>
-              </div>
-              <span className={`text-xs px-2 py-1 bg-slate-700 text-slate-200 rounded`}>
-                {STAGE_CONFIG[lead.stage].label}
-              </span>
-            </div>
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex-1">
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden mr-2">
-                  <div
-                    className={`h-full ${getHeatColor(lead.heatScore)}`}
-                    style={{ width: `${lead.heatScore}%` }}
-                  />
-                </div>
-              </div>
-              <span className="text-xs text-slate-300 font-bold">{lead.heatScore}/100</span>
-            </div>
-            <p className="text-xs text-sky-400">{formatCurrency(lead.dealValue)}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Stale Leads Alerts
-function StaleLeadsAlerts() {
-  const { leads } = useGSE();
-
+  const hotLeads = leads.filter((l) => l.heatScore >= 70).sort((a, b) => b.heatScore - a.heatScore).slice(0, 5);
+  const tier2Leads = leads.filter((l) => l.dealValue >= 50000);
+  const tier2Value = tier2Leads.reduce((s, l) => s + l.dealValue, 0);
   const staleLeads = leads.filter((l) => l.staleDays > 3 && l.stage !== "closed-won" && l.stage !== "closed-lost");
 
-  if (staleLeads.length === 0) {
-    return null;
-  }
+  const machineHealth = {
+    domainsHealthy: 18, domainsTotal: 20,
+    leadsToday: 42, leadsTarget: 50,
+    deliverability: 98.2, responseRate: 4.8,
+  };
+  const timeReclaimed = { hoursThisWeek: 127, hoursLastWeek: 112, automatedTasks: 843 };
 
   return (
-    <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
-      <div className="flex items-start gap-3">
-        <span className="text-xl mt-1">⚠️</span>
+    <div className="space-y-6 p-6">
+      <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-bold text-amber-400">
-            {staleLeads.length} lead{staleLeads.length !== 1 ? "s" : ""} need attention
-          </p>
-          <p className="text-xs text-amber-300/80 mt-1">No activity for 3+ days</p>
-          <div className="flex flex-wrap gap-2 mt-2">
-            {staleLeads.slice(0, 3).map((lead) => (
-              <button
-                key={lead.id}
-                className="text-xs px-2 py-1 bg-amber-500/20 text-amber-300 rounded hover:bg-amber-500/30 transition-colors"
-              >
-                {lead.contact.firstName} {lead.contact.lastName.charAt(0)}.
-              </button>
-            ))}
-            {staleLeads.length > 3 && <span className="text-xs text-amber-300/60 py-1">+{staleLeads.length - 3} more</span>}
+          <h1 className="text-2xl font-bold">CEO Cockpit</h1>
+          <p className="text-sm text-slate-400">Real-time command view of the TechFides sovereign enterprise</p>
+        </div>
+        <div className="flex gap-2">
+          <Link href="/gse/alerts" className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold text-red-400 hover:bg-red-500/20">
+            {staleLeads.length} Alerts
+          </Link>
+          <Link href="/gse/outreach" className="rounded-lg bg-sky-500 px-4 py-2 text-xs font-semibold text-white hover:bg-sky-400">
+            Approve Drafts
+          </Link>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <CCard label="Revenue Velocity" value={`${pipeline.avgCycleTime}d`} detail="Avg lead-to-close" good={pipeline.avgCycleTime < 30} />
+        <CCard label="Time Reclaimed" value={`${timeReclaimed.hoursThisWeek}h`} detail={`${timeReclaimed.automatedTasks} tasks automated`} good delta={`+${timeReclaimed.hoursThisWeek - timeReclaimed.hoursLastWeek}h vs last week`} />
+        <CCard label="Tier 2 Pipeline" value={`$${(tier2Value / 1000).toFixed(0)}K`} detail={`${tier2Leads.length} high-value deals`} good={tier2Value > 100000} />
+        <CCard label="Monthly Revenue" value={`$${revenue.mrr.toLocaleString()}`} detail={`Target: $${revenue.targetThisMonth.toLocaleString()}`} good={revenue.mrr >= revenue.targetThisMonth * 0.8} />
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-bold text-slate-200">Machine Health</h2>
+            <Link href="/gse/health" className="text-[10px] text-sky-400 hover:text-sky-300">View Details &rarr;</Link>
           </div>
+          <div className="space-y-3">
+            <HBar label="Deliverability" val={machineHealth.deliverability} max={100} unit="%" ok={95} />
+            <HBar label="Lead Throughput" val={machineHealth.leadsToday} max={machineHealth.leadsTarget} unit={`/${machineHealth.leadsTarget}`} ok={40} />
+            <HBar label="Domains Healthy" val={machineHealth.domainsHealthy} max={machineHealth.domainsTotal} unit={`/${machineHealth.domainsTotal}`} ok={16} />
+            <HBar label="Response Rate" val={machineHealth.responseRate} max={10} unit="%" ok={3} />
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-bold text-slate-200">Active Alerts</h2>
+            <Link href="/gse/alerts" className="text-[10px] text-sky-400 hover:text-sky-300">View All &rarr;</Link>
+          </div>
+          <div className="space-y-2">
+            {staleLeads.length > 0 ? staleLeads.slice(0, 4).map((l) => (
+              <Link key={l.id} href={`/gse/leads/${l.id}`} className="flex items-center gap-3 rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-2 hover:bg-amber-500/10">
+                <span className="text-sm">{l.heatScore >= 80 ? "\uD83D\uDD34" : "\uD83D\uDFE1"}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-medium text-slate-200 truncate">{l.contact.firstName} {l.contact.lastName}</p>
+                  <p className="text-[10px] text-slate-400">{l.staleDays}d stale &middot; Heat: {l.heatScore} &middot; ${l.dealValue.toLocaleString()}</p>
+                </div>
+              </Link>
+            )) : <p className="text-xs text-slate-500 text-center py-4">No active alerts</p>}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6">
+          <h2 className="text-sm font-bold text-slate-200 mb-4">Closing-Ready Leads</h2>
+          {hotLeads.length > 0 ? <div className="space-y-2">{hotLeads.map((l) => (
+            <Link key={l.id} href={`/gse/leads/${l.id}`} className="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-950/50 px-3 py-2 hover:border-sky-500/30">
+              <div><p className="text-xs font-medium text-slate-200">{l.contact.firstName} {l.contact.lastName}</p><p className="text-[10px] text-slate-400">{l.contact.company}</p></div>
+              <div className="text-right"><p className="text-xs font-bold text-sky-400">${l.dealValue.toLocaleString()}</p>
+                <div className="flex items-center gap-1"><div className="h-1.5 w-12 rounded-full bg-slate-800"><div className="h-full rounded-full bg-sky-500" style={{ width: `${l.heatScore}%` }} /></div><span className="text-[10px] text-slate-400">{l.heatScore}</span></div>
+              </div>
+            </Link>
+          ))}</div> : <p className="text-xs text-slate-500 text-center py-4">No leads above threshold</p>}
+        </div>
+
+        <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6">
+          <h2 className="text-sm font-bold text-slate-200 mb-4">Pipeline Funnel</h2>
+          <div className="space-y-2">
+            {(["prospect", "qualified", "proposal", "negotiation", "closed-won"] as const).map((stage) => {
+              const d = pipeline.stageBreakdown[stage];
+              const mx = Math.max(...Object.values(pipeline.stageBreakdown).map((s) => s.value), 1);
+              const c: Record<string, string> = { prospect: "#64748b", qualified: "#38bdf8", proposal: "#a78bfa", negotiation: "#f59e0b", "closed-won": "#22c55e" };
+              return (<div key={stage}><div className="flex justify-between text-[10px] mb-1"><span className="text-slate-400 capitalize">{stage.replace("-", " ")}</span><span className="text-slate-300">{d.count} &middot; ${d.value.toLocaleString()}</span></div><div className="h-2 rounded-full bg-slate-800"><div className="h-full rounded-full" style={{ width: `${(d.value / mx) * 100}%`, backgroundColor: c[stage] }} /></div></div>);
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-6">
+        <h2 className="text-sm font-bold text-slate-200 mb-4">Recent Activity</h2>
+        <div className="space-y-2">
+          {activities.slice(0, 8).map((a) => {
+            const l = leads.find((x) => x.id === a.leadId);
+            return (<div key={a.id} className="flex items-center gap-3 text-xs"><span className="text-slate-500 w-16 shrink-0">{new Date(a.timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span><span className={a.automated ? "text-sky-400" : "text-slate-300"}>{a.automated ? "\u2699\uFE0F" : "\uD83D\uDC64"}</span><span className="text-slate-300 truncate">{a.title}</span>{l && <span className="text-slate-500 shrink-0">&middot; {l.contact.company}</span>}</div>);
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-// Recent Activity Feed
-function ActivityFeed() {
-  const { activities, getLeadById } = useGSE();
-
-  const getActivityColor = (type: string) => {
-    switch (type) {
-      case "payment-received":
-        return "bg-green-500/10 text-green-400 border-green-500/30";
-      case "email-sent":
-      case "email-received":
-        return "bg-blue-500/10 text-blue-400 border-blue-500/30";
-      case "meeting":
-      case "call":
-        return "bg-amber-500/10 text-amber-400 border-amber-500/30";
-      case "stage-change":
-        return "bg-cyan-500/10 text-cyan-400 border-cyan-500/30";
-      case "deal-room-created":
-      case "document-sent":
-      case "document-signed":
-        return "bg-purple-500/10 text-purple-400 border-purple-500/30";
-      default:
-        return "bg-slate-700/20 text-slate-300 border-slate-600/30";
-    }
-  };
-
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case "payment-received":
-        return "💳";
-      case "email-sent":
-      case "email-received":
-        return "📧";
-      case "meeting":
-        return "🤝";
-      case "call":
-        return "☎️";
-      case "stage-change":
-        return "📈";
-      case "deal-room-created":
-        return "🔐";
-      case "document-sent":
-      case "document-signed":
-        return "📄";
-      case "note":
-        return "📝";
-      default:
-        return "📌";
-    }
-  };
-
-  const recentActivities = activities.slice(0, 10);
-
+function CCard({ label, value, detail, good, delta }: { label: string; value: string; detail?: string; good?: boolean; delta?: string }) {
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
-      <h2 className="text-lg font-bold text-slate-100 mb-4">Recent Activity</h2>
-      <div className="space-y-3">
-        {recentActivities.map((activity) => {
-          const lead = getLeadById(activity.leadId);
-          return (
-            <div key={activity.id} className={`flex items-start gap-3 p-3 rounded-lg border ${getActivityColor(activity.type)}`}>
-              <span className="text-lg flex-shrink-0 mt-0.5">{getActivityIcon(activity.type)}</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-100 truncate">{activity.title}</p>
-                {lead && (
-                  <p className="text-xs text-slate-400">
-                    {lead.contact.firstName} {lead.contact.lastName} • {lead.contact.company}
-                  </p>
-                )}
-                <p className="text-xs text-slate-500 mt-1">{getRelativeTime(activity.timestamp)}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    <div className={`rounded-xl border p-4 ${good ? "border-green-500/20 bg-green-500/5" : "border-slate-800 bg-slate-900/30"}`}>
+      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</p>
+      <p className="mt-1 text-2xl font-extrabold text-slate-100">{value}</p>
+      {detail && <p className="mt-0.5 text-[10px] text-slate-400">{detail}</p>}
+      {delta && <p className="mt-1 text-[10px] text-green-400">{delta}</p>}
     </div>
   );
 }
 
-// Main Dashboard Page
-export default function GSEDashboard() {
-  return (
-    <div className="min-h-full bg-slate-950 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Top Metrics */}
-        <section>
-          <MetricsRow />
-        </section>
-
-        {/* Pipeline Funnel and Hot Leads */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <PipelineFunnel />
-          </div>
-          <div className="flex flex-col gap-6">
-            <HotLeads />
-            <StaleLeadsAlerts />
-          </div>
-        </section>
-
-        {/* Activity Feed */}
-        <section>
-          <ActivityFeed />
-        </section>
-      </div>
-    </div>
-  );
+function HBar({ label, val, max, unit, ok }: { label: string; val: number; max: number; unit: string; ok: number }) {
+  const pct = (val / max) * 100;
+  const s = val >= ok ? "g" : val >= ok * 0.8 ? "y" : "r";
+  const cl = { g: "#22c55e", y: "#f59e0b", r: "#ef4444" };
+  const dt = { g: "\uD83D\uDFE2", y: "\uD83D\uDFE1", r: "\uD83D\uDD34" };
+  return (<div><div className="flex items-center justify-between mb-1"><span className="text-[11px] text-slate-400 flex items-center gap-1.5"><span className="text-xs">{dt[s]}</span>{label}</span><span className="text-[11px] font-semibold text-slate-300">{val}{unit}</span></div><div className="h-1.5 rounded-full bg-slate-800"><div className="h-full rounded-full" style={{ width: `${Math.min(100, pct)}%`, backgroundColor: cl[s] }} /></div></div>);
 }
