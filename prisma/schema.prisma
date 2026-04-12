@@ -158,6 +158,7 @@ model Lead {
   surveys            SurveyResponse[]
   lookalikeJobs      LookalikeJob[]
   outreachSequences  OutreachSequence[]
+  emailDrafts        EmailDraft[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -573,4 +574,74 @@ model SurveyResponse {
   lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
 
   @@index([leadId])
+}
+
+// ============================================================
+// VELOCITY ENGINE — EMAIL OUTREACH & STRATEGY ENGINE
+// ============================================================
+
+model EmailDraft {
+  id     String @id @default(cuid())
+  leadId String
+
+  // Content
+  subject  String
+  bodyHtml String @db.Text
+  bodyText String @db.Text
+
+  // Outlook Integration
+  outlookDraftId   String?
+  outlookMessageId String?
+
+  // Status
+  status    EmailDraftStatus @default(DRAFT)
+  batchDate DateTime
+  sentAt    DateTime?
+  errorMessage String?
+
+  // Strategy Engine fields
+  strategyAngle StrategyAngle
+  sequenceStep  Int
+  pivotedFrom   StrategyAngle?
+  metadata      Json?
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leadId])
+  @@index([batchDate])
+  @@index([status])
+  @@index([strategyAngle])
+}
+
+enum EmailDraftStatus {
+  DRAFT
+  SENT
+  FAILED
+  DELETED
+}
+
+enum StrategyAngle {
+  STRATEGIC_ALIGNMENT
+  COST_RECOVERY
+  TEDOS_GOVERNANCE
+  SUBSCRIPTION_REDUCTION
+}
+
+model OutreachConfig {
+  id                 String  @id @default(cuid())
+  dailyDraftLimit    Int     @default(50)
+  dailyTier2Split    Int     @default(25)
+  dailyTier1Split    Int     @default(25)
+  heatScoreThreshold Int     @default(40)
+  pivotAfterStep     Int     @default(3)
+  scheduleHour       Int     @default(8)
+  scheduleMinute     Int     @default(0)
+  scheduleDays       String  @default("1,2,3,4,5")
+  enabled            Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

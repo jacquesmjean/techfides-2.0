@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { label: "Forecast & Goals", icon: "🎯", href: "/gse/forecast" },
   { label: "Analytics", icon: "📉", href: "/gse/analytics" },
   { label: "Nurture", icon: "🌱", href: "/gse/nurture" },
+  { label: "Outreach", icon: "📧", href: "/gse/outreach" },
 ];
 
 function GSELayout({ children }: { children: React.ReactNode }) {

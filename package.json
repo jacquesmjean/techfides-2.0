@@ -14,7 +14,8 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "worker:enrichment": "tsx src/workers/enrichmentWorker.ts"
+    "worker:enrichment": "tsx src/workers/enrichmentWorker.ts",
+    "worker:drafts": "tsx src/workers/draftGenerationWorker.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
