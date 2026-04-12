@@ -1,31 +1,11 @@
-import Link from "next/link";
+"use client";
 
-const verticals = [
-  {
-    name: "Legal",
-    href: "/solutions/legal",
-    description: "Client privilege. Attorney-client confidentiality. Zero data leakage.",
-    icon: "&#9878;", // scales of justice
-  },
-  {
-    name: "Medical",
-    href: "/solutions/medical",
-    description: "HIPAA-compliant AI. Patient data never leaves your facility.",
-    icon: "&#9764;", // caduceus-like
-  },
-  {
-    name: "Auto",
-    href: "/solutions/auto",
-    description: "Diagnostics, inventory, and customer service AI — on your terms.",
-    icon: "&#9881;", // gear
-  },
-  {
-    name: "Trades",
-    href: "/solutions/trades",
-    description: "Estimating, scheduling, and ops intelligence for contractors.",
-    icon: "&#9874;", // hammer
-  },
-];
+import Link from "next/link";
+import { CloudTaxCounter } from "@/components/homepage/CloudTaxCounter";
+import { ProductivityInfographic } from "@/components/homepage/ProductivityInfographic";
+import { ROITimeline } from "@/components/homepage/ROITimeline";
+import { IndustryImpactCards } from "@/components/homepage/IndustryImpactCards";
+import { TrustBar } from "@/components/homepage/TrustBar";
 
 const tiers = [
   {
@@ -53,7 +33,7 @@ export default function Home() {
   return (
     <div className="grid-pattern">
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32">
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-6 pt-32">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-5xl text-center">
           <div className="mb-6 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm text-electric-400">
@@ -88,6 +68,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Trust Bar */}
+      <TrustBar />
+
+      {/* Cloud Tax Counter — real-time money drain animation */}
+      <CloudTaxCounter />
 
       {/* Problem / Solution */}
       <section className="mx-auto max-w-7xl px-6 py-24">
@@ -131,34 +117,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Solutions by Vertical */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <h2 className="text-center text-3xl font-bold md:text-4xl">
-          Built for <span className="text-electric-400">Your Industry</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Sovereign AI deployments tailored to the compliance and workflow
-          demands of your vertical.
-        </p>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {verticals.map((v) => (
-            <Link
-              key={v.name}
-              href={v.href}
-              className="group rounded-2xl border border-slate-800 bg-navy-900/50 p-6 transition-all hover:border-electric-500/40 hover:bg-navy-800/50"
-            >
-              <div
-                className="text-3xl"
-                dangerouslySetInnerHTML={{ __html: v.icon }}
-              />
-              <h3 className="mt-4 text-lg font-semibold group-hover:text-electric-400">
-                {v.name}
-              </h3>
-              <p className="mt-2 text-sm text-slate-400">{v.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* Productivity Infographic — hours lost vs recovered */}
+      <ProductivityInfographic />
+
+      {/* Industry Impact Cards — animated stat rings */}
+      <IndustryImpactCards />
+
+      {/* ROI Timeline — break-even and savings curve */}
+      <ROITimeline />
 
       {/* Pricing Preview */}
       <section className="mx-auto max-w-7xl px-6 py-24">
@@ -213,10 +179,10 @@ export default function Home() {
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
-            href="/pricing"
+            href="/contact"
             className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            Get Started
+            Get Your Free Assessment
           </Link>
           <Link
             href="/partners"
