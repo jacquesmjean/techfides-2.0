@@ -329,7 +329,7 @@ export default function AssessPage() {
             </div>
           </div>
 
-          {/* Email Capture */}
+          {/* Email Capture → GSE Pipeline */}
           <div className="mt-8 rounded-2xl border border-slate-800 bg-navy-900/50 p-8 text-center">
             <h3 className="text-lg font-bold text-slate-100">
               Get Your Detailed Report
@@ -346,22 +346,41 @@ export default function AssessPage() {
                 className="flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100 focus:border-electric-500 focus:outline-none"
               />
               <button
-                onClick={() => {
-                  if (email) {
-                    fetch("/api/v1/forms/submit", {
+                onClick={async () => {
+                  if (!email) return;
+                  const dimScores = Object.fromEntries(
+                    DIMENSIONS.map((d) => [
+                      d,
+                      dimensionScores[d]
+                        ? Math.round(dimensionScores[d].total / dimensionScores[d].count)
+                        : 0,
+                    ])
+                  );
+                  try {
+                    const res = await fetch("/api/v1/leads/assess", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({
-                        form: "contact",
-                        data: {
-                          name: "Assessment Lead",
-                          email,
-                          message: `AI Readiness Score: ${overallScore}/100 (Grade ${grade.grade}). ${JSON.stringify(Object.fromEntries(DIMENSIONS.map(d => [d, dimensionScores[d] ? Math.round(dimensionScores[d].total / dimensionScores[d].count) : 0])))}`,
-                          service: overallScore >= 60 ? "Sovereign AI" : "AI Readiness 360",
-                        },
+                        email,
+                        overallScore,
+                        grade: grade.grade,
+                        gradeLabel: grade.label,
+                        dimensions: dimScores,
+                        answers,
+                        recommendation: grade.recommendation,
                       }),
                     });
-                    alert("Report will be sent to " + email);
+                    const result = await res.json();
+                    if (result.success) {
+                      setEmail("");
+                      alert(
+                        result.isNew
+                          ? "Report sent! Our team will reach out with your personalized recommendations."
+                          : "Your assessment has been updated. We will follow up shortly."
+                      );
+                    }
+                  } catch {
+                    alert("Something went wrong. Please email engage@techfides.com with your score.");
                   }
                 }}
                 className="rounded-lg bg-electric-500 px-6 py-3 text-sm font-semibold text-white hover:bg-electric-400"
@@ -369,6 +388,9 @@ export default function AssessPage() {
                 Send Report
               </button>
             </div>
+            <p className="mt-3 text-xs text-slate-500">
+              Your assessment data helps us give you a personalized recommendation. No spam, ever.
+            </p>
           </div>
 
           {/* CTA */}
