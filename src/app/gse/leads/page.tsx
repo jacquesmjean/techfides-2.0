@@ -142,10 +142,10 @@ export default function LeadsPage() {
           </p>
         </div>
         <Link
-          href="/gse/leads/new"
+          href="/gse/pipeline"
           className="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors"
         >
-          + New Lead
+          View Pipeline
         </Link>
       </div>
 

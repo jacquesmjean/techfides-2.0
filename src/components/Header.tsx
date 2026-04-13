@@ -43,6 +43,7 @@ export function Header() {
     { name: t("nav.theStack"), href: "/stack" },
     { name: t("nav.pricingRoi"), href: "/pricing" },
     { name: t("nav.partnerPortal"), href: "/partners" },
+    { name: "About", href: "/about" },
   ];
 
   return (
