@@ -33,30 +33,53 @@ const STORY_CFG: Record<string, { label: string; color: string }> = {
   LESSONS_LEARNED: { label: "Lessons Learned", color: "#f97316" },
 };
 
+interface RevenueInsight {
+  id: string; type: string; severity: string; title: string;
+  description: string; estimatedImpact: number; action: string;
+}
+
+interface RevenueMetrics {
+  currentMRR: number; pipelineValue: number; avgDealSize: number;
+  winRate: number; avgCycleTime: number; retainerUtilization: number;
+}
+
+const INSIGHT_ICONS: Record<string, string> = {
+  leakage: "\uD83D\uDCA7", upsell: "\uD83D\uDCC8", pricing: "\uD83D\uDCB2",
+  velocity: "\u26A1", goal: "\uD83C\uDFAF",
+};
+
 export default function IntelligencePage() {
-  const [tab, setTab] = useState<"health" | "stories" | "recommendations">("health");
+  const [tab, setTab] = useState<"health" | "revenue" | "stories" | "recommendations">("health");
   const [issues, setIssues] = useState<Issue[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const [autoFixed, setAutoFixed] = useState(0);
   const [stories, setStories] = useState<Story[]>([]);
+  const [revInsights, setRevInsights] = useState<RevenueInsight[]>([]);
+  const [revMetrics, setRevMetrics] = useState<RevenueMetrics | null>(null);
+  const [totalOpportunity, setTotalOpportunity] = useState(0);
   const [loading, setLoading] = useState(true);
   const [lastCheck, setLastCheck] = useState("");
 
   const runCheck = useCallback(async () => {
     setLoading(true);
     try {
-      const [healthRes, storiesRes] = await Promise.all([
+      const [healthRes, storiesRes, revenueRes] = await Promise.all([
         fetch("/api/v1/intelligence/health-check"),
         fetch("/api/v1/intelligence/stories"),
+        fetch("/api/v1/intelligence/revenue"),
       ]);
       const healthData = await healthRes.json();
       const storiesData = await storiesRes.json();
+      const revenueData = await revenueRes.json();
 
       setIssues(healthData.issues || []);
       setRecommendations(healthData.recommendations || []);
       setAutoFixed(healthData.autoFixed || 0);
       setLastCheck(healthData.checkedAt || new Date().toISOString());
       setStories(storiesData.stories || []);
+      setRevInsights(revenueData.insights || []);
+      setRevMetrics(revenueData.metrics || null);
+      setTotalOpportunity(revenueData.totalOpportunity || 0);
     } catch {
       // handle error silently
     }
@@ -127,6 +150,7 @@ export default function IntelligencePage() {
       <div className="flex gap-1 rounded-lg border border-slate-800 bg-slate-900/50 p-1">
         {([
           { id: "health", label: `Health Issues (${issues.length})` },
+          { id: "revenue", label: `Revenue Intel (${revInsights.length})` },
           { id: "recommendations", label: `Recommendations (${recommendations.length})` },
           { id: "stories", label: `Story Content (${stories.length})` },
         ] as const).map((t) => (
@@ -171,6 +195,41 @@ export default function IntelligencePage() {
               </div>
             );
           })}
+        </div>
+      ) : tab === "revenue" ? (
+        <div className="space-y-4">
+          {revMetrics && (
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
+              <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">MRR</p><p className="mt-1 text-lg font-extrabold text-green-400">${revMetrics.currentMRR.toLocaleString()}</p></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">Pipeline</p><p className="mt-1 text-lg font-extrabold text-slate-100">${revMetrics.pipelineValue.toLocaleString()}</p></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">Win Rate</p><p className="mt-1 text-lg font-extrabold text-slate-100">{revMetrics.winRate.toFixed(0)}%</p></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">Avg Deal</p><p className="mt-1 text-lg font-extrabold text-slate-100">${revMetrics.avgDealSize.toLocaleString()}</p></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">Retainer Util.</p><p className="mt-1 text-lg font-extrabold text-slate-100">{revMetrics.retainerUtilization.toFixed(0)}%</p></div>
+              <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3"><p className="text-[9px] font-bold uppercase text-slate-400">$ on Table</p><p className="mt-1 text-lg font-extrabold text-amber-400">${totalOpportunity.toLocaleString()}</p></div>
+            </div>
+          )}
+          {revInsights.length === 0 ? (
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-12 text-center"><p className="text-green-400 font-semibold">No revenue leakage detected. Machine is optimized.</p></div>
+          ) : revInsights.map((insight) => (
+            <div key={insight.id} className="rounded-xl border border-slate-800 bg-slate-900/30 p-5">
+              <div className="flex items-start gap-3">
+                <span className="text-xl mt-0.5">{INSIGHT_ICONS[insight.type] || "\uD83D\uDCB0"}</span>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`text-xs font-bold uppercase ${insight.severity === "high" ? "text-red-400" : insight.severity === "medium" ? "text-amber-400" : "text-sky-400"}`}>{insight.severity}</span>
+                    <span className="text-xs text-slate-500 capitalize">{insight.type}</span>
+                    {insight.estimatedImpact > 0 && <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-[9px] font-bold text-green-400">${insight.estimatedImpact.toLocaleString()} opportunity</span>}
+                  </div>
+                  <h3 className="mt-1 text-sm font-semibold text-slate-200">{insight.title}</h3>
+                  <p className="mt-1 text-xs text-slate-400">{insight.description}</p>
+                  <div className="mt-3 rounded-lg border border-sky-500/20 bg-sky-500/5 px-3 py-2">
+                    <p className="text-[10px] font-bold text-sky-400">Recommended Action:</p>
+                    <p className="text-xs text-slate-300 mt-0.5">{insight.action}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       ) : tab === "recommendations" ? (
         <div className="space-y-3">
