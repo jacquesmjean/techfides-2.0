@@ -23,6 +23,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { label: "CEO Cockpit", icon: "\uD83C\uDFAF", href: "/gse" },
       { label: "Red Flag Alerts", icon: "\uD83D\uDEA8", href: "/gse/alerts" },
+      { label: "Intelligence", icon: "\uD83E\uDDE0", href: "/gse/intelligence" },
     ],
   },
   {
