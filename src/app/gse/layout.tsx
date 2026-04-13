@@ -29,6 +29,7 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: "SALES MACHINE",
     items: [
+      { label: "Deal Prep", icon: "\uD83E\uDDE0", href: "/gse/deal-prep" },
       { label: "Pipeline", icon: "\uD83D\uDCC8", href: "/gse/pipeline" },
       { label: "Leads", icon: "\uD83D\uDC65", href: "/gse/leads" },
       { label: "Outreach", icon: "\uD83D\uDCE7", href: "/gse/outreach" },
