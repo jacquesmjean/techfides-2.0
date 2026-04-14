@@ -447,6 +447,128 @@ export default function AIReadiness360Page() {
         </div>
       </section>
 
+      {/* Security & Data Sovereignty */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <div className="rounded-2xl border border-accent-green/20 bg-gradient-to-br from-accent-green/5 via-navy-900/50 to-transparent p-8 md:p-12">
+          <h2 className="text-center text-3xl font-bold">
+            Enterprise-Grade <span className="text-accent-green">Security &amp; Sovereignty</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
+            Government agencies and regulated enterprises trust the AI 360 platform because
+            your data never leaves your control. Every assessment runs under a zero-trust
+            architecture with full sovereignty guarantees.
+          </p>
+
+          {/* Security Pillars */}
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
+              <span className="text-2xl">\uD83D\uDD12</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">End-to-End Encryption</h3>
+              <p className="mt-1 text-xs text-slate-400">All data encrypted in transit (TLS 1.3) and at rest (AES-256). Zero plaintext exposure at any layer.</p>
+            </div>
+            <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
+              <span className="text-2xl">\uD83C\uDFE2</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">Data Sovereignty Boundary</h3>
+              <p className="mt-1 text-xs text-slate-400">Assessment data stays within your specified geographic and corporate boundaries. US, LATAM, and CEMAC compliance built in.</p>
+            </div>
+            <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
+              <span className="text-2xl">\uD83D\uDEE1\uFE0F</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">Zero-Trust Architecture</h3>
+              <p className="mt-1 text-xs text-slate-400">Every integration uses zero-trust authentication. No implicit trust, no standing access, every request verified.</p>
+            </div>
+          </div>
+
+          {/* Detailed Security Features */}
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {/* Data Minimization */}
+            <div className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
+              <h4 className="text-sm font-bold text-slate-200">Data Minimization Protocol</h4>
+              <p className="mt-2 text-xs text-slate-400">
+                The assessment analyzes metadata and structured responses only &mdash; private payloads
+                are discarded at the edge. No raw datasets, system logs, or PII are ingested.
+              </p>
+              <div className="mt-4 flex gap-4">
+                <div className="rounded-lg bg-electric-500/10 px-4 py-3 text-center flex-1">
+                  <p className="text-lg font-bold text-electric-400">60</p>
+                  <p className="text-[9px] text-slate-400">Structured Questions</p>
+                  <p className="text-[8px] text-slate-500">Metadata only</p>
+                </div>
+                <div className="rounded-lg bg-slate-800/50 px-4 py-3 text-center flex-1">
+                  <p className="text-lg font-bold text-slate-400">0</p>
+                  <p className="text-[9px] text-slate-400">Raw Data Ingested</p>
+                  <p className="text-[8px] text-slate-500">Private payloads discarded</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Sovereignty Compliance */}
+            <div className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
+              <h4 className="text-sm font-bold text-slate-200">Sovereignty Boundary Compliance</h4>
+              <p className="mt-2 text-xs text-slate-400">
+                Assessment data remains within specified geographic and corporate boundaries.
+                Verified across all TechFides operating regions.
+              </p>
+              <div className="mt-4 space-y-2">
+                {[
+                  { region: "\uD83C\uDDFA\uD83C\uDDF8 North America (US)", status: "Compliant" },
+                  { region: "\uD83C\uDDF2\uD83C\uDDFD Latin America (MX)", status: "Compliant" },
+                  { region: "\uD83C\uDDEC\uD83C\uDDE6 Central Africa (CEMAC)", status: "Compliant" },
+                ].map((r) => (
+                  <div key={r.region} className="flex items-center justify-between rounded-lg border border-slate-700/30 bg-slate-900/30 px-3 py-2">
+                    <span className="text-xs text-slate-300">{r.region}</span>
+                    <span className="text-[10px] font-bold text-accent-green">{r.status}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Scanning Architecture */}
+          <div className="mt-8 rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
+            <h4 className="text-sm font-bold text-slate-200 mb-3">Network Assessment Architecture</h4>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-lg border border-accent-green/20 bg-accent-green/5 p-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-accent-green" />
+                  <span className="text-xs font-bold text-accent-green">Passive Sniffing (Default)</span>
+                </div>
+                <p className="mt-2 text-[11px] text-slate-400">
+                  Port mirroring / TAP &mdash; zero network interference. Preferred by enterprise IT
+                  departments to ensure zero downtime. No packets are modified, injected, or redirected.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-700/30 bg-slate-800/30 p-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-slate-500" />
+                  <span className="text-xs font-bold text-slate-400">Active Scanning (Available)</span>
+                </div>
+                <p className="mt-2 text-[11px] text-slate-400">
+                  Endpoint probing &mdash; available on request for deep infrastructure audits.
+                  Requires explicit client authorization and scheduled maintenance window.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Compliance Badges */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {[
+              "HIPAA Aligned", "SOC 2 Ready", "GDPR Compatible", "FedRAMP Aware",
+              "Zero Data Leakage", "AES-256 Encryption", "Zero-Trust Auth", "Immutable Audit Trail",
+            ].map((badge) => (
+              <span key={badge} className="rounded-full border border-accent-green/30 bg-accent-green/5 px-3 py-1 text-[10px] font-medium text-accent-green">
+                {badge}
+              </span>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-sm font-medium text-accent-green">
+            &ldquo;Your data never leaves your building. Your assessment runs on sovereign infrastructure.
+            This is the security posture that earns government trust.&rdquo;
+          </p>
+        </div>
+      </section>
+
       {/* What You Get */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
