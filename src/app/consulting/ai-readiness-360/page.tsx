@@ -274,6 +274,147 @@ export default function AIReadiness360Page() {
         </div>
       </section>
 
+      {/* Visual: Sample Heat Map + Executive Output */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          What the <span className="text-electric-400">Output Looks Like</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
+          Real intelligence, not generic slides. Here&apos;s a sample of what your leadership team receives.
+        </p>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {/* Enterprise Heat Map */}
+          <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-6">
+            <h3 className="text-sm font-bold text-slate-200 mb-4">Enterprise AI Readiness Heat Map</h3>
+            <div className="space-y-3">
+              {[
+                { domain: "Strategy & Leadership", score: 72, level: "Advancing" },
+                { domain: "Data & Infrastructure", score: 45, level: "Developing" },
+                { domain: "Technology & Architecture", score: 61, level: "Advancing" },
+                { domain: "Operations & Processes", score: 38, level: "Emerging" },
+                { domain: "Governance & Risk", score: 28, level: "Emerging" },
+                { domain: "People & Culture", score: 55, level: "Developing" },
+              ].map((d) => {
+                const color = d.score >= 70 ? "#22c55e" : d.score >= 50 ? "#f59e0b" : d.score >= 30 ? "#f97316" : "#ef4444";
+                const bgColor = d.score >= 70 ? "bg-green-500/10" : d.score >= 50 ? "bg-amber-500/10" : d.score >= 30 ? "bg-orange-500/10" : "bg-red-500/10";
+                return (
+                  <div key={d.domain}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-slate-300">{d.domain}</span>
+                      <div className="flex items-center gap-2">
+                        <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold ${bgColor}`} style={{ color }}>{d.level}</span>
+                        <span className="text-xs font-bold" style={{ color }}>{d.score}</span>
+                      </div>
+                    </div>
+                    <div className="h-3 rounded-full bg-slate-800">
+                      <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${d.score}%`, backgroundColor: color }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="mt-4 flex items-center justify-between border-t border-slate-800 pt-3">
+              <span className="text-xs text-slate-400">Overall Score</span>
+              <span className="text-xl font-extrabold text-amber-400">50/100</span>
+            </div>
+            <p className="mt-1 text-[10px] text-slate-500">Maturity Level: Developing &mdash; Foundation needed before AI scale</p>
+          </div>
+
+          {/* Risk & Opportunity Matrix */}
+          <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-6">
+            <h3 className="text-sm font-bold text-slate-200 mb-4">Risk &amp; Opportunity Matrix</h3>
+
+            {/* Risk Quadrant */}
+            <div className="grid grid-cols-5 gap-1 mb-4">
+              <div className="col-span-5 text-center text-[9px] text-slate-500 mb-1">Impact &rarr;</div>
+              {[
+                ["bg-green-500/20", "bg-green-500/30", "bg-amber-500/20", "bg-amber-500/30", "bg-red-500/20"],
+                ["bg-green-500/10", "bg-green-500/20", "bg-amber-500/20", "bg-amber-500/30", "bg-red-500/30"],
+                ["bg-slate-800/50", "bg-green-500/10", "bg-amber-500/10", "bg-red-500/20", "bg-red-500/30"],
+                ["bg-slate-800/50", "bg-slate-800/50", "bg-amber-500/10", "bg-amber-500/20", "bg-red-500/20"],
+                ["bg-slate-800/50", "bg-slate-800/50", "bg-slate-800/50", "bg-amber-500/10", "bg-amber-500/20"],
+              ].map((row, ri) => (
+                row.map((cell, ci) => {
+                  const dots: Record<string, string> = { "1-3": "\uD83D\uDD35", "2-4": "\uD83D\uDD34", "0-2": "\uD83D\uDFE2", "3-1": "\uD83D\uDFE1", "1-1": "\uD83D\uDFE2" };
+                  const key = `${ri}-${ci}`;
+                  return (
+                    <div key={key} className={`h-8 rounded ${cell} flex items-center justify-center text-[10px]`}>
+                      {dots[key] || ""}
+                    </div>
+                  );
+                })
+              ))}
+              <div className="col-span-5 flex items-center justify-between text-[9px] text-slate-500 mt-1">
+                <span>&uarr; Likelihood</span>
+                <div className="flex gap-3">
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-green-500" />Low</span>
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-500" />Medium</span>
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-red-500" />High</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Key Risks */}
+            <div className="space-y-2 mt-4">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Top Identified Risks</p>
+              {[
+                { risk: "AI without governance framework", severity: "Critical", color: "text-red-400" },
+                { risk: "Fragmented data across 4+ silos", severity: "High", color: "text-amber-400" },
+                { risk: "No compliance audit trail for AI decisions", severity: "High", color: "text-amber-400" },
+                { risk: "Shadow AI initiatives in 2 departments", severity: "Medium", color: "text-sky-400" },
+              ].map((r) => (
+                <div key={r.risk} className="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-950/50 px-3 py-1.5">
+                  <span className="text-[11px] text-slate-300">{r.risk}</span>
+                  <span className={`text-[9px] font-bold ${r.color}`}>{r.severity}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick Opportunities */}
+            <div className="space-y-2 mt-4">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-accent-green">Top Opportunities</p>
+              {[
+                { opp: "Document processing automation", impact: "$420K/yr savings" },
+                { opp: "Customer service AI deployment", impact: "40% faster response" },
+              ].map((o) => (
+                <div key={o.opp} className="flex items-center justify-between rounded-lg border border-accent-green/20 bg-accent-green/5 px-3 py-1.5">
+                  <span className="text-[11px] text-slate-300">{o.opp}</span>
+                  <span className="text-[9px] font-bold text-accent-green">{o.impact}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* System Architecture Flow */}
+        <div className="mt-12 rounded-2xl border border-slate-800 bg-navy-900/30 p-8">
+          <h3 className="text-center text-sm font-bold text-slate-200 mb-6">Assessment Intelligence Pipeline</h3>
+          <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
+            {[
+              { step: "I", label: "Distributed Input", desc: "60 questions across stakeholders", icon: "\uD83D\uDCDD", color: "border-electric-500/30 bg-electric-500/5" },
+              { step: "II", label: "Intelligence Engine", desc: "Normalize, score, weight, aggregate", icon: "\uD83E\uDDE0", color: "border-purple-500/30 bg-purple-500/5" },
+              { step: "III", label: "Analytics Layer", desc: "Heat map, risks, opportunities", icon: "\uD83D\uDCC8", color: "border-amber-500/30 bg-amber-500/5" },
+              { step: "IV", label: "Executive Output", desc: "Decision-ready intelligence package", icon: "\uD83C\uDFC6", color: "border-accent-green/30 bg-accent-green/5" },
+            ].map((s, i) => (
+              <div key={s.step} className="flex items-center gap-4">
+                <div className={`flex flex-col items-center rounded-xl border ${s.color} p-4 w-40 text-center`}>
+                  <span className="text-2xl">{s.icon}</span>
+                  <span className="mt-2 text-[9px] font-bold text-slate-500">{s.step}</span>
+                  <p className="text-xs font-bold text-slate-200">{s.label}</p>
+                  <p className="mt-1 text-[10px] text-slate-400">{s.desc}</p>
+                </div>
+                {i < 3 && <span className="hidden text-2xl text-slate-600 md:block">&rarr;</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="mt-4 text-center text-[10px] text-slate-500 italic">
+          Sample output from a mid-market assessment. Actual scores and findings are unique to each organization.
+        </p>
+      </section>
+
       {/* Network Deployment — Key Differentiator */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="rounded-2xl border border-electric-500/20 bg-gradient-to-br from-electric-500/5 via-navy-900/50 to-transparent p-8 md:p-12">
