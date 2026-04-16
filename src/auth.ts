@@ -62,12 +62,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!user) return null;
 
-        // DEV ONLY: accept any password for seeded users
-        // In production, replace with bcrypt password verification
-        const devModePasswordOk = process.env.NODE_ENV !== "production";
-        if (!devModePasswordOk) {
-          // TODO: implement proper password hashing in production
-          return null;
+        // Verify password against AUTH_PASSWORD env var.
+        // In dev, accept any password for seeded users.
+        // In production, AUTH_PASSWORD must be set in Vercel env vars.
+        const isDev = process.env.NODE_ENV !== "production";
+        const authPassword = process.env.AUTH_PASSWORD;
+
+        if (!isDev) {
+          if (!authPassword || password !== authPassword) {
+            return null;
+          }
         }
 
         // Enforce MFA if enabled
