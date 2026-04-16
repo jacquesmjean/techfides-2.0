@@ -51,12 +51,12 @@ export async function generatePersonalizedEmail(
 
   const ctaUrl = `${BASE_URL}${template.ctaPath}?utm_source=velocity&utm_medium=email&utm_campaign=${angle.toLowerCase()}&utm_content=step${step}`;
 
-  const systemPrompt = `You are a B2B sales copywriter for TechFides, a company that deploys sovereign AI on client hardware. You write concise, direct emails for executives.
+  const systemPrompt = `You are a B2B sales copywriter for TechFides, a company that deploys private AI on client hardware. You write concise, direct emails for executives.
 
 Company context:
 - TechFides deploys AI locally — no cloud, no data leakage
 - Pricing: Silver ($5K setup, $500/mo), Gold ($10K, $1K/mo), Platinum ($15K+, $2.5K+/mo)
-- Services: AI 360 Assessment, TEDOS OS governance platform, Transformation Management
+- Services: AI 360 Assessment, AEGIS Intelligence Operating System, Transformation Management
 - Verticals: Legal, Medical, Auto, Trades
 
 Rules:
@@ -150,11 +150,11 @@ function getFallbackContent(
     COST_RECOVERY: [
       `${lead.firstName}, by our estimates, ${lead.company} is spending $${lead.estimatedMonthlySaas || "3,000"}+/month on cloud AI tools you don't own.`,
       `What if you could deploy the same capability on your own hardware, for a predictable monthly retainer — and own the infrastructure forever?`,
-      `TechFides' Sovereign AI stack eliminates the cloud tax. No more per-seat fees, no data leaving your building.`,
+      `TechFides' Private AI stack eliminates the cloud tax. No more per-seat fees, no data leaving your building.`,
     ],
-    TEDOS_GOVERNANCE: [
+    AEGIS_GOVERNANCE: [
       `${lead.firstName}, we understand ${lead.company} may not be ready for full AI deployment yet — and that's actually the smart position.`,
-      `The bigger issue we see is legacy app fragmentation. TEDOS sits on top of your existing systems as a governance layer — no rip-and-replace required.`,
+      `The bigger issue we see is legacy app fragmentation. AEGIS sits on top of your existing systems as a governance layer — no rip-and-replace required.`,
       `Governance first, AI second. That's the order that actually works.`,
     ],
     SUBSCRIPTION_REDUCTION: [

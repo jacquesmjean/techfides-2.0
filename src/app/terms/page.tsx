@@ -18,7 +18,7 @@ export default function TermsOfServicePage() {
           Terms of <span className="text-electric-400">Service</span>
         </h1>
         <p className="mt-4 text-sm text-slate-400">
-          Effective Date: January 1, 2026 &middot; Last Updated: January 1, 2026
+          Effective Date: January 1, 2026 &middot; Last Updated: April 15, 2026
         </p>
 
         <div className="mt-12 space-y-10 text-slate-300">
@@ -50,7 +50,7 @@ export default function TermsOfServicePage() {
               sovereign AI infrastructure deployment on local hardware
               (&ldquo;TechFides Local Stack&rdquo;); AI Readiness 360&trade;
               assessment and risk evaluation; AI Transformation Management
-              services; TEDOS&trade; OS Architecture &amp; Deployment platform;
+              services; AEGIS Intelligence Operating System;
               and referral partner program management. Specific service
               deliverables, timelines, and pricing are defined in individual
               Statements of Work (SOW) or service agreements executed between
@@ -151,8 +151,8 @@ export default function TermsOfServicePage() {
             </p>
             <p className="mt-2 text-sm leading-relaxed text-slate-400">
               All TechFides proprietary methodologies, frameworks, tools, and
-              documentation — including AI Readiness 360&trade;, TEDOS&trade;
-              OS, and the TechFides Local Stack architecture — remain the
+              documentation — including AI Readiness 360&trade;, AEGIS,
+              and the TechFides Local Stack architecture — remain the
               exclusive intellectual property of TechFides LLC. Clients are
               granted a non-exclusive, non-transferable license to use
               TechFides deliverables for their internal business operations.

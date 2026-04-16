@@ -276,7 +276,7 @@ function SurveyTable({
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm text-slate-100">{SERVICE_CONFIG[lead?.service || "tedos"].label}</p>
+                    <p className="text-sm text-slate-100">{SERVICE_CONFIG[lead?.service || "aegis"].label}</p>
                   </td>
                   <td className="px-6 py-4">
                     <span

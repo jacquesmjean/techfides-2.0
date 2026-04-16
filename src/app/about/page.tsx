@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | TechFides",
   description:
-    "25 years of Fortune 500 leadership. Three continents. One conviction: sovereign AI infrastructure should be accessible to every business.",
+    "25 years of Fortune 500 leadership. Three continents. One conviction: private AI infrastructure should be accessible to every business.",
 };
 
 const milestones = [
@@ -34,15 +34,15 @@ const milestones = [
   },
   {
     year: "2024",
-    title: "Sovereign AI Pivot",
+    title: "Private AI Pivot",
     description:
       "Recognized that SMBs were hemorrhaging to cloud AI costs and data leakage. Built the TechFides Local Stack \u2014 enterprise AI on local hardware.",
   },
   {
     year: "2025",
-    title: "TEDOS\u2122 OS Platform",
+    title: "AEGIS Intelligence Operating System",
     description:
-      "Launched the TEDOS\u2122 OS Architecture & Deployment platform for enterprise execution intelligence across regulated industries.",
+      "Launched the AEGIS Intelligence Operating System for the hybrid workforce era — governing, securing, and scaling human + AI + agent operations across six integrated layers.",
   },
 ];
 
@@ -73,7 +73,7 @@ const offices = [
 const values = [
   {
     icon: "\uD83D\uDEE1\uFE0F",
-    title: "Data Sovereignty",
+    title: "Data Ownership",
     description:
       "Your data belongs to you. We deploy AI on hardware you own, in buildings you control. Nothing leaves your premises.",
   },
@@ -111,7 +111,7 @@ export default function AboutPage() {
             The TechFides Conviction
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Sovereignty Is Not a Luxury.{" "}
+            Privacy Is Not a Luxury.{" "}
             <span className="text-electric-400">It Is a Requirement.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-slate-300">
@@ -152,8 +152,8 @@ export default function AboutPage() {
         </p>
         <p className="mx-auto mt-4 max-w-3xl text-center text-slate-400 leading-relaxed">
           By maintaining deep roots in North America, Latin America, and Africa,
-          we leverage a global perspective to solve local engineering challenges
-          &mdash; ensuring that the TEDOS&trade; OS and our Local Stack are
+          we bring a global perspective to solve local engineering challenges
+          &mdash; ensuring that AEGIS and our Local Stack are
           resilient, compliant, and ready for scale in any regulatory environment.
         </p>
 
@@ -259,7 +259,7 @@ export default function AboutPage() {
                 pricing and their future.
               </p>
               <p className="mt-4 text-slate-400 leading-relaxed">
-                Today, he leverages his{" "}
+                Today, he draws on his{" "}
                 <strong className="text-slate-300">
                   Forbes Technology Council insights
                 </strong>{" "}
@@ -360,7 +360,7 @@ export default function AboutPage() {
           <span className="text-electric-400">TechFides</span>?
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-          Whether you need sovereign AI infrastructure, strategic consulting, or
+          Whether you need private AI infrastructure, strategic consulting, or
           a referral partnership &mdash; we&apos;re ready to talk.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

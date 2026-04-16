@@ -41,7 +41,7 @@ const domains = [
   {
     icon: "\uD83D\uDDA5\uFE0F",
     name: "Technology & Architecture",
-    question: "Can your infrastructure support AI at scale?",
+    question: "Can your infrastructure support AI across all departments?",
     color: "text-purple-400",
     borderColor: "border-purple-500/30",
     bgColor: "bg-purple-500/5",
@@ -208,7 +208,7 @@ export default function AIReadiness360Page() {
                 <h3 className="font-bold text-accent-green">Our Approach</h3>
               </div>
               <p className="mt-2 text-sm text-green-300/80">
-                We deploy the assessment across multiple stakeholders,
+                We deploy the assessment across your leadership team, IT, operations, and compliance leads
                 departments, and regions simultaneously &mdash; capturing a
                 distributed intelligence signal, not a single biased perspective.
               </p>
@@ -392,7 +392,7 @@ export default function AIReadiness360Page() {
           <h3 className="text-center text-sm font-bold text-slate-200 mb-6">Assessment Intelligence Pipeline</h3>
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
             {[
-              { step: "I", label: "Distributed Input", desc: "60 questions across stakeholders", icon: "\uD83D\uDCDD", color: "border-electric-500/30 bg-electric-500/5" },
+              { step: "I", label: "Distributed Input", desc: "60 questions across department heads", icon: "\uD83D\uDCDD", color: "border-electric-500/30 bg-electric-500/5" },
               { step: "II", label: "Intelligence Engine", desc: "Normalize, score, weight, aggregate", icon: "\uD83E\uDDE0", color: "border-purple-500/30 bg-purple-500/5" },
               { step: "III", label: "Analytics Layer", desc: "Heat map, risks, opportunities", icon: "\uD83D\uDCC8", color: "border-amber-500/30 bg-amber-500/5" },
               { step: "IV", label: "Executive Output", desc: "Decision-ready intelligence package", icon: "\uD83C\uDFC6", color: "border-accent-green/30 bg-accent-green/5" },
@@ -447,16 +447,16 @@ export default function AIReadiness360Page() {
         </div>
       </section>
 
-      {/* Security & Data Sovereignty */}
+      {/* Security & Data Privacy */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="rounded-2xl border border-accent-green/20 bg-gradient-to-br from-accent-green/5 via-navy-900/50 to-transparent p-8 md:p-12">
           <h2 className="text-center text-3xl font-bold">
-            Enterprise-Grade <span className="text-accent-green">Security &amp; Sovereignty</span>
+            Enterprise-Grade <span className="text-accent-green">Security &amp; Privacy</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
             Government agencies and regulated enterprises trust the AI 360 platform because
             your data never leaves your control. Every assessment runs under a zero-trust
-            architecture with full sovereignty guarantees.
+            architecture with full privacy guarantees.
           </p>
 
           {/* Security Pillars */}
@@ -468,7 +468,7 @@ export default function AIReadiness360Page() {
             </div>
             <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
               <span className="text-2xl">\uD83C\uDFE2</span>
-              <h3 className="mt-2 text-sm font-bold text-accent-green">Data Sovereignty Boundary</h3>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">Data Privacy Boundary</h3>
               <p className="mt-1 text-xs text-slate-400">Assessment data stays within your specified geographic and corporate boundaries. US, LATAM, and CEMAC compliance built in.</p>
             </div>
             <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
@@ -501,9 +501,9 @@ export default function AIReadiness360Page() {
               </div>
             </div>
 
-            {/* Sovereignty Compliance */}
+            {/* Privacy Compliance */}
             <div className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
-              <h4 className="text-sm font-bold text-slate-200">Sovereignty Boundary Compliance</h4>
+              <h4 className="text-sm font-bold text-slate-200">Privacy Boundary Compliance</h4>
               <p className="mt-2 text-xs text-slate-400">
                 Assessment data remains within specified geographic and corporate boundaries.
                 Verified across all TechFides operating regions.
@@ -563,7 +563,7 @@ export default function AIReadiness360Page() {
           </div>
 
           <p className="mt-8 text-center text-sm font-medium text-accent-green">
-            &ldquo;Your data never leaves your building. Your assessment runs on sovereign infrastructure.
+            &ldquo;Your data never leaves your building. Your assessment runs on private infrastructure.
             This is the security posture that earns government trust.&rdquo;
           </p>
         </div>
@@ -601,7 +601,7 @@ export default function AIReadiness360Page() {
             </p>
             <div className="mt-6 space-y-4">
               {[
-                { phase: "Phase 1", label: "Portal setup & stakeholder onboarding", days: "Days 1-3" },
+                { phase: "Phase 1", label: "Portal setup & team onboarding", days: "Days 1-3" },
                 { phase: "Phase 2", label: "Distributed assessment completion", days: "Days 4-10" },
                 { phase: "Phase 3", label: "Systems evidence & document upload", days: "Days 8-12" },
                 { phase: "Phase 4", label: "AI-powered analysis & scoring", days: "Days 10-14" },
@@ -627,12 +627,12 @@ export default function AIReadiness360Page() {
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
                 <p className="text-xs uppercase tracking-wider text-slate-400">SMB / Mid-Market</p>
                 <p className="text-3xl font-bold text-electric-400">$45,000</p>
-                <p className="text-sm text-slate-400">Up to 20 stakeholders, single region</p>
+                <p className="text-sm text-slate-400">Up to 20 participants, single region</p>
               </div>
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
                 <p className="text-xs uppercase tracking-wider text-slate-400">Enterprise</p>
                 <p className="text-3xl font-bold text-electric-400">Up to $85,000</p>
-                <p className="text-sm text-slate-400">Unlimited stakeholders, multi-region, multi-BU</p>
+                <p className="text-sm text-slate-400">Unlimited participants, multi-region, multi-BU</p>
               </div>
             </div>
             <Link
@@ -692,8 +692,8 @@ export default function AIReadiness360Page() {
           {[
             { q: "How is this different from a typical AI maturity assessment?", a: "Most assessments capture one person's opinion. Ours deploys across your entire organization \u2014 leadership, IT, operations, compliance \u2014 simultaneously. The result is a distributed intelligence signal that reveals alignment gaps, departmental blind spots, and the actual truth about your readiness." },
             { q: "Do we need to share sensitive data or system access?", a: "No. The assessment uses structured questions and optional document uploads \u2014 no raw data ingestion, no system access required. This means low friction, high adoption, and zero security risk." },
-            { q: "How much time does it require from our team?", a: "Each stakeholder spends approximately 45-60 minutes completing their section of the assessment. The portal is self-service \u2014 they access it via a private link on their own schedule." },
-            { q: "Do we need TEDOS\u2122 OS to use this?", a: "No. This is a standalone engagement. The findings are yours to use with any toolset. However, the data captured is fully compatible with TEDOS\u2122 OS for organizations that want to move into governed AI execution." },
+            { q: "How much time does it require from our team?", a: "Each participant spends approximately 45-60 minutes completing their section of the assessment. The portal is self-service \u2014 they access it via a private link on their own schedule." },
+            { q: "Do we need AEGIS to use this?", a: "No. This is a standalone engagement. The findings are yours to use with any toolset. However, the data captured is fully compatible with AEGIS for organizations that want to move into governed AI execution." },
             { q: "What happens after the assessment?", a: "You receive the full executive package: AI Readiness Score, Enterprise Heat Map, Risk Profile, Opportunity Pipeline, and Prioritized Roadmap. We present findings in an executive briefing and provide a clear Go/No-Go recommendation." },
           ].map((faq) => (
             <div key={faq.q} className="rounded-xl border border-slate-800 bg-navy-900/30 p-6">

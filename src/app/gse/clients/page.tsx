@@ -19,8 +19,8 @@ const STATUS_CFG: Record<string, { label: string; color: string; bg: string }> =
 };
 
 const SERVICE_LABELS: Record<string, string> = {
-  SOVEREIGN_AI: "Sovereign AI", AI_READINESS_360: "AI Readiness 360",
-  TRANSFORMATION_MANAGEMENT: "Transformation", TEDOS: "TEDOS",
+  SOVEREIGN_AI: "Private AI", AI_READINESS_360: "AI Readiness 360",
+  TRANSFORMATION_MANAGEMENT: "Transformation", AEGIS: "AEGIS",
 };
 
 export default function ClientsPage() {

@@ -116,7 +116,7 @@ export function IndustryImpactCards() {
         Real Impact. <span className="text-electric-400">Your Industry.</span>
       </h2>
       <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-        Sovereign AI deployments delivering measurable results across every vertical we serve.
+        Private AI deployments delivering measurable results across every vertical we serve.
       </p>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

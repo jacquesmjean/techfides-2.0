@@ -10,7 +10,7 @@
     "badge": "INSTALLATION $0",
     "title1": "IA Entreprise.",
     "title2": "Infrastructure Locale.",
-    "title3": "Souveraineté Totale.",
+    "title3": "Contrôle Total.",
     "subtitle": "Déployez des modèles d'IA sur votre propre matériel. Aucune dépendance au cloud. Aucune fuite de données. Aucune taxe mensuelle de calcul. Contrôle total.",
     "cta1": "Voir les Tarifs et ROI",
     "cta2": "Explorer La Plateforme"
@@ -30,7 +30,7 @@
     "agnosticDesc": "Déployez Llama 3, Mistral, Phi ou tout modèle ouvert. Changez librement. Aucune dépendance fournisseur. Votre infrastructure, votre choix."
   },
   "verticals": {
-    "title": "IA Souveraine pour",
+    "title": "IA Privée pour",
     "titleHighlight": "Chaque Secteur",
     "legal": "Juridique",
     "legalDesc": "Secret professionnel préservé. Analyse de contrats, eDiscovery et recherche juridique alimentés par l'IA — tout sur site.",
@@ -64,7 +64,7 @@
     "button": "Commencez Aujourd'hui"
   },
   "footer": {
-    "tagline": "IA Entreprise. Infrastructure Locale. Souveraineté Totale.",
+    "tagline": "IA Entreprise. Infrastructure Locale. Contrôle Total.",
     "solutions": "Solutions",
     "platform": "Plateforme",
     "consulting": "Conseil",
@@ -73,16 +73,16 @@
     "partnerPortal": "Portail Partenaires",
     "aiReadiness": "AI Readiness 360",
     "aiTransformation": "Transformation IA",
-    "tedos": "TEDOS OS",
+    "aegis": "AEGIS",
     "aboutJacques": "À Propos de Jacques",
     "rights": "Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation"
   },
   "solutions": {
-    "pageTitle": "IA Souveraine par",
+    "pageTitle": "IA Privée par",
     "pageTitleHighlight": "Secteur",
-    "pageSubtitle": "Chaque secteur a des exigences de conformité, des flux de travail et des points de douleur uniques. Nous construisons des déploiements d'IA souveraine adaptés à votre industrie.",
+    "pageSubtitle": "Chaque secteur a des exigences de conformité, des flux de travail et des points de douleur uniques. Nous construisons des déploiements d'IA privée adaptés à votre industrie.",
     "dontSeeTitle": "Vous Ne Voyez Pas Votre Secteur?",
     "dontSeeDesc": "Notre Moteur Agnostique se déploie dans tout secteur. Si votre entreprise gère des données sensibles et vous êtes fatigué de la taxe cloud — nous pouvons vous aider.",
     "contactUs": "Contactez-Nous"
@@ -90,17 +90,17 @@
   "stack": {
     "pageTitle": "Le Moteur",
     "pageTitleHighlight": "Agnostique",
-    "pageSubtitle": "Une plateforme de déploiement IA full-stack et agnostique de modèles. Chaque couche est conçue pour la sécurité, la performance et la souveraineté totale."
+    "pageSubtitle": "Une plateforme de déploiement IA full-stack et agnostique de modèles. Chaque couche est conçue pour la sécurité, la performance et le contrôle total."
   },
   "partners": {
     "pageTitle": "Portail",
     "pageTitleHighlight": "Partenaires",
-    "pageSubtitle": "Gagnez des revenus récurrents en connectant les entreprises à une infrastructure IA souveraine. Aucune compétence technique requise."
+    "pageSubtitle": "Gagnez des revenus récurrents en connectant les entreprises à une infrastructure IA privée. Aucune compétence technique requise."
   },
   "consulting": {
     "pageTitle": "Stratégie de",
     "pageTitleHighlight": "Niveau Entreprise",
-    "pageSubtitle": "Avant de déployer une IA souveraine, certaines organisations ont besoin d'un travail stratégique préalable. Les cadres de conseil de TechFides — construits à partir de décennies de leadership Fortune 500 — préparent votre entreprise à la transformation."
+    "pageSubtitle": "Avant de déployer une IA privée, certaines organisations ont besoin d'un travail stratégique préalable. Les cadres de conseil de TechFides — construits à partir de décennies de leadership Fortune 500 — préparent votre entreprise à la transformation."
   },
   "language": {
     "en": "English",

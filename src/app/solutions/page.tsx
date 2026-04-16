@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Solutions by Industry | TechFides",
   description:
-    "Sovereign AI deployments tailored to Legal, Medical, Auto, and Trades businesses. HIPAA-compliant, privilege-protected, fully local infrastructure.",
+    "Private AI deployments tailored to Legal, Medical, Auto, and Trades businesses. HIPAA-compliant, privilege-protected, fully local infrastructure.",
 };
 
 const verticals = [
@@ -54,13 +54,13 @@ export default function SolutionsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Sovereign AI for{" "}
+            Private AI for{" "}
             <span className="text-electric-400">Your Industry</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
             Every industry has unique compliance requirements, workflows, and
             data sensitivity. TechFides builds local AI stacks purpose-fit for
-            your vertical — not one-size-fits-all cloud subscriptions.
+            your vertical — engineered for your industry, not generic cloud subscriptions.
           </p>
         </div>
       </section>

@@ -46,7 +46,7 @@ function scoreToHeat(overallScore: number): number {
   return 30; // D grade → cool but captured
 }
 
-function determineService(overallScore: number, tier: string): "SOVEREIGN_AI" | "AI_READINESS_360" | "TRANSFORMATION_MANAGEMENT" | "TEDOS" {
+function determineService(overallScore: number, tier: string): "SOVEREIGN_AI" | "AI_READINESS_360" | "TRANSFORMATION_MANAGEMENT" | "AEGIS" {
   if (overallScore >= 60 && tier === "TIER_2") return "SOVEREIGN_AI";
   if (overallScore >= 60) return "SOVEREIGN_AI";
   if (tier === "TIER_2") return "AI_READINESS_360";

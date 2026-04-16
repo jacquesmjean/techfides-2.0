@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Strategic Consulting | TechFides",
   description:
-    "TechFides strategic consulting services. AI Readiness 360™ assessment, AI Transformation Management, and TEDOS™ OS platform — Fortune 500 expertise at SMB-accessible pricing.",
+    "TechFides strategic consulting services. AI Readiness 360™ assessment, AI Transformation Management, and AEGIS Intelligence Operating System — Fortune 500 expertise at SMB-accessible pricing.",
 };
 
 export default function ConsultingPage() {
@@ -22,7 +22,7 @@ export default function ConsultingPage() {
             <span className="text-electric-400">Strategy</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Before deploying sovereign AI, some organizations need strategic
+            Before deploying private AI, some organizations need strategic
             groundwork. TechFides&apos; consulting frameworks — built from
             decades of Fortune 500 leadership — prepare your business for
             transformation.
@@ -111,31 +111,31 @@ export default function ConsultingPage() {
             </div>
           </Link>
 
-          {/* TEDOS */}
+          {/* AEGIS */}
           <Link
-            href="/consulting/tedos"
+            href="/consulting/aegis"
             className="group rounded-2xl border border-slate-800 bg-navy-900/50 p-8 transition-all hover:border-accent-amber/40 hover:bg-navy-800/50"
           >
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-amber/10 text-2xl">
               &#9881;
             </div>
             <h2 className="mt-5 text-xl font-bold group-hover:text-accent-amber">
-              TEDOS&trade; OS
+              AEGIS
             </h2>
             <p className="mt-1 text-xs font-semibold text-accent-amber">
-              Architecture &amp; Deployment Platform
+              Intelligence Operating System
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              Enterprise-grade architecture and deployment platform with
-              intelligent processing, secure infrastructure, and scalable
-              performance for regulated industries.
+              The intelligence operating system for the hybrid workforce era.
+              Govern, secure, and scale how humans, AI, and agents work
+              together across six integrated layers.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "Architecture",
+                "Governance",
                 "Security",
-                "Analytics",
-                "Compliance",
+                "Intelligence",
+                "Operations",
               ].map((badge) => (
                 <span
                   key={badge}
@@ -210,7 +210,7 @@ export default function ConsultingPage() {
           <span className="text-electric-400">Deployment</span>?
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          Most businesses are ready for sovereign AI today. But if you need
+          Most businesses are ready for private AI today. But if you need
           strategic groundwork first, our consulting frameworks get you there
           faster.
         </p>

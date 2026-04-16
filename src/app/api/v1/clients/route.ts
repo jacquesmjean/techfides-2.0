@@ -8,7 +8,7 @@ const CreateClientSchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   tier: z.string(),
-  service: z.enum(["SOVEREIGN_AI", "AI_READINESS_360", "TRANSFORMATION_MANAGEMENT", "TEDOS"]),
+  service: z.enum(["SOVEREIGN_AI", "AI_READINESS_360", "TRANSFORMATION_MANAGEMENT", "AEGIS"]),
   retainerAmount: z.number(),
   retainerStart: z.string().optional(),
   leadId: z.string().optional(),

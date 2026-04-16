@@ -93,7 +93,7 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
       label: "The Solution",
       subjectTemplate: "Own your AI forever — here's how",
       bodyPrompt:
-        "Write a follow-up email introducing Sovereign AI as an alternative to cloud subscriptions. Focus on: one-time setup, predictable monthly retainer, hardware ownership. Reference the Silver/Gold/Platinum tiers. Tone: practical, financial clarity. Max 150 words.",
+        "Write a follow-up email introducing Private AI as an alternative to cloud subscriptions. Focus on: one-time setup, predictable monthly retainer, hardware ownership. Reference the Silver/Gold/Platinum tiers. Tone: practical, financial clarity. Max 150 words.",
       ctaText: "See Transparent Pricing",
       ctaPath: "/pricing",
       delayDays: 3,
@@ -130,25 +130,25 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
     },
   ],
 
-  TEDOS_GOVERNANCE: [
+  AEGIS_GOVERNANCE: [
     {
       step: 1,
       label: "Identify the Pain",
       subjectTemplate: "Legacy apps are fragmenting {company}'s operations",
       bodyPrompt:
-        "Write a pivot email acknowledging that the prospect may not be ready for AI, but their bigger problem is legacy app fragmentation. Reference detected legacy tech from enrichment. Position TEDOS as governance-first, AI-second. Tone: empathetic, strategic. Max 150 words.",
-      ctaText: "See How TEDOS Brings Order",
-      ctaPath: "/consulting/tedos",
+        "Write a pivot email acknowledging that the prospect may not be ready for AI, but their bigger problem is legacy app fragmentation. Reference detected legacy tech from enrichment. Position AEGIS as governance-first, AI-second. Tone: empathetic, strategic. Max 150 words.",
+      ctaText: "See How AEGIS Brings Order",
+      ctaPath: "/consulting/aegis",
       delayDays: 0,
     },
     {
       step: 2,
       label: "The Solution",
-      subjectTemplate: "TEDOS sits on top — no replacement needed",
+      subjectTemplate: "AEGIS sits on top — no replacement needed",
       bodyPrompt:
-        "Write a follow-up explaining that TEDOS doesn't replace their existing stack but sits on top as a governance layer. Emphasize: no rip-and-replace, no disruption, just order from chaos. Max 150 words.",
-      ctaText: "Explore TEDOS Architecture",
-      ctaPath: "/consulting/tedos",
+        "Write a follow-up explaining that AEGIS doesn't replace their existing stack but sits on top as a governance layer. Emphasize: no rip-and-replace, no disruption, just order from chaos. Max 150 words.",
+      ctaText: "Explore AEGIS Architecture",
+      ctaPath: "/consulting/aegis",
       delayDays: 3,
     },
     {
@@ -156,19 +156,19 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
       label: "The Result",
       subjectTemplate: "Governance first, AI second — the order that works",
       bodyPrompt:
-        "Write a results email about how governance-first approach leads to better AI outcomes. Reference the 70% AI pilot failure stat. Show how TEDOS prevents this. Max 150 words.",
-      ctaText: "Read the TEDOS Playbook",
-      ctaPath: "/consulting/tedos",
+        "Write a results email about how governance-first approach leads to better AI outcomes. Reference the 70% AI pilot failure stat. Show how AEGIS prevents this. Max 150 words.",
+      ctaText: "Read the AEGIS Playbook",
+      ctaPath: "/consulting/aegis",
       delayDays: 4,
     },
     {
       step: 4,
       label: "The Proof",
-      subjectTemplate: "How {vertical} firms tamed legacy chaos with TEDOS",
+      subjectTemplate: "How {vertical} firms tamed legacy chaos with AEGIS",
       bodyPrompt:
         "Write a proof email with a case study of governance transformation. Focus on reduced complexity, faster decision-making, and readiness for future AI adoption. Max 120 words.",
-      ctaText: "See TEDOS in Action",
-      ctaPath: "/consulting/tedos",
+      ctaText: "See AEGIS in Action",
+      ctaPath: "/consulting/aegis",
       delayDays: 5,
     },
     {
@@ -176,7 +176,7 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
       label: "Hard Bridge to Team",
       subjectTemplate: "Executive briefing: bringing order to {company}'s legacy chaos",
       bodyPrompt:
-        "Write a direct, short final email (max 80 words) inviting to an executive briefing on TEDOS governance. Be strategic, not salesy. This is C-suite language.",
+        "Write a direct, short final email (max 80 words) inviting to an executive briefing on AEGIS governance. Be strategic, not salesy. This is C-suite language.",
       ctaText: "Request Executive Briefing",
       ctaPath: "/contact",
       delayDays: 7,

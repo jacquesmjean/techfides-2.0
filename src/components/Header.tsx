@@ -58,10 +58,10 @@ export function Header() {
       <div className="border-b border-slate-700/20 bg-[#071019]">
         <div className="mx-auto flex max-w-7xl items-center justify-end gap-4 px-6 py-1.5">
           <a
-            href="mailto:engage@techfides.com"
+            href="mailto:info@techfides.com"
             className="text-[11px] text-slate-400 transition-colors hover:text-electric-400"
           >
-            engage@techfides.com
+            info@techfides.com
           </a>
           <span className="text-slate-700">|</span>
 

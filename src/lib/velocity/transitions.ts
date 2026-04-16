@@ -17,15 +17,15 @@ interface TransitionInput {
   service: string;
 }
 
-const SERVICE_MAP: Record<string, "SOVEREIGN_AI" | "AI_READINESS_360" | "TRANSFORMATION_MANAGEMENT" | "TEDOS"> = {
+const SERVICE_MAP: Record<string, "SOVEREIGN_AI" | "AI_READINESS_360" | "TRANSFORMATION_MANAGEMENT" | "AEGIS"> = {
   "sovereign-ai": "SOVEREIGN_AI",
   "ai-readiness-360": "AI_READINESS_360",
   "transformation-management": "TRANSFORMATION_MANAGEMENT",
-  tedos: "TEDOS",
+  aegis: "AEGIS",
   SOVEREIGN_AI: "SOVEREIGN_AI",
   AI_READINESS_360: "AI_READINESS_360",
   TRANSFORMATION_MANAGEMENT: "TRANSFORMATION_MANAGEMENT",
-  TEDOS: "TEDOS",
+  AEGIS: "AEGIS",
 };
 
 const TIER_BY_VALUE: (value: number) => string = (value) => {

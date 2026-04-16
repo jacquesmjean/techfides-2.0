@@ -12,7 +12,7 @@ export default function AutoPage() {
     <SolutionPage
       vertical="Auto"
       tagline="AI for Dealerships &amp; Service Centers"
-      headline={`Sovereign AI for\nthe Auto Industry`}
+      headline={`Private AI for\nthe Auto Industry`}
       subheadline="Customer financial data, service histories, and deal jackets contain some of the most sensitive information in retail. The FTC Safeguards Rule now demands you protect it. TechFides deploys AI on your lot's own hardware — so customer data stays under your roof."
       painPoints={[
         {

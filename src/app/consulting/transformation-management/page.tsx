@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Transformation Management | TechFides Consulting",
   description:
-    "Governed execution support that turns strategic ambition into operational capability. We replace 'innovation theater' with rigorous program discipline.",
+    "Governed execution support that turns ambition into operational capability. We replace 'innovation theater' with rigorous program discipline.",
 };
 
 const pillars = [
@@ -122,7 +122,7 @@ export default function TransformationManagementPage() {
             <span className="text-electric-400">Management</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Governed execution support that turns strategic ambition into
+            Governed execution support that turns ambition into
             operational capability. We replace &lsquo;innovation theater&rsquo;
             with rigorous program discipline.
           </p>

@@ -233,7 +233,7 @@ GET  /v1/pulse/self-healing/log     — Self-healing action log (last 30 days)
 
 ## 4. Module 2 -- Client Delivery (Diagnostic to Deployment Pipeline)
 
-**Purpose:** End-to-end management of the client lifecycle from AI 360 Assessment intake through Sovereign AI deployment and ongoing TEDOS governance.
+**Purpose:** End-to-end management of the client lifecycle from AI 360 Assessment intake through Sovereign AI deployment and ongoing AEGIS governance.
 
 ### 4.1 AI 360 Assessment Portal
 
@@ -268,7 +268,7 @@ Approval triggers SOW generation + invoicing
 | DOCX/XLSX | 25 MB | Direct parsing via Apache POI |
 | CSV | 10 MB | Schema inference + validation |
 | Network Diagrams (PNG/SVG) | 20 MB | Vision model annotation |
-| Exported ERP/CRM configs | 50 MB | Schema mapping to TEDOS framework |
+| Exported ERP/CRM configs | 50 MB | Schema mapping to AEGIS framework |
 
 **Alignment Roadmap Auto-Generation:**
 
@@ -312,14 +312,14 @@ CREATE TABLE assessment_documents (
 );
 ```
 
-### 4.2 TEDOS Governance Tracker
+### 4.2 AEGIS Governance Tracker
 
-Monitor the performance and compliance of TEDOS (TechFides Enterprise Data Operating System) installations on client legacy ERP/CRM systems.
+Monitor the performance and compliance of AEGIS (TechFides Enterprise Data Operating System) installations on client legacy ERP/CRM systems.
 
 | Metric | Description | Alert Threshold |
 |---|---|---|
-| Uptime SLA | TEDOS availability on client infra | < 99.5% |
-| Data Sync Latency | Time between source update and TEDOS reflection | > 30 seconds |
+| Uptime SLA | AEGIS availability on client infra | < 99.5% |
+| Data Sync Latency | Time between source update and AEGIS reflection | > 30 seconds |
 | Query Performance | P95 query response time | > 500ms |
 | Integration Health | API connection status to client ERP/CRM | Any failure |
 | Governance Score | Composite of data quality + access control + audit | < 85/100 |
@@ -361,7 +361,7 @@ POST /v1/ops/transition-to-delivery
   "tier": "TIER_2",
   "contract_value": 150000,
   "currency": "USD",
-  "services": ["AI_360", "TEDOS_GOVERNANCE"],
+  "services": ["AI_360", "AEGIS_GOVERNANCE"],
   "signed_sow_url": "https://storage.techfides.com/sow/acme-v1.pdf",
   "sales_rep_id": "user_xyz789"
 }
@@ -545,7 +545,7 @@ Invoices generated automatically based on operational triggers.
 | Milestone phase approved | Generate milestone payment invoice |
 | Monthly retainer cycle | Generate recurring retainer invoice |
 | SOW signed (upfront payment) | Generate deposit invoice |
-| TEDOS quarterly review | Generate governance review invoice |
+| AEGIS quarterly review | Generate governance review invoice |
 
 **Invoice Data Model:**
 
@@ -1346,7 +1346,7 @@ Complete reference of all C&C API endpoints organized by module.
 | GET | `/v1/ops/assessments` | List client assessments |
 | GET | `/v1/ops/assessments/:id` | Assessment detail |
 | POST | `/v1/ops/assessments/:id/upload` | Upload documents for assessment |
-| GET | `/v1/ops/tedos/:client_id/health` | TEDOS governance health for a client |
+| GET | `/v1/ops/aegis/:client_id/health` | AEGIS governance health for a client |
 | GET | `/v1/ops/milestones/:client_id` | Milestone tracker for a client |
 | POST | `/v1/ops/milestones/:id/complete` | Mark milestone as completed |
 
@@ -1451,7 +1451,7 @@ Defines what is handled by machines autonomously vs what requires human judgment
 | Email personalization | Generate variants, A/B test, optimize send times | Approve new template directions, review drift alerts |
 | Client onboarding | Create profile, send welcome packet, assign tech lead | Kickoff call, relationship building, scope negotiation |
 | AI 360 Assessment | Parse documents, generate roadmap draft, calculate scores | Review and annotate roadmap, present to client, handle objections |
-| TEDOS monitoring | Track uptime, sync latency, query performance | Investigate root causes, architect solutions, client communication |
+| AEGIS monitoring | Track uptime, sync latency, query performance | Investigate root causes, architect solutions, client communication |
 | Invoice generation | Auto-generate on trigger, send reminders, track aging | Approve write-offs, handle disputes, negotiate payment plans |
 | Cash flow tracking | Pull bank data via Plaid, calculate runway, project position | Strategic financial decisions, investor relations, fundraising |
 | Performance scoring | Calculate ROP, generate heatmap, bell curve stacking | Career conversations, compensation decisions, hiring/firing |
@@ -1514,7 +1514,7 @@ Defines what is handled by machines autonomously vs what requires human judgment
 | 8-9 | AI 360 Assessment Portal: Document upload, OCR pipeline, roadmap draft generation. |
 | 9-10 | Financial Intelligence: Plaid integration, cash flow dashboard, burn rate calculator. |
 | 10-11 | Automated Invoicing: Trigger-based invoice generation, aging tracker, reminder sequences. |
-| 11-12 | TEDOS Governance Tracker: Client system health monitoring, milestone automation. |
+| 11-12 | AEGIS Governance Tracker: Client system health monitoring, milestone automation. |
 
 **Phase 2 Exit Criteria:**
 - [ ] Deal "WON" in CRM triggers full onboarding sequence end-to-end
@@ -1590,7 +1590,7 @@ The C&C Operations Center is not just a dashboard. It is a force multiplier that
 | Traditional Role | C&C Module | Cost Eliminated |
 |---|---|---|
 | VP of Sales Operations | Machine Health + Lead Throughput + Logic Drift | $150K-$250K/year |
-| VP of Client Success | Client Delivery Pipeline + TEDOS Tracker | $140K-$220K/year |
+| VP of Client Success | Client Delivery Pipeline + AEGIS Tracker | $140K-$220K/year |
 | CFO / Controller | Financial Intelligence (CFO Agent) | $180K-$300K/year |
 | VP of People Operations | Human Capital & Performance | $130K-$200K/year |
 | Chief of Staff | CEO Cockpit + Mobile Command Center | $120K-$180K/year |

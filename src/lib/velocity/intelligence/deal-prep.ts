@@ -118,7 +118,7 @@ export async function generateProspectProfile(leadId: string): Promise<ProspectP
   else if (title.includes("marketing") || title.includes("sales") || title.includes("growth")) decisionStyle = "expressive";
 
   // Build the profile using LLM
-  const prompt = `You are a B2B sales intelligence analyst for TechFides, a sovereign AI company.
+  const prompt = `You are a B2B sales intelligence analyst for TechFides, a private AI company.
 
 Generate a comprehensive prospect profile for a pre-meeting briefing.
 
@@ -139,9 +139,9 @@ PROSPECT DATA:
 - Decision Style: ${decisionStyle}
 
 TECHFIDES SERVICES:
-- Sovereign AI: Deploy Llama/Mistral/Phi on client hardware ($5K-$15K+ setup, $500-$2,500+/mo)
+- Private AI: Deploy Llama/Mistral/Phi on client hardware ($5K-$15K+ setup, $500-$2,500+/mo)
 - AI 360 Assessment: Diagnose AI readiness gaps ($45K-$85K)
-- TEDOS OS: Governance layer on legacy systems ($75K-$750K+)
+- AEGIS: Intelligence operating system for hybrid workforce ($75K-$750K+)
 - Transformation Management: Full digital transformation ($50K-$350K)
 
 Respond with valid JSON:
@@ -184,7 +184,7 @@ Respond with valid JSON:
     aiData = generateFallbackProfile(lead, tier, techStack, decisionStyle);
   }
 
-  const recommendedService = lead.tier === "TIER_2" ? "AI 360 Assessment" : "Sovereign AI";
+  const recommendedService = lead.tier === "TIER_2" ? "AI 360 Assessment" : "Private AI";
   const recommendedTier = lead.dealValue >= 15000 ? "Platinum" : lead.dealValue >= 10000 ? "Gold" : "Silver";
 
   const profile: ProspectProfile = {
@@ -213,7 +213,7 @@ Respond with valid JSON:
     swot: {
       strengths: (aiData.strengths as string[]) || ["Established business", "Market presence"],
       weaknesses: (aiData.weaknesses as string[]) || ["Cloud dependency", "Legacy tech stack"],
-      opportunities: (aiData.opportunities as string[]) || ["AI-driven efficiency", "Data sovereignty"],
+      opportunities: (aiData.opportunities as string[]) || ["AI-driven efficiency", "Data ownership"],
       threats: (aiData.threats as string[]) || ["Competitor cloud lock-in", "Data breach risk"],
     },
     painMap: {
@@ -230,7 +230,7 @@ Respond with valid JSON:
     objections: (aiData.objections as Array<{ objection: string; response: string; proof: string }>) || [
       { objection: "We're not ready for AI", response: "That's exactly why the AI 360 Assessment exists — it identifies readiness gaps before you invest.", proof: "70% of AI pilots fail without proper assessment." },
       { objection: "It's too expensive", response: `You're currently spending on cloud AI with zero ownership. Over 36 months, TechFides saves you $${Math.round(lead.dealValue * 2).toLocaleString()}.`, proof: "Use the ROI calculator at techfides.com/pricing." },
-      { objection: "We already have a solution", response: "Your current solution sends data to third parties. Sovereignty means you own the hardware and the data never leaves.", proof: "Every API call to cloud AI is a data leakage event." },
+      { objection: "We already have a solution", response: "Your current solution sends data to third parties. With private AI, you own the hardware and the data never leaves.", proof: "Every API call to cloud AI is a data leakage event." },
     ],
     strategy: {
       recommendedService,
@@ -239,7 +239,7 @@ Respond with valid JSON:
       valueProposition: (aiData.valueProposition as string) || `Deploy the same AI capability on hardware you own, in your building, for a predictable monthly retainer. Zero cloud tax. Zero data leakage.`,
       closingQuestion: (aiData.closingQuestion as string) || `If I could show you the exact ROI for ${lead.company} in 15 minutes, would that be worth a conversation this week?`,
       urgencyAngle: (aiData.urgencyAngle as string) || "Cloud AI costs increase 15-20% annually. Every month delayed is money lost.",
-      competitorWeakness: (aiData.competitorWeakness as string) || "No competitor offers fully sovereign, self-hosted AI with on-site deployment and $0 installation.",
+      competitorWeakness: (aiData.competitorWeakness as string) || "No competitor offers fully private, self-hosted AI with on-site deployment and $0 installation.",
       pricingAnchor: `${recommendedTier} tier: $${recommendedTier === "Platinum" ? "15,000+" : recommendedTier === "Gold" ? "10,000" : "5,000"} setup, $${recommendedTier === "Platinum" ? "2,500+" : recommendedTier === "Gold" ? "1,000" : "500"}/mo. Installation: $0.`,
     },
     icebreakers: (aiData.icebreakers as string[]) || [
@@ -294,7 +294,7 @@ function generateFallbackProfile(
   return {
     strengths: ["Established market presence", `${lead.vertical} industry expertise`],
     weaknesses: [isT2 ? "Legacy IT fragmentation" : "Cloud subscription dependency", "Data leaving premises via cloud APIs"],
-    opportunities: [isT2 ? "TEDOS governance layer for legacy modernization" : "Sovereign AI for cost elimination", "Competitive advantage through data sovereignty"],
+    opportunities: [isT2 ? "AEGIS governance layer for legacy modernization" : "Private AI for cost elimination", "Competitive advantage through data ownership"],
     threats: ["Increasing cloud AI costs (15-20% annual)", "Regulatory tightening on data handling"],
     primaryPain: {
       pain: isT2 ? "Misaligned IT blocking business growth" : `Paying $${Math.round(lead.dealValue / 10).toLocaleString()}+/mo for AI you don't own`,

@@ -281,8 +281,8 @@ export async function generateStoryContent(): Promise<{
       stories.push({
         category: "CLIENT_SUCCESS",
         title: `${proj.tier} Deployment Complete`,
-        body: `Another ${proj.service.replace(/_/g, " ").toLowerCase()} deployment completed${daysToDeliver ? ` in ${daysToDeliver} days` : ""}.\n\nWhen businesses own their AI infrastructure instead of renting it from the cloud, they get their time back and their data stays in their building.\n\nThis is what sovereignty looks like in practice.${proj.clientNps && proj.clientNps >= 8 ? `\n\nClient satisfaction: ${proj.clientNps}/10` : ""}`,
-        hashtags: ["#SovereignAI", "#DataSovereignty", "#TechFides", "#LocalAI", "#EnterpriseAI"],
+        body: `Another ${proj.service.replace(/_/g, " ").toLowerCase()} deployment completed${daysToDeliver ? ` in ${daysToDeliver} days` : ""}.\n\nWhen businesses own their AI infrastructure instead of renting it from the cloud, they get their time back and their data stays in their building.\n\nThis is what control looks like in practice.${proj.clientNps && proj.clientNps >= 8 ? `\n\nClient satisfaction: ${proj.clientNps}/10` : ""}`,
+        hashtags: ["#PrivateAI", "#DataPrivacy", "#TechFides", "#LocalAI", "#EnterpriseAI"],
         source: `Project: ${proj.name}`,
       });
     }
@@ -306,8 +306,8 @@ export async function generateStoryContent(): Promise<{
       stories.push({
         category: "CLIENT_CHALLENGE",
         title: `${ticket.priority} Issue Resolved`,
-        body: `A ${ticket.priority.toLowerCase()}-priority ${ticket.category || "technical"} issue came in from a retainer client${resolutionHours ? `. Resolved in ${resolutionHours < 24 ? `${resolutionHours} hours` : `${Math.round(resolutionHours / 24)} days`}` : ""}.\n\nThis is why we build on sovereign infrastructure. When the system is yours, the response time is yours too. No waiting on cloud vendor support queues.\n\nOwnership means control. Control means speed.`,
-        hashtags: ["#TechFides", "#ClientFirst", "#SovereignAI", "#ManagedAI", "#ITSupport"],
+        body: `A ${ticket.priority.toLowerCase()}-priority ${ticket.category || "technical"} issue came in from a retainer client${resolutionHours ? `. Resolved in ${resolutionHours < 24 ? `${resolutionHours} hours` : `${Math.round(resolutionHours / 24)} days`}` : ""}.\n\nThis is why we build on local infrastructure. When the system is yours, the response time is yours too. No waiting on cloud vendor support queues.\n\nOwnership means control. Control means speed.`,
+        hashtags: ["#TechFides", "#ClientFirst", "#PrivateAI", "#ManagedAI", "#ITSupport"],
         source: `Ticket: ${ticket.subject}`,
       });
     }
@@ -321,8 +321,8 @@ export async function generateStoryContent(): Promise<{
       stories.push({
         category: "THOUGHT_LEADERSHIP",
         title: "AI Readiness Reality Check",
-        body: `${assessmentLeads} businesses have taken our AI Readiness Assessment so far.\n\nThe pattern is clear: most SMBs score highest on "Team Readiness" but lowest on "Data Governance." Your people are ready for AI. Your infrastructure isn't.\n\nThat's exactly the gap we close. Sovereign AI deployed on your hardware, governed by your rules.\n\nTake the free assessment: techfides.com/assess`,
-        hashtags: ["#AIReadiness", "#DataGovernance", "#SovereignAI", "#TechFides", "#SMB"],
+        body: `${assessmentLeads} businesses have taken our AI Readiness Assessment so far.\n\nThe pattern is clear: most SMBs score highest on "Team Readiness" but lowest on "Data Governance." Your people are ready for AI. Your infrastructure isn't.\n\nThat's exactly the gap we close. Private AI deployed on your hardware, governed by your rules.\n\nTake the free assessment: techfides.com/assess`,
+        hashtags: ["#AIReadiness", "#DataGovernance", "#PrivateAI", "#TechFides", "#SMB"],
         source: `Assessment data: ${assessmentLeads} leads`,
       });
     }
@@ -336,9 +336,9 @@ export async function generateStoryContent(): Promise<{
     if (teamSize.length > 0) {
       stories.push({
         category: "COMPANY_CULTURE",
-        title: "Behind the Sovereign Stack",
-        body: `Our team spans ${teamSize.length} specialists across Frisco TX, Guadalajara MX, and Libreville GA.\n\nBuilding sovereign AI isn't just about technology. It's about having people on three continents who understand that data sovereignty means something different in every regulatory environment.\n\nThat global perspective is what makes TechFides different. Local expertise. Global reach.`,
-        hashtags: ["#TechFides", "#RemoteWork", "#GlobalTeam", "#SovereignAI", "#Diversity"],
+        title: "Behind the Private AI Stack",
+        body: `Our team spans ${teamSize.length} specialists across Frisco TX, Guadalajara MX, and Libreville GA.\n\nBuilding private AI isn't just about technology. It's about having people on three continents who understand that data privacy means something different in every regulatory environment.\n\nThat global perspective is what makes TechFides different. Local expertise. Global reach.`,
+        hashtags: ["#TechFides", "#RemoteWork", "#GlobalTeam", "#PrivateAI", "#Diversity"],
         source: `Team data: ${teamSize.length} active resources`,
       });
     }
@@ -349,8 +349,8 @@ export async function generateStoryContent(): Promise<{
       stories.push({
         category: "LESSONS_LEARNED",
         title: "What We Learn From Lost Deals",
-        body: `We don't win every deal. And we learn from every one we lose.\n\nThe most common reason businesses pass on sovereign AI: "${lossReasons[0].description}"\n\nFair enough. But here's what we've found — the businesses that said "not yet" 6 months ago are now paying 3x more in cloud AI costs.\n\nTiming matters. But so does ownership.\n\ntechfides.com/pricing`,
-        hashtags: ["#Transparency", "#LessonsLearned", "#SovereignAI", "#CloudTax", "#TechFides"],
+        body: `We don't win every deal. And we learn from every one we lose.\n\nThe most common reason businesses pass on private AI: "${lossReasons[0].description}"\n\nFair enough. But here's what we've found — the businesses that said "not yet" 6 months ago are now paying 3x more in cloud AI costs.\n\nTiming matters. But so does ownership.\n\ntechfides.com/pricing`,
+        hashtags: ["#Transparency", "#LessonsLearned", "#PrivateAI", "#CloudTax", "#TechFides"],
         source: `Loss data: ${lossReasons[0].category}`,
       });
     }

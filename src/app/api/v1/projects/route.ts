@@ -6,7 +6,7 @@ const CreateProjectSchema = z.object({
   name: z.string().min(1),
   clientName: z.string().min(1),
   leadId: z.string().optional(),
-  service: z.enum(["SOVEREIGN_AI", "AI_READINESS_360", "TRANSFORMATION_MANAGEMENT", "TEDOS"]),
+  service: z.enum(["SOVEREIGN_AI", "AI_READINESS_360", "TRANSFORMATION_MANAGEMENT", "AEGIS"]),
   tier: z.string().optional(),
   plannedStart: z.string().optional(),
   plannedEnd: z.string().optional(),

@@ -51,7 +51,7 @@ const partnerTypes = [
   {
     type: "Business Consultants",
     description:
-      "Your clients trust your strategic advice. Recommending sovereign AI positions you as forward-thinking and earns you a commission on every deal.",
+      "Your clients trust your strategic advice. Recommending private AI infrastructure makes you the advisor who brought real cost savings to the table -- and earns you a commission on every deal.",
   },
   {
     type: "Industry Specialists",
@@ -113,11 +113,11 @@ export default function PartnersPage() {
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
             Earn by Referring{" "}
-            <span className="text-electric-400">Sovereign AI</span>
+            <span className="text-electric-400">Private AI</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Your network needs AI that keeps their data local. You deserve to
-            get paid for making the introduction. Join the TechFides Partner
+            Your network needs AI that keeps their data local. Every referral
+            you make earns a recurring commission. Join the TechFides Partner
             Program and turn your relationships into recurring revenue.
           </p>
           <a
@@ -279,7 +279,7 @@ export default function PartnersPage() {
               No limits on referrals. Stack credits month over month.
             </p>
             <a
-              href="mailto:engage@techfides.com?subject=Client Referral&body=I'd like to refer a business to TechFides.%0A%0AReferred Business:%0AContact Name:%0AContact Email:%0AIndustry:"
+              href="mailto:referrals@techfides.com?subject=Client Referral&body=I'd like to refer a business to TechFides.%0A%0AReferred Business:%0AContact Name:%0AContact Email:%0AIndustry:"
               className="glow-blue mt-6 inline-block rounded-xl bg-accent-green px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-green-600"
             >
               Submit a Referral
@@ -306,7 +306,7 @@ export default function PartnersPage() {
             </h3>
             <p className="mt-2 text-slate-400">
               We&apos;ll review your application and reach out within 48 hours.
-              Welcome to the TechFides partner ecosystem.
+              Welcome to the TechFides partner network.
             </p>
           </div>
         ) : (

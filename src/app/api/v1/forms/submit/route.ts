@@ -49,7 +49,7 @@ const SubmitSchema = z.object({
 });
 
 const EMAIL_ROUTING: Record<string, string> = {
-  contact: "engage@techfides.com",
+  contact: "info@techfides.com",
   partner: "partners@techfides.com",
   careers: "careers@techfides.com",
 };

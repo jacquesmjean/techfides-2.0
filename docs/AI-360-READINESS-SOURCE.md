@@ -121,7 +121,7 @@ It becomes:
 
 - the input for **governance frameworks**
 
-- the starting point for **execution (TEDOS OS)**
+- the starting point for **execution (AEGIS)**
 
 ## 5. Strategic Value (Why it matters long-term)
 
@@ -191,7 +191,7 @@ Most competitors:
 
 - Governed methodology
 
-- Execution bridge (TEDOS)
+- Execution bridge (AEGIS)
 
 👉 That combination is rare.
 

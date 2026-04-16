@@ -10,7 +10,7 @@
     "badge": "INSTALACIÓN $0",
     "title1": "IA Empresarial.",
     "title2": "Infraestructura Local.",
-    "title3": "Soberanía Total.",
+    "title3": "Control Total.",
     "subtitle": "Despliega modelos de IA en tu propio hardware. Sin dependencia de la nube. Sin fuga de datos. Sin impuesto mensual de cómputo. Control total.",
     "cta1": "Ver Precios y ROI",
     "cta2": "Explorar La Plataforma"
@@ -30,7 +30,7 @@
     "agnosticDesc": "Despliega Llama 3, Mistral, Phi o cualquier modelo abierto. Cambia libremente. Sin dependencia de proveedor. Tu infraestructura, tu elección."
   },
   "verticals": {
-    "title": "IA Soberana para",
+    "title": "IA Privada para",
     "titleHighlight": "Cada Vertical",
     "legal": "Legal",
     "legalDesc": "Privilegio abogado-cliente preservado. Análisis de contratos, eDiscovery e investigación legal impulsados por IA — todo en tus instalaciones.",
@@ -64,7 +64,7 @@
     "button": "Comienza Hoy"
   },
   "footer": {
-    "tagline": "IA Empresarial. Infraestructura Local. Soberanía Total.",
+    "tagline": "IA Empresarial. Infraestructura Local. Control Total.",
     "solutions": "Soluciones",
     "platform": "Plataforma",
     "consulting": "Consultoría",
@@ -73,16 +73,16 @@
     "partnerPortal": "Portal de Socios",
     "aiReadiness": "AI Readiness 360",
     "aiTransformation": "Transformación IA",
-    "tedos": "TEDOS OS",
+    "aegis": "AEGIS",
     "aboutJacques": "Sobre Jacques",
     "rights": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio"
   },
   "solutions": {
-    "pageTitle": "IA Soberana por",
+    "pageTitle": "IA Privada por",
     "pageTitleHighlight": "Industria",
-    "pageSubtitle": "Cada vertical tiene requisitos únicos de cumplimiento, flujos de trabajo y puntos de dolor. Construimos despliegues de IA soberana adaptados a tu industria.",
+    "pageSubtitle": "Cada vertical tiene requisitos únicos de cumplimiento, flujos de trabajo y puntos de dolor. Construimos despliegues de IA privada adaptados a tu industria.",
     "dontSeeTitle": "¿No Ves Tu Industria?",
     "dontSeeDesc": "Nuestro Motor Agnóstico se despliega en cualquier vertical. Si tu negocio maneja datos sensibles y estás cansado del impuesto de la nube — podemos ayudar.",
     "contactUs": "Contáctanos"
@@ -90,17 +90,17 @@
   "stack": {
     "pageTitle": "El Motor",
     "pageTitleHighlight": "Agnóstico",
-    "pageSubtitle": "Una plataforma de despliegue de IA full-stack y agnóstica de modelos. Cada capa está diseñada para seguridad, rendimiento y soberanía total."
+    "pageSubtitle": "Una plataforma de despliegue de IA full-stack y agnóstica de modelos. Cada capa está diseñada para seguridad, rendimiento y control total."
   },
   "partners": {
     "pageTitle": "Portal de",
     "pageTitleHighlight": "Socios",
-    "pageSubtitle": "Gana ingresos recurrentes conectando negocios con infraestructura de IA soberana. No se requieren habilidades técnicas."
+    "pageSubtitle": "Gana ingresos recurrentes conectando negocios con infraestructura de IA privada. No se requieren habilidades técnicas."
   },
   "consulting": {
     "pageTitle": "Estrategia de",
     "pageTitleHighlight": "Grado Empresarial",
-    "pageSubtitle": "Antes de desplegar IA soberana, algunas organizaciones necesitan trabajo estratégico previo. Los marcos de consultoría de TechFides — construidos a partir de décadas de liderazgo Fortune 500 — preparan tu negocio para la transformación."
+    "pageSubtitle": "Antes de desplegar IA privada, algunas organizaciones necesitan trabajo estratégico previo. Los marcos de consultoría de TechFides — construidos a partir de décadas de liderazgo Fortune 500 — preparan tu negocio para la transformación."
   },
   "language": {
     "en": "English",

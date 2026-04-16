@@ -238,18 +238,18 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
   // In production, fetch from API using params.id
   const LEAD_DATABASE: Record<string, { name: string; company: string; service: string }> = {
     // Sovereign AI clients
-    'lead-001': { name: 'Sarah Mitchell', company: 'Mitchell & Associates Law Firm', service: 'Sovereign AI' },
-    'lead-002': { name: 'Dr. Michael Chen', company: 'BrightSmile Dental Group', service: 'Sovereign AI' },
-    'lead-003': { name: 'Marcus Johnson', company: 'Johnson HVAC & Plumbing', service: 'Sovereign AI' },
-    'lead-004': { name: 'Angela Torres', company: 'Texas AutoPlex', service: 'Sovereign AI' },
+    'lead-001': { name: 'Sarah Mitchell', company: 'Mitchell & Associates Law Firm', service: 'Private AI' },
+    'lead-002': { name: 'Dr. Michael Chen', company: 'BrightSmile Dental Group', service: 'Private AI' },
+    'lead-003': { name: 'Marcus Johnson', company: 'Johnson HVAC & Plumbing', service: 'Private AI' },
+    'lead-004': { name: 'Angela Torres', company: 'Texas AutoPlex', service: 'Private AI' },
     // Transformation Management
     'lead-005': { name: 'Robert Williams', company: 'Premier Properties Management', service: 'Transformation Management' },
     // AI Readiness 360™
     'lead-006': { name: 'Lisa Park', company: 'Park Family Law', service: 'AI Readiness 360™' },
-    // TEDOS™
-    'lead-007': { name: 'David Ramirez', company: 'Ramirez Electrical Services', service: 'TEDOS™' },
+    // AEGIS
+    'lead-007': { name: 'David Ramirez', company: 'Ramirez Electrical Services', service: 'AEGIS' },
     // Demo / default
-    'demo': { name: 'David Ramirez', company: 'Ramirez Electrical Services', service: 'TEDOS™' },
+    'demo': { name: 'David Ramirez', company: 'Ramirez Electrical Services', service: 'AEGIS' },
   };
 
   const leadData = LEAD_DATABASE[params.id] || {
@@ -424,7 +424,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
 
               <p className="mt-8 text-slate-300">
                 Your feedback powers our improvement and helps other businesses
-                discover sovereign AI.
+                discover private AI.
               </p>
 
               <p className="mt-4 text-xs text-slate-500">
@@ -599,7 +599,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
                   onChange={(e) =>
                     handleTextChange('testimonial', e.target.value)
                   }
-                  placeholder="What impact has your sovereign AI system had on your business?"
+                  placeholder="What impact has your private AI system had on your business?"
                   className="mt-3 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-slate-100 placeholder-slate-500 transition-all focus:border-electric-500 focus:outline-none focus:ring-1 focus:ring-electric-500"
                   rows={4}
                 />
@@ -650,7 +650,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
                 Help us spread the word
               </h2>
               <p className="mt-2 text-slate-400">
-                Your success story can help other businesses discover sovereign
+                Your success story can help other businesses discover private
                 AI. All sharing is optional.
               </p>
             </div>
@@ -699,7 +699,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
                   You&apos;re a TechFides Champion!
                 </h3>
                 <p className="mt-2 text-sm text-slate-300">
-                  Know someone who could benefit from sovereign AI?
+                  Know someone who could benefit from private AI?
                 </p>
 
                 <div className="mt-6 space-y-4">

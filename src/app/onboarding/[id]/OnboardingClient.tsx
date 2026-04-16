@@ -428,11 +428,11 @@ function StepNDA({
 const SERVICE_CATALOG = [
   {
     id: "sovereign-ai",
-    name: "Sovereign AI Deployment",
+    name: "Private AI Deployment",
     subtitle: "The TechFides Local Stack",
     icon: "&#9889;",
     description:
-      "End-to-end deployment of enterprise AI on your local infrastructure. Full data sovereignty with no cloud dependency.",
+      "End-to-end deployment of enterprise AI on your local infrastructure. Full data privacy with no cloud dependency.",
     scope: [
       "Assessment of current IT infrastructure and AI readiness",
       "Selection and configuration of AI models (Llama 3, Mistral, Phi, etc.) based on client requirements",
@@ -526,15 +526,15 @@ const SERVICE_CATALOG = [
       "Client shall: (a) provide executive sponsorship and active participation; (b) allocate internal resources as agreed; (c) make timely decisions per governance framework; (d) fund and support required organizational changes; (e) provide access to all relevant systems and data.",
   },
   {
-    id: "tedos",
-    name: "TEDOS\u2122 OS Platform",
-    subtitle: "Technology-Enabled Digital Operating System",
+    id: "aegis",
+    name: "AEGIS Intelligence Operating System",
+    subtitle: "The Intelligence Operating System for the Hybrid Workforce Era",
     icon: "&#9881;",
     description:
-      "Implementation of the TechFides proprietary digital operating system \u2014 a comprehensive framework for digitizing and optimizing enterprise operations.",
+      "Implementation of the AEGIS Intelligence Operating System \u2014 a comprehensive framework for governing, securing, and scaling hybrid human + AI + agent operations.",
     scope: [
       "Current-state operational assessment and process mapping",
-      "TEDOS\u2122 platform configuration and customization",
+      "AEGIS platform configuration and customization",
       "Digital workflow design and automation implementation",
       "Integration with existing enterprise systems (ERP, CRM, HRIS, etc.)",
       "AI-powered analytics and decision-support layer deployment",
@@ -542,7 +542,7 @@ const SERVICE_CATALOG = [
       "Ongoing platform optimization and feature releases",
     ],
     deliverables: [
-      "Fully configured TEDOS\u2122 OS platform on client infrastructure",
+      "Fully configured AEGIS platform on client infrastructure",
       "Digital process maps for all in-scope operational workflows",
       "Custom automation rules and AI decision-support models",
       "Enterprise system integration (APIs and data pipelines)",
@@ -1307,7 +1307,7 @@ function StepFeedback({ onComplete }: { onComplete: (f: FeedbackData) => void })
       </h2>
       <p className="mt-2 text-sm text-slate-400">
         We&apos;d love to hear about your experience. Your feedback helps us
-        improve and helps other businesses discover sovereign AI.
+        improve and helps other businesses discover private AI.
       </p>
 
       {/* Star Rating */}
@@ -1837,7 +1837,7 @@ function StepComplete({
           </h3>
         </div>
         <p className="mt-2 text-sm text-slate-400">
-          Know someone who could benefit from sovereign AI? Share your unique
+          Know someone who could benefit from private AI? Share your unique
           referral code below. When they sign up, you both get credited:
         </p>
         <div className="mt-3 space-y-1 text-sm text-slate-300">
@@ -1880,7 +1880,7 @@ function StepComplete({
           "sovereign-ai": "Technical Project Manager",
           "transformation-management": "AI Transformation Consultant",
           "ai-readiness-360": "AI Program Manager",
-          "tedos": "AI Program Manager",
+          "aegis": "AI Program Manager",
         };
         const resourceTitle = resourceMap[serviceId] || "dedicated project resource";
         const firstPhase = service?.timeline?.[0]?.phase || "Discovery & Assessment";
@@ -1930,7 +1930,7 @@ function StepComplete({
               "sovereign-ai": "TPM",
               "transformation-management": "Consultant",
               "ai-readiness-360": "PM",
-              "tedos": "PM",
+              "aegis": "PM",
             };
             return shortMap[serviceId] || "PM";
           })()}

@@ -20,7 +20,7 @@ const recoveredTasks = [
   { task: "On-site support, instant response", hours: 3, icon: "\uD83D\uDE80" },
   { task: "Compliance built into the stack", hours: 3, icon: "\u2705" },
   { task: "One unified local AI platform", hours: 3, icon: "\uD83C\uDFAF" },
-  { task: "Sovereign models, your data", hours: 2, icon: "\uD83D\uDEE1\uFE0F" },
+  { task: "Private models, your data", hours: 2, icon: "\uD83D\uDEE1\uFE0F" },
 ];
 
 const totalHours = lostTasks.reduce((s, t) => s + t.hours, 0);
@@ -48,7 +48,7 @@ export function ProductivityInfographic() {
         <span className="text-accent-green">{totalHours} Hours Recovered</span> with TechFides
       </h2>
       <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-        The average SMB professional wastes {totalHours} hours per week on tasks that sovereign AI handles automatically.
+        The average SMB professional wastes {totalHours} hours per week on tasks that local AI handles automatically.
       </p>
 
       <div className="mt-12 grid gap-8 md:grid-cols-2">

@@ -33,7 +33,7 @@ const SERVICES_LIST: ServiceType[] = [
   "sovereign-ai",
   "ai-readiness-360",
   "transformation-management",
-  "tedos",
+  "aegis",
 ];
 
 /**

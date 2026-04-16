@@ -37,7 +37,7 @@ const serviceMap: Record<string, ServiceType> = {
   "sovereign-ai": "SOVEREIGN_AI",
   "ai-readiness-360": "AI_READINESS_360",
   "transformation-management": "TRANSFORMATION_MANAGEMENT",
-  tedos: "TEDOS",
+  aegis: "AEGIS",
 };
 
 const verticalMap: Record<string, Vertical> = {

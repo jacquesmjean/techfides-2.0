@@ -63,7 +63,7 @@ export function Footer() {
               />
             </div>
             <p className="mt-3 text-sm text-slate-400">
-              Enterprise AI. Local Infrastructure. Total Sovereignty.
+              Enterprise AI. Local Infrastructure. Total Control.
             </p>
             {/* Social Media Icons */}
             <div className="mt-4 flex items-center gap-3">
@@ -117,7 +117,7 @@ export function Footer() {
                 { name: "Consulting", href: "/consulting" },
                 { name: "AI Readiness 360\u2122", href: "/consulting/ai-readiness-360" },
                 { name: "Transformation", href: "/consulting/transformation-management" },
-                { name: "TEDOS\u2122 OS", href: "/consulting/tedos" },
+                { name: "AEGIS", href: "/consulting/aegis" },
                 { name: "Pricing", href: "/pricing" },
                 { name: "AI Readiness Score", href: "/assess" },
               ].map((link) => (
@@ -178,10 +178,10 @@ export function Footer() {
               <div className="border-t border-slate-800 pt-3">
                 <p className="text-sm font-semibold text-slate-300">Email:</p>
                 <a
-                  href="mailto:engage@techfides.com"
+                  href="mailto:info@techfides.com"
                   className="text-sm text-electric-400 hover:text-electric-300"
                 >
-                  engage@techfides.com
+                  info@techfides.com
                 </a>
               </div>
             </div>

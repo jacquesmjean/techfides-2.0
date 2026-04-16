@@ -44,7 +44,7 @@ export default function Home() {
             <br />
             <span className="text-electric-400">Local Infrastructure.</span>
             <br />
-            Total Sovereignty.
+            Total Control.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
             Stop paying the <strong className="text-slate-200">Cloud Tax</strong>.

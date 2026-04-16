@@ -441,7 +441,7 @@ export default function PricingPage() {
               <div className="mt-3 flex items-center justify-center gap-3">
                 <button
                   onClick={() => {
-                    const text = `We could save $${savings36.toLocaleString()} over 3 years by switching from cloud AI to TechFides Sovereign AI (${tier.name} tier). Break-even in ${breakEvenMonths} months.\n\nRun your own numbers: https://techfides.com/pricing\n\n#AI #DataSovereignty #CloudTax #TechFides`;
+                    const text = `We could save $${savings36.toLocaleString()} over 3 years by switching from cloud AI to TechFides Private AI (${tier.name} tier). Break-even in ${breakEvenMonths} months.\n\nRun your own numbers: https://techfides.com/pricing\n\n#AI #DataPrivacy #CloudTax #TechFides`;
                     navigator.clipboard.writeText(text);
                     alert("LinkedIn post copied to clipboard!");
                   }}
@@ -520,7 +520,7 @@ export default function PricingPage() {
         <h2 className="text-3xl font-bold">Ready to Stop Paying the Cloud Tax?</h2>
         <p className="mt-4 text-lg text-slate-400">
           Get a custom assessment for your business. We&apos;ll map your current
-          AI spend and show you exactly what sovereignty looks like.
+          AI spend and show you exactly what ownership looks like.
         </p>
         <Link
           href="/contact"

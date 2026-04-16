@@ -120,9 +120,9 @@ const QUESTIONS: Question[] = [
 const DIMENSIONS = ["Data Readiness", "Infrastructure", "Team Readiness", "Compliance & Governance"];
 
 function getGrade(score: number): { grade: string; color: string; label: string; recommendation: string } {
-  if (score >= 80) return { grade: "A", color: "#22c55e", label: "Highly Ready", recommendation: "You're an ideal candidate for a Sovereign AI deployment. Your data maturity, infrastructure, and compliance needs align perfectly with on-premise AI." };
+  if (score >= 80) return { grade: "A", color: "#22c55e", label: "Highly Ready", recommendation: "You're an ideal candidate for a Private AI deployment. Your data maturity, infrastructure, and compliance needs align perfectly with on-premise AI." };
   if (score >= 60) return { grade: "B", color: "#38bdf8", label: "Ready with Guidance", recommendation: "Your organization is ready for AI with some preparation. An AI 360 Assessment would identify the optimal deployment path and quick wins." };
-  if (score >= 40) return { grade: "C", color: "#f59e0b", label: "Foundation Needed", recommendation: "You have the right instincts but need infrastructure and governance foundations first. TEDOS can bring order to your current stack before AI deployment." };
+  if (score >= 40) return { grade: "C", color: "#f59e0b", label: "Foundation Needed", recommendation: "You have the right instincts but need infrastructure and governance foundations first. AEGIS can bring order to your current stack before AI deployment." };
   return { grade: "D", color: "#ef4444", label: "Early Stage", recommendation: "Start with data organization and team education. A Transformation Management engagement would build the foundation you need before AI makes sense." };
 }
 
@@ -130,7 +130,7 @@ function generateLinkedInPost(score: number, grade: { grade: string; label: stri
   return `Just took the TechFides AI Readiness Assessment and scored ${score}/100 (Grade: ${grade.grade} - ${grade.label}).
 
 ${score >= 60
-    ? "Turns out we're ready to own our AI infrastructure instead of renting it from the cloud. The data sovereignty angle is real."
+    ? "Turns out we're ready to own our AI infrastructure instead of renting it from the cloud. The data privacy angle is real."
     : "Eye-opening to see where the gaps are. Data readiness and governance are bigger blockers than the technology itself."
 }
 
@@ -138,7 +138,7 @@ If you're an SMB leader wondering whether local AI makes sense for your business
 
 https://techfides.com/assess
 
-#AI #DataSovereignty #SMB #EnterpriseAI #TechFides`;
+#AI #DataPrivacy #SMB #EnterpriseAI #TechFides`;
 }
 
 export default function AssessPage() {
@@ -178,7 +178,7 @@ export default function AssessPage() {
   }
 
   function handleShareTwitter() {
-    const text = encodeURIComponent(`Just scored ${overallScore}/100 on the TechFides AI Readiness Assessment. ${overallScore >= 60 ? "Ready to own our AI." : "Eye-opening gaps to fix."} Try it: https://techfides.com/assess #AI #DataSovereignty`);
+    const text = encodeURIComponent(`Just scored ${overallScore}/100 on the TechFides AI Readiness Assessment. ${overallScore >= 60 ? "Ready to own our AI." : "Eye-opening gaps to fix."} Try it: https://techfides.com/assess #AI #DataPrivacy`);
     window.open(`https://x.com/intent/tweet?text=${text}`, "_blank");
   }
 
@@ -193,13 +193,13 @@ export default function AssessPage() {
               Free Assessment &mdash; 2 minutes &mdash; No email required
             </div>
             <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-              Is Your Business{" "}
-              <span className="text-electric-400">AI Ready?</span>
+              How Ready Is Your Business{" "}
+              <span className="text-electric-400">for AI?</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-              Answer 8 questions to get your AI Readiness Score. Find out if
-              you&apos;re leaving money on the table with cloud AI subscriptions
-              — or if you&apos;re ready to own your infrastructure.
+              Answer 8 questions to get your AI Readiness Score. See where
+              your business stands on data readiness, infrastructure, team
+              capability, and compliance.
             </p>
             <div className="mt-8 grid grid-cols-4 gap-3">
               {DIMENSIONS.map((d) => (
@@ -380,7 +380,7 @@ export default function AssessPage() {
                       );
                     }
                   } catch {
-                    alert("Something went wrong. Please email engage@techfides.com with your score.");
+                    alert("Something went wrong. Please email info@techfides.com with your score.");
                   }
                 }}
                 className="rounded-lg bg-electric-500 px-6 py-3 text-sm font-semibold text-white hover:bg-electric-400"

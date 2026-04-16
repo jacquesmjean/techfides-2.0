@@ -82,7 +82,7 @@ export default function SocialMediaPage() {
     category: "THOUGHT_LEADERSHIP",
     platforms: ALL_PLATFORMS,
     scheduledAt: "",
-    hashtags: "#AI #DataSovereignty #TechFides",
+    hashtags: "#AI #DataPrivacy #TechFides",
     ctaUrl: "",
   });
 
@@ -121,7 +121,7 @@ export default function SocialMediaPage() {
         hashtags: newPost.hashtags.split(" ").filter(Boolean),
       }),
     });
-    setNewPost({ title: "", body: "", category: "THOUGHT_LEADERSHIP", platforms: ALL_PLATFORMS, scheduledAt: "", hashtags: "#AI #DataSovereignty #TechFides", ctaUrl: "" });
+    setNewPost({ title: "", body: "", category: "THOUGHT_LEADERSHIP", platforms: ALL_PLATFORMS, scheduledAt: "", hashtags: "#AI #DataPrivacy #TechFides", ctaUrl: "" });
     setTab("calendar");
     fetchPosts();
   }

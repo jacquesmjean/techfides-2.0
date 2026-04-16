@@ -42,14 +42,14 @@ const JOBS: JobListing[] = [
     remote: true,
     salary: "$140K \u2013 $185K",
     description:
-      "Design, deploy, and optimize self-hosted LLM inference pipelines on client hardware. You will work directly with vLLM, Llama 3, Mistral, and Phi models to deliver sovereign AI solutions for enterprise clients across legal, medical, auto, and trades verticals.",
+      "Design, deploy, and optimize self-hosted LLM inference pipelines on client hardware. You will work directly with vLLM, Llama 3, Mistral, and Phi models to deliver private AI solutions for enterprise clients across legal, medical, auto, and trades verticals.",
     responsibilities: [
       "Deploy and optimize local LLM inference via vLLM on GPU infrastructure (A100/H100)",
       "Build RAG pipelines with vector databases (Qdrant, Milvus) for client-specific knowledge retrieval",
       "Fine-tune open-source models (LoRA/QLoRA) on domain-specific datasets",
       "Architect multi-model serving strategies for concurrent workloads",
       "Collaborate with consulting team to translate client requirements into AI solutions",
-      "Contribute to the TEDOS OS governance platform",
+      "Contribute to the AEGIS intelligence operating system",
     ],
     requirements: [
       "5+ years in ML engineering or AI infrastructure",
@@ -75,7 +75,7 @@ const JOBS: JobListing[] = [
     remote: true,
     salary: "$100K \u2013 $140K",
     description:
-      "Build and maintain AI-powered features for the TechFides Local Stack. Work across the full stack from LLM integration to Next.js frontend components, helping SMBs deploy sovereign AI on their own hardware.",
+      "Build and maintain AI-powered features for the TechFides Local Stack. Work across the full stack from LLM integration to Next.js frontend components, helping SMBs deploy private AI on their own hardware.",
     responsibilities: [
       "Develop API endpoints for the Velocity Engine (lead enrichment, outreach generation)",
       "Integrate local LLM responses into client-facing applications",
@@ -174,11 +174,11 @@ const JOBS: JobListing[] = [
     remote: false,
     salary: "$120K \u2013 $160K",
     description:
-      "Lead AI readiness assessments and transformation engagements for mid-market and enterprise clients. You will be the strategic bridge between TechFides technology and client business outcomes, running AI 360 Assessments and TEDOS implementations.",
+      "Lead AI readiness assessments and transformation engagements for mid-market and enterprise clients. You will be the connection between TechFides technology and client business outcomes, running AI 360 Assessments and AEGIS implementations.",
     responsibilities: [
       "Conduct AI Readiness 360 assessments for prospective clients",
       "Design transformation roadmaps aligned with client business goals",
-      "Lead TEDOS OS governance implementations",
+      "Lead AEGIS governance implementations",
       "Present findings and recommendations to C-suite executives",
       "Develop industry-specific playbooks for legal, medical, auto, and trades verticals",
       "Collaborate with engineering on solution architecture and deployment planning",
@@ -216,12 +216,12 @@ export default function CareersPage() {
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
             Build the Future of{" "}
-            <span className="text-electric-400">Sovereign AI</span>
+            <span className="text-electric-400">Private AI</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
             Join TechFides and help businesses own their AI infrastructure.
             We&apos;re hiring engineers, researchers, and consultants who believe
-            data sovereignty is a right, not a feature.
+            data privacy is a right, not a feature.
           </p>
           <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-400">
             <span className="flex items-center gap-2">
@@ -409,7 +409,7 @@ export default function CareersPage() {
         </h2>
         <p className="mt-4 text-lg text-slate-400">
           We&apos;re always looking for exceptional people. Send us your resume
-          and tell us how you&apos;d contribute to sovereign AI.
+          and tell us how you&apos;d contribute to private AI.
         </p>
         <button
           onClick={() => {
@@ -500,7 +500,7 @@ export default function CareersPage() {
                   id="app-why"
                   required
                   rows={3}
-                  placeholder="Tell us what excites you about sovereign AI and this role..."
+                  placeholder="Tell us what excites you about private AI and this role..."
                   className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:border-electric-500 focus:outline-none"
                 />
               </div>

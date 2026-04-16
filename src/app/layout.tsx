@@ -21,14 +21,14 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://techfides.com"),
   title: {
-    default: "TechFides | Enterprise AI. Local Infrastructure. Total Sovereignty.",
+    default: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
     template: "%s | TechFides",
   },
   description:
-    "Deploy sovereign AI on your own hardware. No cloud tax. No data leakage. Local AI infrastructure for Legal, Medical, Auto, and Trades businesses.",
+    "Deploy private AI on your own hardware. No cloud tax. No data leakage. Local AI infrastructure for Legal, Medical, Auto, and Trades businesses.",
   keywords: [
     "local AI",
-    "sovereign AI",
+    "private AI",
     "enterprise AI",
     "on-premise AI",
     "private AI infrastructure",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://techfides.com",
     siteName: "TechFides",
-    title: "TechFides | Enterprise AI. Local Infrastructure. Total Sovereignty.",
+    title: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
     description:
-      "Deploy sovereign AI on your own hardware. No cloud tax. No data leakage. Transparent pricing starting at $500/mo.",
+      "Deploy private AI on your own hardware. No cloud tax. No data leakage. Transparent pricing starting at $500/mo.",
     images: [
       {
         url: "/images/techfides-logo.png",
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@tech_fides",
     creator: "@tech_fides",
-    title: "TechFides | Enterprise AI. Local Infrastructure. Total Sovereignty.",
+    title: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
     description:
-      "Deploy sovereign AI on your own hardware. No cloud tax. No data leakage.",
+      "Deploy private AI on your own hardware. No cloud tax. No data leakage.",
     images: ["/images/techfides-logo.png"],
   },
   robots: {
@@ -93,8 +93,8 @@ const organizationJsonLd = {
   url: "https://techfides.com",
   logo: "https://techfides.com/images/techfides-logo.png",
   description:
-    "Enterprise AI infrastructure deployed on your own hardware. Sovereign, secure, and model-agnostic.",
-  email: "engage@techfides.com",
+    "Enterprise AI infrastructure deployed on your own hardware. Private, secure, and model-agnostic.",
+  email: "info@techfides.com",
   sameAs: [
     "https://www.linkedin.com/company/techfides/",
     "https://x.com/tech_fides",

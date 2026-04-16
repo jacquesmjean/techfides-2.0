@@ -189,7 +189,7 @@ export function SolutionPage({
           <span className="text-electric-400">{vertical} AI</span>?
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          Stop renting cloud AI. Deploy sovereign infrastructure purpose-built
+          Stop renting cloud AI. Deploy local infrastructure purpose-built
           for {vertical.toLowerCase()} businesses.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

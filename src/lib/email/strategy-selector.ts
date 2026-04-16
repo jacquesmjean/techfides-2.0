@@ -2,7 +2,7 @@
  * Strategy Selector — Tiered Angle Selection + Pivot Logic
  *
  * Determines which outreach strategy angle to use for a lead:
- * - Tier 2 ($150K-$5M): STRATEGIC_ALIGNMENT → pivot to TEDOS_GOVERNANCE
+ * - Tier 2 ($150K-$5M): STRATEGIC_ALIGNMENT → pivot to AEGIS_GOVERNANCE
  * - Tier 1 ($10K-$60K): COST_RECOVERY → pivot to SUBSCRIPTION_REDUCTION
  *
  * Auto-pivots if no heat score increase after configurable step threshold.
@@ -109,10 +109,10 @@ function getDefaultAngle(tier: string): StrategyAngle {
 function getPivotAngle(angle: StrategyAngle): StrategyAngle {
   switch (angle) {
     case "STRATEGIC_ALIGNMENT":
-      return "TEDOS_GOVERNANCE";
+      return "AEGIS_GOVERNANCE";
     case "COST_RECOVERY":
       return "SUBSCRIPTION_REDUCTION";
-    case "TEDOS_GOVERNANCE":
+    case "AEGIS_GOVERNANCE":
       return "STRATEGIC_ALIGNMENT"; // cycle back
     case "SUBSCRIPTION_REDUCTION":
       return "COST_RECOVERY"; // cycle back
@@ -122,5 +122,5 @@ function getPivotAngle(angle: StrategyAngle): StrategyAngle {
 }
 
 function isPivotAngle(angle: StrategyAngle): boolean {
-  return angle === "TEDOS_GOVERNANCE" || angle === "SUBSCRIPTION_REDUCTION";
+  return angle === "AEGIS_GOVERNANCE" || angle === "SUBSCRIPTION_REDUCTION";
 }

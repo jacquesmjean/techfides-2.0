@@ -57,7 +57,7 @@ interface OutreachConfig {
 const STRATEGY_BADGES: Record<string, { label: string; color: string; bg: string }> = {
   STRATEGIC_ALIGNMENT: { label: "Strategic", color: "#38bdf8", bg: "rgba(56,189,248,0.1)" },
   COST_RECOVERY: { label: "Cost Recovery", color: "#22c55e", bg: "rgba(34,197,94,0.1)" },
-  TEDOS_GOVERNANCE: { label: "TEDOS Pivot", color: "#a78bfa", bg: "rgba(167,139,250,0.1)" },
+  AEGIS_GOVERNANCE: { label: "AEGIS Pivot", color: "#a78bfa", bg: "rgba(167,139,250,0.1)" },
   SUBSCRIPTION_REDUCTION: { label: "Sub Reduction", color: "#f59e0b", bg: "rgba(245,158,11,0.1)" },
 };
 
@@ -155,7 +155,7 @@ export default function OutreachPage() {
     }
   }
 
-  const tier2Count = drafts.filter((d) => ["STRATEGIC_ALIGNMENT", "TEDOS_GOVERNANCE"].includes(d.strategyAngle)).length;
+  const tier2Count = drafts.filter((d) => ["STRATEGIC_ALIGNMENT", "AEGIS_GOVERNANCE"].includes(d.strategyAngle)).length;
   const tier1Count = drafts.filter((d) => ["COST_RECOVERY", "SUBSCRIPTION_REDUCTION"].includes(d.strategyAngle)).length;
   const pivotCount = drafts.filter((d) => d.pivotedFrom).length;
   const avgHeat = drafts.length > 0 ? Math.round(drafts.reduce((s, d) => s + d.lead.heatScore, 0) / drafts.length) : 0;

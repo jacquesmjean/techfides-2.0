@@ -17,7 +17,7 @@ export default function AnalyticsPage() {
       "sovereign-ai": 0,
       "ai-readiness-360": 0,
       "transformation-management": 0,
-      tedos: 0,
+      aegis: 0,
     };
     leads.forEach((lead) => {
       if (lead.stage !== "closed-lost") {

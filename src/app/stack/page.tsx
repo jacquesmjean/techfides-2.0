@@ -156,7 +156,7 @@ export default function StackPage() {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
             The TechFides Stack is a model-agnostic AI infrastructure deployed
             on your own hardware. Swap models, scale users, and maintain total
-            data sovereignty — without rewriting a single integration.
+            data privacy — without rewriting a single integration.
           </p>
         </div>
       </section>

@@ -23,7 +23,7 @@ export type ServiceType =
   | "sovereign-ai"
   | "ai-readiness-360"
   | "transformation-management"
-  | "tedos";
+  | "aegis";
 
 export type Vertical =
   | "legal"
@@ -266,10 +266,10 @@ export const SERVICE_CONFIG: Record<
   ServiceType,
   { label: string; icon: string; color: string; baseSOW: number; baseRetainer: number }
 > = {
-  "sovereign-ai": { label: "Sovereign AI", icon: "🖥️", color: "#0ea5e9", baseSOW: 10000, baseRetainer: 1000 },
+  "sovereign-ai": { label: "Private AI", icon: "🖥️", color: "#0ea5e9", baseSOW: 10000, baseRetainer: 1000 },
   "ai-readiness-360": { label: "AI Readiness 360™", icon: "📊", color: "#a78bfa", baseSOW: 5000, baseRetainer: 500 },
   "transformation-management": { label: "Transformation Management", icon: "🔄", color: "#f59e0b", baseSOW: 15000, baseRetainer: 2500 },
-  tedos: { label: "TEDOS™", icon: "⚙️", color: "#22c55e", baseSOW: 12000, baseRetainer: 1500 },
+  aegis: { label: "AEGIS", icon: "⚙️", color: "#22c55e", baseSOW: 12000, baseRetainer: 1500 },
 };
 
 export const VERTICAL_CONFIG: Record<Vertical, { label: string; icon: string }> = {

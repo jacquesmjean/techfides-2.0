@@ -83,7 +83,7 @@ export default function CEOCockpit() {
       id: "bigticket",
       number: "03",
       title: "Big Ticket Diagnostic",
-      subtitle: "AI 360 & TEDOS Pipeline",
+      subtitle: "AI 360 & AEGIS Pipeline",
       icon: "\uD83C\uDFAF",
       status: mockData.assessments.completionRate >= 80 ? "green" : "yellow",
       metric: String(mockData.assessments.inProgress),
@@ -114,7 +114,7 @@ export default function CEOCockpit() {
     {
       id: "health",
       number: "05",
-      title: "Sovereign Health",
+      title: "Private AI Health",
       subtitle: "Systems Monitor",
       icon: "\uD83D\uDDA5\uFE0F",
       status: mockData.domainHealth >= 95 ? "green" : mockData.domainHealth >= 80 ? "yellow" : "red",

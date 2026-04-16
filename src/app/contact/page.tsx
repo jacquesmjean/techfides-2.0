@@ -17,7 +17,7 @@ const services = [
   { value: "gold", label: "Gold" },
   { value: "platinum", label: "Platinum" },
   { value: "ai-readiness-360", label: "AI Readiness 360" },
-  { value: "tedos", label: "TEDOS" },
+  { value: "aegis", label: "AEGIS" },
   { value: "consulting", label: "Consulting" },
   { value: "other", label: "Other" },
 ];
@@ -65,7 +65,7 @@ export default function ContactPage() {
       });
       setSubmitted(true);
     } catch {
-      alert("Failed to send. Please try again or email engage@techfides.com directly.");
+      alert("Failed to send. Please try again or email info@techfides.com directly.");
     }
     setSending(false);
   };
@@ -86,7 +86,7 @@ export default function ContactPage() {
             Get in <span className="text-electric-400">Touch</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Ready to bring sovereign AI to your business? Whether you have
+            Ready to bring private AI to your business? Whether you have
             questions about our services, need a custom deployment plan, or want
             to explore how local AI can transform your operations — we&apos;re
             here to help.
@@ -294,10 +294,10 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
               <h3 className="text-lg font-semibold">Email</h3>
               <a
-                href="mailto:engage@techfides.com"
+                href="mailto:info@techfides.com"
                 className="mt-2 block text-electric-400 transition-colors hover:text-electric-300"
               >
-                engage@techfides.com
+                info@techfides.com
               </a>
               <p className="mt-1 text-sm text-slate-500">
                 For general inquiries and service questions.

@@ -55,8 +55,8 @@ const STATUS_CFG: Record<string, { label: string; color: string; bg: string; dot
 };
 
 const SERVICE_LABELS: Record<string, string> = {
-  SOVEREIGN_AI: "Sovereign AI", AI_READINESS_360: "AI Readiness 360",
-  TRANSFORMATION_MANAGEMENT: "Transformation", TEDOS: "TEDOS",
+  SOVEREIGN_AI: "Private AI", AI_READINESS_360: "AI Readiness 360",
+  TRANSFORMATION_MANAGEMENT: "Transformation", AEGIS: "AEGIS",
 };
 
 const UPDATE_ICONS: Record<string, string> = {
@@ -287,7 +287,7 @@ export default function ProjectsPage() {
       {showCreate && (
         <Modal title="New Project" onClose={() => setShowCreate(false)}>
           <div className="space-y-3">
-            <Input label="Project Name" value={newProject.name} onChange={(v) => setNewProject({ ...newProject, name: v })} placeholder="Sovereign AI Deployment — Acme Legal" />
+            <Input label="Project Name" value={newProject.name} onChange={(v) => setNewProject({ ...newProject, name: v })} placeholder="Private AI Deployment — Acme Legal" />
             <Input label="Client Name" value={newProject.clientName} onChange={(v) => setNewProject({ ...newProject, clientName: v })} placeholder="Acme Law Firm" />
             <div className="grid grid-cols-2 gap-3">
               <Select label="Service" value={newProject.service} onChange={(v) => setNewProject({ ...newProject, service: v })} options={Object.entries(SERVICE_LABELS).map(([k, v]) => ({ value: k, label: v }))} />
