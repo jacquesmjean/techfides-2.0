@@ -1,6 +1,13 @@
 /**
  * 5-Step Sequence Templates per Strategy Angle
  *
+ * Voice reference: TechFides brand voice (Knowledge/Voice-and-Style/README.md in vault).
+ * Initial cold-email vault templates live at Projects/drafts/2026-04-16-dfw-outreach-templates.md
+ * — those define the voice the LLM must mirror: short, specific, plain-spoken, 15-minute ask.
+ *
+ * DFW focus (2026-04-16): Jacques based in Frisco. First 5 clients targeted in DFW metro.
+ * All emails should reference local proximity where relevant (legal/medical/trades verticals).
+ *
  * Each angle has 5 emails:
  * 1. Identify the Pain
  * 2. The Solution
@@ -9,6 +16,14 @@
  * 5. Hard Bridge to Team
  *
  * Variables in {braces} are replaced by the LLM or enrichment data.
+ *
+ * LLM voice rules (enforce in every prompt):
+ * - No em dashes. Use commas, semicolons, parentheses, or restructure.
+ * - Banned words: delve, tapestry, pivotal, underscore, landscape, foster, crucial, enhance,
+ *   leverage, seamless, robust, holistic, synergy, paradigm, realm, meticulous, journey, ecosystem.
+ * - No "solutions" — say the specific thing. No "stakeholder" — name them.
+ * - Short declarative sentences. Vary rhythm. Read it out loud test.
+ * - Ask for 15 minutes, not 30. Low commitment drives reply rate.
  */
 
 import type { StrategyAngle } from "@prisma/client";
@@ -28,11 +43,11 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
     {
       step: 1,
       label: "Identify the Pain",
-      subjectTemplate: "{company}'s IT stack isn't aligned with where you're heading",
+      subjectTemplate: "Question about how {company} handles AI",
       bodyPrompt:
-        "Write a B2B cold email identifying that the prospect's IT infrastructure is misaligned with their business goals. Reference specific enrichment data (recent executive hires, M&A activity, legacy tech stack). Position TechFides as a strategic partner, not a vendor. Tone: executive, consultative. Max 150 words.",
-      ctaText: "See How We Diagnose IT Alignment Gaps",
-      ctaPath: "/consulting/ai-readiness-360",
+        "Write a cold email in TechFides voice — short (under 100 words), direct, plain-spoken. Open with a specific question about how their team uses AI tools. Name the real problem: client/patient data going to servers they don't control. If DFW-based, reference Frisco proximity. Ask for 15 minutes, not a longer commitment. No fluff, no LLM tells (no em dashes, no 'solutions', no 'leverage'). Sign as 'Jacques' only.",
+      ctaText: "Book 15 Minutes",
+      ctaPath: "/contact",
       delayDays: 0,
     },
     {
@@ -70,8 +85,8 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
       label: "Hard Bridge to Team",
       subjectTemplate: "Quick question for {firstName}",
       bodyPrompt:
-        "Write a direct, short final email (max 80 words) requesting a 30-minute strategy session. Be human and conversational. Reference the previous emails briefly. Include a specific time suggestion. No fluff.",
-      ctaText: "Book a 30-Min Strategy Session",
+        "Write the final email in TechFides voice. Under 60 words. Direct, human. Reference the previous emails briefly. Ask for 15 minutes this week or next. Specific time suggestion. No fluff, no LLM tells. Sign as 'Jacques' only.",
+      ctaText: "Book 15 Minutes",
       ctaPath: "/contact",
       delayDays: 7,
     },
@@ -81,11 +96,11 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
     {
       step: 1,
       label: "Identify the Pain",
-      subjectTemplate: "{company} is paying for AI it doesn't own",
+      subjectTemplate: "{company} is renting AI it could own",
       bodyPrompt:
-        "Write a cold email highlighting how much the prospect is likely spending on cloud AI subscriptions monthly. Reference their detected SaaS stack from enrichment. Emphasize the concept of renting vs owning. Tone: direct, financial. Max 150 words.",
-      ctaText: "Calculate Your Cloud Tax",
-      ctaPath: "/pricing",
+        "Write a cold email in TechFides voice. Short (under 100 words), plain-spoken on money — say the actual dollar amount if enrichment gives it. Open with the cloud AI spend, then the alternative: a one-time setup on their own hardware. If DFW-based, mention we're in Frisco and can meet in person. Ask for 15 minutes. No em dashes, no 'leverage', no 'solutions'. Sign as 'Jacques' only.",
+      ctaText: "Book 15 Minutes",
+      ctaPath: "/contact",
       delayDays: 0,
     },
     {
