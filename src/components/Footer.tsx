@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const socialLinks = [
   {
@@ -49,6 +52,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className="border-t border-slate-800 bg-slate-950">
       <div className="mx-auto max-w-7xl px-6 py-12">
@@ -63,7 +68,7 @@ export function Footer() {
               />
             </div>
             <p className="mt-3 text-sm text-slate-400">
-              Enterprise AI. Local Infrastructure. Total Control.
+              {t("footer.tagline")}
             </p>
             {/* Social Media Icons */}
             <div className="mt-4 flex items-center gap-3">
@@ -85,17 +90,17 @@ export function Footer() {
           {/* Solutions */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Solutions
+              {t("footer.solutions")}
             </h3>
             <ul className="mt-3 space-y-2">
               {[
-                { name: "Legal", href: "/solutions/legal" },
-                { name: "Medical", href: "/solutions/medical" },
-                { name: "Auto", href: "/solutions/auto" },
-                { name: "Trades", href: "/solutions/trades" },
-                { name: "The Stack", href: "/stack" },
+                { name: t("verticals.legal"), href: "/solutions/legal" },
+                { name: t("verticals.medical"), href: "/solutions/medical" },
+                { name: t("verticals.auto"), href: "/solutions/auto" },
+                { name: t("verticals.trades"), href: "/solutions/trades" },
+                { name: t("footer.theStack"), href: "/stack" },
               ].map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-slate-400 hover:text-electric-400 transition-colors"
@@ -110,18 +115,18 @@ export function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Services
+              {t("footer.services")}
             </h3>
             <ul className="mt-3 space-y-2">
               {[
-                { name: "Consulting", href: "/consulting" },
-                { name: "AI Readiness 360\u2122", href: "/consulting/ai-readiness-360" },
-                { name: "Transformation", href: "/consulting/transformation-management" },
-                { name: "AEGIS", href: "/consulting/aegis" },
-                { name: "Pricing", href: "/pricing" },
-                { name: "AI Readiness Score", href: "/assess" },
+                { name: t("footer.consulting"), href: "/consulting" },
+                { name: `${t("footer.aiReadiness")}\u2122`, href: "/consulting/ai-readiness-360" },
+                { name: t("footer.transformation"), href: "/consulting/transformation-management" },
+                { name: t("footer.aegis"), href: "/consulting/aegis" },
+                { name: t("pricing.title"), href: "/pricing" },
+                { name: t("footer.aiReadinessScore"), href: "/assess" },
               ].map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-slate-400 hover:text-electric-400 transition-colors"
@@ -136,16 +141,16 @@ export function Footer() {
           {/* Company */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Company
+              {t("footer.company")}
             </h3>
             <ul className="mt-3 space-y-2">
               {[
-                { name: "About Us", href: "/about" },
-                { name: "Careers", href: "/careers" },
-                { name: "Partner Portal", href: "/partners" },
-                { name: "Contact Us", href: "/contact" },
+                { name: t("footer.aboutUs"), href: "/about" },
+                { name: t("footer.careers"), href: "/careers" },
+                { name: t("footer.partnerPortal"), href: "/partners" },
+                { name: t("footer.contactUs"), href: "/contact" },
               ].map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-slate-400 hover:text-electric-400 transition-colors"
@@ -160,23 +165,23 @@ export function Footer() {
           {/* Our Offices */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Our Offices
+              {t("footer.ourOffices")}
             </h3>
             <div className="mt-3 space-y-3">
               <div>
-                <p className="text-sm font-semibold text-slate-300">USA:</p>
-                <p className="text-sm text-slate-400">Frisco, Texas</p>
+                <p className="text-sm font-semibold text-slate-300">{t("about.officeUS")}:</p>
+                <p className="text-sm text-slate-400">{t("about.officeCityUS")}</p>
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-300">Mexico:</p>
-                <p className="text-sm text-slate-400">Guadalajara, Jalisco</p>
+                <p className="text-sm font-semibold text-slate-300">{t("about.officeMX")}:</p>
+                <p className="text-sm text-slate-400">{t("about.officeCityMX")}</p>
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-300">Gabon:</p>
-                <p className="text-sm text-slate-400">Libreville, Estuaire</p>
+                <p className="text-sm font-semibold text-slate-300">{t("about.officeGA")}:</p>
+                <p className="text-sm text-slate-400">{t("about.officeCityGA")}</p>
               </div>
               <div className="border-t border-slate-800 pt-3">
-                <p className="text-sm font-semibold text-slate-300">Email:</p>
+                <p className="text-sm font-semibold text-slate-300">{t("footer.email")}:</p>
                 <a
                   href="mailto:info@techfides.com"
                   className="text-sm text-electric-400 hover:text-electric-300"
@@ -190,14 +195,14 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
           <p className="text-sm text-slate-400">
-            &copy; {new Date().getFullYear()} TechFides. All rights reserved.
+            &copy; {new Date().getFullYear()} TechFides. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="text-xs text-slate-400 hover:text-slate-200">
-              Privacy Policy
+              {t("footer.privacy")}
             </Link>
             <Link href="/terms" className="text-xs text-slate-400 hover:text-slate-200">
-              Terms of Service
+              {t("footer.terms")}
             </Link>
           </div>
         </div>

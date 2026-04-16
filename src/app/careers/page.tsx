@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 type JobType = "full-time" | "internship";
 type Department = "engineering" | "ai-research" | "consulting" | "operations";
@@ -201,6 +202,7 @@ const JOBS: JobListing[] = [
 ];
 
 export default function CareersPage() {
+  const { t } = useI18n();
   const [filter, setFilter] = useState<"all" | JobType>("all");
   const [selectedJob, setSelectedJob] = useState<JobListing | null>(null);
   const [applying, setApplying] = useState(false);
@@ -215,13 +217,11 @@ export default function CareersPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Build the Future of{" "}
-            <span className="text-electric-400">Private AI</span>
+            {t("careers.heroTitle")}{" "}
+            <span className="text-electric-400">{t("careers.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Join TechFides and help businesses own their AI infrastructure.
-            We&apos;re hiring engineers, researchers, and consultants who believe
-            data privacy is a right, not a feature.
+            {t("careers.heroSubtitle")}
           </p>
           <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-400">
             <span className="flex items-center gap-2">

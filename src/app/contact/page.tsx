@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/i18n";
 
 const industries = [
   { value: "", label: "Select your industry" },
@@ -41,6 +42,7 @@ const offices = [
 ];
 
 export default function ContactPage() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,16 +82,13 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm font-semibold text-electric-400">
-            Contact Us
+            {t("contact.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Get in <span className="text-electric-400">Touch</span>
+            {t("contact.heroTitle")} <span className="text-electric-400">{t("contact.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Ready to bring private AI to your business? Whether you have
-            questions about our services, need a custom deployment plan, or want
-            to explore how local AI can transform your operations — we&apos;re
-            here to help.
+            {t("contact.heroSubtitle")}
           </p>
         </div>
       </section>
@@ -100,11 +99,10 @@ export default function ContactPage() {
           {/* Form Column */}
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold">
-              Send Us a <span className="text-electric-400">Message</span>
+              {t("contact.formTitle")} <span className="text-electric-400">{t("contact.formTitleHighlight")}</span>
             </h2>
             <p className="mt-2 text-slate-400">
-              Fill out the form below and our team will get back to you
-              promptly.
+              {t("contact.formSubtitle")}
             </p>
 
             {submitted ? (

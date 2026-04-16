@@ -1,24 +1,22 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | TechFides",
-  description:
-    "TechFides privacy policy — how we collect, use, and protect your personal information.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 export default function PrivacyPolicyPage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       <section className="mx-auto max-w-4xl px-6 pb-24 pt-32">
         <div className="mb-4 inline-flex items-center rounded-full border border-slate-600/30 bg-slate-600/10 px-4 py-1.5 text-sm text-slate-400">
-          Legal
+          {t("privacy.badge")}
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-          Privacy <span className="text-electric-400">Policy</span>
+          {t("privacy.title")} <span className="text-electric-400">{t("privacy.titleHighlight")}</span>
         </h1>
         <p className="mt-4 text-sm text-slate-400">
-          Effective Date: April 11, 2026 &middot; Last Updated: April 11, 2026
+          {t("privacy.effectiveDate")} &middot; {t("privacy.lastUpdated")}
         </p>
 
         <div className="mt-12 space-y-10 text-slate-300">
@@ -268,7 +266,7 @@ export default function PrivacyPolicyPage() {
             href="/"
             className="text-sm text-electric-400 hover:text-electric-300"
           >
-            &larr; Back to Home
+            &larr; {t("privacy.backToHome")}
           </Link>
         </div>
       </section>

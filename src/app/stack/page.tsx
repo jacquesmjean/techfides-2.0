@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "The Agnostic Engine | TechFides Stack",
-  description:
-    "Technical deep-dive into the TechFides Local Stack. Model-agnostic AI infrastructure running Llama 3, Mistral, or Phi on your own hardware.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const stackLayers = [
   {
@@ -138,6 +134,8 @@ const models = [
 ];
 
 export default function StackPage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -145,18 +143,16 @@ export default function StackPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm font-mono text-electric-400">
-            The Agnostic Engine
+            {t("stack.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Your AI.{" "}
-            <span className="text-electric-400">Your Hardware.</span>
+            {t("stack.heroTitle1")}{" "}
+            <span className="text-electric-400">{t("stack.heroTitle2")}</span>
             <br />
-            Any Model.
+            {t("stack.heroTitle3")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            The TechFides Stack is a model-agnostic AI infrastructure deployed
-            on your own hardware. Swap models, scale users, and maintain total
-            data privacy — without rewriting a single integration.
+            {t("stack.heroSubtitle")}
           </p>
         </div>
       </section>
@@ -164,11 +160,10 @@ export default function StackPage() {
       {/* Stack Diagram */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          The Full <span className="text-electric-400">Stack</span>
+          {t("stack.fullStackTitle")} <span className="text-electric-400">{t("stack.fullStackTitleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Five layers working together. Every component runs on your hardware,
-          on your network, under your control.
+          {t("stack.fullStackSubtitle")}
         </p>
 
         <div className="mt-12 space-y-4">
@@ -210,11 +205,10 @@ export default function StackPage() {
       {/* Supported Models */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Model <span className="text-electric-400">Agnostic</span>
+          {t("stack.modelTitle")} <span className="text-electric-400">{t("stack.modelTitleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Never get locked into a single AI vendor again. The TechFides Engine
-          supports any open-weight model — and we add new ones monthly.
+          {t("stack.modelSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {models.map((model) => (
@@ -240,7 +234,7 @@ export default function StackPage() {
       {/* Why Local */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Cloud vs. <span className="text-electric-400">Local</span>
+          {t("stack.cloudVsLocal")} <span className="text-electric-400">{t("stack.cloudVsLocalHighlight")}</span>
         </h2>
         <div className="mt-12 overflow-hidden rounded-2xl border border-slate-800">
           <table className="w-full text-left text-sm">
@@ -278,24 +272,23 @@ export default function StackPage() {
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          See the Stack in <span className="text-electric-400">Action</span>
+          {t("stack.ctaTitle")} <span className="text-electric-400">{t("stack.ctaTitleHighlight")}</span>
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          We&apos;ll walk you through the architecture, answer your technical
-          questions, and map the stack to your specific requirements.
+          {t("stack.ctaSubtitle")}
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/pricing"
             className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            See Pricing
+            {t("stack.ctaPricing")}
           </Link>
           <Link
             href="/solutions"
             className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
           >
-            Explore Solutions by Industry
+            {t("stack.ctaSolutions")}
           </Link>
         </div>
       </section>

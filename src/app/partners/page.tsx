@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const benefits = [
   {
@@ -66,6 +67,7 @@ const partnerTypes = [
 ];
 
 export default function PartnersPage() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -109,22 +111,20 @@ export default function PartnersPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-accent-amber/30 bg-accent-amber/10 px-4 py-1.5 text-sm font-semibold text-accent-amber">
-            Referral Partner Program
+            {t("partners.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Earn by Referring{" "}
-            <span className="text-electric-400">Private AI</span>
+            {t("partners.heroTitle")}{" "}
+            <span className="text-electric-400">{t("partners.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Your network needs AI that keeps their data local. Every referral
-            you make earns a recurring commission. Join the TechFides Partner
-            Program and turn your relationships into recurring revenue.
+            {t("partners.heroSubtitle")}
           </p>
           <a
             href="#apply"
             className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            Apply to Become a Partner
+            {t("partners.ctaApply")}
           </a>
         </div>
       </section>

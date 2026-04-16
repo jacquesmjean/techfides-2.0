@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "AI 360 Readiness Assessment | TechFides",
-  description:
-    "A 60-question distributed intelligence system that captures real organizational signals across 6 domains, identifies risks and opportunities, and delivers a clear, prioritized roadmap for AI execution.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const domains = [
   {
@@ -134,6 +130,8 @@ const deliverables = [
 ];
 
 export default function AIReadiness360Page() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -141,12 +139,12 @@ export default function AIReadiness360Page() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm font-semibold text-electric-400">
-            ENTERPRISE AI INTELLIGENCE SYSTEM
+            {t("ai360.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            AI 360 Readiness
+            {t("ai360.heroTitle")}
             <br />
-            <span className="text-electric-400">Assessment</span>
+            <span className="text-electric-400">{t("ai360.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-300">
             A 60-question distributed intelligence system that captures real

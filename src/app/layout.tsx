@@ -36,6 +36,15 @@ export const metadata: Metadata = {
     "AI for healthcare",
     "AI for auto dealers",
     "AI for contractors",
+    "IA empresarial",
+    "IA privada",
+    "infraestructura IA local",
+    "IA pour entreprises",
+    "IA privée",
+    "infrastructure IA locale",
+    "AEGIS",
+    "AI Readiness 360",
+    "TechFides",
   ],
   icons: {
     icon: "/images/techfides-icon.svg",
@@ -46,6 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: ["es_MX", "fr_FR"],
     url: "https://techfides.com",
     siteName: "TechFides",
     title: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
@@ -82,6 +92,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://techfides.com",
+    languages: {
+      "en": "https://techfides.com",
+      "es": "https://techfides.com",
+      "fr": "https://techfides.com",
+      "x-default": "https://techfides.com",
+    },
   },
 };
 

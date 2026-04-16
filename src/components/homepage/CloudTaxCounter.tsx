@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useI18n } from "@/i18n";
 
 /**
  * CloudTaxCounter — Real-time animated counter showing money draining
@@ -9,6 +10,7 @@ import { useState, useEffect } from "react";
  * Based on the average SMB cloud AI spend of $5,000/mo ≈ $0.11/second.
  */
 export function CloudTaxCounter() {
+  const { t } = useI18n();
   const [elapsed, setElapsed] = useState(0);
   const ratePerSecond = 5000 / (30 * 24 * 60 * 60); // $5K/mo in seconds
 
@@ -31,7 +33,7 @@ export function CloudTaxCounter() {
 
         <div className="relative text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-400/80">
-            Since you loaded this page
+            {t("cloudTax.sinceLoaded")}
           </p>
 
           <div className="mt-4 flex items-baseline justify-center gap-1">
@@ -41,25 +43,25 @@ export function CloudTaxCounter() {
           </div>
 
           <p className="mt-3 text-lg text-slate-300">
-            leaked to the cloud by the average SMB
+            {t("cloudTax.leaked")}
           </p>
 
           <div className="mx-auto mt-8 grid max-w-3xl gap-4 md:grid-cols-3">
-            <CounterStat value="$60K" label="Average yearly cloud AI spend" color="text-red-400" />
-            <CounterStat value="$0" label="You own at the end" color="text-red-400" />
-            <CounterStat value="100%" label="Data sent to third parties" color="text-red-400" />
+            <CounterStat value="$60K" label={t("cloudTax.yearlySpend")} color="text-red-400" />
+            <CounterStat value="$0" label={t("cloudTax.youOwn")} color="text-red-400" />
+            <CounterStat value="100%" label={t("cloudTax.dataSent")} color="text-red-400" />
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-500/30" />
-            <span className="text-sm font-medium text-slate-400">vs with TechFides</span>
+            <span className="text-sm font-medium text-slate-400">{t("cloudTax.vsWithTechFides")}</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-accent-green/30" />
           </div>
 
           <div className="mx-auto mt-6 grid max-w-3xl gap-4 md:grid-cols-3">
-            <CounterStat value="$500" label="Predictable monthly retainer" color="text-accent-green" />
-            <CounterStat value="Forever" label="You own the hardware" color="text-accent-green" />
-            <CounterStat value="0%" label="Data leaves your building" color="text-accent-green" />
+            <CounterStat value="$500" label={t("cloudTax.predictableRetainer")} color="text-accent-green" />
+            <CounterStat value="Forever" label={t("cloudTax.ownHardware")} color="text-accent-green" />
+            <CounterStat value="0%" label={t("cloudTax.dataLeaves")} color="text-accent-green" />
           </div>
         </div>
       </div>

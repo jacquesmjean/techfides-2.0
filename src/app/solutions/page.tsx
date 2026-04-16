@@ -1,13 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import type { Metadata } from "next";
+import { useI18n } from "@/i18n";
 
-export const metadata: Metadata = {
-  title: "Solutions by Industry | TechFides",
-  description:
-    "Private AI deployments tailored to Legal, Medical, Auto, and Trades businesses. HIPAA-compliant, privilege-protected, fully local infrastructure.",
-};
+export default function SolutionsPage() {
+  const { t } = useI18n();
 
-const verticals = [
+  const verticals = [
   {
     name: "Legal",
     href: "/solutions/legal",
@@ -46,7 +45,6 @@ const verticals = [
   },
 ];
 
-export default function SolutionsPage() {
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -54,13 +52,11 @@ export default function SolutionsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Private AI for{" "}
-            <span className="text-electric-400">Your Industry</span>
+            {t("solutions.pageTitle")}{" "}
+            <span className="text-electric-400">{t("solutions.pageTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Every industry has unique compliance requirements, workflows, and
-            data sensitivity. TechFides builds local AI stacks purpose-fit for
-            your vertical — engineered for your industry, not generic cloud subscriptions.
+            {t("solutions.pageSubtitle")}
           </p>
         </div>
       </section>
@@ -98,7 +94,7 @@ export default function SolutionsPage() {
               </div>
               <div className="flex items-center justify-end">
                 <span className="rounded-lg border border-slate-700 px-6 py-2.5 text-sm font-semibold text-slate-300 transition-all group-hover:border-electric-500 group-hover:bg-electric-500 group-hover:text-white">
-                  Explore {v.name} &rarr;
+                  {t("solutions.explore")} {v.name} &rarr;
                 </span>
               </div>
             </Link>
@@ -109,18 +105,16 @@ export default function SolutionsPage() {
       {/* Bottom CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          Don&apos;t See Your Industry?
+          {t("solutions.dontSeeTitle")}
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          The TechFides Agnostic Engine adapts to any vertical. If your business
-          handles sensitive data and needs AI that stays local, we can build your
-          stack.
+          {t("solutions.dontSeeSubtitle")}
         </p>
         <Link
           href="/contact"
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
-          Talk to Us About Your Industry
+          {t("solutions.talkToUs")}
         </Link>
       </section>
     </div>

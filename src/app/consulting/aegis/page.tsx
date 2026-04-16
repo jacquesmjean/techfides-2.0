@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "AEGIS — Intelligence Operating System | TechFides Consulting",
-  description:
-    "The Intelligence Operating System for the Hybrid Workforce Era. Govern, secure, and scale your human + AI + agent operations across six integrated layers.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const sixLayers = [
   {
@@ -128,6 +124,8 @@ const pricingTiers = [
 ];
 
 export default function AEGISPage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -135,32 +133,30 @@ export default function AEGISPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/8 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-accent-amber/30 bg-accent-amber/10 px-4 py-1.5 text-sm font-semibold text-accent-amber">
-            AEGIS
+            {t("aegis.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            The Intelligence Operating System
+            {t("aegis.heroTitle")}
             <br />
             <span className="text-electric-400">
-              for the Hybrid Workforce Era
+              {t("aegis.heroTitleHighlight")}
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Every organization is becoming a hybrid workforce. AEGIS gives you
-            the operating system to govern, secure, and scale how humans, AI,
-            and agents work together &mdash; without the chaos.
+            {t("aegis.heroSubtitle")}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
             >
-              Request a Discovery Call
+              {t("aegis.ctaDiscovery")}
             </Link>
             <Link
               href="/consulting"
               className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
             >
-              View All Services
+              {t("aegis.ctaServices")}
             </Link>
           </div>
         </div>

@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useI18n } from "@/i18n";
 
 export default function LoginPage() {
+  const { t } = useI18n();
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/gse";
@@ -30,7 +32,7 @@ export default function LoginPage() {
     setLoading(false);
 
     if (result?.error) {
-      setError("Invalid credentials or MFA code");
+      setError(t("login.error"));
       return;
     }
 
@@ -47,7 +49,7 @@ export default function LoginPage() {
               TechFides
             </h1>
             <p className="mt-2 text-sm text-slate-400">
-              Sign in to access the GSE dashboard
+              {t("login.subtitle")}
             </p>
           </div>
 
@@ -57,7 +59,7 @@ export default function LoginPage() {
                 htmlFor="email"
                 className="block text-sm font-medium text-slate-300"
               >
-                Email
+                {t("login.emailLabel")}
               </label>
               <input
                 id="email"
@@ -75,7 +77,7 @@ export default function LoginPage() {
                 htmlFor="password"
                 className="block text-sm font-medium text-slate-300"
               >
-                Password
+                {t("login.passwordLabel")}
               </label>
               <input
                 id="password"
@@ -92,7 +94,7 @@ export default function LoginPage() {
                 htmlFor="mfaCode"
                 className="block text-sm font-medium text-slate-300"
               >
-                MFA Code <span className="text-slate-500">(if enabled)</span>
+                {t("login.mfaLabel")} <span className="text-slate-500">{t("login.mfaHint")}</span>
               </label>
               <input
                 id="mfaCode"
@@ -118,12 +120,12 @@ export default function LoginPage() {
               disabled={loading}
               className="glow-blue w-full rounded-lg bg-electric-500 py-3 text-sm font-semibold text-white transition-all hover:bg-electric-400 disabled:opacity-50"
             >
-              {loading ? "Signing in..." : "Sign in"}
+              {loading ? t("login.signingIn") : t("login.signIn")}
             </button>
           </form>
 
           <p className="mt-6 text-center text-xs text-slate-500">
-            Authorized personnel only. All access is logged.
+            {t("login.footer")}
           </p>
         </div>
       </div>

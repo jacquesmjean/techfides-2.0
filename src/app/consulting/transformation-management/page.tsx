@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "AI Transformation Management | TechFides Consulting",
-  description:
-    "Governed execution support that turns ambition into operational capability. We replace 'innovation theater' with rigorous program discipline.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const pillars = [
   {
@@ -107,6 +103,8 @@ const engagementModels = [
 ];
 
 export default function TransformationManagementPage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -114,17 +112,15 @@ export default function TransformationManagementPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/8 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm font-semibold text-electric-400">
-            PROFESSIONAL ENGAGEMENT
+            {t("transformation.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            AI Transformation
+            {t("transformation.heroTitle")}
             <br />
-            <span className="text-electric-400">Management</span>
+            <span className="text-electric-400">{t("transformation.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Governed execution support that turns ambition into
-            operational capability. We replace &lsquo;innovation theater&rsquo;
-            with rigorous program discipline.
+            {t("transformation.heroSubtitle")}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link

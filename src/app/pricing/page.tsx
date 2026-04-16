@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 const tiers = [
   {
@@ -96,6 +97,7 @@ const tierColors: Record<string, { ring: string; bg: string; text: string; badge
 };
 
 export default function PricingPage() {
+  const { t } = useI18n();
   const searchParams = useSearchParams();
   const initialTier = Number(searchParams.get("tier") ?? 1);
   const [cloudSpend, setCloudSpend] = useState(3000);
@@ -123,12 +125,11 @@ export default function PricingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Transparent{" "}
-            <span className="text-electric-400">Pricing</span>
+            {t("pricingPage.heroTitle")}{" "}
+            <span className="text-electric-400">{t("pricingPage.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            No &ldquo;Call for Quote.&rdquo; No hidden fees. Enterprise-grade AI
-            infrastructure with pricing that respects your intelligence.
+            {t("pricingPage.heroSubtitle")}
           </p>
         </div>
       </section>

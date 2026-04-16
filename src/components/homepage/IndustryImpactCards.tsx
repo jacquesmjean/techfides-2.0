@@ -2,54 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 /**
  * IndustryImpactCards — Animated stat rings per vertical showing
  * specific productivity improvements.
  */
-
-const industries = [
-  {
-    name: "Legal",
-    href: "/solutions/legal",
-    icon: "\u2696\uFE0F",
-    stat: 90,
-    unit: "min",
-    label: "saved per attorney per day",
-    description: "AI-powered document review, case research, and contract analysis",
-    color: "#38bdf8",
-  },
-  {
-    name: "Medical",
-    href: "/solutions/medical",
-    icon: "\uD83C\uDFE5",
-    stat: 40,
-    unit: "%",
-    label: "faster clinical documentation",
-    description: "HIPAA-aligned AI for patient notes, coding, and pre-auth",
-    color: "#22c55e",
-  },
-  {
-    name: "Auto",
-    href: "/solutions/auto",
-    icon: "\uD83D\uDE97",
-    stat: 82,
-    unit: "%",
-    label: "reduction in cloud AI costs",
-    description: "Diagnostics, inventory management, and customer service AI",
-    color: "#f59e0b",
-  },
-  {
-    name: "Trades",
-    href: "/solutions/trades",
-    icon: "\uD83D\uDD27",
-    stat: 3,
-    unit: "x",
-    label: "faster estimating speed",
-    description: "AI-powered estimating, scheduling, and operations intelligence",
-    color: "#a78bfa",
-  },
-];
 
 function AnimatedRing({
   percent,
@@ -96,8 +54,52 @@ function AnimatedRing({
 }
 
 export function IndustryImpactCards() {
+  const { t } = useI18n();
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const industries = [
+    {
+      name: t("verticals.legal"),
+      href: "/solutions/legal",
+      icon: "\u2696\uFE0F",
+      stat: 90,
+      unit: "min",
+      label: "saved per attorney per day",
+      description: "AI-powered document review, case research, and contract analysis",
+      color: "#38bdf8",
+    },
+    {
+      name: t("verticals.medical"),
+      href: "/solutions/medical",
+      icon: "\uD83C\uDFE5",
+      stat: 40,
+      unit: "%",
+      label: "faster clinical documentation",
+      description: "HIPAA-aligned AI for patient notes, coding, and pre-auth",
+      color: "#22c55e",
+    },
+    {
+      name: t("verticals.auto"),
+      href: "/solutions/auto",
+      icon: "\uD83D\uDE97",
+      stat: 82,
+      unit: "%",
+      label: "reduction in cloud AI costs",
+      description: "Diagnostics, inventory management, and customer service AI",
+      color: "#f59e0b",
+    },
+    {
+      name: t("verticals.trades"),
+      href: "/solutions/trades",
+      icon: "\uD83D\uDD27",
+      stat: 3,
+      unit: "x",
+      label: "faster estimating speed",
+      description: "AI-powered estimating, scheduling, and operations intelligence",
+      color: "#a78bfa",
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -113,10 +115,10 @@ export function IndustryImpactCards() {
   return (
     <section ref={ref} className="mx-auto max-w-7xl px-6 py-24">
       <h2 className="text-center text-3xl font-bold md:text-4xl">
-        Real Impact. <span className="text-electric-400">Your Industry.</span>
+        {t("impact.title")} <span className="text-electric-400">{t("impact.titleHighlight")}</span>
       </h2>
       <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-        Private AI deployments delivering measurable results across every vertical we serve.
+        {t("impact.subtitle")}
       </p>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

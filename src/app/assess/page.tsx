@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 /**
  * AI Readiness Assessment — Free viral tool
@@ -142,6 +143,7 @@ https://techfides.com/assess
 }
 
 export default function AssessPage() {
+  const { t } = useI18n();
   const [step, setStep] = useState(0); // 0 = intro, 1-8 = questions, 9 = results
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [email, setEmail] = useState("");
@@ -190,11 +192,11 @@ export default function AssessPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
           <div className="relative mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-sm text-electric-400">
-              Free Assessment &mdash; 2 minutes &mdash; No email required
+              {t("assess.badge")}
             </div>
             <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-              How Ready Is Your Business{" "}
-              <span className="text-electric-400">for AI?</span>
+              {t("assess.heroTitle")}{" "}
+              <span className="text-electric-400">{t("assess.heroTitleHighlight")}</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
               Answer 8 questions to get your AI Readiness Score. See where
@@ -212,10 +214,10 @@ export default function AssessPage() {
               onClick={() => setStep(1)}
               className="glow-blue mt-10 rounded-xl bg-electric-500 px-10 py-4 text-lg font-semibold text-white transition-all hover:bg-electric-400"
             >
-              Start Assessment
+              {t("assess.startButton")}
             </button>
             <p className="mt-4 text-xs text-slate-500">
-              No signup required. Get your score instantly.
+              {t("assess.noSignup")}
             </p>
           </div>
         </section>

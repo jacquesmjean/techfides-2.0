@@ -1,13 +1,11 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Strategic Consulting | TechFides",
-  description:
-    "TechFides strategic consulting services. AI Readiness 360™ assessment, AI Transformation Management, and AEGIS Intelligence Operating System — Fortune 500 expertise at SMB-accessible pricing.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 export default function ConsultingPage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -15,17 +13,14 @@ export default function ConsultingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-slate-600/30 bg-slate-600/10 px-4 py-1.5 text-sm text-slate-400">
-            Strategic Consulting
+            {t("consulting.badge")}
           </div>
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Enterprise-Grade{" "}
-            <span className="text-electric-400">Strategy</span>
+            {t("consulting.pageTitle")}{" "}
+            <span className="text-electric-400">{t("consulting.pageTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Before deploying private AI, some organizations need strategic
-            groundwork. TechFides&apos; consulting frameworks — built from
-            decades of Fortune 500 leadership — prepare your business for
-            transformation.
+            {t("consulting.pageSubtitle")}
           </p>
         </div>
       </section>
@@ -42,15 +37,13 @@ export default function ConsultingPage() {
               &#9678;
             </div>
             <h2 className="mt-5 text-xl font-bold group-hover:text-electric-400">
-              AI Readiness 360&trade;
+              {t("consulting.ai360Title")}&trade;
             </h2>
             <p className="mt-1 text-xs font-semibold text-electric-400">
-              Assessment &amp; Risk Framework
+              {t("consulting.ai360Subtitle")}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              A forensic diagnostic of your organization&apos;s ability to
-              execute, govern, and extract value from AI. Validate your strategy
-              before you scale.
+              {t("consulting.ai360Desc")}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
@@ -68,7 +61,7 @@ export default function ConsultingPage() {
               ))}
             </div>
             <div className="mt-5 text-sm font-semibold text-slate-300 group-hover:text-electric-400">
-              Learn More &rarr;
+              {t("consulting.learnMore")} &rarr;
             </div>
           </Link>
 
@@ -81,15 +74,13 @@ export default function ConsultingPage() {
               &#9889;
             </div>
             <h2 className="mt-5 text-xl font-bold group-hover:text-accent-green">
-              AI Transformation
+              {t("consulting.transformTitle")}
             </h2>
             <p className="mt-1 text-xs font-semibold text-accent-green">
-              Managed Execution &amp; Governance
+              {t("consulting.transformSubtitle")}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              Governed execution support that turns strategic ambition into
-              operational capability. We replace &lsquo;innovation
-              theater&rsquo; with rigorous program discipline.
+              {t("consulting.transformDesc")}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
@@ -107,7 +98,7 @@ export default function ConsultingPage() {
               ))}
             </div>
             <div className="mt-5 text-sm font-semibold text-slate-300 group-hover:text-accent-green">
-              Learn More &rarr;
+              {t("consulting.learnMore")} &rarr;
             </div>
           </Link>
 
@@ -120,15 +111,13 @@ export default function ConsultingPage() {
               &#9881;
             </div>
             <h2 className="mt-5 text-xl font-bold group-hover:text-accent-amber">
-              AEGIS
+              {t("consulting.aegisTitle")}
             </h2>
             <p className="mt-1 text-xs font-semibold text-accent-amber">
-              Intelligence Operating System
+              {t("consulting.aegisSubtitle")}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              The intelligence operating system for the hybrid workforce era.
-              Govern, secure, and scale how humans, AI, and agents work
-              together across six integrated layers.
+              {t("consulting.aegisDesc")}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
@@ -146,7 +135,7 @@ export default function ConsultingPage() {
               ))}
             </div>
             <div className="mt-5 text-sm font-semibold text-slate-300 group-hover:text-accent-amber">
-              Learn More &rarr;
+              {t("consulting.learnMore")} &rarr;
             </div>
           </Link>
         </div>
@@ -156,13 +145,10 @@ export default function ConsultingPage() {
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-8 md:p-12">
           <h2 className="text-center text-3xl font-bold">
-            The <span className="text-electric-400">Pedigree</span>
+            {t("consulting.pedigreeTitle")} <span className="text-electric-400">{t("consulting.pedigreeTitleHighlight")}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-center text-slate-400">
-            25 years of corporate leadership experience from Honeywell, Invensys,
-            and Schneider Electric — supporting all corporate functions and
-            delivering multimillion-dollar projects across North America, Europe,
-            Asia, Africa, and Latin America.
+            {t("consulting.pedigreeSubtitle")}
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
@@ -206,26 +192,24 @@ export default function ConsultingPage() {
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          Need Strategy Before{" "}
-          <span className="text-electric-400">Deployment</span>?
+          {t("consulting.ctaTitle")}{" "}
+          <span className="text-electric-400">{t("consulting.ctaTitleHighlight")}</span>?
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          Most businesses are ready for private AI today. But if you need
-          strategic groundwork first, our consulting frameworks get you there
-          faster.
+          {t("consulting.ctaSubtitle")}
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/pricing"
             className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            See AI Deployment Pricing
+            {t("consulting.ctaPricing")}
           </Link>
           <Link
             href="/about"
             className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
           >
-            About Jacques Jean
+            {t("consulting.ctaAbout")}
           </Link>
         </div>
       </section>

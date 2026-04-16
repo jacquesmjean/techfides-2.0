@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useI18n } from "@/i18n";
 
 /**
  * ROITimeline — Animated savings curve showing break-even and 36-month ROI.
@@ -8,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
  */
 
 export function ROITimeline() {
+  const { t } = useI18n();
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -30,28 +32,27 @@ export function ROITimeline() {
   const breakEven = Math.ceil(tfSetup / (cloudMonthly - tfMonthly)); // 5 months
 
   const milestones = [
-    { month: 0, label: "Day 1", detail: "Setup complete, AI deployed on your hardware", icon: "\uD83D\uDE80" },
-    { month: breakEven, label: `Month ${breakEven}`, detail: "Break-even: setup cost fully recovered", icon: "\u2705" },
-    { month: 12, label: "Year 1", detail: `$${((cloudMonthly - tfMonthly) * 12 - tfSetup).toLocaleString()} net savings`, icon: "\uD83D\uDCB0" },
-    { month: 24, label: "Year 2", detail: `$${((cloudMonthly - tfMonthly) * 24 - tfSetup).toLocaleString()} cumulative savings`, icon: "\uD83D\uDCC8" },
-    { month: 36, label: "Year 3", detail: `$${((cloudMonthly - tfMonthly) * 36 - tfSetup).toLocaleString()} total savings. You still own the hardware.`, icon: "\uD83C\uDFC6" },
+    { month: 0, label: t("roi.day1"), detail: t("roi.day1Detail"), icon: "\uD83D\uDE80" },
+    { month: breakEven, label: `Month ${breakEven}`, detail: t("roi.breakEvenLabel"), icon: "\u2705" },
+    { month: 12, label: t("roi.year1"), detail: `$${((cloudMonthly - tfMonthly) * 12 - tfSetup).toLocaleString()} ${t("roi.netSavings")}`, icon: "\uD83D\uDCB0" },
+    { month: 24, label: t("roi.year2"), detail: `$${((cloudMonthly - tfMonthly) * 24 - tfSetup).toLocaleString()} ${t("roi.cumulativeSavings")}`, icon: "\uD83D\uDCC8" },
+    { month: 36, label: t("roi.year3"), detail: `$${((cloudMonthly - tfMonthly) * 36 - tfSetup).toLocaleString()} ${t("roi.totalSavings")}`, icon: "\uD83C\uDFC6" },
   ];
 
   return (
     <section ref={ref} className="mx-auto max-w-5xl px-6 py-24">
       <h2 className="text-center text-3xl font-bold md:text-4xl">
-        Your <span className="text-electric-400">ROI Timeline</span>
+        {t("roi.title")} <span className="text-electric-400">{t("roi.titleHighlight")}</span>
       </h2>
       <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-        Break even in {breakEven} months. Save ${((cloudMonthly - tfMonthly) * 36 - tfSetup).toLocaleString()} over 3 years.
-        Based on Gold tier vs $3K/mo cloud spend.
+        {t("roi.subtitle").replace("{months}", String(breakEven)).replace("${savings}", ((cloudMonthly - tfMonthly) * 36 - tfSetup).toLocaleString())}
       </p>
 
       {/* Cost comparison bars */}
       <div className="mt-12 space-y-4">
         <div>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-400">Cloud AI (36 months)</span>
+            <span className="text-sm text-slate-400">{t("roi.cloudAi36")}</span>
             <span className="text-sm font-bold text-red-400">${(cloudMonthly * months).toLocaleString()}</span>
           </div>
           <div className="h-6 overflow-hidden rounded-full bg-red-500/10">
@@ -63,7 +64,7 @@ export function ROITimeline() {
         </div>
         <div>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-400">TechFides (36 months, incl. setup)</span>
+            <span className="text-sm text-slate-400">{t("roi.techfides36")}</span>
             <span className="text-sm font-bold text-accent-green">${(tfMonthly * months + tfSetup).toLocaleString()}</span>
           </div>
           <div className="h-6 overflow-hidden rounded-full bg-accent-green/10">
@@ -79,7 +80,7 @@ export function ROITimeline() {
         <div className="flex items-center justify-center gap-2 pt-2">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-electric-500/30" />
           <span className="rounded-full bg-electric-500/10 px-4 py-1.5 text-sm font-bold text-electric-400">
-            You save ${((cloudMonthly - tfMonthly) * months - tfSetup).toLocaleString()}
+            {t("roi.youSave")} ${((cloudMonthly - tfMonthly) * months - tfSetup).toLocaleString()}
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-electric-500/30" />
         </div>

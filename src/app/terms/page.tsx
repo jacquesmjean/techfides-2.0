@@ -1,24 +1,22 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | TechFides",
-  description:
-    "TechFides terms of service — the terms and conditions governing use of our website and services.",
-};
+import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 export default function TermsOfServicePage() {
+  const { t } = useI18n();
+
   return (
     <div className="grid-pattern">
       <section className="mx-auto max-w-4xl px-6 pb-24 pt-32">
         <div className="mb-4 inline-flex items-center rounded-full border border-slate-600/30 bg-slate-600/10 px-4 py-1.5 text-sm text-slate-400">
-          Legal
+          {t("terms.badge")}
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-          Terms of <span className="text-electric-400">Service</span>
+          {t("terms.title")} <span className="text-electric-400">{t("terms.titleHighlight")}</span>
         </h1>
         <p className="mt-4 text-sm text-slate-400">
-          Effective Date: January 1, 2026 &middot; Last Updated: April 15, 2026
+          {t("terms.effectiveDate")} &middot; {t("terms.lastUpdated")}
         </p>
 
         <div className="mt-12 space-y-10 text-slate-300">
@@ -360,7 +358,7 @@ export default function TermsOfServicePage() {
             href="/"
             className="text-sm text-electric-400 hover:text-electric-300"
           >
-            &larr; Back to Home
+            &larr; {t("terms.backToHome")}
           </Link>
         </div>
       </section>

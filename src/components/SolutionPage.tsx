@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useI18n } from "@/i18n";
 
 interface PainPoint {
   icon: string;
@@ -38,6 +41,26 @@ export function SolutionPage({
   testimonialAuthor,
   testimonialRole,
 }: SolutionPageProps) {
+  const { t } = useI18n();
+
+  const steps = [
+    {
+      step: "01",
+      title: t("solutionShared.step1Title"),
+      desc: t("solutionShared.step1Desc"),
+    },
+    {
+      step: "02",
+      title: t("solutionShared.step2Title"),
+      desc: t("solutionShared.step2Desc"),
+    },
+    {
+      step: "03",
+      title: t("solutionShared.step3Title"),
+      desc: t("solutionShared.step3Desc"),
+    },
+  ];
+
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -74,7 +97,7 @@ export function SolutionPage({
               href="/stack"
               className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
             >
-              See the Tech Stack
+              {t("solutionShared.seeStack")}
             </Link>
           </div>
         </div>
@@ -83,8 +106,8 @@ export function SolutionPage({
       {/* Pain Points */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          The <span className="text-red-400">Problem</span> for {vertical}{" "}
-          Businesses
+          {t("solutionShared.problemTitle")} {vertical}{" "}
+          {t("solutionShared.businesses")}
         </h2>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {painPoints.map((point) => (
@@ -107,12 +130,11 @@ export function SolutionPage({
       {/* Features / Solution */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          The TechFides{" "}
-          <span className="text-electric-400">{vertical} Stack</span>
+          {t("solutionShared.stackTitle")}{" "}
+          <span className="text-electric-400">{vertical}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Purpose-built AI infrastructure for your industry. Deployed on your
-          hardware. Under your control.
+          {t("solutionShared.stackSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {features.map((feature) => (
@@ -151,26 +173,10 @@ export function SolutionPage({
       {/* How It Works */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          How It <span className="text-electric-400">Works</span>
+          {t("solutionShared.howItWorks")} <span className="text-electric-400">{t("solutionShared.howItWorksHighlight")}</span>
         </h2>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {[
-            {
-              step: "01",
-              title: "Discovery & SOW",
-              desc: "We audit your current workflows, data volume, and compliance requirements to design your custom stack.",
-            },
-            {
-              step: "02",
-              title: "Deploy & Configure",
-              desc: "Hardware installed on-site. Models fine-tuned to your industry. Data stays in your building from day one.",
-            },
-            {
-              step: "03",
-              title: "Operate & Evolve",
-              desc: "Monthly retainer covers monitoring, model updates, and scaling as your needs grow. No surprise bills.",
-            },
-          ].map((item) => (
+          {steps.map((item) => (
             <div key={item.step} className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-electric-500/30 bg-electric-500/10 text-xl font-bold text-electric-400">
                 {item.step}
@@ -185,25 +191,25 @@ export function SolutionPage({
       {/* Bottom CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          Ready to Own Your{" "}
-          <span className="text-electric-400">{vertical} AI</span>?
+          {t("solutionShared.bottomCtaTitle")}{" "}
+          <span className="text-electric-400">{vertical}</span>?
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          Stop renting cloud AI. Deploy local infrastructure purpose-built
-          for {vertical.toLowerCase()} businesses.
+          {t("solutionShared.bottomCtaSubtitle")}{" "}
+          {vertical.toLowerCase()}.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/pricing"
             className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            See Pricing &amp; ROI
+            {t("solutionShared.seePricing")}
           </Link>
           <Link
             href="/partners"
             className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
           >
-            Become a Referral Partner
+            {t("solutionShared.becomePartner")}
           </Link>
         </div>
       </section>
