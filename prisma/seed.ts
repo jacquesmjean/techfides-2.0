@@ -69,7 +69,7 @@ const salesStatusMap: Record<string, SalesStatus> = {
 async function main() {
   console.log("Seeding database with existing GSE seed data...");
 
-  // Create a default admin user
+  // Create admin users
   const adminUser = await prisma.user.upsert({
     where: { email: "engage@techfides.com" },
     update: {},
@@ -79,7 +79,17 @@ async function main() {
       role: "ADMIN",
     },
   });
-  console.log(`✓ Admin user created: ${adminUser.email}`);
+
+  await prisma.user.upsert({
+    where: { email: "jacques.jean@techfides.com" },
+    update: {},
+    create: {
+      email: "jacques.jean@techfides.com",
+      name: "Jacques Jean",
+      role: "ADMIN",
+    },
+  });
+  console.log(`✓ Admin users created: engage@ and jacques.jean@`);
 
   // Seed leads
   let leadsCreated = 0;
