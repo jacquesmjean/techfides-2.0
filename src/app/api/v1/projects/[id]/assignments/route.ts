@@ -13,8 +13,9 @@ const AssignmentSchema = z.object({
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: unknown;
   try { body = await request.json(); } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
@@ -26,7 +27,7 @@ export async function POST(
   }
 
   const assignment = await db.projectAssignment.create({
-    data: { projectId: params.id, ...parsed.data },
+    data: { projectId: id, ...parsed.data },
   });
 
   return NextResponse.json(assignment, { status: 201 });
@@ -34,7 +35,7 @@ export async function POST(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const { searchParams } = new URL(request.url);
   const assignmentId = searchParams.get("assignmentId");

@@ -3,14 +3,15 @@ import { db } from "@/lib/db";
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: Record<string, unknown>;
   try { body = (await request.json()) as Record<string, unknown>; } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const post = await db.socialPost.findUnique({ where: { id: params.id } });
+  const post = await db.socialPost.findUnique({ where: { id } });
   if (!post) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   const allowedFields = [
@@ -42,7 +43,7 @@ export async function PATCH(
   }
 
   const updated = await db.socialPost.update({
-    where: { id: params.id },
+    where: { id },
     data: updateData,
   });
 
@@ -51,8 +52,9 @@ export async function PATCH(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  await db.socialPost.delete({ where: { id: params.id } });
+  const { id } = await params;
+  await db.socialPost.delete({ where: { id } });
   return NextResponse.json({ success: true });
 }

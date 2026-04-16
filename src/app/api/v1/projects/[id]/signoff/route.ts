@@ -12,8 +12,9 @@ const SignoffSchema = z.object({
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: unknown;
   try { body = await request.json(); } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
@@ -26,7 +27,7 @@ export async function POST(
 
   const signoff = await db.clientSignoff.create({
     data: {
-      projectId: params.id,
+      projectId: id,
       ...parsed.data,
       ipAddress: ip,
     },
@@ -34,7 +35,7 @@ export async function POST(
 
   // Mark project as completed with client sign-off
   await db.project.update({
-    where: { id: params.id },
+    where: { id },
     data: {
       status: "COMPLETED",
       actualEnd: new Date(),
@@ -46,7 +47,7 @@ export async function POST(
   // Log as project update
   await db.projectUpdate.create({
     data: {
-      projectId: params.id,
+      projectId: id,
       authorName: parsed.data.clientName,
       authorRole: "Client",
       type: "CLIENT_SIGNOFF",

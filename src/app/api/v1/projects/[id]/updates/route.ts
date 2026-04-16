@@ -14,8 +14,9 @@ const UpdateSchema = z.object({
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: unknown;
   try { body = await request.json(); } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
@@ -27,13 +28,13 @@ export async function POST(
   }
 
   const update = await db.projectUpdate.create({
-    data: { projectId: params.id, ...parsed.data },
+    data: { projectId: id, ...parsed.data },
   });
 
   // If update type is COMPLETED, mark project as completed
   if (parsed.data.type === "COMPLETED") {
     await db.project.update({
-      where: { id: params.id },
+      where: { id },
       data: { status: "COMPLETED", actualEnd: new Date() },
     });
   }
@@ -41,7 +42,7 @@ export async function POST(
   // If update type is HOURS_LOGGED, increment logged hours on assignment
   if (parsed.data.type === "HOURS_LOGGED" && parsed.data.hoursSpent) {
     const assignments = await db.projectAssignment.findMany({
-      where: { projectId: params.id, name: parsed.data.authorName },
+      where: { projectId: id, name: parsed.data.authorName },
     });
     if (assignments.length > 0) {
       await db.projectAssignment.update({

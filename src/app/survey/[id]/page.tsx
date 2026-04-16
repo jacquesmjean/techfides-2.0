@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 
 interface SurveyData {
   projectDelivery: number;
@@ -210,7 +210,8 @@ const ConsentRow = ({
   </div>
 );
 
-export default function SurveyPage({ params }: { params: { id: string } }) {
+export default function SurveyPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [step, setStep] = useState(1);
   const [data, setData] = useState<SurveyData>({
     projectDelivery: 0,
@@ -252,7 +253,7 @@ export default function SurveyPage({ params }: { params: { id: string } }) {
     'demo': { name: 'David Ramirez', company: 'Ramirez Electrical Services', service: 'AEGIS' },
   };
 
-  const leadData = LEAD_DATABASE[params.id] || {
+  const leadData = LEAD_DATABASE[id] || {
     name: 'Valued Client',
     company: 'Your Company',
     service: 'TechFides Service',

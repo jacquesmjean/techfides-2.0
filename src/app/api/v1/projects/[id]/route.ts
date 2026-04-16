@@ -3,10 +3,11 @@ import { db } from "@/lib/db";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const project = await db.project.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       assignments: true,
       updates: { orderBy: { createdAt: "desc" } },
@@ -19,8 +20,9 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: Record<string, unknown>;
   try { body = (await request.json()) as Record<string, unknown>; } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
@@ -45,7 +47,7 @@ export async function PATCH(
   }
 
   const project = await db.project.update({
-    where: { id: params.id },
+    where: { id },
     data: updateData,
   });
 

@@ -11,10 +11,11 @@ const TicketSchema = z.object({
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const tickets = await db.supportTicket.findMany({
-    where: { clientAccountId: params.id },
+    where: { clientAccountId: id },
     orderBy: { createdAt: "desc" },
   });
   return NextResponse.json({ tickets });
@@ -22,8 +23,9 @@ export async function GET(
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   let body: unknown;
   try { body = await request.json(); } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
@@ -32,7 +34,7 @@ export async function POST(
   if (!parsed.success) return NextResponse.json({ error: "Validation failed" }, { status: 400 });
 
   const ticket = await db.supportTicket.create({
-    data: { clientAccountId: params.id, ...parsed.data },
+    data: { clientAccountId: id, ...parsed.data },
   });
   return NextResponse.json(ticket, { status: 201 });
 }
