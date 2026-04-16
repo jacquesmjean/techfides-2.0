@@ -24,6 +24,15 @@
  * - No "solutions" — say the specific thing. No "stakeholder" — name them.
  * - Short declarative sentences. Vary rhythm. Read it out loud test.
  * - Ask for 15 minutes, not 30. Low commitment drives reply rate.
+ *
+ * Signature + branding:
+ * - NEVER add a plain-text signature block (Name, Title, Company, Email, Phone).
+ * - Outlook auto-appends Jacques's branded HTML signature (logo, photo, Forbes badge, digital card).
+ * - Close with "Jacques" only, no title or contact info.
+ *
+ * Assessment link:
+ * - Offer `techfides.com/assess` as a self-serve AI Readiness Assessment in step 1 or 2.
+ *   Free, 8 questions, 5 minutes, produces 0-100 score. Viral loop — shareable result.
  */
 
 import type { StrategyAngle } from "@prisma/client";
