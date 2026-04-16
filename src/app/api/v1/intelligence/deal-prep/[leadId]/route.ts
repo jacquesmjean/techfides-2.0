@@ -3,9 +3,10 @@ import { generateProspectProfile } from "@/lib/velocity/intelligence/deal-prep";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { leadId: string } }
+  { params }: { params: Promise<{ leadId: string }> }
 ) {
-  const profile = await generateProspectProfile(params.leadId);
+  const { leadId } = await params;
+  const profile = await generateProspectProfile(leadId);
 
   if (!profile) {
     return NextResponse.json({ error: "Lead not found" }, { status: 404 });
