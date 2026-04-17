@@ -28,7 +28,7 @@ const StatBlock = ({
 }: {
   label: string;
   value: React.ReactNode;
-  trend?: string;
+  trend?: React.ReactNode;
 }) => (
   <div className="rounded-md border border-slate-800 bg-navy-900/40 p-4">
     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
