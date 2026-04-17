@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
 
 // Routes that should NOT show the global Header/Footer
-const STANDALONE_ROUTES = ["/gse", "/survey"];
+const STANDALONE_ROUTES = ["/gse", "/survey", "/aegis"];
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
