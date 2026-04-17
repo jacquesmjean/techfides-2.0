@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/consulting", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/consulting/ai-readiness-360", changeFrequency: "monthly" as const, priority: 0.7 },
     { path: "/consulting/transformation-management", changeFrequency: "monthly" as const, priority: 0.7 },
-    { path: "/consulting/aegis", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/consulting/aegis", changeFrequency: "weekly" as const, priority: 0.9 },
     { path: "/assess", changeFrequency: "monthly" as const, priority: 0.9 },
     { path: "/about", changeFrequency: "monthly" as const, priority: 0.6 },
     { path: "/careers", changeFrequency: "weekly" as const, priority: 0.7 },

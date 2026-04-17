@@ -39,11 +39,11 @@ export function Header() {
 
   const navigation = [
     { name: t("nav.solutions"), href: "/solutions" },
-    { name: "Consulting", href: "/consulting" },
+    { name: t("nav.consulting"), href: "/consulting" },
     { name: t("nav.theStack"), href: "/stack" },
     { name: t("nav.pricingRoi"), href: "/pricing" },
     { name: t("nav.partnerPortal"), href: "/partners" },
-    { name: "About", href: "/about" },
+    { name: t("nav.about"), href: "/about" },
   ];
 
   return (

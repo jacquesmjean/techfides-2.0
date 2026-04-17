@@ -3,128 +3,203 @@
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const sixLayers = [
-  {
-    name: "Governance",
-    description:
-      "Policy frameworks, decision rights, and accountability structures for AI adoption.",
-    color: "from-electric-500/80 to-electric-600/80",
-  },
-  {
-    name: "Security, Trust & Resilience",
-    description:
-      "Data protection, threat monitoring, and continuity planning for hybrid operations.",
-    color: "from-purple-500/80 to-purple-600/80",
-  },
-  {
-    name: "Intelligence",
-    description:
-      "Analytics, reporting, and predictive insights across human and AI workflows.",
-    color: "from-indigo-500/80 to-indigo-600/80",
-  },
-  {
-    name: "Execution",
-    description:
-      "Implementation methodology, change management, and deployment discipline.",
-    color: "from-cyan-500/80 to-cyan-600/80",
-  },
-  {
-    name: "Operations",
-    description:
-      "Workflow orchestration, process automation, and operational efficiency.",
-    color: "from-accent-green/80 to-emerald-600/80",
-  },
-  {
-    name: "Leadership",
-    description:
-      "Executive dashboards, adoption tracking, and strategic alignment.",
-    color: "from-accent-amber/80 to-orange-600/80",
-  },
-];
-
-const steps = [
-  { step: "Diagnose", description: "We assess your AI readiness, operating model, and team capability across all six layers." },
-  { step: "Design", description: "Custom AEGIS architecture mapped to your industry, compliance requirements, and growth goals." },
-  { step: "Implement", description: "Phased deployment with defined milestones, training, and governance activation." },
-  { step: "Operate", description: "Managed oversight, performance monitoring, and continuous optimization." },
-  { step: "Evolve", description: "Quarterly reviews, capability expansion, and emerging technology integration." },
-];
-
-const enterpriseCapabilities = [
-  "Operating model redesign for 500+ person organizations",
-  "Board-level governance and risk reporting",
-  "Multi-department AI orchestration",
-  "Regulatory compliance (HIPAA, SOC 2, GDPR, FedRAMP)",
-];
-
-const smbCapabilities = [
-  "Practical AI workflows that save 10+ hours per week",
-  "Simple governance without the bureaucracy",
-  "Scale operations without scaling headcount",
-  "Affordable implementation with measurable ROI",
-];
-
-const complianceStandards = ["ISO 27001", "SOC 2 Type II", "GDPR Ready", "HIPAA Aligned"];
-
-const pricingTiers = [
-  {
-    name: "Diagnostic",
-    subtitle: "SMB & Growing Companies",
-    price: "$15K\u2013$35K",
-    priceNote: "one-time",
-    features: [
-      "AI readiness assessment across all 6 layers",
-      "Gap analysis and priority roadmap",
-      "Executive summary with ROI projections",
-      "2-week delivery",
-    ],
-    cta: "Start with a Discovery Call",
-  },
-  {
-    name: "Core Implementation",
-    subtitle: "Mid-Market & Single-Site Enterprise",
-    price: "$75K\u2013$150K",
-    priceNote: "one-time + $5K/mo advisory",
-    featured: true,
-    features: [
-      "Full AEGIS deployment across 1\u20132 departments",
-      "Governance framework activation",
-      "Team training and change management",
-      "90-day implementation",
-      "Monthly advisory retainer included",
-    ],
-    cta: "Request a Proposal",
-  },
-  {
-    name: "Enterprise Execution",
-    subtitle: "Multi-Site & Regulated Industries",
-    price: "$150K\u2013$400K",
-    priceNote: "one-time + $15K/mo managed",
-    features: [
-      "Organization-wide AEGIS deployment",
-      "Board-level reporting and compliance integration",
-      "Dedicated program manager",
-      "Continuous optimization and quarterly reviews",
-    ],
-    cta: "Request a Proposal",
-  },
-  {
-    name: "Government & Institutional",
-    subtitle: "Federal, State & Multilateral",
-    price: "Custom",
-    priceNote: "",
-    features: [
-      "FedRAMP-aligned deployment",
-      "Private data controls",
-      "Multi-agency coordination",
-      "Dedicated security team",
-    ],
-    cta: "Contact for Scoping",
-  },
-];
-
 export default function AEGISPage() {
   const { t } = useI18n();
+
+  const sixLayers = [
+    {
+      name: t("aegis.layerGovernance"),
+      description: t("aegis.layerGovernanceDesc"),
+      color: "from-electric-500/80 to-electric-600/80",
+    },
+    {
+      name: t("aegis.layerSecurity"),
+      description: t("aegis.layerSecurityDesc"),
+      color: "from-purple-500/80 to-purple-600/80",
+    },
+    {
+      name: t("aegis.layerIntelligence"),
+      description: t("aegis.layerIntelligenceDesc"),
+      color: "from-indigo-500/80 to-indigo-600/80",
+    },
+    {
+      name: t("aegis.layerExecution"),
+      description: t("aegis.layerExecutionDesc"),
+      color: "from-cyan-500/80 to-cyan-600/80",
+    },
+    {
+      name: t("aegis.layerOperations"),
+      description: t("aegis.layerOperationsDesc"),
+      color: "from-accent-green/80 to-emerald-600/80",
+    },
+    {
+      name: t("aegis.layerLeadership"),
+      description: t("aegis.layerLeadershipDesc"),
+      color: "from-accent-amber/80 to-orange-600/80",
+    },
+  ];
+
+  const steps = [
+    { step: t("aegis.stepDiagnose"), description: t("aegis.stepDiagnoseDesc") },
+    { step: t("aegis.stepDesign"), description: t("aegis.stepDesignDesc") },
+    { step: t("aegis.stepImplement"), description: t("aegis.stepImplementDesc") },
+    { step: t("aegis.stepOperate"), description: t("aegis.stepOperateDesc") },
+    { step: t("aegis.stepEvolve"), description: t("aegis.stepEvolveDesc") },
+  ];
+
+  const enterpriseCapabilities = [
+    t("aegis.enterpriseCap1"),
+    t("aegis.enterpriseCap2"),
+    t("aegis.enterpriseCap3"),
+    t("aegis.enterpriseCap4"),
+  ];
+
+  const smbCapabilities = [
+    t("aegis.smbCap1"),
+    t("aegis.smbCap2"),
+    t("aegis.smbCap3"),
+    t("aegis.smbCap4"),
+  ];
+
+  const securityItems = [
+    t("aegis.secItem1"),
+    t("aegis.secItem2"),
+    t("aegis.secItem3"),
+    t("aegis.secItem4"),
+  ];
+
+  const complianceStandards = [
+    t("aegis.compStd1"),
+    t("aegis.compStd2"),
+    t("aegis.compStd3"),
+    t("aegis.compStd4"),
+  ];
+
+  const artifactModules = [
+    {
+      layer: t("aegis.layerGovernance"),
+      module: t("aegis.modPolicyCoreName"),
+      accentClass: "text-electric-400",
+      artifacts: [
+        t("aegis.modPolicyCoreArt1"),
+        t("aegis.modPolicyCoreArt2"),
+        t("aegis.modPolicyCoreArt3"),
+      ],
+    },
+    {
+      layer: t("aegis.layerSecurity"),
+      module: t("aegis.modShieldName"),
+      accentClass: "text-purple-400",
+      artifacts: [
+        t("aegis.modShieldArt1"),
+        t("aegis.modShieldArt2"),
+        t("aegis.modShieldArt3"),
+      ],
+    },
+    {
+      layer: t("aegis.layerIntelligence"),
+      module: t("aegis.modSignalName"),
+      accentClass: "text-indigo-400",
+      artifacts: [
+        t("aegis.modSignalArt1"),
+        t("aegis.modSignalArt2"),
+        t("aegis.modSignalArt3"),
+      ],
+    },
+    {
+      layer: t("aegis.layerExecution"),
+      module: t("aegis.modDeployName"),
+      accentClass: "text-cyan-400",
+      artifacts: [
+        t("aegis.modDeployArt1"),
+        t("aegis.modDeployArt2"),
+        t("aegis.modDeployArt3"),
+      ],
+    },
+    {
+      layer: t("aegis.layerOperations"),
+      module: t("aegis.modCadenceName"),
+      accentClass: "text-accent-green",
+      artifacts: [
+        t("aegis.modCadenceArt1"),
+        t("aegis.modCadenceArt2"),
+        t("aegis.modCadenceArt3"),
+      ],
+    },
+    {
+      layer: t("aegis.layerLeadership"),
+      module: t("aegis.modBriefName"),
+      accentClass: "text-accent-amber",
+      artifacts: [
+        t("aegis.modBriefArt1"),
+        t("aegis.modBriefArt2"),
+        t("aegis.modBriefArt3"),
+      ],
+    },
+  ];
+
+  const pricingTiers = [
+    {
+      name: t("aegis.tierDiagName"),
+      subtitle: t("aegis.tierDiagSubtitle"),
+      price: t("aegis.tierDiagPrice"),
+      priceNote: t("aegis.tierDiagPriceNote"),
+      features: [
+        t("aegis.tierDiagFeat1"),
+        t("aegis.tierDiagFeat2"),
+        t("aegis.tierDiagFeat3"),
+        t("aegis.tierDiagFeat4"),
+        t("aegis.tierDiagFeat5"),
+      ],
+      cta: t("aegis.tierDiagCta"),
+      source: "aegis-diagnostic",
+    },
+    {
+      name: t("aegis.tierCoreName"),
+      subtitle: t("aegis.tierCoreSubtitle"),
+      price: t("aegis.tierCorePrice"),
+      priceNote: t("aegis.tierCorePriceNote"),
+      featured: true,
+      features: [
+        t("aegis.tierCoreFeat1"),
+        t("aegis.tierCoreFeat2"),
+        t("aegis.tierCoreFeat3"),
+        t("aegis.tierCoreFeat4"),
+        t("aegis.tierCoreFeat5"),
+      ],
+      cta: t("aegis.tierCoreCta"),
+      source: "aegis-core",
+    },
+    {
+      name: t("aegis.tierEntName"),
+      subtitle: t("aegis.tierEntSubtitle"),
+      price: t("aegis.tierEntPrice"),
+      priceNote: t("aegis.tierEntPriceNote"),
+      features: [
+        t("aegis.tierEntFeat1"),
+        t("aegis.tierEntFeat2"),
+        t("aegis.tierEntFeat3"),
+        t("aegis.tierEntFeat4"),
+        t("aegis.tierEntFeat5"),
+      ],
+      cta: t("aegis.tierEntCta"),
+      source: "aegis-enterprise",
+    },
+    {
+      name: t("aegis.tierGovName"),
+      subtitle: t("aegis.tierGovSubtitle"),
+      price: t("aegis.tierGovPrice"),
+      priceNote: t("aegis.tierGovPriceNote"),
+      features: [
+        t("aegis.tierGovFeat1"),
+        t("aegis.tierGovFeat2"),
+        t("aegis.tierGovFeat3"),
+        t("aegis.tierGovFeat4"),
+      ],
+      cta: t("aegis.tierGovCta"),
+      source: "aegis-government",
+    },
+  ];
 
   return (
     <div className="grid-pattern">
@@ -147,7 +222,7 @@ export default function AEGISPage() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/contact"
+              href="/contact?service=aegis&source=aegis-hero"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
             >
               {t("aegis.ctaDiscovery")}
@@ -165,12 +240,13 @@ export default function AEGISPage() {
       {/* Six Layers */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Six Integrated Layers.{" "}
-          <span className="text-electric-400">One Operating System.</span>
+          {t("aegis.layersTitle")}{" "}
+          <span className="text-electric-400">
+            {t("aegis.layersTitleHighlight")}
+          </span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          AEGIS integrates governance, security, intelligence, execution,
-          operations, and leadership into a single cohesive framework.
+          {t("aegis.layersSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {sixLayers.map((layer) => (
@@ -188,12 +264,13 @@ export default function AEGISPage() {
       {/* How It Works */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          From Diagnosis to{" "}
-          <span className="text-electric-400">Operating System</span>
+          {t("aegis.howItWorksTitle")}{" "}
+          <span className="text-electric-400">
+            {t("aegis.howItWorksTitleHighlight")}
+          </span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
-          Five phases that take you from fragmented AI adoption to a governed,
-          scalable hybrid workforce.
+          {t("aegis.howItWorksSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-5">
           {steps.map((s, i) => (
@@ -211,17 +288,18 @@ export default function AEGISPage() {
       {/* Built for Two Markets */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Built for{" "}
-          <span className="text-electric-400">Two Markets</span>
+          {t("aegis.marketsTitle")}{" "}
+          <span className="text-electric-400">
+            {t("aegis.marketsTitleHighlight")}
+          </span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
-          Whether you run a 5,000-person enterprise or a 20-person professional
-          firm, AEGIS scales to your reality.
+          {t("aegis.marketsSubtitle")}
         </p>
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {/* Enterprise */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8">
-            <h3 className="text-xl font-bold">Enterprise &amp; Government</h3>
+            <h3 className="text-xl font-bold">{t("aegis.enterpriseTitle")}</h3>
             <ul className="mt-6 space-y-3">
               {enterpriseCapabilities.map((cap) => (
                 <li key={cap} className="flex items-start gap-3 text-sm text-slate-300">
@@ -231,12 +309,15 @@ export default function AEGISPage() {
               ))}
             </ul>
             <p className="mt-6 text-xs text-slate-400">
-              Entry: <strong className="text-electric-400">$75K+ diagnostic &amp; implementation</strong>
+              {t("aegis.enterpriseEntry")}{" "}
+              <strong className="text-electric-400">
+                {t("aegis.enterpriseEntryValue")}
+              </strong>
             </p>
           </div>
           {/* SMB */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8">
-            <h3 className="text-xl font-bold">SMB &amp; Professional Firms</h3>
+            <h3 className="text-xl font-bold">{t("aegis.smbTitle")}</h3>
             <ul className="mt-6 space-y-3">
               {smbCapabilities.map((cap) => (
                 <li key={cap} className="flex items-start gap-3 text-sm text-slate-300">
@@ -246,7 +327,10 @@ export default function AEGISPage() {
               ))}
             </ul>
             <p className="mt-6 text-xs text-slate-400">
-              Entry: <strong className="text-electric-400">$15K diagnostic &amp; implementation</strong>
+              {t("aegis.enterpriseEntry")}{" "}
+              <strong className="text-electric-400">
+                {t("aegis.smbEntryValue")}
+              </strong>
             </p>
           </div>
         </div>
@@ -256,21 +340,10 @@ export default function AEGISPage() {
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold">
-              Security, Trust &amp; Resilience &mdash; Built In, Not Bolted On
-            </h2>
-            <p className="mt-4 text-slate-400">
-              Every AEGIS deployment includes a resilience framework &mdash;
-              continuity planning, threat monitoring, and incident response
-              protocols designed for hybrid human + AI operations.
-            </p>
+            <h2 className="text-3xl font-bold">{t("aegis.securityTitle")}</h2>
+            <p className="mt-4 text-slate-400">{t("aegis.securitySubtitle")}</p>
             <div className="mt-6 grid grid-cols-2 gap-4">
-              {[
-                "End-to-End Encryption",
-                "Data Protection",
-                "Threat Monitoring",
-                "Incident Response",
-              ].map((item) => (
+              {securityItems.map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-slate-300">
                   <span className="text-accent-green">&#128274;</span>
                   {item}
@@ -280,14 +353,13 @@ export default function AEGISPage() {
           </div>
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold">Compliance Standards</h3>
+              <h3 className="text-lg font-bold">{t("aegis.complianceTitle")}</h3>
               <span className="rounded-full bg-electric-500 px-3 py-1 text-xs font-bold text-white">
-                Enterprise Ready
+                {t("aegis.enterpriseReady")}
               </span>
             </div>
             <p className="mt-2 text-sm text-slate-400">
-              Designed to support organizations operating under strict
-              regulatory frameworks.
+              {t("aegis.complianceSubtitle")}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {complianceStandards.map((std) => (
@@ -303,19 +375,62 @@ export default function AEGISPage() {
         </div>
       </section>
 
+      {/* What You Get — 18 Named Artifacts */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          {t("aegis.artifactsTitle")}{" "}
+          <span className="text-electric-400">
+            {t("aegis.artifactsTitleHighlight")}
+          </span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
+          {t("aegis.artifactsSubtitle")}
+        </p>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {artifactModules.map((mod) => (
+            <div
+              key={mod.module}
+              className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6 transition-all hover:border-slate-700"
+            >
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                {mod.layer}
+              </p>
+              <h3 className={`mt-1 text-lg font-bold ${mod.accentClass}`}>
+                {mod.module}
+              </h3>
+              <ul className="mt-4 space-y-2">
+                {mod.artifacts.map((a) => (
+                  <li
+                    key={a}
+                    className="flex items-start gap-2 text-sm text-slate-300"
+                  >
+                    <span className="mt-0.5 text-accent-green">&#10003;</span>
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-slate-400">
+          {t("aegis.artifactsFooter")}
+        </p>
+      </section>
+
       {/* Pricing */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          AEGIS &mdash;{" "}
-          <span className="text-electric-400">Engagement Pricing</span>
+          {t("aegis.pricingTitle")}
         </h2>
         <p className="mx-auto mt-2 font-semibold text-electric-400 text-center">
-          Clear Value. Governed Scale. Enterprise-Ready.
+          {t("aegis.pricingTagline")}
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-slate-400">
-          AEGIS engagements are scoped to your organization&apos;s size,
-          complexity, and regulatory requirements. Every engagement starts with
-          a discovery call to determine the right fit.
+          {t("aegis.pricingSubtitlePart1")}
+          <span className="text-slate-200">
+            {t("aegis.pricingSubtitleEmphasis")}
+          </span>
+          {t("aegis.pricingSubtitlePart2")}
         </p>
 
         {/* Tier Cards */}
@@ -331,7 +446,7 @@ export default function AEGISPage() {
             >
               {tier.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-electric-500 px-4 py-1 text-xs font-bold text-white">
-                  FEATURED
+                  {t("aegis.featured")}
                 </div>
               )}
               <h3 className="text-base font-bold">{tier.name}</h3>
@@ -359,7 +474,7 @@ export default function AEGISPage() {
               </ul>
 
               <Link
-                href="/contact"
+                href={`/contact?service=aegis&source=${tier.source}`}
                 className={`mt-6 block rounded-lg py-2.5 text-center text-sm font-semibold transition ${
                   tier.featured
                     ? "bg-electric-500 text-white hover:bg-electric-600"
@@ -376,23 +491,21 @@ export default function AEGISPage() {
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold md:text-4xl">
-          Ready to See What AEGIS Looks Like for Your Organization?
+          {t("aegis.ctaTitle")}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">
-          Start with a 30-minute discovery call. No pitch deck, no pressure
-          &mdash; just a candid conversation about where your organization
-          stands and whether AEGIS is the right fit.
+          {t("aegis.ctaSubtitle")}
         </p>
         <Link
-          href="/contact"
+          href="/contact?service=aegis&source=aegis-final"
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
-          Request a Discovery Call
+          {t("aegis.ctaDiscovery")}
         </Link>
         <p className="mt-3 text-xs text-slate-400">
-          Or{" "}
+          {t("aegis.orText")}{" "}
           <Link href="/assess" className="text-electric-400 underline hover:text-electric-300">
-            take the free AI Readiness Assessment first
+            {t("aegis.ctaAssessLink")}
           </Link>
           .
         </p>
