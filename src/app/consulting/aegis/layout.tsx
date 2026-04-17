@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const PAGE_URL = "https://techfides.com/consulting/aegis";
 const TITLE = "AEGIS | AI Governance Operating System for Mid-Market Companies";
 const DESCRIPTION =
-  "AEGIS installs a governed AI operating model in 90 days — 18 named artifacts, fixed-scope engagements from $15K, and a managed-governance retainer. Built for mid-market and professional firms in DFW and beyond.";
+  "AEGIS installs a governed AI operating model in 90 days — 18 named artifacts, fixed-scope engagements from $15K, and a managed-governance retainer. Built for mid-market companies, professional firms, and regulated enterprises.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -13,19 +13,24 @@ export const metadata: Metadata = {
     "AI governance",
     "AI governance consulting",
     "AI governance operating model",
+    "AI governance framework",
+    "AI governance for mid-market",
+    "AI governance for enterprise",
+    "AI governance for regulated industries",
+    "AI governance for professional services",
+    "AI governance for healthcare",
+    "AI governance for financial services",
     "AI readiness assessment",
     "AI acceptable use policy",
     "AI risk register",
     "shadow AI inventory",
     "NIST AI RMF consulting",
     "managed AI governance",
-    "mid-market AI adoption",
-    "AI governance Dallas Fort Worth",
-    "AI governance for professional services",
-    "hybrid workforce operating model",
-    "AI governance framework",
-    "enterprise AI operating system",
     "AI compliance consulting",
+    "hybrid workforce operating model",
+    "enterprise AI operating system",
+    "AI governance United States",
+    "AI governance North America",
   ],
   alternates: {
     canonical: PAGE_URL,
@@ -89,11 +94,14 @@ const serviceJsonLd = {
     name: "TechFides",
     url: "https://techfides.com",
     areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "Mexico" },
+      { "@type": "Country", name: "Gabon" },
+      { "@type": "AdministrativeArea", name: "Texas" },
       { "@type": "City", name: "Dallas" },
       { "@type": "City", name: "Fort Worth" },
       { "@type": "City", name: "Frisco" },
-      { "@type": "AdministrativeArea", name: "Texas" },
-      { "@type": "Country", name: "United States" },
     ],
   },
   audience: {
