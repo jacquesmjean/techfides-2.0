@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useI18n } from "@/i18n";
 
 const industries = [
@@ -43,6 +44,7 @@ const offices = [
 
 export default function ContactPage() {
   const { t } = useI18n();
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,8 +55,21 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-
   const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    const service = searchParams.get("service");
+    const source = searchParams.get("source");
+    if (service && services.some((s) => s.value === service)) {
+      setFormData((prev) => ({ ...prev, service }));
+    }
+    if (source) {
+      setFormData((prev) => ({
+        ...prev,
+        message: prev.message || `[Source: ${source}]\n`,
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
