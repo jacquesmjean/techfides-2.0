@@ -5,23 +5,43 @@ import { useSearchParams } from "next/navigation";
 import { useI18n } from "@/i18n";
 
 const industries = [
-  { value: "", label: "Select your industry" },
-  { value: "legal", label: "Legal" },
-  { value: "medical", label: "Medical" },
-  { value: "auto", label: "Auto" },
-  { value: "trades", label: "Trades" },
-  { value: "other", label: "Other" },
+  { value: "", labelKey: "contact.selectIndustry" },
+  { value: "legal", labelKey: "contact.industryLegal" },
+  { value: "healthcare", labelKey: "contact.industryHealthcare" },
+  { value: "financial-services", labelKey: "contact.industryFinancial" },
+  { value: "professional-services", labelKey: "contact.industryProfessional" },
+  { value: "technology", labelKey: "contact.industryTechnology" },
+  { value: "manufacturing", labelKey: "contact.industryManufacturing" },
+  { value: "retail", labelKey: "contact.industryRetail" },
+  { value: "education", labelKey: "contact.industryEducation" },
+  { value: "energy-utilities", labelKey: "contact.industryEnergy" },
+  { value: "automotive", labelKey: "contact.industryAuto" },
+  { value: "trades-construction", labelKey: "contact.industryTrades" },
+  { value: "nonprofit", labelKey: "contact.industryNonprofit" },
+  { value: "government", labelKey: "contact.industryGovernment" },
+  { value: "other", labelKey: "contact.industryOther" },
+];
+
+const companySizes = [
+  { value: "", labelKey: "contact.sizeSelect" },
+  { value: "solo-micro", labelKey: "contact.sizeSoloMicro" },
+  { value: "small", labelKey: "contact.sizeSmall" },
+  { value: "mid-market", labelKey: "contact.sizeMidMarket" },
+  { value: "large", labelKey: "contact.sizeLarge" },
+  { value: "enterprise", labelKey: "contact.sizeEnterprise" },
+  { value: "government", labelKey: "contact.sizeGovernment" },
+  { value: "nonprofit", labelKey: "contact.sizeNonprofit" },
 ];
 
 const services = [
-  { value: "", label: "Select a service" },
-  { value: "silver", label: "Silver" },
-  { value: "gold", label: "Gold" },
-  { value: "platinum", label: "Platinum" },
-  { value: "ai-readiness-360", label: "AI Readiness 360" },
-  { value: "aegis", label: "AEGIS" },
-  { value: "consulting", label: "Consulting" },
-  { value: "other", label: "Other" },
+  { value: "", labelKey: "contact.selectService" },
+  { value: "aegis", labelKey: "contact.serviceAegis" },
+  { value: "ai-readiness-360", labelKey: "contact.serviceAi360" },
+  { value: "consulting", labelKey: "contact.serviceConsulting" },
+  { value: "silver", labelKey: "contact.serviceSilver" },
+  { value: "gold", labelKey: "contact.serviceGold" },
+  { value: "platinum", labelKey: "contact.servicePlatinum" },
+  { value: "other", labelKey: "contact.serviceOther" },
 ];
 
 const offices = [
@@ -50,6 +70,7 @@ export default function ContactPage() {
     email: "",
     company: "",
     phone: "",
+    companySize: "",
     industry: "",
     service: "",
     message: "",
@@ -220,10 +241,35 @@ export default function ContactPage() {
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label
+                      htmlFor="contact-company-size"
+                      className="block text-sm font-medium text-slate-300"
+                    >
+                      {t("contact.companySizeLabel")}{" "}
+                      <span className="text-electric-400">*</span>
+                    </label>
+                    <select
+                      id="contact-company-size"
+                      required
+                      value={formData.companySize}
+                      onChange={(e) =>
+                        setFormData({ ...formData, companySize: e.target.value })
+                      }
+                      className={inputClasses}
+                    >
+                      {companySizes.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {t(opt.labelKey)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label
                       htmlFor="contact-industry"
                       className="block text-sm font-medium text-slate-300"
                     >
-                      Industry <span className="text-electric-400">*</span>
+                      {t("contact.industryLabel")}{" "}
+                      <span className="text-electric-400">*</span>
                     </label>
                     <select
                       id="contact-industry"
@@ -236,35 +282,36 @@ export default function ContactPage() {
                     >
                       {industries.map((opt) => (
                         <option key={opt.value} value={opt.value}>
-                          {opt.label}
+                          {t(opt.labelKey)}
                         </option>
                       ))}
                     </select>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="contact-service"
-                      className="block text-sm font-medium text-slate-300"
-                    >
-                      Service Interest{" "}
-                      <span className="text-electric-400">*</span>
-                    </label>
-                    <select
-                      id="contact-service"
-                      required
-                      value={formData.service}
-                      onChange={(e) =>
-                        setFormData({ ...formData, service: e.target.value })
-                      }
-                      className={inputClasses}
-                    >
-                      {services.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-service"
+                    className="block text-sm font-medium text-slate-300"
+                  >
+                    {t("contact.serviceLabel")}{" "}
+                    <span className="text-electric-400">*</span>
+                  </label>
+                  <select
+                    id="contact-service"
+                    required
+                    value={formData.service}
+                    onChange={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }
+                    className={inputClasses}
+                  >
+                    {services.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {t(opt.labelKey)}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
