@@ -1,0 +1,156 @@
+/* =============================================================
+   AEGIS artifact print stylesheet
+   Loaded only by the /aegis subtree. Engages on window.print().
+   Converts the dark on-screen document to a board-ready,
+   letter-size PDF with page numbers and classification footer.
+   ============================================================= */
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.85in 0.85in 1in 0.85in;
+  }
+
+  /* Force light surfaces for print legibility + ink efficiency */
+  html,
+  body,
+  .artifact-shell,
+  .artifact-document {
+    background: #ffffff !important;
+    color: #0a0f1a !important;
+  }
+
+  /* Hide app chrome and screen-only UI */
+  .artifact-toolbar,
+  header nav,
+  footer[class*="site"],
+  .artifact-cover + *[hidden],
+  [data-screen-only] {
+    display: none !important;
+  }
+
+  /* Cover takes full page */
+  .artifact-cover {
+    page-break-after: always;
+    border-color: #0a0f1a !important;
+  }
+
+  /* Primary document typography */
+  .artifact-document h1 {
+    color: #0a0f1a !important;
+    font-size: 28pt;
+    line-height: 1.15;
+  }
+  .artifact-document h2 {
+    color: #0a0f1a !important;
+    font-size: 18pt;
+    line-height: 1.2;
+    page-break-after: avoid;
+  }
+  .artifact-document h3 {
+    color: #0a0f1a !important;
+    font-size: 13pt;
+    page-break-after: avoid;
+  }
+  .artifact-document p,
+  .artifact-document li,
+  .artifact-document dd,
+  .artifact-document td {
+    color: #1c2431 !important;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+  .artifact-document dt,
+  .artifact-document th {
+    color: #0a0f1a !important;
+  }
+
+  /* Section numbering keeps accent */
+  .artifact-section {
+    page-break-inside: avoid;
+  }
+  .artifact-page-break {
+    page-break-before: always;
+  }
+  .artifact-section header {
+    border-left-color: #0ea5e9 !important;
+  }
+  .artifact-section header span.font-mono {
+    color: #0284c7 !important;
+  }
+
+  /* Guidance callouts: visible but softer */
+  .artifact-callout {
+    background: #fff7ed !important;
+    border-color: #f59e0b !important;
+  }
+  .artifact-callout p {
+    color: #92400e !important;
+  }
+
+  /* Placeholders: clear but unobtrusive */
+  .artifact-placeholder {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+  }
+
+  /* Regulatory tags: grayscale-safe */
+  .artifact-regulatory-tags span {
+    background: #f1f5f9 !important;
+    border-color: #64748b !important;
+    color: #0f172a !important;
+  }
+
+  /* Tables */
+  .artifact-document table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: auto;
+  }
+  .artifact-document tr {
+    page-break-inside: avoid;
+  }
+  .artifact-document th,
+  .artifact-document td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6pt 8pt;
+    text-align: left;
+  }
+  .artifact-document thead th {
+    background: #f1f5f9 !important;
+  }
+
+  /* Maturity score chips */
+  .artifact-score-chip {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #94a3b8 !important;
+  }
+
+  /* Borders become subtle ink lines */
+  .artifact-document [class*="border-slate-800"],
+  .artifact-document [class*="border-slate-700"],
+  .artifact-document [class*="border-t"],
+  .artifact-document [class*="border-b"] {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Footer shows on every printed page via page margin box */
+  .artifact-footer {
+    color: #475569 !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Links: keep but no underline fog */
+  a {
+    color: #0369a1 !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Screen-only helpers */
+@media screen {
+  .artifact-print-only {
+    display: none;
+  }
+}
