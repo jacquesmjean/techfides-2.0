@@ -73,7 +73,8 @@ const modules: ModuleEntry[] = [
       {
         number: "3.1",
         title: "AI Inventory Dashboard",
-        phase: 3,
+        slug: "ai-inventory-dashboard",
+        phase: 1,
       },
       {
         number: "3.2",
@@ -84,7 +85,8 @@ const modules: ModuleEntry[] = [
       {
         number: "3.3",
         title: "Value & Spend Tracker",
-        phase: 3,
+        slug: "value-spend-tracker",
+        phase: 1,
       },
     ],
   },
@@ -96,17 +98,20 @@ const modules: ModuleEntry[] = [
       {
         number: "4.1",
         title: "Governed Workflow Automations",
-        phase: 3,
+        slug: "governed-workflows",
+        phase: 1,
       },
       {
         number: "4.2",
         title: "Prompt & Template Library",
-        phase: 3,
+        slug: "prompt-template-library",
+        phase: 1,
       },
       {
         number: "4.3",
         title: "SOP Updates for AI-Assisted Work",
-        phase: 3,
+        slug: "sop-updates",
+        phase: 1,
       },
     ],
   },
