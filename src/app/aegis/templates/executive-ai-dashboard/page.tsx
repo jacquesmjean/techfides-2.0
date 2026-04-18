@@ -239,8 +239,8 @@ export default function ExecutiveAiDashboardPage() {
                 ["Approve T3 autonomy for WF-05 (support triage)", "CEO + CISO", "AI Governance Lead", "Next QGR", "Approve with 90-day review"],
                 ["Retire M-02 prompt library entries v<1.3", "AI Governance Lead", "Builder cohort", "30 days", "Approve retirement"],
                 ["Increase envelope for Value Initiative V-03 by $80k", "CFO", "Exec Sponsor", "Next QGR", "Approve with scale gates"],
-                [<Placeholder key="d1">[Decision 4]</Placeholder>, <Placeholder key="o1">[Owner]</Placeholder>, <Placeholder key="b1">[Brought by]</Placeholder>, <Placeholder key="by1">YYYY-MM-DD</Placeholder>, <Placeholder key="r1">[Recommendation]</Placeholder>],
-                [<Placeholder key="d2">[Decision 5]</Placeholder>, <Placeholder key="o2">[Owner]</Placeholder>, <Placeholder key="b2">[Brought by]</Placeholder>, <Placeholder key="by2">YYYY-MM-DD</Placeholder>, <Placeholder key="r2">[Recommendation]</Placeholder>],
+                [<Placeholder key="d1">Decision 4</Placeholder>, <Placeholder key="o1">Owner</Placeholder>, <Placeholder key="b1">Brought by</Placeholder>, <Placeholder key="by1">YYYY-MM-DD</Placeholder>, <Placeholder key="r1">Recommendation</Placeholder>],
+                [<Placeholder key="d2">Decision 5</Placeholder>, <Placeholder key="o2">Owner</Placeholder>, <Placeholder key="b2">Brought by</Placeholder>, <Placeholder key="by2">YYYY-MM-DD</Placeholder>, <Placeholder key="r2">Recommendation</Placeholder>],
               ].map((row, i) => (
                 <tr key={i} className="border-b border-navy-800 align-top">
                   {row.map((cell, j) => (

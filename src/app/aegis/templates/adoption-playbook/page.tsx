@@ -141,17 +141,17 @@ export default function AdoptionPlaybookPage() {
             <tbody className="text-navy-100">
               {[
                 ["Workflow ID", <Placeholder key="wf">WF-00</Placeholder>, "Match the ID assigned in Artifact 4.1."],
-                ["Workflow Name", <Placeholder key="name">[Workflow name]</Placeholder>, "Human-readable, matches SOP overlay in 4.3."],
-                ["Function / Team", <Placeholder key="fn">[Function]</Placeholder>, "Primary team running the workflow."],
-                ["In-Scope User Count", <Placeholder key="users">[N]</Placeholder>, "Total users expected to run this workflow at steady state."],
-                ["Adoption Lead", <Placeholder key="lead">[Name]</Placeholder>, "Accountable for moving the workflow through all five stages."],
-                ["Baseline Metric", <Placeholder key="base">[Metric + value]</Placeholder>, "Cycle time, error rate, throughput, etc. measured before launch."],
-                ["Target Metric (Week 12)", <Placeholder key="target">[Metric + value]</Placeholder>, "What \u201cworking\u201d looks like at end of Embed."],
+                ["Workflow Name", <Placeholder key="name">Workflow name</Placeholder>, "Human-readable, matches SOP overlay in 4.3."],
+                ["Function / Team", <Placeholder key="fn">Function</Placeholder>, "Primary team running the workflow."],
+                ["In-Scope User Count", <Placeholder key="users">N</Placeholder>, "Total users expected to run this workflow at steady state."],
+                ["Adoption Lead", <Placeholder key="lead">Name</Placeholder>, "Accountable for moving the workflow through all five stages."],
+                ["Baseline Metric", <Placeholder key="base">Metric + value</Placeholder>, "Cycle time, error rate, throughput, etc. measured before launch."],
+                ["Target Metric (Week 12)", <Placeholder key="target">Metric + value</Placeholder>, "What \u201cworking\u201d looks like at end of Embed."],
                 ["Launch Date", <Placeholder key="launch">YYYY-MM-DD</Placeholder>, "Day 0. Awareness starts 2 weeks prior."],
-                ["Current Stage", <Placeholder key="stage">[Stage]</Placeholder>, "Updated weekly by Adoption Lead."],
+                ["Current Stage", <Placeholder key="stage">Stage</Placeholder>, "Updated weekly by Adoption Lead."],
                 ["Exit Criteria Met", <Placeholder key="exit">Yes / No</Placeholder>, "Current stage exit criterion — binary check."],
-                ["Drop-off Triggers", <Placeholder key="drop">[Conditions]</Placeholder>, "If X happens, escalate to Function Head + AI Governance Lead within 24h."],
-                ["Retire / Hold / Scale Decision", <Placeholder key="rhs">[Decision]</Placeholder>, "Made at QGR based on trajectory. Never left undecided past Week 12."],
+                ["Drop-off Triggers", <Placeholder key="drop">Conditions</Placeholder>, "If X happens, escalate to Function Head + AI Governance Lead within 24h."],
+                ["Retire / Hold / Scale Decision", <Placeholder key="rhs">Decision</Placeholder>, "Made at QGR based on trajectory. Never left undecided past Week 12."],
               ].map(([field, value, guidance], i) => (
                 <tr key={i} className="border-b border-navy-800 align-top">
                   <td className="py-3 pr-4 font-semibold text-white">{field}</td>

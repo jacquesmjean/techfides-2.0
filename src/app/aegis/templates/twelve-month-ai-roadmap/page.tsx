@@ -126,17 +126,17 @@ export default function TwelveMonthAiRoadmapPage() {
             <tbody className="text-navy-100">
               {[
                 ["Item ID", <Placeholder key="id">RM-000</Placeholder>, "Stable identifier for the life of the item."],
-                ["Title", <Placeholder key="t">[Title]</Placeholder>, "Outcome-phrased, not activity-phrased."],
+                ["Title", <Placeholder key="t">Title</Placeholder>, "Outcome-phrased, not activity-phrased."],
                 ["Category", <Placeholder key="c">Governance / Enablement / Workflow / Platform / Compliance</Placeholder>, "One category only. Forces sharper framing."],
                 ["Horizon", <Placeholder key="h">Now / Next / Later</Placeholder>, "Set and defended at QGR."],
-                ["Owner", <Placeholder key="o">[Name]</Placeholder>, "Single name. Accountable, not advisory."],
-                ["Sponsor", <Placeholder key="s">[Name]</Placeholder>, "Executive who clears blockers and reports at QGR."],
-                ["Outcome", <Placeholder key="oc">[Observable change]</Placeholder>, "What is true after this item is done. Measurable where possible."],
-                ["Value Hypothesis", <Placeholder key="vh">[Value type + estimate + confidence]</Placeholder>, "From Value & Spend framework (3.3)."],
-                ["Prerequisites", <Placeholder key="pre">[Upstream items / artifacts]</Placeholder>, "Explicit chains. No hidden dependencies."],
-                ["Risk Exposure", <Placeholder key="r">[High/Med/Low + top risk]</Placeholder>, "From Risk Register (2.3). Very High requires Exec Sponsor approval to enter Now."],
-                ["Decision Gates", <Placeholder key="dg">[Go/no-go checkpoints]</Placeholder>, "Pre-declared, not improvised."],
-                ["Stop Condition", <Placeholder key="stop">[What would make us kill this]</Placeholder>, "Every Now item has a stop condition. This is non-negotiable."],
+                ["Owner", <Placeholder key="o">Name</Placeholder>, "Single name. Accountable, not advisory."],
+                ["Sponsor", <Placeholder key="s">Name</Placeholder>, "Executive who clears blockers and reports at QGR."],
+                ["Outcome", <Placeholder key="oc">Observable change</Placeholder>, "What is true after this item is done. Measurable where possible."],
+                ["Value Hypothesis", <Placeholder key="vh">Value type + estimate + confidence</Placeholder>, "From Value & Spend framework (3.3)."],
+                ["Prerequisites", <Placeholder key="pre">Upstream items / artifacts</Placeholder>, "Explicit chains. No hidden dependencies."],
+                ["Risk Exposure", <Placeholder key="r">High/Med/Low + top risk</Placeholder>, "From Risk Register (2.3). Very High requires Exec Sponsor approval to enter Now."],
+                ["Decision Gates", <Placeholder key="dg">Go/no-go checkpoints</Placeholder>, "Pre-declared, not improvised."],
+                ["Stop Condition", <Placeholder key="stop">What would make us kill this</Placeholder>, "Every Now item has a stop condition. This is non-negotiable."],
               ].map(([field, value, guidance], i) => (
                 <tr key={i} className="border-b border-navy-800 align-top">
                   <td className="py-3 pr-4 font-semibold text-white">{field}</td>
