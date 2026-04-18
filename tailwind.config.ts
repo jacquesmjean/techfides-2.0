@@ -9,7 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // TechFides "Sovereign Tech" palette
+        // TechFides Official Brand Palette
+        brand: {
+          primary: "#00AEEF",    // Primary Blue — buttons, links, accents
+          dark: "#003F6B",       // Dark Blue — headings, nav
+          light: "#F5F7FA",      // Light Gray — backgrounds
+          black: "#000000",      // Body text
+        },
+        // TechFides "Sovereign Tech" palette (dark theme)
         slate: {
           950: "#0a0f1a",
         },
@@ -30,6 +37,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-montserrat)", "var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "monospace"],
       },
     },

@@ -896,3 +896,210 @@ enum TicketStatus {
   RESOLVED
   CLOSED
 }
+
+// ============================================================
+// AI 360 READINESS ASSESSMENT PLATFORM
+// ============================================================
+
+model AI360Assessment {
+  id          String              @id @default(cuid())
+  name        String              // e.g. "Acme Corp AI Readiness Assessment"
+  orgName     String              // client organization name
+  orgIndustry Vertical            @default(OTHER)
+  status      AI360Status         @default(DRAFT)
+
+  // Access
+  accessToken String              @unique @default(cuid()) // unique link token
+  createdById String?             // TechFides user who created it
+  leadId      String?             // linked to pipeline lead
+
+  // Scoring (populated after analysis)
+  overallScore    Float?
+  maturityLevel   AI360Maturity?
+  scoringSnapshot Json?            // full scoring breakdown at time of publish
+
+  // Narrative (populated by analyst/reviewer)
+  executiveSummary  String?        @db.Text
+  narrativeSummary  String?        @db.Text
+  opportunityMap    Json?          // { categories: [...] }
+  keyRisks          Json?          // [{ severity, title, description, mitigation }]
+  priorityMatrix    Json?          // [{ priority, title, effort, impact }]
+
+  // Timestamps
+  submittedAt  DateTime?
+  analyzedAt   DateTime?
+  publishedAt  DateTime?
+
+  // Relations
+  responses    AI360Response[]
+  evidence     AI360Evidence[]
+  documents    AI360Document[]
+  members      AI360Member[]
+  comments     AI360Comment[]
+  activities   AI360Activity[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([accessToken])
+  @@index([createdById])
+}
+
+enum AI360Status {
+  DRAFT
+  SUBMITTED
+  ANALYZING
+  PUBLISHED
+}
+
+enum AI360Maturity {
+  LEADING     // 80-100
+  ADVANCING   // 60-79
+  DEVELOPING  // 40-59
+  EMERGING    // 20-39
+  NASCENT     // 0-19
+}
+
+model AI360Response {
+  id            String @id @default(cuid())
+  assessmentId  String
+  questionId    String    // references question from static data
+  domain        AI360Domain
+  responderId   String?   // AI360Member id
+  responderName String?
+  responderRole String?
+
+  // Answer
+  selectedOption Int?     // 1-5 scale index
+  score          Float?   // weighted score for this response
+  notes          String?  @db.Text
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([assessmentId, questionId, responderId])
+  @@index([assessmentId])
+  @@index([domain])
+}
+
+enum AI360Domain {
+  STRATEGY_LEADERSHIP
+  DATA_INFRASTRUCTURE
+  TECHNOLOGY_ARCHITECTURE
+  OPERATIONS_PROCESSES
+  GOVERNANCE_RISK
+  PEOPLE_CULTURE
+}
+
+model AI360Evidence {
+  id           String @id @default(cuid())
+  assessmentId String
+  questionId   String?   // optional link to specific question
+  domain       AI360Domain
+  title        String
+  description  String    @db.Text
+  sourceType   String    // "system_screenshot", "metrics_export", "configuration", "documentation"
+  sourceUrl    String?
+  verified     Boolean   @default(false)
+  verifiedBy   String?
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([assessmentId])
+  @@index([domain])
+}
+
+model AI360Document {
+  id           String @id @default(cuid())
+  assessmentId String
+  fileName     String
+  fileSize     Int
+  mimeType     String
+  category     AI360DocCategory
+  description  String?    @db.Text
+  uploadedById String?    // AI360Member id
+  uploaderName String?
+  storageKey   String     // S3/local path
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([assessmentId])
+  @@index([category])
+}
+
+enum AI360DocCategory {
+  STRATEGY
+  PROCESS
+  ARCHITECTURE
+  POLICY
+  OTHER
+}
+
+model AI360Member {
+  id           String @id @default(cuid())
+  assessmentId String
+  email        String
+  name         String
+  role         AI360Role
+  invitedAt    DateTime  @default(now())
+  acceptedAt   DateTime?
+  accessToken  String    @unique @default(cuid())
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@unique([assessmentId, email])
+  @@index([assessmentId])
+  @@index([accessToken])
+}
+
+enum AI360Role {
+  CLIENT_ADMIN
+  CONTRIBUTOR
+  ANALYST
+  REVIEWER
+}
+
+model AI360Comment {
+  id           String @id @default(cuid())
+  assessmentId String
+  questionId   String?   // optional — if null, it's a general assessment comment
+  authorName   String
+  authorEmail  String?
+  authorRole   String?   // "CLIENT_ADMIN", "ANALYST", etc.
+  body         String    @db.Text
+  parentId     String?   // for threaded replies
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([assessmentId])
+  @@index([questionId])
+  @@index([parentId])
+}
+
+model AI360Activity {
+  id           String @id @default(cuid())
+  assessmentId String
+  actorName    String
+  actorRole    String?
+  action       String     // "responded", "commented", "uploaded", "verified", "status_changed", etc.
+  target       String?    // question ID, document name, status name
+  detail       String?    @db.Text
+  metadata     Json?
+
+  assessment AI360Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([assessmentId])
+  @@index([createdAt])
+}

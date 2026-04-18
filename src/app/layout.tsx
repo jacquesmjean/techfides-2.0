@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { LayoutShell } from "@/components/LayoutShell";
@@ -9,6 +9,13 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+  weight: ["400", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -135,7 +142,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

@@ -20,6 +20,16 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
+  // AI 360 routes — require session (except invite links which use token-based access)
+  if (pathname.startsWith("/ai360") && !pathname.startsWith("/ai360/invite")) {
+    if (!req.auth) {
+      const loginUrl = new URL("/login", req.url);
+      loginUrl.searchParams.set("callbackUrl", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+    return NextResponse.next();
+  }
+
   // Velocity Engine API routes — allow session OR API key
   if (pathname.startsWith("/api/v1")) {
     if (req.auth) return NextResponse.next();
@@ -27,6 +37,11 @@ export default auth((req) => {
     const authHeader = req.headers.get("authorization");
     const apiKey = process.env.VELOCITY_API_KEY;
     if (apiKey && authHeader === `Bearer ${apiKey}`) {
+      return NextResponse.next();
+    }
+
+    // Allow AI 360 invite endpoints without auth (token-based)
+    if (pathname.startsWith("/api/v1/ai360/invite/")) {
       return NextResponse.next();
     }
 
@@ -40,5 +55,5 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/gse/:path*", "/api/v1/:path*"],
+  matcher: ["/gse/:path*", "/ai360/:path*", "/api/v1/:path*"],
 };
