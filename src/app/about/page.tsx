@@ -84,9 +84,9 @@ export default function AboutPage() {
     },
     {
       icon: "\uD83D\uDCB0",
-      title: "Radical Transparency",
+      title: "Published Pricing",
       description:
-        "No hidden fees. No \u201Ccall for quote.\u201D Our pricing is published because enterprise clients deserve to plan without surprises.",
+        "Every plan is on the pricing page with the monthly price, what's included, and what it costs if you go over. Plan your AI spend like you plan anything else.",
     },
     {
       icon: "\uD83C\uDF0D",

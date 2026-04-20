@@ -122,16 +122,21 @@ export async function analyzeRevenue(): Promise<{
 
     // Clients with high ticket volume = might need higher tier
     const highTicketClients = clientsWithTickets.filter((c) => c._count.tickets >= 5);
+    // TODO(schema-migration): client.tier values are still the old Silver/Gold/Platinum
+    // strings in the DB. When the Prisma schema is updated to the new Starter/Growth/
+    // Scale/Enterprise subscription tiers, update this upgrade path and the mapping
+    // in the `action` string below. Tracked in Projects/TechFides-Site-Rebuild/Build-Decisions.md.
     for (const client of highTicketClients) {
       if (client.tier !== "Platinum") {
+        const nextTier = client.tier === "Silver" ? "Growth" : "Scale";
         insights.push({
           id: `upsell-heavy-user-${client.id}`,
           type: "upsell",
           severity: "low",
           title: `${client.companyName} has ${client._count.tickets} tickets — consider tier upgrade`,
-          description: `High support usage suggests growing AI dependency. Perfect candidate for dedicated support at a higher tier.`,
+          description: `High support usage suggests growing AI dependency. Candidate for a higher-tier subscription with more agent-hours and priority support.`,
           estimatedImpact: 1000 * 12,
-          action: `Propose ${client.tier === "Silver" ? "Gold" : "Platinum"} upgrade with dedicated support engineer.`,
+          action: `Propose ${nextTier} subscription with Priority Support add-on.`,
         });
       }
     }

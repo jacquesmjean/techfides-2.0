@@ -139,10 +139,19 @@ PROSPECT DATA:
 - Decision Style: ${decisionStyle}
 
 TECHFIDES SERVICES:
-- Private AI: Deploy Llama/Mistral/Phi on client hardware ($5K-$15K+ setup, $500-$2,500+/mo)
-- AI 360 Assessment: Diagnose AI readiness gaps ($45K-$85K)
-- AEGIS: Intelligence operating system for hybrid workforce ($75K-$750K+)
-- Transformation Management: Full digital transformation ($50K-$350K)
+- Private AI (subscription, hardware included, cancel anytime):
+  - Starter $1,299/mo, 20 agent-hours (small practices / offices)
+  - Growth $2,299/mo, 40 agent-hours (mid-size firms)
+  - Scale $3,999/mo, 80 agent-hours (heavier production workloads)
+  - Enterprise $6,999/mo, 160 agent-hours (AI as core infrastructure)
+- AI 360 Assessment (consulting engagement, SOW-based): Diagnose AI readiness gaps ($45K-$85K)
+- AEGIS (consulting engagement with governance retainer): Intelligence operating system for hybrid workforce ($75K-$750K+)
+- Transformation Management (consulting engagement, SOW-based): Full digital transformation ($50K-$350K)
+
+LANGUAGE RULES (strict):
+- Lead with what TechFides does, not what cloud AI fails to do
+- Do NOT use: "stop paying", "no more", "eliminate the cloud tax", "data leakage" — these are defensive framing and are killed on sight
+- For the subscription product, never reference "setup fee", "SOW", or "monthly retainer" — it is a subscription
 
 Respond with valid JSON:
 {
@@ -229,18 +238,18 @@ Respond with valid JSON:
     },
     objections: (aiData.objections as Array<{ objection: string; response: string; proof: string }>) || [
       { objection: "We're not ready for AI", response: "That's exactly why the AI 360 Assessment exists — it identifies readiness gaps before you invest.", proof: "70% of AI pilots fail without proper assessment." },
-      { objection: "It's too expensive", response: `You're currently spending on cloud AI with zero ownership. Over 36 months, TechFides saves you $${Math.round(lead.dealValue * 2).toLocaleString()}.`, proof: "Use the ROI calculator at techfides.com/pricing." },
-      { objection: "We already have a solution", response: "Your current solution sends data to third parties. With private AI, you own the hardware and the data never leaves.", proof: "Every API call to cloud AI is a data leakage event." },
+      { objection: "It's too expensive", response: `TechFides is a single monthly subscription — hardware, deployment, monitoring, updates, and support included. Starter is $1,299/mo. You know the number going in, and you can cancel anytime.`, proof: "Pricing is published at techfides.com/pricing." },
+      { objection: "We already have a solution", response: "With private AI, the model runs on hardware in your building. Client records, privileged communications, and proprietary data stay under your physical control — by architecture, not by promise.", proof: "Architecture is the compliance story, not a configuration setting." },
     ],
     strategy: {
       recommendedService,
       recommendedTier,
       openingHook: (aiData.openingHook as string) || `${lead.firstName}, I noticed ${lead.company} is using ${techStack[0] || "cloud AI tools"} — are you comfortable with where that data goes?`,
-      valueProposition: (aiData.valueProposition as string) || `Deploy the same AI capability on hardware you own, in your building, for a predictable monthly retainer. Zero cloud tax. Zero data leakage.`,
-      closingQuestion: (aiData.closingQuestion as string) || `If I could show you the exact ROI for ${lead.company} in 15 minutes, would that be worth a conversation this week?`,
-      urgencyAngle: (aiData.urgencyAngle as string) || "Cloud AI costs increase 15-20% annually. Every month delayed is money lost.",
-      competitorWeakness: (aiData.competitorWeakness as string) || "No competitor offers fully private, self-hosted AI with on-site deployment and $0 installation.",
-      pricingAnchor: `${recommendedTier} tier: $${recommendedTier === "Platinum" ? "15,000+" : recommendedTier === "Gold" ? "10,000" : "5,000"} setup, $${recommendedTier === "Platinum" ? "2,500+" : recommendedTier === "Gold" ? "1,000" : "500"}/mo. Installation: $0.`,
+      valueProposition: (aiData.valueProposition as string) || `Run Llama, Mistral, or Phi on hardware we put in ${lead.company}'s building. One monthly subscription — hardware, deployment, and support included. Data stays where you keep it.`,
+      closingQuestion: (aiData.closingQuestion as string) || `If ${lead.company}'s AI could run on hardware in your own building, under one monthly price, is that a 15-minute conversation this week?`,
+      urgencyAngle: (aiData.urgencyAngle as string) || "Every additional AI provider in your stack is one more vendor that touches your data. Consolidating onto local infrastructure shrinks that surface area.",
+      competitorWeakness: (aiData.competitorWeakness as string) || "The cloud AI category rents compute. TechFides puts the hardware inside your building under a flat monthly subscription — model-agnostic, swap Llama, Mistral, or Phi freely.",
+      pricingAnchor: `${recommendedTier} tier: $${recommendedTier === "Platinum" ? "3,999" : recommendedTier === "Gold" ? "2,299" : "1,299"}/mo — hardware, deployment, monitoring, updates, and support included. Cancel anytime with 30 days' notice.`,
     },
     icebreakers: (aiData.icebreakers as string[]) || [
       recentNews[0] ? `I saw the news about ${recentNews[0].slice(0, 50)}... how is that impacting your tech priorities?` : `How is ${lead.company} thinking about AI governance heading into next quarter?`,
@@ -310,12 +319,12 @@ function generateFallbackProfile(
     ],
     openingHook: `${lead.firstName}, I've been looking at how ${lead.vertical} businesses like ${lead.company} are approaching AI — and there's a pattern I want to share with you.`,
     valueProposition: isT2
-      ? "We don't replace your systems — we put a governance layer on top that brings order to the chaos."
-      : "Stop paying the cloud tax. Own your AI on your hardware. $0 installation.",
-    closingQuestion: `What would it mean for ${lead.company} if you could ${isT2 ? "align your IT with your business strategy" : "cut your AI costs by 60%"} in the next 90 days?`,
-    urgencyAngle: "Every month on cloud AI is another month of data leakage and rising costs.",
-    competitorWeakness: "Nobody else offers $0 installation + model-agnostic local deployment.",
-    pricingAnchor: `Starting at $5,000 setup with a $500/month retainer. $0 installation.`,
+      ? "We put a governance layer on top of your existing systems — one monthly engagement, one point of accountability."
+      : "Private AI on hardware we put in your building. One monthly subscription. Your models, your data, your walls.",
+    closingQuestion: `What would it mean for ${lead.company} if you could ${isT2 ? "align your IT with your business strategy" : "run Llama, Mistral, or Phi on your own hardware under one monthly subscription"} in the next 90 days?`,
+    urgencyAngle: "Every additional AI vendor that touches your data is a line item you can consolidate onto local infrastructure.",
+    competitorWeakness: "Cloud-only vendors lock you to their model, their pricing, and their data pipelines. TechFides is model-agnostic and runs in your building.",
+    pricingAnchor: `Starting at $1,299/month. Hardware, deployment, and support included. Cancel anytime with 30 days' notice.`,
     icebreakers: [
       `How is ${lead.company} handling ${isT2 ? "the governance question around AI" : "the growing cost of AI tools"}?`,
       "What's the one thing that would make your team 2x more productive tomorrow?",

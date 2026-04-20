@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useI18n } from "@/i18n";
-import { CloudTaxCounter } from "@/components/homepage/CloudTaxCounter";
 import { ProductivityInfographic } from "@/components/homepage/ProductivityInfographic";
-import { ROITimeline } from "@/components/homepage/ROITimeline";
 import { IndustryImpactCards } from "@/components/homepage/IndustryImpactCards";
 import { TrustBar } from "@/components/homepage/TrustBar";
 
@@ -13,23 +11,29 @@ export default function Home() {
 
   const tiers = [
     {
-      name: t("pricing.sovereignS"),
-      target: t("pricing.sovereignSDesc"),
-      setup: "$5,000",
-      monthly: "$500",
+      name: "Starter",
+      target: "Small practices & offices",
+      monthly: "$1,299",
+      agentHours: "20 agent-hours / mo",
     },
     {
-      name: t("pricing.sovereignM"),
-      target: t("pricing.sovereignMDesc"),
-      setup: "$10,000",
-      monthly: "$1,000",
+      name: "Growth",
+      target: "Mid-size firms",
+      monthly: "$2,299",
+      agentHours: "40 agent-hours / mo",
       featured: true,
     },
     {
-      name: t("pricing.sovereignL"),
-      target: t("pricing.sovereignLDesc"),
-      setup: "$15,000+",
-      monthly: "$2,500+",
+      name: "Scale",
+      target: "Production workloads",
+      monthly: "$3,999",
+      agentHours: "80 agent-hours / mo",
+    },
+    {
+      name: "Enterprise",
+      target: "AI as core infrastructure",
+      monthly: "$6,999",
+      agentHours: "160 agent-hours / mo",
     },
   ];
 
@@ -72,10 +76,7 @@ export default function Home() {
       {/* Trust Bar */}
       <TrustBar />
 
-      {/* Cloud Tax Counter — real-time money drain animation */}
-      <CloudTaxCounter />
-
-      {/* Problem / Solution */}
+      {/* Why Local / Solution */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 md:grid-cols-2">
           <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-8">
@@ -123,22 +124,19 @@ export default function Home() {
       {/* Industry Impact Cards — animated stat rings */}
       <IndustryImpactCards />
 
-      {/* ROI Timeline — break-even and savings curve */}
-      <ROITimeline />
-
       {/* Pricing Preview */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold md:text-4xl">
           {t("pricing.title")} <span className="text-electric-400">{t("pricing.titleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          {t("pricing.subtitleAlt")}
+          {t("pricing.subtitle")}
         </p>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {tiers.map((tier, i) => (
             <div
               key={tier.name}
-              className={`rounded-2xl border p-8 ${
+              className={`rounded-2xl border p-6 ${
                 tier.featured
                   ? "border-electric-500/50 bg-electric-500/5 shadow-lg shadow-electric-500/10"
                   : "border-slate-800 bg-navy-900/50"
@@ -147,16 +145,10 @@ export default function Home() {
               <h3 className="text-xl font-bold">{tier.name}</h3>
               <p className="mt-1 text-sm text-slate-400">{tier.target}</p>
               <div className="mt-6">
-                <p className="text-sm text-slate-400">{t("pricing.setup")}</p>
-                <p className="text-2xl font-bold">{tier.setup}</p>
+                <p className="text-3xl font-bold">{tier.monthly}</p>
+                <p className="text-sm text-slate-400">/mo</p>
               </div>
-              <div className="mt-4">
-                <p className="text-sm text-slate-400">{t("pricing.monthly")}</p>
-                <p className="text-2xl font-bold">{tier.monthly}</p>
-              </div>
-              <div className="mt-4 rounded-lg bg-accent-green/10 px-3 py-1.5 text-center text-sm font-semibold text-accent-green">
-                {t("pricing.installation")}
-              </div>
+              <p className="mt-4 text-sm text-slate-300">{tier.agentHours}</p>
               <Link
                 href={`/pricing?tier=${i}`}
                 className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"
@@ -166,6 +158,9 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-500">
+          {t("pricing.terms")}
+        </p>
       </section>
 
       {/* CTA */}

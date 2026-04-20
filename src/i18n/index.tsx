@@ -14,7 +14,14 @@ import fr from "./fr.json";
 
 export type Locale = "en" | "es" | "fr";
 
-const translations: Record<Locale, typeof en> = { en, es, fr };
+// NOTE: es.json and fr.json are intentionally allowed to drift from en.json's shape
+// during the subscription-pricing rollout. English ships first; es/fr mirror the
+// new keys in a follow-up PR. See Projects/TechFides-Site-Rebuild/Decisions.md §4.
+const translations: Record<Locale, Record<string, unknown>> = {
+  en: en as Record<string, unknown>,
+  es: es as unknown as Record<string, unknown>,
+  fr: fr as unknown as Record<string, unknown>,
+};
 
 type TranslationValue = string | Record<string, unknown>;
 
