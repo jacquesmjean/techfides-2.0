@@ -2,24 +2,24 @@
   "nav": {
     "solutions": "Solutions",
     "theStack": "The Stack",
-    "pricingRoi": "Pricing & ROI",
+    "pricingRoi": "Pricing",
     "partnerPortal": "Partner Portal",
     "becomePartner": "Become a Partner",
-    "consulting": "Consulting",
+    "consulting": "Enterprise",
     "about": "About"
   },
   "hero": {
-    "badge": "$0 INSTALLATION",
-    "title1": "Enterprise AI.",
-    "title2": "Local Infrastructure.",
-    "title3": "Total Control.",
-    "subtitle": "Deploy AI models on your own hardware. No cloud dependency. No data leakage. No monthly compute tax. Full control.",
-    "cta1": "See Pricing & ROI",
+    "badge": "PRIVATE AI",
+    "title1": "Private AI,",
+    "title2": "installed where",
+    "title3": "your business runs.",
+    "subtitle": "Deploy Llama, Mistral, or Phi on hardware we provide. Private to your building. Under one subscription.",
+    "cta1": "See Plans",
     "cta2": "Explore The Stack",
-    "badgeFull": "Installation: $0 — Your hardware, your data, your AI",
-    "subtitleRich": "Stop paying the Cloud Tax. Eliminate Data Leakage. Deploy Llama, Mistral, or Phi on your hardware with the TechFides Local Stack.",
+    "badgeFull": "Your hardware. Your data. Your building.",
+    "subtitleRich": "Deploy Llama, Mistral, or Phi on hardware we provide. Private to your building. Under one subscription. Hardware, deployment, monitoring, and support all included.",
     "ctaAssess": "Free AI Readiness Score",
-    "ctaPricing": "See Pricing & ROI"
+    "ctaPricing": "See Plans"
   },
   "problem": {
     "title": "The Problem",
