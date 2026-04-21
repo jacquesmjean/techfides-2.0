@@ -960,9 +960,9 @@
     "totalSavingsNote": "total savings. You still own the hardware."
   },
   "impact": {
-    "title": "Real Impact.",
-    "titleHighlight": "Your Industry.",
-    "subtitle": "Private AI deployments delivering measurable results across every vertical we serve.",
+    "title": "Built for",
+    "titleHighlight": "your industry.",
+    "subtitle": "Private AI deployments, tuned for the work that actually happens in law firms, medical practices, dealerships, and job sites.",
     "legalStat": "90min",
     "legalLabel": "saved per attorney per day",
     "legalDesc": "AI-powered document review, case research, and contract analysis",

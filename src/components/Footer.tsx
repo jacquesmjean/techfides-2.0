@@ -172,14 +172,6 @@ export function Footer() {
                 <p className="text-sm font-semibold text-slate-300">{t("about.officeUS")}:</p>
                 <p className="text-sm text-slate-400">{t("about.officeCityUS")}</p>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-300">{t("about.officeMX")}:</p>
-                <p className="text-sm text-slate-400">{t("about.officeCityMX")}</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-300">{t("about.officeGA")}:</p>
-                <p className="text-sm text-slate-400">{t("about.officeCityGA")}</p>
-              </div>
               <div className="border-t border-slate-800 pt-3">
                 <p className="text-sm font-semibold text-slate-300">{t("footer.email")}:</p>
                 <a
