@@ -22,24 +22,24 @@
     "ctaPricing": "See Plans"
   },
   "problem": {
-    "title": "The Problem",
-    "cloudTax": "The Cloud Tax",
-    "cloudTaxDesc": "You're paying $2,000–$15,000/month for AI APIs that train on your data and raise prices annually. Your competitive advantage is funding someone else's infrastructure.",
-    "dataLeakage": "Data Leakage",
-    "dataLeakageDesc": "Every API call sends your proprietary data to third-party servers. Client records, trade secrets, and competitive intelligence — exposed with every query.",
-    "item1": "Cloud AI subscriptions drain $2K-10K/month with zero ownership",
-    "item2": "Sensitive client data leaves your network on every API call",
-    "item3": "Vendor lock-in means you're at mercy of pricing changes"
+    "title": "What you get",
+    "cloudTax": "Your AI, on your hardware",
+    "cloudTaxDesc": "We ship and install a dedicated AI system at your location. Llama, Mistral, Phi, or another open model — running on hardware configured for your workload. Your team uses it like any web app. The difference is where it lives.",
+    "dataLeakage": "Your data, in your building",
+    "dataLeakageDesc": "Every prompt, every document, every client conversation stays on the device. Nothing transits to a third party. HIPAA-aligned deployment patterns come standard.",
+    "item1": "Hardware included in every plan — we size it, we install it, we warrant it.",
+    "item2": "Fine-tuned on your documents, your playbooks, your terminology.",
+    "item3": "Model-agnostic: Llama, Mistral, Phi, or your choice — swap as needs evolve."
   },
   "solution": {
-    "title": "The Solution",
+    "title": "How it works",
     "localStack": "The TechFides Local Stack",
-    "localStackDesc": "Enterprise-grade AI running on hardware you own, in a building you control, with models you choose. Zero data leaves your premises.",
+    "localStackDesc": "Private AI running on hardware we provide, configured for your workflow, with models you choose. One subscription covers everything — hardware, deployment, monitoring, updates, and support.",
     "agnostic": "Model Agnostic",
-    "agnosticDesc": "Deploy Llama 3, Mistral, Phi, or any open model. Switch freely. No vendor lock-in. Your infrastructure, your choice.",
-    "solutionTitle": "The TechFides Solution",
-    "item1": "One-time setup. Predictable monthly retainer. You own the hardware.",
-    "item2": "Data never leaves your building — HIPAA, privilege, and compliance built-in.",
+    "agnosticDesc": "Deploy Llama 3, Mistral, Phi, or another open model. Switch freely. No vendor lock-in.",
+    "solutionTitle": "The TechFides Subscription",
+    "item1": "One monthly price. Hardware included. Cancel anytime with 30 days' notice.",
+    "item2": "Data stays in your building — HIPAA-aligned deployment patterns come standard.",
     "item3": "Model-agnostic: swap Llama, Mistral, or Phi as your needs evolve."
   },
   "verticals": {
@@ -73,13 +73,13 @@
     "installation": "Installation: $0"
   },
   "cta": {
-    "title": "Ready to Own Your",
-    "titleHighlight": "AI Infrastructure",
-    "subtitle": "Stop renting intelligence. Start owning it. Book a technical consultation to see the TechFides Stack running on hardware you control.",
-    "button": "Get Started Today",
-    "titleAlt": "Ready to Own Your AI?",
-    "subtitleAlt": "Join the businesses that stopped renting AI and started owning it.",
-    "ctaAssess": "Get Your Free Assessment",
+    "title": "Start with the free",
+    "titleHighlight": "readiness score",
+    "subtitle": "Fifteen minutes across your team tells you whether private AI fits your business. If it doesn't, you'll know that too.",
+    "button": "Take the Free AI Readiness Score",
+    "titleAlt": "Start with the free readiness score.",
+    "subtitleAlt": "Fifteen minutes across your team. Real answers about what AI should do for your business — and what it shouldn't.",
+    "ctaAssess": "Take the Free AI Readiness Score",
     "ctaPartner": "Become a Referral Partner"
   },
   "footer": {
