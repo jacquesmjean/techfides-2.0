@@ -1,123 +1,131 @@
 "use client";
 
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { useI18n } from "@/i18n";
 
 const tiers = [
   {
-    name: "Silver",
-    target: "Solo / Boutique",
-    employees: "1-10 employees",
-    setup: 5000,
-    monthly: 500,
-    hardwareEstimate: "$1,500 – $3,000",
-    plusPricing: false,
-    idealCloudMin: 750,
+    name: "Starter",
+    target: "Solo practice, one site",
+    monthly: "$1,299",
+    annual: "$12,999",
+    hours: "20",
+    overage: "$65",
     features: [
-      "Single workstation or small server deployment",
+      "1 deployment site",
       "1 AI model (Llama 3, Mistral, or equivalent)",
-      "Basic fine-tuning on your data",
-      "Email support (next business day)",
-      "Monthly model updates",
-      "Up to 5 users",
+      "Fine-tuning on your documents",
+      "Email support, next business day",
+      "Monthly model refreshes",
+      "Unlimited users in your organization",
     ],
   },
   {
-    name: "Gold",
-    target: "Single-Site Mid",
-    employees: "10-50 employees",
-    setup: 10000,
-    monthly: 1000,
-    hardwareEstimate: "$5,000 – $12,000",
-    plusPricing: false,
-    idealCloudMin: 1500,
+    name: "Growth",
+    target: "Small team, one site",
+    monthly: "$2,299",
+    annual: "$22,999",
+    hours: "40",
+    overage: "$60",
     featured: true,
     features: [
-      "Dedicated server rack deployment",
-      "2-3 AI models running simultaneously",
-      "Advanced fine-tuning + RAG pipeline",
-      "Priority support (same day)",
-      "Bi-weekly model updates",
-      "Up to 25 users",
+      "1 deployment site",
+      "Up to 3 models running simultaneously",
+      "Fine-tuning + RAG on your documents",
+      "Priority support, same-business-day",
+      "Bi-weekly model refreshes",
+      "Unlimited users",
       "API access for custom integrations",
-      "Compliance audit trail & logging",
     ],
   },
   {
-    name: "Platinum",
-    target: "Multi-Site / Enterprise",
-    employees: "50+ employees",
-    setup: 15000,
-    monthly: 2500,
-    hardwareEstimate: "$15,000 – $40,000+",
-    plusPricing: true,
-    idealCloudMin: 4000,
+    name: "Scale",
+    target: "Multi-department",
+    monthly: "$3,999",
+    annual: "$39,999",
+    hours: "80",
+    overage: "$55",
     features: [
-      "Multi-server / multi-site deployment",
-      "Unlimited AI models",
-      "Custom model training on your full dataset",
+      "Up to 2 deployment sites",
+      "Unlimited models",
+      "Custom model training on full dataset",
       "Dedicated support engineer",
-      "Weekly model updates + on-demand",
+      "Weekly model refreshes, on-demand tuning",
       "Unlimited users",
       "Full API + webhook integrations",
-      "Compliance dashboard + SOC 2 prep",
-      "Disaster recovery & redundancy",
+      "HIPAA / SOC 2 audit logging included",
+    ],
+  },
+  {
+    name: "Enterprise",
+    target: "Multi-site or regulated",
+    monthly: "$6,999",
+    annual: "$69,999",
+    hours: "160",
+    overage: "$50",
+    features: [
+      "Multi-site deployment (priced per site)",
+      "Unlimited models",
+      "Custom training, RAG, agent frameworks",
+      "Dedicated engineering team",
+      "On-demand model updates",
+      "Unlimited users",
+      "Full API + governance dashboards",
+      "HIPAA / SOC 2 / FedRAMP-aware patterns",
+      "Disaster recovery + redundancy",
       "Quarterly strategy review",
     ],
   },
 ];
 
-function getRecommendedTier(cloudSpend: number): number {
-  if (cloudSpend >= 4000) return 2; // Platinum
-  if (cloudSpend >= 1500) return 1; // Gold
-  return 0; // Silver
-}
+const addOns = [
+  { name: "Custom fine-tuning on your data", price: "$750 / mo" },
+  { name: "Compliance reporting pack (HIPAA / SOC 2 logs)", price: "$250 / mo" },
+  { name: "Priority support (1-hour SLA)", price: "$500 / mo" },
+  { name: "Additional deployment site", price: "Base tier × 0.75" },
+  { name: "Model swap (e.g., Llama → Mistral)", price: "$500 flat" },
+  { name: "Emergency on-site visit", price: "$2,500 + travel" },
+];
 
-const tierColors: Record<string, { ring: string; bg: string; text: string; badge: string }> = {
-  Silver: {
-    ring: "border-slate-400/50",
-    bg: "bg-slate-400/5",
-    text: "text-slate-300",
-    badge: "bg-slate-400",
+const faqs = [
+  {
+    q: "What's an agent-hour?",
+    a: "An agent-hour is 60 minutes of active AI processing time — the system actually working on a request. Idle time doesn't count. Your dashboard shows real-time usage, so you always know where you stand.",
   },
-  Gold: {
-    ring: "border-amber-400/50",
-    bg: "bg-amber-400/5",
-    text: "text-amber-400",
-    badge: "bg-amber-500",
+  {
+    q: "What happens when I cancel?",
+    a: "Submit a cancellation notice. Thirty days later, the subscription ends. We send a prepaid shipping box for the hardware. No early-termination fees.",
   },
-  Platinum: {
-    ring: "border-electric-400/50",
-    bg: "bg-electric-400/5",
-    text: "text-electric-400",
-    badge: "bg-electric-500",
+  {
+    q: "Can I change tiers?",
+    a: "Yes. Upgrades take effect immediately. Downgrades take effect on your next billing cycle. No penalty for moving either direction.",
   },
-};
+  {
+    q: "What if the hardware breaks?",
+    a: "We replace it. Hardware is ours and we warrant it for the life of your subscription. Same-business-day shipment on standard tiers; priority shipment on Scale and Enterprise.",
+  },
+  {
+    q: "What if I want to keep the hardware at the end?",
+    a: "At the end of your subscription, we'll quote a buyout based on the remaining depreciated value. Most clients renew instead — the subscription is structured to be less expensive than owning hardware outright.",
+  },
+  {
+    q: "What if I go over my included agent-hours?",
+    a: "Overage is billed at your tier rate — no surprise charges, no shut-off. If you consistently run above your tier, we'll flag it and you can upgrade. Downgrade rules are the same.",
+  },
+  {
+    q: "Does this replace my cloud AI tools?",
+    a: "For work that involves sensitive data, yes. Many clients keep a general-purpose cloud tool for web research and non-sensitive tasks. Our system handles everything that touches client files, patient records, contracts, or financials.",
+  },
+  {
+    q: "What's the difference between your subscription and your consulting services?",
+    a: "The subscription delivers a working private AI deployment at your location. The consulting services (AI Readiness 360™, AI Transformation, AEGIS) are separate engagements for organizations needing strategy, execution, or governance at enterprise scale. You can subscribe without consulting. You can also engage consulting without subscribing.",
+  },
+  {
+    q: "Is there a contract term?",
+    a: "Annual plans (2 months free) have a 12-month minimum. Monthly plans are month-to-month with 30 days' notice to cancel. We earn your business every month.",
+  },
+];
 
 export default function PricingPage() {
-  const { t } = useI18n();
-  const searchParams = useSearchParams();
-  const initialTier = Number(searchParams.get("tier") ?? 1);
-  const [cloudSpend, setCloudSpend] = useState(3000);
-  const [selectedTier, setSelectedTier] = useState(
-    initialTier >= 0 && initialTier <= 2 ? initialTier : 1
-  );
-
-  const recommended = getRecommendedTier(cloudSpend);
-  const tier = tiers[selectedTier];
-  const monthlyCloudCost = cloudSpend;
-  const monthlyTechFides = tier.monthly;
-  const monthlySavings = monthlyCloudCost - monthlyTechFides;
-  const savings36 = monthlySavings * 36 - tier.setup;
-  const breakEvenMonths =
-    monthlySavings > 0
-      ? Math.ceil(tier.setup / monthlySavings)
-      : Infinity;
-
-  const isBadMatch = cloudSpend < tier.idealCloudMin;
-
   return (
     <div className="grid-pattern">
       {/* Hero */}
@@ -125,386 +133,201 @@ export default function PricingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            {t("pricingPage.heroTitle")}{" "}
-            <span className="text-electric-400">{t("pricingPage.heroTitleHighlight")}</span>
+            Private AI. Monthly{" "}
+            <span className="text-electric-400">subscription.</span> Hardware included.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            {t("pricingPage.heroSubtitle")}
+            Your hardware, your data, your building. One price. No setup fees. Cancel anytime.
           </p>
+          <div className="mt-8 flex items-center justify-center gap-3 text-sm text-slate-400">
+            <span>Hardware loaned</span>
+            <span className="text-slate-700">·</span>
+            <span>Deployment + support included</span>
+            <span className="text-slate-700">·</span>
+            <span>Unlimited users</span>
+          </div>
+        </div>
+      </section>
+
+      {/* What's included */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <div className="rounded-2xl border border-electric-500/20 bg-electric-500/5 p-8 md:p-12">
+          <h2 className="text-center text-2xl font-bold text-electric-400">
+            Every plan includes everything.
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-slate-400">
+            One monthly price covers the full stack. No add-ons required to operate. No surprise bills.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {[
+              "Hardware loaned for the life of your subscription — sized for your workload",
+              "Deployment and installation at your location, typically within 14 days",
+              "Continuous monitoring of uptime, performance, and security",
+              "Updates, patches, and model refreshes as they ship",
+              "Tiered support with defined response SLAs",
+              "Unlimited users inside your organization",
+              "Cancel anytime with 30 days' notice",
+              "Prepaid shipping box for hardware return",
+            ].map((line) => (
+              <div key={line} className="flex items-start gap-3 text-sm text-slate-300">
+                <span className="mt-0.5 text-electric-400">&#10003;</span>
+                {line}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Pricing Tiers */}
       <section className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid gap-6 md:grid-cols-3">
-          {tiers.map((t, i) => {
-            const colors = tierColors[t.name];
-            const isRecommended = i === recommended;
-            return (
-              <div
-                key={t.name}
-                className={`relative rounded-2xl border p-8 transition-all ${
+        <h2 className="text-center text-3xl font-bold">
+          Pick the plan that matches your usage.
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-slate-400">
+          Annual plans include two months free. Overage is billed at your tier rate when you exceed included agent-hours.
+        </p>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {tiers.map((t) => (
+            <div
+              key={t.name}
+              className={`relative rounded-2xl border p-6 transition-all ${
+                t.featured
+                  ? "border-electric-500/50 bg-electric-500/5 shadow-lg shadow-electric-500/10"
+                  : "border-slate-800 bg-navy-900/50"
+              }`}
+            >
+              {t.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-electric-500 px-4 py-1 text-xs font-bold text-white">
+                  MOST POPULAR
+                </div>
+              )}
+              <h3 className="text-xl font-bold">{t.name}</h3>
+              <p className="mt-1 text-sm text-slate-400">{t.target}</p>
+
+              <div className="mt-6">
+                <p className="text-4xl font-bold">
+                  {t.monthly}
+                  <span className="text-base font-normal text-slate-400"> / mo</span>
+                </p>
+                <p className="mt-1 text-sm text-slate-400">
+                  or {t.annual} / year (2 months free)
+                </p>
+              </div>
+
+              <div className="mt-4 rounded-lg bg-slate-800/50 px-3 py-2">
+                <p className="text-sm text-slate-200">
+                  <span className="font-semibold text-electric-400">{t.hours}</span> agent-hours / mo
+                </p>
+                <p className="text-xs text-slate-400">Overage: {t.overage} / hr</p>
+              </div>
+
+              <ul className="mt-6 space-y-2">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                    <span className="mt-0.5 text-accent-green">&#10003;</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href={t.name === "Enterprise" ? "/contact" : "/contact"}
+                className={`mt-8 block w-full rounded-lg py-3 text-center text-sm font-semibold transition-all ${
                   t.featured
-                    ? `${colors.ring} ${colors.bg} shadow-lg shadow-electric-500/10`
-                    : "border-slate-800 bg-navy-900/50"
+                    ? "bg-electric-500 text-white hover:bg-electric-400"
+                    : "border border-slate-700 text-slate-200 hover:border-electric-500/50 hover:text-white"
                 }`}
               >
-                {t.featured && (
-                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 rounded-full ${colors.badge} px-4 py-1 text-xs font-bold text-white`}>
-                    MOST POPULAR
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <h3 className={`text-xl font-bold ${colors.text}`}>{t.name}</h3>
-                  {isRecommended && (
-                    <span className="rounded-full bg-accent-green/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-green">
-                      Recommended
-                    </span>
-                  )}
-                </div>
-                <p className="mt-1 text-sm text-slate-400">{t.target}</p>
-                <p className="text-xs text-slate-400">{t.employees}</p>
-
-                <div className="mt-6">
-                  <p className="text-xs uppercase tracking-wider text-slate-400">
-                    Setup (SOW)
-                  </p>
-                  <p className="text-3xl font-bold">
-                    ${t.setup.toLocaleString()}
-                    {t.plusPricing && <span className="text-lg">+</span>}
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <p className="text-xs uppercase tracking-wider text-slate-400">
-                    Monthly Retainer
-                  </p>
-                  <p className="text-3xl font-bold">
-                    ${t.monthly.toLocaleString()}
-                    {t.plusPricing && <span className="text-lg">+</span>}
-                  </p>
-                </div>
-
-                <div className="mt-4 rounded-lg bg-accent-green/10 px-3 py-2 text-center text-sm font-bold text-accent-green">
-                  Installation: $0
-                </div>
-
-                <div className="mt-3 rounded-lg bg-slate-800/50 px-3 py-2 text-center">
-                  <p className="text-[10px] uppercase tracking-wider text-slate-400">Est. Hardware</p>
-                  <p className="text-sm font-semibold text-slate-300">{t.hardwareEstimate}</p>
-                </div>
-
-                <ul className="mt-6 space-y-2">
-                  {t.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-2 text-sm text-slate-300"
-                    >
-                      <span className="mt-0.5 text-accent-green">&#10003;</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => setSelectedTier(i)}
-                  className={`mt-8 w-full rounded-lg py-3 text-sm font-semibold transition-all ${
-                    selectedTier === i
-                      ? `${colors.badge} text-white shadow-lg`
-                      : "border border-slate-700 text-slate-300 hover:border-electric-500/50 hover:text-white"
-                  }`}
-                >
-                  {selectedTier === i ? "Selected for Calculator ✓" : "Select for Calculator"}
-                </button>
-              </div>
-            );
-          })}
+                {t.name === "Enterprise" ? "Talk to sales" : `Start ${t.name}`}
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ROI Calculator */}
-      <section className="mx-auto max-w-4xl px-6 py-24">
-        <div className="rounded-2xl border border-electric-500/30 bg-navy-900/50 p-8 md:p-12">
-          <h2 className="text-center text-3xl font-bold">
-            Cloud Savings{" "}
-            <span className="text-electric-400">Calculator</span>
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-center text-slate-400">
-            See how much you&apos;ll save over 36 months by switching from cloud
-            AI subscriptions to the TechFides Local Stack.
+      {/* Agent-hour definition */}
+      <section className="mx-auto max-w-4xl px-6 py-16">
+        <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8 md:p-10">
+          <h2 className="text-2xl font-bold">What&apos;s an agent-hour?</h2>
+          <p className="mt-4 text-slate-300">
+            An agent-hour is 60 minutes of active AI processing time — the system actually working on a request. Idle time doesn&apos;t count. Your dashboard shows real-time usage, so you always know where you stand.
           </p>
-
-          {/* Cloud Spend Slider — FIRST so it drives tier recommendation */}
-          <div className="mt-10">
-            <label className="block text-sm font-medium text-slate-300">
-              Your current monthly cloud AI spend
-            </label>
-            <div className="mt-2 flex items-center gap-4">
-              <input
-                type="range"
-                min={750}
-                max={15000}
-                step={250}
-                value={cloudSpend}
-                onChange={(e) => {
-                  const val = Number(e.target.value);
-                  setCloudSpend(val);
-                  setSelectedTier(getRecommendedTier(val));
-                }}
-                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-700 accent-electric-500"
-              />
-              <span className="min-w-[100px] text-right text-2xl font-bold text-electric-400">
-                ${cloudSpend.toLocaleString()}
-              </span>
-            </div>
-            <div className="mt-1 flex justify-between text-xs text-slate-400">
-              <span>$750/mo</span>
-              <span>$15,000/mo</span>
-            </div>
-          </div>
-
-          {/* Tier Selector */}
-          <div className="mt-8">
-            <label className="block text-sm font-medium text-slate-300 mb-3">
-              Select your TechFides tier
-            </label>
-            <div className="grid grid-cols-3 gap-3">
-              {tiers.map((t, i) => {
-                const colors = tierColors[t.name];
-                const isRecommended = i === recommended;
-                return (
-                  <button
-                    key={t.name}
-                    onClick={() => setSelectedTier(i)}
-                    className={`relative rounded-xl border p-4 text-left transition-all ${
-                      selectedTier === i
-                        ? `${colors.ring} ${colors.bg} shadow-lg`
-                        : "border-slate-700 bg-slate-950/50 hover:border-slate-600"
-                    }`}
-                  >
-                    {selectedTier === i && (
-                      <div className={`absolute -top-2 -right-2 h-5 w-5 rounded-full ${colors.badge} flex items-center justify-center text-[10px] font-bold text-white`}>✓</div>
-                    )}
-                    <div className="flex items-center gap-1.5">
-                      <p className={`text-sm font-bold ${selectedTier === i ? colors.text : "text-slate-200"}`}>{t.name}</p>
-                      {isRecommended && (
-                        <span className="rounded bg-accent-green/20 px-1 py-0.5 text-[9px] font-bold text-accent-green">
-                          REC
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-slate-400 mt-0.5">{t.target}</p>
-                    <div className="mt-2 pt-2 border-t border-slate-800">
-                      <p className="text-xs text-slate-400">Setup</p>
-                      <p className="text-sm font-semibold text-slate-200">${t.setup.toLocaleString()}{t.plusPricing && "+"}</p>
-                      <p className="text-xs text-slate-400 mt-1">Monthly</p>
-                      <p className="text-sm font-semibold text-slate-200">${t.monthly.toLocaleString()}{t.plusPricing && "+"}/mo</p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Mismatch warning */}
-          {isBadMatch && (
-            <div className="mt-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 flex items-start gap-3">
-              <span className="text-amber-400 text-lg leading-none mt-0.5">⚠</span>
-              <div>
-                <p className="text-sm font-semibold text-amber-400">
-                  This tier may not be the best fit
-                </p>
-                <p className="mt-0.5 text-xs text-amber-400/80">
-                  At ${cloudSpend.toLocaleString()}/mo cloud spend, the{" "}
-                  <strong>{tiers[recommended].name}</strong> tier typically offers a better ROI.{" "}
-                  <button
-                    onClick={() => setSelectedTier(recommended)}
-                    className="underline hover:text-amber-300 font-semibold"
-                  >
-                    Switch to {tiers[recommended].name} →
-                  </button>
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Comparison Summary */}
-          <div className="mt-6 rounded-xl border border-electric-500/20 bg-slate-950/50 p-4 flex items-center justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-wider text-slate-400">
-                Comparing
-              </p>
-              <p className="text-sm text-slate-300 mt-1">
-                <span className="text-red-400 font-semibold">${cloudSpend.toLocaleString()}/mo</span> cloud spend vs{" "}
-                <span className={`font-semibold ${tierColors[tier.name].text}`}>{tier.name}</span>{" "}
-                <span className="text-slate-400">({tier.target})</span>
-              </p>
-            </div>
-            <div className="text-right">
-              <p className="text-xs text-slate-400">TechFides cost</p>
-              <p className="text-sm font-semibold text-slate-200">${tier.monthly.toLocaleString()}/mo + ${tier.setup.toLocaleString()} setup</p>
-            </div>
-          </div>
-
-          {/* Results */}
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-400">
-                Monthly Savings
-              </p>
-              <p
-                className={`mt-2 text-3xl font-bold ${
-                  monthlySavings > 0 ? "text-accent-green" : "text-red-400"
-                }`}
-              >
-                {monthlySavings > 0 ? "+" : ""}$
-                {Math.abs(monthlySavings).toLocaleString()}
-              </p>
-              {monthlySavings <= 0 && (
-                <p className="mt-1 text-[10px] text-red-400/70">Consider a lower tier</p>
-              )}
-            </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-400">
-                36-Month Net Savings
-              </p>
-              <p
-                className={`mt-2 text-3xl font-bold ${
-                  savings36 > 0 ? "text-accent-green" : "text-red-400"
-                }`}
-              >
-                {savings36 > 0 ? "+" : "-"}${Math.abs(savings36).toLocaleString()}
-              </p>
-              <p className="mt-1 text-[10px] text-slate-400">Includes setup fee</p>
-            </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-xs uppercase tracking-wider text-slate-400">
-                Break-Even
-              </p>
-              <p className={`mt-2 text-3xl font-bold ${breakEvenMonths <= 12 ? "text-accent-green" : breakEvenMonths <= 24 ? "text-electric-400" : "text-amber-400"}`}>
-                {breakEvenMonths === Infinity
-                  ? "N/A"
-                  : `${breakEvenMonths} mo`}
-              </p>
-              {breakEvenMonths !== Infinity && breakEvenMonths <= 36 && (
-                <p className="mt-1 text-[10px] text-slate-400">
-                  {breakEvenMonths <= 6 ? "Excellent ROI" : breakEvenMonths <= 12 ? "Strong ROI" : breakEvenMonths <= 24 ? "Good ROI" : "Long payback"}
-                </p>
-              )}
-              {(breakEvenMonths === Infinity || breakEvenMonths > 36) && (
-                <p className="mt-1 text-[10px] text-red-400/70">Not cost-effective at this spend</p>
-              )}
-            </div>
-          </div>
-
-          {/* Savings bar visual */}
-          <div className="mt-8">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-slate-400">Cloud AI (36 months)</span>
-              <span className="font-semibold text-red-400">
-                ${(monthlyCloudCost * 36).toLocaleString()}
-              </span>
-            </div>
-            <div className="mt-2 h-4 w-full overflow-hidden rounded-full bg-red-500/20">
-              <div className="h-full rounded-full bg-red-500" style={{ width: "100%" }} />
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-sm">
-              <span className="text-slate-400">TechFides (36 months, incl. setup + est. hardware)</span>
-              <span className="font-semibold text-accent-green">
-                ${(monthlyTechFides * 36 + tier.setup).toLocaleString()}
-              </span>
-            </div>
-            <div className="mt-2 h-4 w-full overflow-hidden rounded-full bg-accent-green/20">
-              <div
-                className="h-full rounded-full bg-accent-green"
-                style={{
-                  width: `${Math.min(
-                    100,
-                    ((monthlyTechFides * 36 + tier.setup) /
-                      (monthlyCloudCost * 36)) *
-                      100
-                  )}%`,
-                }}
-              />
-            </div>
-          </div>
-
-          <p className="mt-6 text-center text-xs text-slate-400">
-            * Calculations based on your inputs. Hardware costs are purchased by you separately (estimated ranges shown above).
-            Actual savings depend on deployment scope and usage. Setup fee is one-time.
+          <p className="mt-4 text-slate-300">
+            <span className="font-semibold text-electric-400">For example:</span> a Growth-tier law firm drafting and redlining contracts typically spends one to two agent-hours per attorney per day. Forty agent-hours covers a four-attorney practice running the system actively across the workday.
           </p>
+          <p className="mt-4 text-sm text-slate-400">
+            If you consistently run above your tier, we&apos;ll flag it and you can upgrade (or not). Downgrade rules are the same.
+          </p>
+        </div>
+      </section>
 
-          {/* Share Results */}
-          {savings36 > 0 && (
-            <div className="mt-8 rounded-xl border border-electric-500/20 bg-electric-500/5 p-6 text-center">
-              <p className="text-sm font-semibold text-slate-300">Share your savings calculation</p>
-              <div className="mt-3 flex items-center justify-center gap-3">
-                <button
-                  onClick={() => {
-                    const text = `We could save $${savings36.toLocaleString()} over 3 years by switching from cloud AI to TechFides Private AI (${tier.name} tier). Break-even in ${breakEvenMonths} months.\n\nRun your own numbers: https://techfides.com/pricing\n\n#AI #DataPrivacy #CloudTax #TechFides`;
-                    navigator.clipboard.writeText(text);
-                    alert("LinkedIn post copied to clipboard!");
-                  }}
-                  className="rounded-lg bg-[#0A66C2] px-4 py-2 text-xs font-semibold text-white hover:bg-[#004182]"
+      {/* Add-ons */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <h2 className="text-center text-3xl font-bold">Add-ons, when you need them.</h2>
+        <div className="mt-10 overflow-hidden rounded-2xl border border-slate-800">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-electric-500/10">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-electric-400">Add-on</th>
+                <th className="px-6 py-4 text-right text-sm font-semibold text-electric-400">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {addOns.map((a, i) => (
+                <tr
+                  key={a.name}
+                  className={`border-t border-slate-800 ${
+                    i % 2 === 0 ? "bg-navy-900/30" : "bg-navy-900/10"
+                  }`}
                 >
-                  Copy for LinkedIn
-                </button>
-                <button
-                  onClick={() => {
-                    const text = encodeURIComponent(`We could save $${savings36.toLocaleString()} over 3 years by ditching cloud AI. ${tier.name} tier, ${breakEvenMonths}-month break-even. Check yours: https://techfides.com/pricing #CloudTax`);
-                    window.open(`https://x.com/intent/tweet?text=${text}`, "_blank");
-                  }}
-                  className="rounded-lg bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700"
-                >
-                  Share on X
-                </button>
-              </div>
-            </div>
-          )}
+                  <td className="px-6 py-4 text-sm text-slate-300">{a.name}</td>
+                  <td className="px-6 py-4 text-right text-sm font-semibold text-slate-200">
+                    {a.price}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Enterprise consulting strip */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <div className="rounded-2xl border border-slate-700 bg-slate-900/50 p-8 md:p-10">
+          <h2 className="text-2xl font-bold">Running AI across a bigger organization? We do that separately.</h2>
+          <p className="mt-4 text-slate-300">
+            Mid-market and enterprise teams need strategy, execution discipline, and governance across multiple business units. TechFides delivers three fixed-scope consulting engagements — priced independently from the subscription.
+          </p>
+          <ul className="mt-6 space-y-3 text-sm text-slate-300">
+            <li className="flex items-start gap-3">
+              <span className="mt-0.5 text-electric-400">&#10003;</span>
+              <span><span className="font-semibold">AI Readiness 360™</span> — 15-day diagnostic from $45K fixed.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-0.5 text-electric-400">&#10003;</span>
+              <span><span className="font-semibold">AI Transformation</span> — scoped engagements from $50K to $350K.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-0.5 text-electric-400">&#10003;</span>
+              <span><span className="font-semibold">AEGIS</span> — governance operating system from $15K diagnostic to $400K enterprise execution.</span>
+            </li>
+          </ul>
+          <Link
+            href="/consulting"
+            className="mt-8 inline-block rounded-lg border border-electric-500/50 px-6 py-2.5 text-sm font-semibold text-electric-400 transition-all hover:bg-electric-500/10"
+          >
+            Explore enterprise services &rarr;
+          </Link>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-6 py-24">
+      <section className="mx-auto max-w-3xl px-6 py-16">
         <h2 className="text-center text-3xl font-bold">
-          Frequently Asked <span className="text-electric-400">Questions</span>
+          Common <span className="text-electric-400">questions</span>
         </h2>
-        <div className="mt-12 space-y-6">
-          {[
-            {
-              q: "What does the $0 installation cover?",
-              a: "We handle all physical hardware installation, network configuration, and initial software deployment at no additional cost. The Setup (SOW) fee covers the discovery, design, customization, and fine-tuning work specific to your business.",
-            },
-            {
-              q: "Do I own the hardware?",
-              a: "Yes. The hardware is purchased by you (or we can source it on your behalf at cost). You own it outright. If you ever cancel TechFides service, the hardware remains yours.",
-            },
-            {
-              q: "How much does the hardware cost?",
-              a: "Hardware costs depend on your tier. Silver deployments typically run $1,500–$3,000 for a single workstation or mini server. Gold deployments use dedicated server hardware in the $5,000–$12,000 range. Platinum multi-site setups start around $15,000. We'll spec the exact hardware during your free assessment.",
-            },
-            {
-              q: "What's included in the monthly retainer?",
-              a: "Ongoing monitoring, model updates, performance optimization, technical support, and scaling adjustments. Think of it as a managed service for your AI infrastructure.",
-            },
-            {
-              q: "Can I switch AI models later?",
-              a: "Absolutely. The TechFides Agnostic Engine supports Llama 3, Mistral, Phi, and other open models. You can swap or run multiple models simultaneously as your needs evolve.",
-            },
-            {
-              q: "What if I need more capacity later?",
-              a: "We scale with you. Adding users, models, or hardware is handled through your monthly retainer relationship. No surprise fees — we'll scope any expansion before you commit.",
-            },
-            {
-              q: "Is there a contract term?",
-              a: "We recommend a 12-month initial term to fully realize ROI, but we offer month-to-month after the initial period. We earn your business every month.",
-            },
-            {
-              q: "Which tier is right for me?",
-              a: "Use the calculator above — enter your current cloud AI spend and we'll recommend the best tier. Generally: Silver for solo/boutique practices spending $750–$1,500/mo on cloud AI, Gold for mid-size firms spending $1,500–$4,000/mo, and Platinum for enterprises spending $4,000+/mo.",
-            },
-          ].map((faq) => (
+        <div className="mt-10 space-y-4">
+          {faqs.map((faq) => (
             <div
               key={faq.q}
               className="rounded-xl border border-slate-800 bg-navy-900/30 p-6"
@@ -518,17 +341,24 @@ export default function PricingPage() {
 
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
-        <h2 className="text-3xl font-bold">Ready to Stop Paying the Cloud Tax?</h2>
+        <h2 className="text-3xl font-bold">Start with the free readiness score.</h2>
         <p className="mt-4 text-lg text-slate-400">
-          Get a custom assessment for your business. We&apos;ll map your current
-          AI spend and show you exactly what ownership looks like.
+          The 60-question assessment across your team shows you whether private AI fits your business. Then pick a plan — or don&apos;t.
         </p>
-        <Link
-          href="/contact"
-          className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
-        >
-          Get Your Free Assessment
-        </Link>
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <Link
+            href="/consulting/ai-readiness-360"
+            className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
+          >
+            Take the Free AI Readiness Score
+          </Link>
+          <Link
+            href="/contact"
+            className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
+          >
+            Talk to sales
+          </Link>
+        </div>
       </section>
     </div>
   );
