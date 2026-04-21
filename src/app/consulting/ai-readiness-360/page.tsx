@@ -3,134 +3,110 @@
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const domains = [
-  {
-    icon: "\uD83C\uDFAF",
-    name: "Strategy & Leadership",
-    question: "Is your AI vision aligned to business value?",
-    color: "text-electric-400",
-    borderColor: "border-electric-500/30",
-    bgColor: "bg-electric-500/5",
-    details: [
-      "AI vision clarity and executive alignment",
-      "Use case identification and prioritization",
-      "Investment clarity and ROI projections",
-      "Short-term wins vs. long-term transformation balance",
-      "Competitive AI landscape positioning",
-    ],
-  },
-  {
-    icon: "\uD83D\uDDC4\uFE0F",
-    name: "Data & Infrastructure",
-    question: "Is your data ready for algorithmic consumption?",
-    color: "text-accent-amber",
-    borderColor: "border-accent-amber/30",
-    bgColor: "bg-accent-amber/5",
-    details: [
-      "Data quality scoring (accuracy, completeness, consistency)",
-      "Data pipeline architecture and accessibility",
-      "Data governance policies and enforcement",
-      "Data silos and integration readiness",
-      "Historical data depth and labeling maturity",
-    ],
-  },
-  {
-    icon: "\uD83D\uDDA5\uFE0F",
-    name: "Technology & Architecture",
-    question: "Can your infrastructure support AI across all departments?",
-    color: "text-purple-400",
-    borderColor: "border-purple-500/30",
-    bgColor: "bg-purple-500/5",
-    details: [
-      "Current compute capacity (CPU, GPU, memory)",
-      "Cloud vs. on-premise infrastructure assessment",
-      "Software stack compatibility and technical debt",
-      "Security posture and vulnerability analysis",
-      "Scalability and deployment architecture readiness",
-    ],
-  },
-  {
-    icon: "\u2699\uFE0F",
-    name: "Operations & Processes",
-    question: "Are your workflows ready for AI integration?",
-    color: "text-sky-400",
-    borderColor: "border-sky-500/30",
-    bgColor: "bg-sky-500/5",
-    details: [
-      "Workflow automation potential and maturity",
-      "Process documentation and standardization",
-      "Operational bottleneck identification",
-      "Cross-functional integration readiness",
-      "Change management capacity",
-    ],
-  },
-  {
-    icon: "\uD83D\uDEE1\uFE0F",
-    name: "Governance & Risk",
-    question: "Are safety and compliance controls in place?",
-    color: "text-accent-green",
-    borderColor: "border-accent-green/30",
-    bgColor: "bg-accent-green/5",
-    details: [
-      "AI policies and ethical guidelines",
-      "Regulatory compliance framework (HIPAA, SOC 2, GDPR)",
-      "Audit trail and explainability requirements",
-      "Vendor and third-party risk assessment",
-      "Decision lineage and accountability structures",
-    ],
-  },
-  {
-    icon: "\uD83D\uDC65",
-    name: "People & Culture",
-    question: "Is your team ready to adopt and scale AI?",
-    color: "text-pink-400",
-    borderColor: "border-pink-500/30",
-    bgColor: "bg-pink-500/5",
-    details: [
-      "AI skills inventory and training gaps",
-      "Leadership buy-in and change readiness",
-      "Cultural resistance and adoption barriers",
-      "Cross-functional collaboration maturity",
-      "Talent acquisition and retention strategy for AI roles",
-    ],
-  },
-];
-
-const deliverables = [
-  {
-    name: "AI Readiness Score",
-    icon: "\uD83D\uDCCA",
-    description: "Quantitative scoring across all 6 domains with maturity level classification: Nascent, Emerging, Developing, Advancing, or Leading.",
-  },
-  {
-    name: "Enterprise Heat Map",
-    icon: "\uD83D\uDD25",
-    description: "Visual truth across the organization. Green (ready), yellow (emerging), red (critical gaps). Instantly see where to invest and where to stop.",
-  },
-  {
-    name: "Risk Exposure Profile",
-    icon: "\u26A0\uFE0F",
-    description: "Prioritized registry of compliance gaps, governance deficiencies, data integrity risks, and overstated readiness areas.",
-  },
-  {
-    name: "Opportunity Pipeline",
-    icon: "\uD83D\uDE80",
-    description: "High-value automation areas, AI quick wins, efficiency gains, and strategic use cases mapped by impact, effort, and risk.",
-  },
-  {
-    name: "Priority Roadmap",
-    icon: "\uD83D\uDDFA\uFE0F",
-    description: "Sequenced execution plan: fix critical risks first, unlock quick wins second, build foundations third, scale strategically fourth.",
-  },
-  {
-    name: "Executive Briefing Package",
-    icon: "\uD83D\uDCCB",
-    description: "60-second snapshot, narrative summary, and downloadable PDF — everything leadership needs to make a confident Go/No-Go decision.",
-  },
-];
-
 export default function AIReadiness360Page() {
   const { t } = useI18n();
+
+  const domains = [
+    {
+      icon: "\uD83C\uDFAF",
+      name: t("ai360.dom1Name"),
+      question: t("ai360.dom1Question"),
+      color: "text-electric-400",
+      borderColor: "border-electric-500/30",
+      bgColor: "bg-electric-500/5",
+      details: [
+        t("ai360.dom1Detail1"),
+        t("ai360.dom1Detail2"),
+        t("ai360.dom1Detail3"),
+        t("ai360.dom1Detail4"),
+        t("ai360.dom1Detail5"),
+      ],
+    },
+    {
+      icon: "\uD83D\uDDC4\uFE0F",
+      name: t("ai360.dom2Name"),
+      question: t("ai360.dom2Question"),
+      color: "text-accent-amber",
+      borderColor: "border-accent-amber/30",
+      bgColor: "bg-accent-amber/5",
+      details: [
+        t("ai360.dom2Detail1"),
+        t("ai360.dom2Detail2"),
+        t("ai360.dom2Detail3"),
+        t("ai360.dom2Detail4"),
+        t("ai360.dom2Detail5"),
+      ],
+    },
+    {
+      icon: "\uD83D\uDDA5\uFE0F",
+      name: t("ai360.dom3Name"),
+      question: t("ai360.dom3Question"),
+      color: "text-purple-400",
+      borderColor: "border-purple-500/30",
+      bgColor: "bg-purple-500/5",
+      details: [
+        t("ai360.dom3Detail1"),
+        t("ai360.dom3Detail2"),
+        t("ai360.dom3Detail3"),
+        t("ai360.dom3Detail4"),
+        t("ai360.dom3Detail5"),
+      ],
+    },
+    {
+      icon: "\u2699\uFE0F",
+      name: t("ai360.dom4Name"),
+      question: t("ai360.dom4Question"),
+      color: "text-sky-400",
+      borderColor: "border-sky-500/30",
+      bgColor: "bg-sky-500/5",
+      details: [
+        t("ai360.dom4Detail1"),
+        t("ai360.dom4Detail2"),
+        t("ai360.dom4Detail3"),
+        t("ai360.dom4Detail4"),
+        t("ai360.dom4Detail5"),
+      ],
+    },
+    {
+      icon: "\uD83D\uDEE1\uFE0F",
+      name: t("ai360.dom5Name"),
+      question: t("ai360.dom5Question"),
+      color: "text-accent-green",
+      borderColor: "border-accent-green/30",
+      bgColor: "bg-accent-green/5",
+      details: [
+        t("ai360.dom5Detail1"),
+        t("ai360.dom5Detail2"),
+        t("ai360.dom5Detail3"),
+        t("ai360.dom5Detail4"),
+        t("ai360.dom5Detail5"),
+      ],
+    },
+    {
+      icon: "\uD83D\uDC65",
+      name: t("ai360.dom6Name"),
+      question: t("ai360.dom6Question"),
+      color: "text-pink-400",
+      borderColor: "border-pink-500/30",
+      bgColor: "bg-pink-500/5",
+      details: [
+        t("ai360.dom6Detail1"),
+        t("ai360.dom6Detail2"),
+        t("ai360.dom6Detail3"),
+        t("ai360.dom6Detail4"),
+        t("ai360.dom6Detail5"),
+      ],
+    },
+  ];
+
+  const deliverables = [
+    { name: t("ai360.del1Name"), icon: "\uD83D\uDCCA", description: t("ai360.del1Desc") },
+    { name: t("ai360.del2Name"), icon: "\uD83D\uDD25", description: t("ai360.del2Desc") },
+    { name: t("ai360.del3Name"), icon: "\u26A0\uFE0F", description: t("ai360.del3Desc") },
+    { name: t("ai360.del4Name"), icon: "\uD83D\uDE80", description: t("ai360.del4Desc") },
+    { name: t("ai360.del5Name"), icon: "\uD83D\uDDFA\uFE0F", description: t("ai360.del5Desc") },
+    { name: t("ai360.del6Name"), icon: "\uD83D\uDCCB", description: t("ai360.del6Desc") },
+  ];
 
   return (
     <div className="grid-pattern">
@@ -147,29 +123,23 @@ export default function AIReadiness360Page() {
             <span className="text-electric-400">{t("ai360.heroTitleHighlight")}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-300">
-            A 60-question distributed intelligence system that captures real
-            organizational signals across{" "}
-            <strong className="text-slate-100">6 domains</strong>, identifies
-            risks and opportunities, and delivers a clear, prioritized roadmap
-            for AI execution.
+            {t("ai360.heroDesc1")}
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-400">
-            This is not a survey. It is a network-level diagnostic engine
-            deployed across your leadership, IT, operations, and compliance teams
-            simultaneously.
+            {t("ai360.heroDesc2")}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
             >
-              Request Your Assessment
+              {t("ai360.ctaRequest")}
             </Link>
             <Link
               href="/assess"
               className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
             >
-              Try the Free Quick Score
+              {t("ai360.ctaFreeScore")}
             </Link>
           </div>
         </div>
@@ -180,47 +150,41 @@ export default function AIReadiness360Page() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold">
-              Why Organizations <span className="text-electric-400">Fail</span> at AI
+              {t("ai360.whyFailTitle")} <span className="text-electric-400">{t("ai360.whyFailHighlight")}</span> {t("ai360.whyFailSuffix")}
             </h2>
             <p className="mt-4 text-slate-400">
-              Most AI failures don&apos;t happen because of bad models. They
-              happen because organizations attempt to scale on top of fractured
-              data, immature governance, and undefined use cases.
+              {t("ai360.whyFailDesc")}
             </p>
 
             <div className="mt-6 rounded-xl border border-red-500/30 bg-red-500/5 p-5">
               <div className="flex items-center gap-2">
                 <span className="text-red-400 text-lg">&#9888;</span>
-                <h3 className="font-bold text-red-400">The Pilot Trap</h3>
+                <h3 className="font-bold text-red-400">{t("ai360.pilotTrap")}</h3>
               </div>
               <p className="mt-2 text-sm text-red-300/80">
-                70% of enterprise AI pilots never reach production because the
-                underlying infrastructure and organizational readiness were
-                never validated.
+                {t("ai360.pilotTrapDesc")}
               </p>
             </div>
 
             <div className="mt-6 rounded-xl border border-accent-green/30 bg-accent-green/5 p-5">
               <div className="flex items-center gap-2">
                 <span className="text-accent-green text-lg">&#10003;</span>
-                <h3 className="font-bold text-accent-green">Our Approach</h3>
+                <h3 className="font-bold text-accent-green">{t("ai360.ourApproach")}</h3>
               </div>
               <p className="mt-2 text-sm text-green-300/80">
-                We deploy the assessment across your leadership team, IT, operations, and compliance leads
-                departments, and regions simultaneously &mdash; capturing a
-                distributed intelligence signal, not a single biased perspective.
+                {t("ai360.ourApproachDesc")}
               </p>
             </div>
           </div>
 
           {/* How It Works — 4 Steps */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-slate-200">The Client Experience</h3>
+            <h3 className="text-lg font-bold text-slate-200">{t("ai360.clientExperience")}</h3>
             {[
-              { step: "01", icon: "\uD83D\uDCDD", title: "Assessment", desc: "60 structured questions across 6 domains. Designed for executives, not just engineers. No raw data ingestion." },
-              { step: "02", icon: "\uD83D\uDD0D", title: "Systems Evidence", desc: "Validates responses with supporting inputs. Bridges the gap between perceived readiness and operational reality." },
-              { step: "03", icon: "\uD83D\uDCC2", title: "Document Upload", desc: "Optional artifacts \u2014 policies, architecture diagrams, workflows \u2014 strengthen the credibility of the assessment." },
-              { step: "04", icon: "\uD83D\uDCCA", title: "Review & Results", desc: "Scored readiness across all dimensions. Executive overview, opportunity map, risk profile, and priority roadmap." },
+              { step: "01", icon: "\uD83D\uDCDD", title: t("ai360.step1Title"), desc: t("ai360.step1Desc") },
+              { step: "02", icon: "\uD83D\uDD0D", title: t("ai360.step2Title"), desc: t("ai360.step2Desc") },
+              { step: "03", icon: "\uD83D\uDCC2", title: t("ai360.step3Title"), desc: t("ai360.step3Desc") },
+              { step: "04", icon: "\uD83D\uDCCA", title: t("ai360.step4Title"), desc: t("ai360.step4Desc") },
             ].map((s) => (
               <div key={s.step} className="flex gap-4 rounded-xl border border-slate-800 bg-navy-900/50 p-4">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric-500/10 text-lg">
@@ -245,8 +209,7 @@ export default function AIReadiness360Page() {
           6 Assessment <span className="text-electric-400">Domains</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-          A 360-degree evaluation across every critical layer that determines AI
-          success or failure. 10 questions per domain, 60 total.
+          {t("ai360.domainsSubtitle2")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {domains.map((d) => (
@@ -275,10 +238,10 @@ export default function AIReadiness360Page() {
       {/* Visual: Sample Heat Map + Executive Output */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          What the <span className="text-electric-400">Output Looks Like</span>
+          {t("ai360.outputTitle")} <span className="text-electric-400">{t("ai360.outputTitleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Real intelligence, not generic slides. Here&apos;s a sample of what your leadership team receives.
+          {t("ai360.outputSubtitle")}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -417,18 +380,16 @@ export default function AIReadiness360Page() {
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="rounded-2xl border border-electric-500/20 bg-gradient-to-br from-electric-500/5 via-navy-900/50 to-transparent p-8 md:p-12">
           <h2 className="text-center text-3xl font-bold">
-            Network-Level <span className="text-electric-400">Deployment</span>
+            {t("ai360.networkTitle")} <span className="text-electric-400">{t("ai360.networkTitleHighlight")}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-            This is where we separate from 95% of the market. Instead of one
-            person answering, we deploy the assessment across your entire
-            organization simultaneously.
+            {t("ai360.networkSubtitle")}
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { icon: "\uD83D\uDC65", title: "Multi-Stakeholder", desc: "CIO, CTO, COO, business unit leaders, IT teams, and operations all contribute their perspective." },
-              { icon: "\uD83C\uDFE2", title: "Multi-Department", desc: "Cross-functional coverage reveals alignment gaps between strategy, technology, and operations." },
-              { icon: "\uD83C\uDF0D", title: "Multi-Region", desc: "For global organizations, capture regional differences in readiness, compliance, and infrastructure." },
+              { icon: "\uD83D\uDC65", title: t("ai360.netStakeholderTitle"), desc: t("ai360.netStakeholderDesc") },
+              { icon: "\uD83C\uDFE2", title: t("ai360.netDepartmentTitle"), desc: t("ai360.netDepartmentDesc") },
+              { icon: "\uD83C\uDF0D", title: t("ai360.netRegionTitle"), desc: t("ai360.netRegionDesc") },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5 text-center">
                 <span className="text-3xl">{item.icon}</span>
@@ -438,9 +399,7 @@ export default function AIReadiness360Page() {
             ))}
           </div>
           <p className="mx-auto mt-8 max-w-xl text-center text-sm text-electric-400 font-medium">
-            The result: a distributed intelligence capture that reveals executive
-            vs. operational misalignment, departmental blind spots, and the real
-            organizational truth about AI readiness.
+            {t("ai360.networkResult")}
           </p>
         </div>
       </section>
@@ -449,12 +408,10 @@ export default function AIReadiness360Page() {
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="rounded-2xl border border-accent-green/20 bg-gradient-to-br from-accent-green/5 via-navy-900/50 to-transparent p-8 md:p-12">
           <h2 className="text-center text-3xl font-bold">
-            Enterprise-Grade <span className="text-accent-green">Security &amp; Privacy</span>
+            {t("ai360.securityTitle")} <span className="text-accent-green">{t("ai360.securityTitleHighlight")}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
-            Government agencies and regulated enterprises trust the AI 360 platform because
-            your data never leaves your control. Every assessment runs under a zero-trust
-            architecture with full privacy guarantees.
+            {t("ai360.securitySubtitle")}
           </p>
 
           {/* Security Pillars */}
@@ -570,10 +527,10 @@ export default function AIReadiness360Page() {
       {/* What You Get */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          What You <span className="text-electric-400">Walk Away With</span>
+          {t("ai360.deliverablesTitle")} <span className="text-electric-400">{t("ai360.deliverablesTitleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          Decision-grade intelligence. Not generic advice.
+          {t("ai360.deliverablesSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {deliverables.map((d) => (
@@ -591,19 +548,17 @@ export default function AIReadiness360Page() {
         <div className="grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8">
             <span className="text-3xl">\u23F1\uFE0F</span>
-            <h3 className="mt-4 text-2xl font-bold">How We Deliver</h3>
+            <h3 className="mt-4 text-2xl font-bold">{t("ai360.deliveryTitle")}</h3>
             <p className="mt-2 text-slate-400">
-              A structured engagement with a secure digital portal. Your team
-              accesses the assessment via a private link &mdash; no software to
-              install.
+              {t("ai360.deliveryDesc")}
             </p>
             <div className="mt-6 space-y-4">
               {[
-                { phase: "Phase 1", label: "Portal setup & team onboarding", days: "Days 1-3" },
-                { phase: "Phase 2", label: "Distributed assessment completion", days: "Days 4-10" },
-                { phase: "Phase 3", label: "Systems evidence & document upload", days: "Days 8-12" },
-                { phase: "Phase 4", label: "AI-powered analysis & scoring", days: "Days 10-14" },
-                { phase: "Phase 5", label: "Executive briefing & roadmap delivery", days: "Day 15" },
+                { phase: "Phase 1", label: t("ai360.phase1Label"), days: t("ai360.phase1Days") },
+                { phase: "Phase 2", label: t("ai360.phase2Label"), days: t("ai360.phase2Days") },
+                { phase: "Phase 3", label: t("ai360.phase3Label"), days: t("ai360.phase3Days") },
+                { phase: "Phase 4", label: t("ai360.phase4Label"), days: t("ai360.phase4Days") },
+                { phase: "Phase 5", label: t("ai360.phase5Label"), days: t("ai360.phase5Days") },
               ].map((p) => (
                 <div key={p.phase} className="flex items-center gap-4">
                   <span className="min-w-[80px] rounded-lg bg-electric-500/10 px-3 py-1 text-center text-xs font-bold text-electric-400">
@@ -617,27 +572,27 @@ export default function AIReadiness360Page() {
 
           <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-8">
             <span className="text-3xl">\uD83D\uDCB0</span>
-            <h3 className="mt-4 text-2xl font-bold">Transparent Pricing</h3>
+            <h3 className="mt-4 text-2xl font-bold">{t("ai360.pricingTitle")}</h3>
             <p className="mt-2 text-slate-400">
-              Fixed-price packages. No surprises. No open-ended consulting.
+              {t("ai360.pricingDesc")}
             </p>
             <div className="mt-6 space-y-4">
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                <p className="text-xs uppercase tracking-wider text-slate-400">SMB / Mid-Market</p>
-                <p className="text-3xl font-bold text-electric-400">$45,000</p>
-                <p className="text-sm text-slate-400">Up to 20 participants, single region</p>
+                <p className="text-xs uppercase tracking-wider text-slate-400">{t("ai360.pricingSMB")}</p>
+                <p className="text-3xl font-bold text-electric-400">{t("ai360.pricingSMBPrice")}</p>
+                <p className="text-sm text-slate-400">{t("ai360.pricingSMBDetail")}</p>
               </div>
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                <p className="text-xs uppercase tracking-wider text-slate-400">Enterprise</p>
-                <p className="text-3xl font-bold text-electric-400">Up to $85,000</p>
-                <p className="text-sm text-slate-400">Unlimited participants, multi-region, multi-BU</p>
+                <p className="text-xs uppercase tracking-wider text-slate-400">{t("ai360.pricingEnterprise")}</p>
+                <p className="text-3xl font-bold text-electric-400">{t("ai360.pricingEnterprisePrice")}</p>
+                <p className="text-sm text-slate-400">{t("ai360.pricingEnterpriseDetail")}</p>
               </div>
             </div>
             <Link
               href="/pricing"
               className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"
             >
-              View Full Pricing
+              {t("ai360.viewPricing")}
             </Link>
           </div>
         </div>
@@ -647,34 +602,34 @@ export default function AIReadiness360Page() {
       <section className="mx-auto max-w-4xl px-6 py-24">
         <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-8 md:p-12 text-center">
           <h2 className="text-2xl font-bold md:text-3xl">
-            This Is Not an Assessment.
+            {t("ai360.positionTitle")}
           </h2>
           <h3 className="mt-2 text-xl font-bold text-electric-400 md:text-2xl">
-            It Is a System of Record for AI Transformation.
+            {t("ai360.positionSubtitle")}
           </h3>
           <div className="mx-auto mt-8 grid max-w-3xl gap-6 md:grid-cols-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-red-400">What it is NOT</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-red-400">{t("ai360.whatItIsNot")}</p>
               <ul className="mt-2 space-y-1 text-sm text-slate-400">
-                <li>&#10005; A questionnaire</li>
-                <li>&#10005; A consulting intake form</li>
-                <li>&#10005; A maturity checklist</li>
+                <li>&#10005; {t("ai360.notItem1")}</li>
+                <li>&#10005; {t("ai360.notItem2")}</li>
+                <li>&#10005; {t("ai360.notItem3")}</li>
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-accent-green">What it IS</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-accent-green">{t("ai360.whatItIs")}</p>
               <ul className="mt-2 space-y-1 text-sm text-slate-300">
-                <li>&#10003; A distributed AI intelligence system</li>
-                <li>&#10003; A network-level diagnostic engine</li>
-                <li>&#10003; A decision support platform</li>
+                <li>&#10003; {t("ai360.isItem1")}</li>
+                <li>&#10003; {t("ai360.isItem2")}</li>
+                <li>&#10003; {t("ai360.isItem3")}</li>
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-electric-400">What it enables</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-electric-400">{t("ai360.whatItEnables")}</p>
               <ul className="mt-2 space-y-1 text-sm text-slate-300">
-                <li>&#10003; Repeatable transformation</li>
-                <li>&#10003; Standardized AI adoption</li>
-                <li>&#10003; Measurable progress over time</li>
+                <li>&#10003; {t("ai360.enablesItem1")}</li>
+                <li>&#10003; {t("ai360.enablesItem2")}</li>
+                <li>&#10003; {t("ai360.enablesItem3")}</li>
               </ul>
             </div>
           </div>
@@ -684,15 +639,15 @@ export default function AIReadiness360Page() {
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Frequently Asked <span className="text-electric-400">Questions</span>
+          {t("ai360.faqTitle")} <span className="text-electric-400">{t("ai360.faqTitleHighlight")}</span>
         </h2>
         <div className="mt-12 space-y-6">
           {[
-            { q: "How is this different from a typical AI maturity assessment?", a: "Most assessments capture one person's opinion. Ours deploys across your entire organization \u2014 leadership, IT, operations, compliance \u2014 simultaneously. The result is a distributed intelligence signal that reveals alignment gaps, departmental blind spots, and the actual truth about your readiness." },
-            { q: "Do we need to share sensitive data or system access?", a: "No. The assessment uses structured questions and optional document uploads \u2014 no raw data ingestion, no system access required. This means low friction, high adoption, and zero security risk." },
-            { q: "How much time does it require from our team?", a: "Each participant spends approximately 45-60 minutes completing their section of the assessment. The portal is self-service \u2014 they access it via a private link on their own schedule." },
-            { q: "Do we need AEGIS to use this?", a: "No. This is a standalone engagement. The findings are yours to use with any toolset. However, the data captured is fully compatible with AEGIS for organizations that want to move into governed AI execution." },
-            { q: "What happens after the assessment?", a: "You receive the full executive package: AI Readiness Score, Enterprise Heat Map, Risk Profile, Opportunity Pipeline, and Prioritized Roadmap. We present findings in an executive briefing and provide a clear Go/No-Go recommendation." },
+            { q: t("ai360.faq1Q"), a: t("ai360.faq1A") },
+            { q: t("ai360.faq2Q"), a: t("ai360.faq2A") },
+            { q: t("ai360.faq3Q"), a: t("ai360.faq3A") },
+            { q: t("ai360.faq4Q"), a: t("ai360.faq4A") },
+            { q: t("ai360.faq5Q"), a: t("ai360.faq5A") },
           ].map((faq) => (
             <div key={faq.q} className="rounded-xl border border-slate-800 bg-navy-900/30 p-6">
               <h3 className="font-semibold">{faq.q}</h3>
@@ -705,25 +660,23 @@ export default function AIReadiness360Page() {
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold md:text-4xl">
-          Stop Guessing. Start Executing.
+          {t("ai360.finalCtaTitle")}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-          Organizations don&apos;t fail at AI because of technology. They fail
-          due to misalignment, poor data foundations, and lack of structured
-          execution readiness. This system prevents that.
+          {t("ai360.finalCtaSubtitle")}
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/contact"
             className="glow-blue rounded-xl bg-electric-500 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-electric-600"
           >
-            Request Your Assessment
+            {t("ai360.ctaRequest")}
           </Link>
           <Link
             href="/assess"
             className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
           >
-            Take the Free Quick Score
+            {t("ai360.ctaFreeScoreShort")}
           </Link>
         </div>
       </section>
