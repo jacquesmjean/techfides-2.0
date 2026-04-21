@@ -4,70 +4,24 @@ import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const benefits = [
-  {
-    icon: "\u{1F4B0}",
-    title: "Recurring Commissions",
-    description:
-      "Earn a percentage of the referred client's monthly subscription for the first 12 months. Paid monthly, alongside their billing cycle.",
-  },
-  {
-    icon: "\u{1F4E6}",
-    title: "Marketing Collateral",
-    description:
-      "Access branded pitch decks, one-pagers, case studies, and ROI calculators. Everything you need to have the conversation with confidence.",
-  },
-  {
-    icon: "\u{1F4CA}",
-    title: "Lead Tracking Dashboard",
-    description:
-      "Real-time visibility into your referrals. See where each lead stands in the pipeline, from introduction to deployment.",
-  },
-  {
-    icon: "\u{1F91D}",
-    title: "Co-Selling Support",
-    description:
-      "Bring us into the conversation when you need technical depth. We'll join calls, run demos, and help close — you keep the full commission.",
-  },
-  {
-    icon: "\u{1F393}",
-    title: "Partner Training",
-    description:
-      "Monthly webinars on AI trends, product updates, and sales techniques. Become the AI expert in your network.",
-  },
-  {
-    icon: "\u{1F680}",
-    title: "Priority Access",
-    description:
-      "Partners get first look at new verticals, features, and pricing tiers. Your referrals also get priority onboarding.",
-  },
-];
-
-const partnerTypes = [
-  {
-    type: "IT Consultants & MSPs",
-    description:
-      "You already manage their infrastructure. Now offer AI as a service. TechFides deploys, you earn recurring revenue on a client you already own.",
-  },
-  {
-    type: "Business Consultants",
-    description:
-      "Your clients trust your strategic advice. Recommending private AI infrastructure makes you the advisor who brought real cost savings to the table -- and earns you a commission on every deal.",
-  },
-  {
-    type: "Industry Specialists",
-    description:
-      "If you serve legal, medical, auto, or trades verticals, you know the pain points. Connect your clients with the solution and get paid for it.",
-  },
-  {
-    type: "Accountants & Financial Advisors",
-    description:
-      "You see the cloud spend on their P&L. Show them a better way. The ROI calculator practically sells itself.",
-  },
-];
-
 export default function PartnersPage() {
   const { t } = useI18n();
+
+  const benefits = [
+    { icon: "\u{1F4B0}", title: t("partners.benefit1Title"), description: t("partners.benefit1Desc") },
+    { icon: "\u{1F4E6}", title: t("partners.benefit2Title"), description: t("partners.benefit2Desc") },
+    { icon: "\u{1F4CA}", title: t("partners.benefit3Title"), description: t("partners.benefit3Desc") },
+    { icon: "\u{1F91D}", title: t("partners.benefit4Title"), description: t("partners.benefit4Desc") },
+    { icon: "\u{1F393}", title: t("partners.benefit5Title"), description: t("partners.benefit5Desc") },
+    { icon: "\u{1F680}", title: t("partners.benefit6Title"), description: t("partners.benefit6Desc") },
+  ];
+
+  const partnerTypes = [
+    { type: t("partners.type1Title"), description: t("partners.type1Desc") },
+    { type: t("partners.type2Title"), description: t("partners.type2Desc") },
+    { type: t("partners.type3Title"), description: t("partners.type3Desc") },
+    { type: t("partners.type4Title"), description: t("partners.type4Desc") },
+  ];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
