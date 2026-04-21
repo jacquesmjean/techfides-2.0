@@ -247,15 +247,15 @@ export default function AIReadiness360Page() {
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {/* Enterprise Heat Map */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-6">
-            <h3 className="text-sm font-bold text-slate-200 mb-4">Enterprise AI Readiness Heat Map</h3>
+            <h3 className="text-sm font-bold text-slate-200 mb-4">{t("ai360.heatMapTitle")}</h3>
             <div className="space-y-3">
               {[
-                { domain: "Strategy & Leadership", score: 72, level: "Advancing" },
-                { domain: "Data & Infrastructure", score: 45, level: "Developing" },
-                { domain: "Technology & Architecture", score: 61, level: "Advancing" },
-                { domain: "Operations & Processes", score: 38, level: "Emerging" },
-                { domain: "Governance & Risk", score: 28, level: "Emerging" },
-                { domain: "People & Culture", score: 55, level: "Developing" },
+                { domain: t("ai360.dom1Name"), score: 72, level: t("ai360.levelAdvancing") },
+                { domain: t("ai360.dom2Name"), score: 45, level: t("ai360.levelDeveloping") },
+                { domain: t("ai360.dom3Name"), score: 61, level: t("ai360.levelAdvancing") },
+                { domain: t("ai360.dom4Name"), score: 38, level: t("ai360.levelEmerging") },
+                { domain: t("ai360.dom5Name"), score: 28, level: t("ai360.levelEmerging") },
+                { domain: t("ai360.dom6Name"), score: 55, level: t("ai360.levelDeveloping") },
               ].map((d) => {
                 const color = d.score >= 70 ? "#22c55e" : d.score >= 50 ? "#f59e0b" : d.score >= 30 ? "#f97316" : "#ef4444";
                 const bgColor = d.score >= 70 ? "bg-green-500/10" : d.score >= 50 ? "bg-amber-500/10" : d.score >= 30 ? "bg-orange-500/10" : "bg-red-500/10";
@@ -276,19 +276,19 @@ export default function AIReadiness360Page() {
               })}
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-slate-800 pt-3">
-              <span className="text-xs text-slate-400">Overall Score</span>
+              <span className="text-xs text-slate-400">{t("ai360.overallScore")}</span>
               <span className="text-xl font-extrabold text-amber-400">50/100</span>
             </div>
-            <p className="mt-1 text-[10px] text-slate-500">Maturity Level: Developing &mdash; Foundation needed before AI scale</p>
+            <p className="mt-1 text-[10px] text-slate-500">{t("ai360.maturityLine")}</p>
           </div>
 
           {/* Risk & Opportunity Matrix */}
           <div className="rounded-2xl border border-slate-800 bg-navy-900/30 p-6">
-            <h3 className="text-sm font-bold text-slate-200 mb-4">Risk &amp; Opportunity Matrix</h3>
+            <h3 className="text-sm font-bold text-slate-200 mb-4">{t("ai360.riskMatrixTitle")}</h3>
 
             {/* Risk Quadrant */}
             <div className="grid grid-cols-5 gap-1 mb-4">
-              <div className="col-span-5 text-center text-[9px] text-slate-500 mb-1">Impact &rarr;</div>
+              <div className="col-span-5 text-center text-[9px] text-slate-500 mb-1">{t("ai360.impact")} &rarr;</div>
               {[
                 ["bg-green-500/20", "bg-green-500/30", "bg-amber-500/20", "bg-amber-500/30", "bg-red-500/20"],
                 ["bg-green-500/10", "bg-green-500/20", "bg-amber-500/20", "bg-amber-500/30", "bg-red-500/30"],
@@ -307,23 +307,23 @@ export default function AIReadiness360Page() {
                 })
               ))}
               <div className="col-span-5 flex items-center justify-between text-[9px] text-slate-500 mt-1">
-                <span>&uarr; Likelihood</span>
+                <span>&uarr; {t("ai360.likelihood")}</span>
                 <div className="flex gap-3">
-                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-green-500" />Low</span>
-                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-500" />Medium</span>
-                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-red-500" />High</span>
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-green-500" />{t("ai360.sevLow")}</span>
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-500" />{t("ai360.sevMedium")}</span>
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-red-500" />{t("ai360.sevHigh")}</span>
                 </div>
               </div>
             </div>
 
             {/* Key Risks */}
             <div className="space-y-2 mt-4">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Top Identified Risks</p>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{t("ai360.topRisks")}</p>
               {[
-                { risk: "AI without governance framework", severity: "Critical", color: "text-red-400" },
-                { risk: "Fragmented data across 4+ silos", severity: "High", color: "text-amber-400" },
-                { risk: "No compliance audit trail for AI decisions", severity: "High", color: "text-amber-400" },
-                { risk: "Shadow AI initiatives in 2 departments", severity: "Medium", color: "text-sky-400" },
+                { risk: t("ai360.risk1"), severity: t("ai360.sevCritical"), color: "text-red-400" },
+                { risk: t("ai360.risk2"), severity: t("ai360.sevHigh"), color: "text-amber-400" },
+                { risk: t("ai360.risk3"), severity: t("ai360.sevHigh"), color: "text-amber-400" },
+                { risk: t("ai360.risk4"), severity: t("ai360.sevMedium"), color: "text-sky-400" },
               ].map((r) => (
                 <div key={r.risk} className="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-950/50 px-3 py-1.5">
                   <span className="text-[11px] text-slate-300">{r.risk}</span>
@@ -334,10 +334,10 @@ export default function AIReadiness360Page() {
 
             {/* Quick Opportunities */}
             <div className="space-y-2 mt-4">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-accent-green">Top Opportunities</p>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-accent-green">{t("ai360.topOpps")}</p>
               {[
-                { opp: "Document processing automation", impact: "$420K/yr savings" },
-                { opp: "Customer service AI deployment", impact: "40% faster response" },
+                { opp: t("ai360.opp1"), impact: t("ai360.opp1Impact") },
+                { opp: t("ai360.opp2"), impact: t("ai360.opp2Impact") },
               ].map((o) => (
                 <div key={o.opp} className="flex items-center justify-between rounded-lg border border-accent-green/20 bg-accent-green/5 px-3 py-1.5">
                   <span className="text-[11px] text-slate-300">{o.opp}</span>
@@ -350,13 +350,13 @@ export default function AIReadiness360Page() {
 
         {/* System Architecture Flow */}
         <div className="mt-12 rounded-2xl border border-slate-800 bg-navy-900/30 p-8">
-          <h3 className="text-center text-sm font-bold text-slate-200 mb-6">Assessment Intelligence Pipeline</h3>
+          <h3 className="text-center text-sm font-bold text-slate-200 mb-6">{t("ai360.pipelineTitle")}</h3>
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
             {[
-              { step: "I", label: "Distributed Input", desc: "60 questions across department heads", icon: "\uD83D\uDCDD", color: "border-electric-500/30 bg-electric-500/5" },
-              { step: "II", label: "Intelligence Engine", desc: "Normalize, score, weight, aggregate", icon: "\uD83E\uDDE0", color: "border-purple-500/30 bg-purple-500/5" },
-              { step: "III", label: "Analytics Layer", desc: "Heat map, risks, opportunities", icon: "\uD83D\uDCC8", color: "border-amber-500/30 bg-amber-500/5" },
-              { step: "IV", label: "Executive Output", desc: "Decision-ready intelligence package", icon: "\uD83C\uDFC6", color: "border-accent-green/30 bg-accent-green/5" },
+              { step: "I", label: t("ai360.pipe1Label"), desc: t("ai360.pipe1Desc"), icon: "\uD83D\uDCDD", color: "border-electric-500/30 bg-electric-500/5" },
+              { step: "II", label: t("ai360.pipe2Label"), desc: t("ai360.pipe2Desc"), icon: "\uD83E\uDDE0", color: "border-purple-500/30 bg-purple-500/5" },
+              { step: "III", label: t("ai360.pipe3Label"), desc: t("ai360.pipe3Desc"), icon: "\uD83D\uDCC8", color: "border-amber-500/30 bg-amber-500/5" },
+              { step: "IV", label: t("ai360.pipe4Label"), desc: t("ai360.pipe4Desc"), icon: "\uD83C\uDFC6", color: "border-accent-green/30 bg-accent-green/5" },
             ].map((s, i) => (
               <div key={s.step} className="flex items-center gap-4">
                 <div className={`flex flex-col items-center rounded-xl border ${s.color} p-4 w-40 text-center`}>
@@ -372,7 +372,7 @@ export default function AIReadiness360Page() {
         </div>
 
         <p className="mt-4 text-center text-[10px] text-slate-500 italic">
-          Sample output from a mid-market assessment. Actual scores and findings are unique to each organization.
+          {t("ai360.sampleNote")}
         </p>
       </section>
 
@@ -417,19 +417,19 @@ export default function AIReadiness360Page() {
           {/* Security Pillars */}
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
-              <span className="text-2xl">\uD83D\uDD12</span>
-              <h3 className="mt-2 text-sm font-bold text-accent-green">End-to-End Encryption</h3>
-              <p className="mt-1 text-xs text-slate-400">All data encrypted in transit (TLS 1.3) and at rest (AES-256). Zero plaintext exposure at any layer.</p>
+              <span className="text-2xl">&#128274;</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">{t("ai360.pillarEncryption")}</h3>
+              <p className="mt-1 text-xs text-slate-400">{t("ai360.pillarEncryptionDesc")}</p>
             </div>
             <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
-              <span className="text-2xl">\uD83C\uDFE2</span>
-              <h3 className="mt-2 text-sm font-bold text-accent-green">Data Privacy Boundary</h3>
-              <p className="mt-1 text-xs text-slate-400">Assessment data stays within your specified geographic and corporate boundaries. US, LATAM, and CEMAC compliance built in.</p>
+              <span className="text-2xl">&#127970;</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">{t("ai360.pillarBoundary")}</h3>
+              <p className="mt-1 text-xs text-slate-400">{t("ai360.pillarBoundaryDesc")}</p>
             </div>
             <div className="rounded-xl border border-accent-green/30 bg-accent-green/5 p-5 text-center">
-              <span className="text-2xl">\uD83D\uDEE1\uFE0F</span>
-              <h3 className="mt-2 text-sm font-bold text-accent-green">Zero-Trust Architecture</h3>
-              <p className="mt-1 text-xs text-slate-400">Every integration uses zero-trust authentication. No implicit trust, no standing access, every request verified.</p>
+              <span className="text-2xl">&#128737;</span>
+              <h3 className="mt-2 text-sm font-bold text-accent-green">{t("ai360.pillarZeroTrust")}</h3>
+              <p className="mt-1 text-xs text-slate-400">{t("ai360.pillarZeroTrustDesc")}</p>
             </div>
           </div>
 
@@ -437,37 +437,35 @@ export default function AIReadiness360Page() {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {/* Data Minimization */}
             <div className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
-              <h4 className="text-sm font-bold text-slate-200">Data Minimization Protocol</h4>
+              <h4 className="text-sm font-bold text-slate-200">{t("ai360.minimizationTitle")}</h4>
               <p className="mt-2 text-xs text-slate-400">
-                The assessment analyzes metadata and structured responses only &mdash; private payloads
-                are discarded at the edge. No raw datasets, system logs, or PII are ingested.
+                {t("ai360.minimizationBody")}
               </p>
               <div className="mt-4 flex gap-4">
                 <div className="rounded-lg bg-electric-500/10 px-4 py-3 text-center flex-1">
                   <p className="text-lg font-bold text-electric-400">60</p>
-                  <p className="text-[9px] text-slate-400">Structured Questions</p>
-                  <p className="text-[8px] text-slate-500">Metadata only</p>
+                  <p className="text-[9px] text-slate-400">{t("ai360.structuredQuestions")}</p>
+                  <p className="text-[8px] text-slate-500">{t("ai360.metadataOnly")}</p>
                 </div>
                 <div className="rounded-lg bg-slate-800/50 px-4 py-3 text-center flex-1">
                   <p className="text-lg font-bold text-slate-400">0</p>
-                  <p className="text-[9px] text-slate-400">Raw Data Ingested</p>
-                  <p className="text-[8px] text-slate-500">Private payloads discarded</p>
+                  <p className="text-[9px] text-slate-400">{t("ai360.rawDataIngested")}</p>
+                  <p className="text-[8px] text-slate-500">{t("ai360.payloadsDiscarded")}</p>
                 </div>
               </div>
             </div>
 
             {/* Privacy Compliance */}
             <div className="rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
-              <h4 className="text-sm font-bold text-slate-200">Privacy Boundary Compliance</h4>
+              <h4 className="text-sm font-bold text-slate-200">{t("ai360.boundaryComplianceTitle")}</h4>
               <p className="mt-2 text-xs text-slate-400">
-                Assessment data remains within specified geographic and corporate boundaries.
-                Verified across all TechFides operating regions.
+                {t("ai360.boundaryComplianceBody")}
               </p>
               <div className="mt-4 space-y-2">
                 {[
-                  { region: "\uD83C\uDDFA\uD83C\uDDF8 North America (US)", status: "Compliant" },
-                  { region: "\uD83C\uDDF2\uD83C\uDDFD Latin America (MX)", status: "Compliant" },
-                  { region: "\uD83C\uDDEC\uD83C\uDDE6 Central Africa (CEMAC)", status: "Compliant" },
+                  { region: "\uD83C\uDDFA\uD83C\uDDF8 " + t("ai360.regionNA"), status: t("ai360.compliant") },
+                  { region: "\uD83C\uDDF2\uD83C\uDDFD " + t("ai360.regionLATAM"), status: t("ai360.compliant") },
+                  { region: "\uD83C\uDDEC\uD83C\uDDE6 " + t("ai360.regionCEMAC"), status: t("ai360.compliant") },
                 ].map((r) => (
                   <div key={r.region} className="flex items-center justify-between rounded-lg border border-slate-700/30 bg-slate-900/30 px-3 py-2">
                     <span className="text-xs text-slate-300">{r.region}</span>
@@ -480,26 +478,24 @@ export default function AIReadiness360Page() {
 
           {/* Scanning Architecture */}
           <div className="mt-8 rounded-xl border border-slate-700/50 bg-slate-950/50 p-5">
-            <h4 className="text-sm font-bold text-slate-200 mb-3">Network Assessment Architecture</h4>
+            <h4 className="text-sm font-bold text-slate-200 mb-3">{t("ai360.scanArchTitle")}</h4>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-lg border border-accent-green/20 bg-accent-green/5 p-4">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-accent-green" />
-                  <span className="text-xs font-bold text-accent-green">Passive Sniffing (Default)</span>
+                  <span className="text-xs font-bold text-accent-green">{t("ai360.passiveTitle")}</span>
                 </div>
                 <p className="mt-2 text-[11px] text-slate-400">
-                  Port mirroring / TAP &mdash; zero network interference. Preferred by enterprise IT
-                  departments to ensure zero downtime. No packets are modified, injected, or redirected.
+                  {t("ai360.passiveDesc")}
                 </p>
               </div>
               <div className="rounded-lg border border-slate-700/30 bg-slate-800/30 p-4">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-slate-500" />
-                  <span className="text-xs font-bold text-slate-400">Active Scanning (Available)</span>
+                  <span className="text-xs font-bold text-slate-400">{t("ai360.activeTitle")}</span>
                 </div>
                 <p className="mt-2 text-[11px] text-slate-400">
-                  Endpoint probing &mdash; available on request for deep infrastructure audits.
-                  Requires explicit client authorization and scheduled maintenance window.
+                  {t("ai360.activeDesc")}
                 </p>
               </div>
             </div>
@@ -508,8 +504,8 @@ export default function AIReadiness360Page() {
           {/* Compliance Badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {[
-              "HIPAA Aligned", "SOC 2 Ready", "GDPR Compatible", "FedRAMP Aware",
-              "Zero Data Leakage", "AES-256 Encryption", "Zero-Trust Auth", "Immutable Audit Trail",
+              t("ai360.badge1"), t("ai360.badge2"), t("ai360.badge3"), t("ai360.badge4"),
+              t("ai360.badge5"), t("ai360.badge6"), t("ai360.badge7"), t("ai360.badge8"),
             ].map((badge) => (
               <span key={badge} className="rounded-full border border-accent-green/30 bg-accent-green/5 px-3 py-1 text-[10px] font-medium text-accent-green">
                 {badge}
@@ -518,8 +514,7 @@ export default function AIReadiness360Page() {
           </div>
 
           <p className="mt-8 text-center text-sm font-medium text-accent-green">
-            &ldquo;Your data never leaves your building. Your assessment runs on private infrastructure.
-            This is the security posture that earns government trust.&rdquo;
+            &ldquo;{t("ai360.securityQuote")}&rdquo;
           </p>
         </div>
       </section>
