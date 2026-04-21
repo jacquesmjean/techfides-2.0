@@ -38,12 +38,12 @@ export default function MedicalPage() {
         { title: t("solutionMedical.feat6Title"), description: t("solutionMedical.feat6Desc") },
       ]}
       complianceBadges={[
-        "HIPAA Aligned",
-        "PHI On-Premise",
-        "BAA Available",
-        "HITECH Act Ready",
-        "SOC 2 Type II",
-        "42 CFR Part 2",
+        t("solutionMedical.badge1"),
+        t("solutionMedical.badge2"),
+        t("solutionMedical.badge3"),
+        t("solutionMedical.badge4"),
+        t("solutionMedical.badge5"),
+        t("solutionMedical.badge6"),
       ]}
       ctaText={t("solutionMedical.ctaText")}
       testimonialQuote={t("solutionMedical.testimonialQuote")}

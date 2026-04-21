@@ -38,11 +38,11 @@ export default function LegalPage() {
         { title: t("solutionLegal.feat6Title"), description: t("solutionLegal.feat6Desc") },
       ]}
       complianceBadges={[
-        "Attorney-Client Privilege",
-        "ABA Model Rule 1.6",
-        "SOC 2 Ready",
-        "Work Product Doctrine",
-        "Duty of Competence (1.1)",
+        t("solutionLegal.badge1"),
+        t("solutionLegal.badge2"),
+        t("solutionLegal.badge3"),
+        t("solutionLegal.badge4"),
+        t("solutionLegal.badge5"),
       ]}
       ctaText={t("solutionLegal.ctaText")}
       testimonialQuote={t("solutionLegal.testimonialQuote")}
