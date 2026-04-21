@@ -7,9 +7,9 @@ import { useI18n } from "@/i18n";
 const benefits = [
   {
     icon: "\u{1F4B0}",
-    title: "Generous Commissions",
+    title: "Recurring Commissions",
     description:
-      "Earn 10-20% of the setup fee for every referred deal that closes. Plus ongoing residual on monthly retainers for the life of the client.",
+      "Earn a percentage of the referred client's monthly subscription for the first 12 months. Paid monthly, alongside their billing cycle.",
   },
   {
     icon: "\u{1F4E6}",
@@ -154,7 +154,7 @@ export default function PartnersPage() {
             {
               step: "04",
               title: "Get Paid",
-              desc: "Earn commission on the setup fee + residual on every monthly retainer payment.",
+              desc: "Earn commission on the first 12 months of the referred client's subscription. Paid monthly, alongside their billing cycle.",
             },
           ].map((item) => (
             <div key={item.step} className="text-center">
@@ -216,35 +216,46 @@ export default function PartnersPage() {
               <tr className="border-b border-slate-800 bg-navy-900/80">
                 <th className="p-4 font-semibold text-slate-400">Tier</th>
                 <th className="p-4 font-semibold text-slate-400">
-                  Setup Commission
+                  Client Subscription
                 </th>
                 <th className="p-4 font-semibold text-slate-400">
-                  Monthly Residual
+                  Monthly Commission
+                </th>
+                <th className="p-4 font-semibold text-slate-400">
+                  12-Month Total
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Silver ($5K setup)</td>
-                <td className="p-4 text-accent-green">$500 - $1,000</td>
-                <td className="p-4 text-accent-green">$50/mo</td>
+                <td className="p-4 font-medium">Starter</td>
+                <td className="p-4 text-slate-300">$1,299 / mo</td>
+                <td className="p-4 text-accent-green">$260 / mo</td>
+                <td className="p-4 text-accent-green">$3,117</td>
               </tr>
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Gold ($10K setup)</td>
-                <td className="p-4 text-accent-green">$1,000 - $2,000</td>
-                <td className="p-4 text-accent-green">$100/mo</td>
+                <td className="p-4 font-medium">Growth</td>
+                <td className="p-4 text-slate-300">$2,299 / mo</td>
+                <td className="p-4 text-accent-green">$460 / mo</td>
+                <td className="p-4 text-accent-green">$5,517</td>
               </tr>
               <tr className="bg-slate-950/50">
-                <td className="p-4 font-medium">Platinum ($15K+ setup)</td>
-                <td className="p-4 text-accent-green">$1,500 - $3,000+</td>
-                <td className="p-4 text-accent-green">$250+/mo</td>
+                <td className="p-4 font-medium">Scale</td>
+                <td className="p-4 text-slate-300">$3,999 / mo</td>
+                <td className="p-4 text-accent-green">$800 / mo</td>
+                <td className="p-4 text-accent-green">$9,597</td>
+              </tr>
+              <tr className="bg-slate-950/50">
+                <td className="p-4 font-medium">Enterprise</td>
+                <td className="p-4 text-slate-300">$6,999 / mo</td>
+                <td className="p-4 text-accent-green">$1,400 / mo</td>
+                <td className="p-4 text-accent-green">$16,797</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-center text-xs text-slate-400">
-          Commission rates increase with volume. Top partners earn 20% on setup
-          + enhanced residuals.
+          Commission is 20% of the first 12 months of the referred client&apos;s monthly recurring revenue. Paid monthly, alongside their billing cycle. Top-performing partners unlock higher commission tiers.
         </p>
       </section>
 
@@ -255,27 +266,31 @@ export default function PartnersPage() {
             Already a <span className="text-accent-green">TechFides Client?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
-            Refer a business and earn credit on your retainer. Simple.
+            Refer a business and earn credit on your own subscription. Simple.
           </p>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-4">
+            <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
+              <p className="text-3xl font-bold text-accent-green">$250</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Starter referral</p>
+            </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
               <p className="text-3xl font-bold text-accent-green">$500</p>
-              <p className="mt-1 text-sm text-slate-400">Credit per Silver referral</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Growth referral</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
               <p className="text-3xl font-bold text-accent-green">$1,000</p>
-              <p className="mt-1 text-sm text-slate-400">Credit per Gold referral</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Scale referral</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
               <p className="text-3xl font-bold text-accent-green">$2,500</p>
-              <p className="mt-1 text-sm text-slate-400">Credit per Platinum referral</p>
+              <p className="mt-1 text-sm text-slate-400">Credit per Enterprise referral</p>
             </div>
           </div>
 
           <div className="mt-8 text-center">
             <p className="text-sm text-slate-300">
-              Credits applied directly to your monthly retainer once the referred client signs.
+              Credits applied directly to your monthly subscription once the referred client signs.
               No limits on referrals. Stack credits month over month.
             </p>
             <a
