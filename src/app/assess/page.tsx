@@ -19,112 +19,112 @@ interface Question {
   options: { label: string; value: number }[];
 }
 
-const QUESTIONS: Question[] = [
-  {
-    id: "q1",
-    dimension: "Data Readiness",
-    dimensionIcon: "\uD83D\uDDC4\uFE0F",
-    text: "How is your business data currently stored and organized?",
-    options: [
-      { label: "Scattered across spreadsheets and email", value: 10 },
-      { label: "Centralized but not standardized", value: 40 },
-      { label: "Structured in a CRM or database", value: 70 },
-      { label: "Fully organized with APIs and automation", value: 100 },
-    ],
-  },
-  {
-    id: "q2",
-    dimension: "Data Readiness",
-    dimensionIcon: "\uD83D\uDDC4\uFE0F",
-    text: "How sensitive is the data your AI would process?",
-    options: [
-      { label: "Public/non-sensitive data only", value: 30 },
-      { label: "Some client info but nothing regulated", value: 50 },
-      { label: "PII, financial, or health data (HIPAA/SOC 2)", value: 80 },
-      { label: "Attorney-client privilege or classified data", value: 100 },
-    ],
-  },
-  {
-    id: "q3",
-    dimension: "Infrastructure",
-    dimensionIcon: "\uD83D\uDDA5\uFE0F",
-    text: "What does your current IT infrastructure look like?",
-    options: [
-      { label: "No dedicated IT — using consumer tools", value: 10 },
-      { label: "Basic server/NAS with managed services", value: 40 },
-      { label: "On-premise servers with IT staff", value: 70 },
-      { label: "Dedicated server room or data center", value: 100 },
-    ],
-  },
-  {
-    id: "q4",
-    dimension: "Infrastructure",
-    dimensionIcon: "\uD83D\uDDA5\uFE0F",
-    text: "How much are you spending on cloud AI subscriptions monthly?",
-    options: [
-      { label: "Nothing yet — haven't adopted AI", value: 20 },
-      { label: "$500 - $2,000/mo", value: 50 },
-      { label: "$2,000 - $5,000/mo", value: 75 },
-      { label: "$5,000+/mo", value: 100 },
-    ],
-  },
-  {
-    id: "q5",
-    dimension: "Team Readiness",
-    dimensionIcon: "\uD83D\uDC65",
-    text: "Does your team have experience using AI tools?",
-    options: [
-      { label: "No one uses AI tools currently", value: 10 },
-      { label: "A few people use ChatGPT for basic tasks", value: 40 },
-      { label: "Team regularly uses AI for productivity", value: 70 },
-      { label: "AI is embedded in daily workflows", value: 100 },
-    ],
-  },
-  {
-    id: "q6",
-    dimension: "Team Readiness",
-    dimensionIcon: "\uD83D\uDC65",
-    text: "How does leadership view AI adoption?",
-    options: [
-      { label: "Skeptical or unaware", value: 10 },
-      { label: "Curious but no budget allocated", value: 35 },
-      { label: "Actively exploring with budget approved", value: 70 },
-      { label: "AI is a strategic priority with executive sponsor", value: 100 },
-    ],
-  },
-  {
-    id: "q7",
-    dimension: "Compliance & Governance",
-    dimensionIcon: "\uD83D\uDEE1\uFE0F",
-    text: "What compliance requirements does your industry have?",
-    options: [
-      { label: "Minimal — no specific regulations", value: 30 },
-      { label: "Standard data protection (GDPR/CCPA)", value: 50 },
-      { label: "Industry-specific (HIPAA, SOC 2, PCI)", value: 80 },
-      { label: "Multiple overlapping regulations", value: 100 },
-    ],
-  },
-  {
-    id: "q8",
-    dimension: "Compliance & Governance",
-    dimensionIcon: "\uD83D\uDEE1\uFE0F",
-    text: "Do you have concerns about sending data to cloud AI providers?",
-    options: [
-      { label: "No concerns — comfortable with cloud", value: 20 },
-      { label: "Mild concern but using cloud anyway", value: 45 },
-      { label: "Significant concern — limiting AI adoption", value: 75 },
-      { label: "Cannot use cloud AI due to policy/regulation", value: 100 },
-    ],
-  },
-];
+function buildQuestions(t: (key: string) => string): Question[] {
+  return [
+    {
+      id: "q1",
+      dimension: t("assess.dimData"),
+      dimensionIcon: "\uD83D\uDDC4\uFE0F",
+      text: t("assess.q1Text"),
+      options: [
+        { label: t("assess.q1Opt1"), value: 10 },
+        { label: t("assess.q1Opt2"), value: 40 },
+        { label: t("assess.q1Opt3"), value: 70 },
+        { label: t("assess.q1Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q2",
+      dimension: t("assess.dimData"),
+      dimensionIcon: "\uD83D\uDDC4\uFE0F",
+      text: t("assess.q2Text"),
+      options: [
+        { label: t("assess.q2Opt1"), value: 30 },
+        { label: t("assess.q2Opt2"), value: 50 },
+        { label: t("assess.q2Opt3"), value: 80 },
+        { label: t("assess.q2Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q3",
+      dimension: t("assess.dimInfra"),
+      dimensionIcon: "\uD83D\uDDA5\uFE0F",
+      text: t("assess.q3Text"),
+      options: [
+        { label: t("assess.q3Opt1"), value: 10 },
+        { label: t("assess.q3Opt2"), value: 40 },
+        { label: t("assess.q3Opt3"), value: 70 },
+        { label: t("assess.q3Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q4",
+      dimension: t("assess.dimInfra"),
+      dimensionIcon: "\uD83D\uDDA5\uFE0F",
+      text: t("assess.q4Text"),
+      options: [
+        { label: t("assess.q4Opt1"), value: 20 },
+        { label: t("assess.q4Opt2"), value: 50 },
+        { label: t("assess.q4Opt3"), value: 75 },
+        { label: t("assess.q4Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q5",
+      dimension: t("assess.dimTeam"),
+      dimensionIcon: "\uD83D\uDC65",
+      text: t("assess.q5Text"),
+      options: [
+        { label: t("assess.q5Opt1"), value: 10 },
+        { label: t("assess.q5Opt2"), value: 40 },
+        { label: t("assess.q5Opt3"), value: 70 },
+        { label: t("assess.q5Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q6",
+      dimension: t("assess.dimTeam"),
+      dimensionIcon: "\uD83D\uDC65",
+      text: t("assess.q6Text"),
+      options: [
+        { label: t("assess.q6Opt1"), value: 10 },
+        { label: t("assess.q6Opt2"), value: 35 },
+        { label: t("assess.q6Opt3"), value: 70 },
+        { label: t("assess.q6Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q7",
+      dimension: t("assess.dimCompliance"),
+      dimensionIcon: "\uD83D\uDEE1\uFE0F",
+      text: t("assess.q7Text"),
+      options: [
+        { label: t("assess.q7Opt1"), value: 30 },
+        { label: t("assess.q7Opt2"), value: 50 },
+        { label: t("assess.q7Opt3"), value: 80 },
+        { label: t("assess.q7Opt4"), value: 100 },
+      ],
+    },
+    {
+      id: "q8",
+      dimension: t("assess.dimCompliance"),
+      dimensionIcon: "\uD83D\uDEE1\uFE0F",
+      text: t("assess.q8Text"),
+      options: [
+        { label: t("assess.q8Opt1"), value: 20 },
+        { label: t("assess.q8Opt2"), value: 45 },
+        { label: t("assess.q8Opt3"), value: 75 },
+        { label: t("assess.q8Opt4"), value: 100 },
+      ],
+    },
+  ];
+}
 
-const DIMENSIONS = ["Data Readiness", "Infrastructure", "Team Readiness", "Compliance & Governance"];
-
-function getGrade(score: number): { grade: string; color: string; label: string; recommendation: string } {
-  if (score >= 80) return { grade: "A", color: "#22c55e", label: "Highly Ready", recommendation: "You're an ideal candidate for a Private AI deployment. Your data maturity, infrastructure, and compliance needs align perfectly with on-premise AI." };
-  if (score >= 60) return { grade: "B", color: "#38bdf8", label: "Ready with Guidance", recommendation: "Your organization is ready for AI with some preparation. An AI 360 Assessment would identify the optimal deployment path and quick wins." };
-  if (score >= 40) return { grade: "C", color: "#f59e0b", label: "Foundation Needed", recommendation: "You have the right instincts but need infrastructure and governance foundations first. AEGIS can bring order to your current stack before AI deployment." };
-  return { grade: "D", color: "#ef4444", label: "Early Stage", recommendation: "Start with data organization and team education. A Transformation Management engagement would build the foundation you need before AI makes sense." };
+function getGrade(score: number, t: (key: string) => string): { grade: string; color: string; label: string; recommendation: string } {
+  if (score >= 80) return { grade: "A", color: "#22c55e", label: t("assess.gradeALabel"), recommendation: t("assess.gradeARec") };
+  if (score >= 60) return { grade: "B", color: "#38bdf8", label: t("assess.gradeBLabel"), recommendation: t("assess.gradeBRec") };
+  if (score >= 40) return { grade: "C", color: "#f59e0b", label: t("assess.gradeCLabel"), recommendation: t("assess.gradeCRec") };
+  return { grade: "D", color: "#ef4444", label: t("assess.gradeDLabel"), recommendation: t("assess.gradeDRec") };
 }
 
 function generateLinkedInPost(score: number, grade: { grade: string; label: string }): string {
@@ -149,6 +149,9 @@ export default function AssessPage() {
   const [email, setEmail] = useState("");
   const [copied, setCopied] = useState(false);
 
+  const QUESTIONS = buildQuestions(t);
+  const DIMENSIONS = [t("assess.dimData"), t("assess.dimInfra"), t("assess.dimTeam"), t("assess.dimCompliance")];
+
   const totalQuestions = QUESTIONS.length;
   const currentQuestion = QUESTIONS[step - 1];
 
@@ -165,7 +168,7 @@ export default function AssessPage() {
   const overallScore = Math.round(
     Object.values(answers).reduce((s, v) => s + v, 0) / totalQuestions
   );
-  const grade = getGrade(overallScore);
+  const grade = getGrade(overallScore, t);
   const linkedInPost = generateLinkedInPost(overallScore, grade);
 
   function handleAnswer(value: number) {
@@ -199,9 +202,7 @@ export default function AssessPage() {
               <span className="text-electric-400">{t("assess.heroTitleHighlight")}</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-              Answer 8 questions to get your AI Readiness Score. See where
-              your business stands on data readiness, infrastructure, team
-              capability, and compliance.
+              {t("assess.introBody")}
             </p>
             <div className="mt-8 grid grid-cols-4 gap-3">
               {DIMENSIONS.map((d) => (
@@ -233,7 +234,7 @@ export default function AssessPage() {
           {/* Score Card */}
           <div className="rounded-2xl border border-slate-700 bg-navy-900/50 p-8 md:p-12 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
-              Your AI Readiness Score
+              {t("assess.yourScoreLabel")}
             </p>
 
             {/* Big Score */}
@@ -269,7 +270,7 @@ export default function AssessPage() {
                 className="inline-block rounded-full px-4 py-1.5 text-sm font-bold"
                 style={{ color: grade.color, backgroundColor: `${grade.color}15` }}
               >
-                Grade {grade.grade} — {grade.label}
+                {t("assess.gradeLabel")} {grade.grade} &mdash; {grade.label}
               </span>
             </div>
 
@@ -301,10 +302,10 @@ export default function AssessPage() {
           {/* Share Section */}
           <div className="mt-8 rounded-2xl border border-electric-500/30 bg-electric-500/5 p-8">
             <h3 className="text-center text-xl font-bold text-slate-100">
-              Share Your Score
+              {t("assess.shareTitle")}
             </h3>
             <p className="mt-2 text-center text-sm text-slate-400">
-              Challenge your network — how AI-ready are they?
+              {t("assess.shareSubtitle")}
             </p>
 
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -312,19 +313,19 @@ export default function AssessPage() {
                 onClick={handleCopyLinkedIn}
                 className="flex items-center gap-2 rounded-lg bg-[#0A66C2] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#004182]"
               >
-                {copied ? "Copied!" : "Copy LinkedIn Post"}
+                {copied ? t("assess.copied") : t("assess.copyLinkedIn")}
               </button>
               <button
                 onClick={handleShareTwitter}
                 className="flex items-center gap-2 rounded-lg bg-slate-800 px-6 py-3 text-sm font-semibold text-slate-200 transition-all hover:bg-slate-700"
               >
-                Share on X
+                {t("assess.shareOnX")}
               </button>
             </div>
 
             {/* LinkedIn Post Preview */}
             <div className="mt-6 rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-              <p className="text-xs font-medium text-slate-400 mb-2">LinkedIn Post Preview:</p>
+              <p className="text-xs font-medium text-slate-400 mb-2">{t("assess.linkedInPreview")}</p>
               <p className="text-xs text-slate-300 whitespace-pre-line leading-relaxed">
                 {linkedInPost}
               </p>
@@ -334,10 +335,10 @@ export default function AssessPage() {
           {/* Email Capture → GSE Pipeline */}
           <div className="mt-8 rounded-2xl border border-slate-800 bg-navy-900/50 p-8 text-center">
             <h3 className="text-lg font-bold text-slate-100">
-              Get Your Detailed Report
+              {t("assess.reportTitle")}
             </h3>
             <p className="mt-2 text-sm text-slate-400">
-              Enter your email to receive a branded PDF report with personalized recommendations.
+              {t("assess.reportSubtitle")}
             </p>
             <div className="mx-auto mt-4 flex max-w-md gap-3">
               <input
@@ -377,21 +378,21 @@ export default function AssessPage() {
                       setEmail("");
                       alert(
                         result.isNew
-                          ? "Report sent! Our team will reach out with your personalized recommendations."
-                          : "Your assessment has been updated. We will follow up shortly."
+                          ? t("assess.reportSentNew")
+                          : t("assess.reportSentUpdate")
                       );
                     }
                   } catch {
-                    alert("Something went wrong. Please email info@techfides.com with your score.");
+                    alert(t("assess.reportError"));
                   }
                 }}
                 className="rounded-lg bg-electric-500 px-6 py-3 text-sm font-semibold text-white hover:bg-electric-400"
               >
-                Send Report
+                {t("assess.sendReport")}
               </button>
             </div>
             <p className="mt-3 text-xs text-slate-500">
-              Your assessment data helps us give you a personalized recommendation. No spam, ever.
+              {t("assess.privacyNote")}
             </p>
           </div>
 
@@ -401,13 +402,13 @@ export default function AssessPage() {
               href="/contact"
               className="glow-blue rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-400"
             >
-              {overallScore >= 60 ? "Get Your Free AI Deployment Plan" : "Book Your AI 360 Assessment"}
+              {overallScore >= 60 ? t("assess.ctaHighScore") : t("assess.ctaLowScore")}
             </Link>
             <Link
               href="/pricing"
               className="rounded-xl border border-slate-700 px-8 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
             >
-              See Pricing &amp; ROI
+              {t("assess.seePricing")}
             </Link>
           </div>
 
@@ -417,7 +418,7 @@ export default function AssessPage() {
               onClick={() => { setStep(0); setAnswers({}); setEmail(""); }}
               className="text-sm text-slate-500 hover:text-electric-400"
             >
-              Retake Assessment
+              {t("assess.retake")}
             </button>
           </div>
         </section>
@@ -435,7 +436,7 @@ export default function AssessPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-slate-400">
-              Question {step} of {totalQuestions}
+              {t("assess.questionOf").replace("{current}", String(step)).replace("{total}", String(totalQuestions))}
             </span>
             <span className="text-xs text-slate-400">
               {currentQuestion.dimensionIcon} {currentQuestion.dimension}
@@ -477,7 +478,7 @@ export default function AssessPage() {
               onClick={() => setStep(step - 1)}
               className="mt-6 text-sm text-slate-500 hover:text-electric-400"
             >
-              &larr; Previous
+              &larr; {t("assess.previous")}
             </button>
           )}
         </div>
