@@ -35,12 +35,14 @@ const companySizes = [
 
 const services = [
   { value: "", labelKey: "contact.selectService" },
-  { value: "aegis", labelKey: "contact.serviceAegis" },
+  { value: "starter", labelKey: "contact.serviceSilver" },
+  { value: "growth", labelKey: "contact.serviceGold" },
+  { value: "scale", labelKey: "contact.servicePlatinum" },
+  { value: "enterprise", labelKey: "contact.serviceEnterprise" },
   { value: "ai-readiness-360", labelKey: "contact.serviceAi360" },
-  { value: "consulting", labelKey: "contact.serviceConsulting" },
-  { value: "silver", labelKey: "contact.serviceSilver" },
-  { value: "gold", labelKey: "contact.serviceGold" },
-  { value: "platinum", labelKey: "contact.servicePlatinum" },
+  { value: "transformation", labelKey: "contact.serviceTransformation" },
+  { value: "aegis", labelKey: "contact.serviceAegis" },
+  { value: "partner", labelKey: "contact.servicePartner" },
   { value: "other", labelKey: "contact.serviceOther" },
 ];
 
@@ -49,16 +51,6 @@ const offices = [
     flag: "\u{1F1FA}\u{1F1F8}",
     city: "Frisco, Texas",
     label: "Global Headquarters",
-  },
-  {
-    flag: "\u{1F1F2}\u{1F1FD}",
-    city: "Guadalajara, Mexico",
-    label: "Latin America Operations",
-  },
-  {
-    flag: "\u{1F1EC}\u{1F1E6}",
-    city: "Libreville, Gabon",
-    label: "Africa Operations",
   },
 ];
 
