@@ -139,19 +139,69 @@ export default function TransformationManagementPage() {
         </div>
       </section>
 
-      {/* Transform Your Organization */}
+      {/* What you&apos;re buying */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          Transform Your Organization with AI
+          What you&apos;re buying: people, not a PDF.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-          Our comprehensive AI transformation management service guides your
-          organization through every stage of AI adoption, from strategy and
-          planning to implementation and optimization.
+          AI Transformation Management is a resource-based engagement. We assign senior consultants to your program, embed them with your team, and run the transformation with you \u2014 from strategy through implementation through operational handover.
         </p>
         <p className="mt-4 font-semibold text-electric-400">
-          Strategic AI Implementation for Enterprise Success
+          You get the expertise. Your team gets the capability.
         </p>
+      </section>
+
+      {/* Who you work with */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          Who you <span className="text-electric-400">work with</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">
+          Senior consultants. Not a framework in a binder. Every consultant assigned to your engagement brings three types of expertise at the same time.
+        </p>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-6">
+            <div className="text-3xl">&#127891;</div>
+            <h3 className="mt-4 text-xl font-bold text-electric-400">
+              Domain functional expertise
+            </h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Years of hands-on experience in your industry. Legal, medical, auto, trades, financial services, manufacturing \u2014 the consultant on your account has operated inside your sector, not just read about it.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-accent-amber/30 bg-accent-amber/5 p-6">
+            <div className="text-3xl">&#129504;</div>
+            <h3 className="mt-4 text-xl font-bold text-accent-amber">
+              AI expert knowledge
+            </h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Model selection, deployment architecture, data engineering, governance, and the operational tradeoffs that come with them. AI literacy at the level required to make decisions \u2014 not just summarize articles.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-accent-green/30 bg-accent-green/5 p-6">
+            <div className="text-3xl">&#128202;</div>
+            <h3 className="mt-4 text-xl font-bold text-accent-green">
+              Project &amp; program management
+            </h3>
+            <p className="mt-2 text-sm text-slate-400">
+              PMP- and PgMP-credentialed professionals who run programs on plan, on budget, and on outcome. Rigor imported from 25 years of Fortune 500 program delivery \u2014 applied to your transformation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Where they deploy */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8 md:p-10">
+          <h2 className="text-2xl font-bold">Where your consultants deploy</h2>
+          <p className="mt-3 text-slate-300">
+            Each engagement assigns resources across the three layers below, sized to your scope. A Strategic Advisory might be one senior consultant focused on Digital Business Model. A full Transformation Management might be a team of three covering all three pillars. A Rescue &amp; Turnaround is a SWAT team for 90 days.
+          </p>
+          <p className="mt-4 text-sm text-slate-400">
+            You&apos;ll know before the engagement starts: who is assigned, what they cover, how long they&apos;re there, and what you own at the end.
+          </p>
+        </div>
       </section>
 
       {/* The Three Pillars */}
@@ -161,8 +211,7 @@ export default function TransformationManagementPage() {
           <span className="text-electric-400">Transformation</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          We don&apos;t just implement technology; we restructure how value is
-          created, delivered, and governed.
+          Consultants work across three layers at once, restructuring how value is created, delivered, and governed.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {pillars.map((pillar) => (
@@ -209,12 +258,11 @@ export default function TransformationManagementPage() {
       {/* Flexible Engagement Models */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Flexible{" "}
-          <span className="text-electric-400">Engagement Models</span>
+          Four ways to deploy{" "}
+          <span className="text-electric-400">the team</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          We structure our partnership to match your specific needs, maturity,
-          and internal capabilities.
+          Each model assigns a different resource mix \u2014 from a single senior advisor to a multi-role program team \u2014 sized to your scope, maturity, and internal capabilities.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {engagementModels.map((model) => (
@@ -261,10 +309,9 @@ export default function TransformationManagementPage() {
       {/* Measurable Results */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="rounded-2xl border border-electric-500/30 bg-gradient-to-b from-electric-500/5 to-transparent p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-bold">Measurable Results</h2>
+          <h2 className="text-3xl font-bold">What you walk away with</h2>
           <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-            We don&apos;t just deliver slides. We deliver operational
-            capabilities and tangible business value.
+            Operational capabilities and tangible business value your team owns after the engagement ends.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
             {[
