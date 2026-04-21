@@ -50,7 +50,6 @@ const offices = [
   {
     flag: "\u{1F1FA}\u{1F1F8}",
     city: "Frisco, Texas",
-    label: "Global Headquarters",
   },
 ];
 
@@ -344,7 +343,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             {/* Email */}
             <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
-              <h3 className="text-lg font-semibold">Email</h3>
+              <h3 className="text-lg font-semibold">{t("contact.emailSidebar")}</h3>
               <a
                 href="mailto:info@techfides.com"
                 className="mt-2 block text-electric-400 transition-colors hover:text-electric-300"
@@ -352,13 +351,13 @@ export default function ContactPage() {
                 info@techfides.com
               </a>
               <p className="mt-1 text-sm text-slate-500">
-                For general inquiries and service questions.
+                {t("contact.emailSidebarDesc")}
               </p>
             </div>
 
             {/* Offices */}
             <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
-              <h3 className="text-lg font-semibold">Our Offices</h3>
+              <h3 className="text-lg font-semibold">{t("contact.officesSidebar")}</h3>
               <div className="mt-4 space-y-4">
                 {offices.map((office) => (
                   <div key={office.city} className="flex items-start gap-3">
@@ -367,7 +366,7 @@ export default function ContactPage() {
                       <p className="font-medium text-slate-200">
                         {office.city}
                       </p>
-                      <p className="text-sm text-slate-500">{office.label}</p>
+                      <p className="text-sm text-slate-500">{t("contact.officeHQLabel")}</p>
                     </div>
                   </div>
                 ))}
@@ -376,41 +375,39 @@ export default function ContactPage() {
 
             {/* Response Time */}
             <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
-              <h3 className="text-lg font-semibold">Response Time</h3>
+              <h3 className="text-lg font-semibold">{t("contact.responseTimeSidebar")}</h3>
               <p className="mt-2 text-sm text-slate-400">
-                We typically respond within one business day. For urgent
-                deployment needs, mention it in your message and we&apos;ll
-                prioritize accordingly.
+                {t("contact.responseTimeDesc")}
               </p>
             </div>
 
             {/* Quick Links */}
             <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-6">
-              <h3 className="text-lg font-semibold">Explore</h3>
+              <h3 className="text-lg font-semibold">{t("contact.exploreSidebar")}</h3>
               <div className="mt-4 space-y-2">
                 <a
                   href="/pricing"
                   className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
                 >
-                  View Pricing Plans &rarr;
+                  {t("contact.viewPricing")} &rarr;
                 </a>
                 <a
                   href="/solutions"
                   className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
                 >
-                  Industry Solutions &rarr;
+                  {t("contact.industrySolutions")} &rarr;
                 </a>
                 <a
                   href="/consulting/ai-readiness-360"
                   className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
                 >
-                  AI Readiness Assessment &rarr;
+                  {t("contact.aiReadinessAssessment")} &rarr;
                 </a>
                 <a
                   href="/partners"
                   className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
                 >
-                  Partner Program &rarr;
+                  {t("contact.partnerProgram")} &rarr;
                 </a>
               </div>
             </div>
