@@ -9,15 +9,15 @@
     "about": "About"
   },
   "hero": {
-    "badge": "PRIVATE AI",
-    "title1": "Private AI,",
-    "title2": "installed where",
-    "title3": "your business runs.",
-    "subtitle": "Deploy Llama, Mistral, or Phi on hardware we provide. Private to your building. Under one subscription.",
+    "badge": "ENTERPRISE AI",
+    "title1": "Enterprise AI.",
+    "title2": "Local Infrastructure.",
+    "title3": "Total Control.",
+    "subtitle": "Stop paying the cloud tax. Eliminate data leakage. Deploy Llama, Mistral, or Phi on hardware we provide \u2014 private to your building, under your subscription.",
     "cta1": "See Plans",
     "cta2": "Explore The Stack",
     "badgeFull": "Your hardware. Your data. Your building.",
-    "subtitleRich": "Deploy Llama, Mistral, or Phi on hardware we provide. Private to your building. Under one subscription. Hardware, deployment, monitoring, and support all included.",
+    "subtitleRich": "Stop paying the cloud tax. Eliminate data leakage. Deploy Llama, Mistral, or Phi on hardware we provide \u2014 private to your building, under your subscription.",
     "ctaAssess": "Free AI Readiness Score",
     "ctaPricing": "See Plans"
   },
@@ -1181,6 +1181,7 @@
     "industrySolutions": "Industry Solutions",
     "aiReadinessAssessment": "AI Readiness Assessment",
     "partnerProgram": "Partner Program",
+    "enterpriseServices": "Enterprise Services (AI Readiness 360, Transformation, AEGIS)",
     "required": "*"
   },
   "careers": {

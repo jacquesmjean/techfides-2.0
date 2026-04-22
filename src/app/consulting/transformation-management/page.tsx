@@ -471,9 +471,7 @@ export default function TransformationManagementPage() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-slate-400">
-            All pricing is fixed-scope SOW based. No hourly billing. No scope
-            creep. Final investment determined by organizational complexity and
-            engagement duration.
+            {t("transformation.pricingNote")}
           </p>
         </div>
       </section>

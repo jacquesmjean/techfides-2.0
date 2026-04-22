@@ -283,7 +283,7 @@ export default function AssessPage() {
               {DIMENSIONS.map((d) => {
                 const ds = dimensionScores[d];
                 const dimScore = ds ? Math.round(ds.total / ds.count) : 0;
-                const dimGrade = getGrade(dimScore);
+                const dimGrade = getGrade(dimScore, t);
                 return (
                   <div key={d} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
                     <p className="text-xs font-medium text-slate-400">{d}</p>

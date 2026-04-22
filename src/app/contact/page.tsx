@@ -404,6 +404,12 @@ export default function ContactPage() {
                   {t("contact.aiReadinessAssessment")} &rarr;
                 </a>
                 <a
+                  href="/consulting"
+                  className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
+                >
+                  {t("contact.enterpriseServices")} &rarr;
+                </a>
+                <a
                   href="/partners"
                   className="block text-sm text-slate-400 transition-colors hover:text-electric-400"
                 >

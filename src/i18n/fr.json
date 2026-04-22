@@ -9,15 +9,15 @@
     "about": "A Propos"
   },
   "hero": {
-    "badge": "IA PRIVEE",
-    "title1": "IA privee,",
-    "title2": "installee la ou",
-    "title3": "votre entreprise opere.",
-    "subtitle": "Deployez Llama, Mistral ou Phi sur du materiel que nous fournissons. Prive a votre batiment. Sous un seul abonnement.",
+    "badge": "IA ENTREPRISE",
+    "title1": "IA Entreprise.",
+    "title2": "Infrastructure Locale.",
+    "title3": "Controle Total.",
+    "subtitle": "Arretez de payer la taxe cloud. Eliminez les fuites de donnees. Deployez Llama, Mistral ou Phi sur du materiel que nous fournissons \u2014 prive a votre batiment, sous votre abonnement.",
     "cta1": "Voir les Plans",
     "cta2": "Explorer La Plateforme",
     "badgeFull": "Votre materiel. Vos donnees. Votre batiment.",
-    "subtitleRich": "Deployez Llama, Mistral ou Phi sur du materiel que nous fournissons. Prive a votre batiment. Sous un seul abonnement. Materiel, deploiement, surveillance et support, tout inclus.",
+    "subtitleRich": "Arretez de payer la taxe cloud. Eliminez les fuites de donnees. Deployez Llama, Mistral ou Phi sur du materiel que nous fournissons \u2014 prive a votre batiment, sous votre abonnement.",
     "ctaAssess": "Evaluation IA Gratuite",
     "ctaPricing": "Voir les Plans"
   },
@@ -1181,6 +1181,7 @@
     "industrySolutions": "Solutions par Secteur",
     "aiReadinessAssessment": "Evaluation de Preparation IA",
     "partnerProgram": "Programme Partenaires",
+    "enterpriseServices": "Services Entreprise (AI Readiness 360, Transformation, AEGIS)",
     "required": "*"
   },
   "careers": {

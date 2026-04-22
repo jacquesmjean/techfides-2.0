@@ -9,16 +9,16 @@
     "about": "Nosotros"
   },
   "hero": {
-    "badge": "IA PRIVADA",
-    "title1": "IA privada,",
-    "title2": "instalada donde",
-    "title3": "opera tu negocio.",
-    "subtitle": "Despliega Llama, Mistral o Phi en hardware que nosotros proveemos. Privado a tu edificio. Bajo una sola suscripción.",
+    "badge": "IA EMPRESARIAL",
+    "title1": "IA Empresarial.",
+    "title2": "Infraestructura Local.",
+    "title3": "Control Total.",
+    "subtitle": "Deja de pagar el impuesto de la nube. Elimina la fuga de datos. Despliega Llama, Mistral o Phi en hardware que nosotros proveemos \u2014 privado a tu edificio, bajo tu suscripci\u00f3n.",
     "cta1": "Ver Planes",
     "cta2": "Explorar La Plataforma",
     "badgeFull": "Tu hardware. Tus datos. Tu edificio.",
-    "subtitleRich": "Despliega Llama, Mistral o Phi en hardware que nosotros proveemos. Privado a tu edificio. Bajo una sola suscripción. Hardware, despliegue, monitoreo y soporte, todo incluido.",
-    "ctaAssess": "Evaluación Gratuita de IA",
+    "subtitleRich": "Deja de pagar el impuesto de la nube. Elimina la fuga de datos. Despliega Llama, Mistral o Phi en hardware que nosotros proveemos \u2014 privado a tu edificio, bajo tu suscripci\u00f3n.",
+    "ctaAssess": "Evaluaci\u00f3n Gratuita de IA",
     "ctaPricing": "Ver Planes"
   },
   "problem": {
@@ -1181,6 +1181,7 @@
     "industrySolutions": "Soluciones por Industria",
     "aiReadinessAssessment": "Evaluación de Preparación IA",
     "partnerProgram": "Programa de Socios",
+    "enterpriseServices": "Servicios Empresariales (AI Readiness 360, Transformation, AEGIS)",
     "required": "*"
   },
   "careers": {
