@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useI18n } from "@/i18n";
+
+type BillingCycle = "monthly" | "annual";
 
 export default function PricingPage() {
   const { t } = useI18n();
@@ -116,7 +117,7 @@ export default function PricingPage() {
   return (
     <div className="grid-pattern">
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] items-center justify-center px-6 pt-32">
+      <section className="relative flex items-center justify-center px-6 pt-32 pb-16">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-500/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="glow-text text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
@@ -225,6 +226,9 @@ export default function PricingPage() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-500">
+          Cancel anytime with 30 days&apos; notice. Hardware returns in a prepaid shipping box.
+        </p>
       </section>
 
       {/* Agent-hour definition */}
@@ -316,14 +320,72 @@ export default function PricingPage() {
         <div className="mt-10 space-y-4">
           {faqs.map((faq) => (
             <div
-              key={faq.q}
-              className="rounded-xl border border-slate-800 bg-navy-900/30 p-6"
+              key={item}
+              className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3"
             >
-              <h3 className="font-semibold">{faq.q}</h3>
-              <p className="mt-2 text-sm text-slate-400">{faq.a}</p>
+              <span className="text-accent-green">✓</span>
+              <span className="text-sm text-slate-200">{item}</span>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Agent-hour definition */}
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-8">
+          <h3 className="text-xl font-bold">What&apos;s an agent-hour?</h3>
+          <p className="mt-3 text-slate-300">
+            An agent-hour is 60 minutes of active AI processing time. Idle time
+            doesn&apos;t count. Your dashboard shows real-time usage so you
+            always know where you stand.
+          </p>
+        </div>
+      </section>
+
+      {/* Add-ons */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <h2 className="text-center text-2xl font-bold md:text-3xl">Add-ons</h2>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="border-b border-slate-800 text-left text-sm text-slate-400">
+                <th className="py-3 pr-4 font-semibold">Add-on</th>
+                <th className="py-3 font-semibold">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {addOns.map((addon) => (
+                <tr
+                  key={addon.label}
+                  className="border-b border-slate-800/60 text-sm"
+                >
+                  <td className="py-3 pr-4 text-slate-200">{addon.label}</td>
+                  <td className="py-3 font-semibold text-electric-400">
+                    {addon.price}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <h2 className="text-center text-2xl font-bold md:text-3xl">
+          Frequently Asked <span className="text-electric-400">Questions</span>
+        </h2>
+        <dl className="mt-8 space-y-4">
+          {faqs.map((faq) => (
+            <div
+              key={faq.q}
+              className="rounded-xl border border-slate-800 bg-slate-900/50 p-6"
+            >
+              <dt className="font-semibold text-slate-100">{faq.q}</dt>
+              <dd className="mt-2 text-sm text-slate-300">{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* CTA */}

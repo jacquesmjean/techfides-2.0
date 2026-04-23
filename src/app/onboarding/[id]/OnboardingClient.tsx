@@ -883,21 +883,16 @@ function StepPayment({
             <p className="mt-2 text-sm font-semibold text-slate-300">
               {tier.monthly}
             </p>
-            <p className="text-xs text-slate-400">Monthly retainer</p>
+            <p className="text-xs text-slate-400">Monthly subscription</p>
           </button>
         ))}
       </div>
 
-      {/* Installation badge */}
-      <div className="mt-6 rounded-lg border border-accent-green/30 bg-accent-green/5 p-4 text-center">
-        <p className="text-sm font-bold text-accent-green">
-          Installation: $0
-        </p>
-        <p className="mt-1 text-xs text-slate-400">
-          Hardware installation and on-site setup is included at no additional
-          cost.
-        </p>
-      </div>
+      {/* TODO(PR-1 follow-up): tiers array + setup/monthly structure on this page is
+          wired to the old Silver/Gold/Platinum SOW+retainer model. Refactor to the
+          new Starter/Growth/Scale/Enterprise subscription model (prices from
+          i18n pricing.tiers). Requires Prisma schema review for setupFee /
+          retainerAmount fields. Tracked in Projects/TechFides-Site-Rebuild/Decisions.md §3. */}
 
       {/* Payment Method Tabs */}
       <div className="mt-8">
@@ -963,7 +958,7 @@ function StepPayment({
           </div>
         </div>
         <p className="mt-3 text-xs text-slate-500">
-          Monthly retainer of {selectedTierData?.monthly} begins upon Go Live.
+          Monthly subscription of {selectedTierData?.monthly} begins upon Go Live.
           {paymentMethod === "stripe"
             ? " Processed securely via Stripe."
             : " Invoiced per your selected payment method."}

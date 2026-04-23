@@ -127,13 +127,13 @@ export default function Home() {
           {t("pricing.title")} <span className="text-electric-400">{t("pricing.titleHighlight")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          {t("pricing.subtitleAlt")}
+          {t("pricing.subtitle")}
         </p>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {tiers.map((tier, i) => (
             <div
               key={tier.name}
-              className={`rounded-2xl border p-8 ${
+              className={`rounded-2xl border p-6 ${
                 tier.featured
                   ? "border-electric-500/50 bg-electric-500/5 shadow-lg shadow-electric-500/10"
                   : "border-slate-800 bg-navy-900/50"
@@ -154,6 +154,7 @@ export default function Home() {
               <div className="mt-4 rounded-lg bg-accent-green/10 px-3 py-1.5 text-center text-sm font-semibold text-accent-green">
                 {t("pricing.installation")}
               </div>
+              <p className="mt-4 text-sm text-slate-300">{tier.agentHours}</p>
               <Link
                 href={`/pricing?tier=${i}`}
                 className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"
@@ -163,6 +164,9 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-500">
+          {t("pricing.terms")}
+        </p>
       </section>
 
       {/* CTA */}

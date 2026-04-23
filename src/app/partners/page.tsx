@@ -169,6 +169,7 @@ export default function PartnersPage() {
             <thead>
               <tr className="border-b border-slate-800 bg-navy-900/80">
                 <th className="p-4 font-semibold text-slate-400">Tier</th>
+                <th className="p-4 font-semibold text-slate-400">Monthly</th>
                 <th className="p-4 font-semibold text-slate-400">
                   Client Subscription
                 </th>
