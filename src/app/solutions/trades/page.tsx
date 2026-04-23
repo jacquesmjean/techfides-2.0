@@ -38,11 +38,11 @@ export default function TradesPage() {
         { title: t("solutionTrades.feat6Title"), description: t("solutionTrades.feat6Desc") },
       ]}
       complianceBadges={[
-        "Offline Capable",
-        "Multi-Site Ready",
-        "Field-Tested",
-        "QuickBooks Integration",
-        "ServiceTitan Compatible",
+        t("solutionTrades.badge1"),
+        t("solutionTrades.badge2"),
+        t("solutionTrades.badge3"),
+        t("solutionTrades.badge4"),
+        t("solutionTrades.badge5"),
       ]}
       ctaText={t("solutionTrades.ctaText")}
       testimonialQuote={t("solutionTrades.testimonialQuote")}

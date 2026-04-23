@@ -63,40 +63,40 @@ export function IndustryImpactCards() {
       name: t("verticals.legal"),
       href: "/solutions/legal",
       icon: "\u2696\uFE0F",
-      stat: 90,
-      unit: "min",
-      label: "saved per attorney per day",
-      description: "AI-powered document review, case research, and contract analysis",
+      stat: 100,
+      unit: "%",
+      label: "on-premise for privileged work",
+      description: "Document review, case research, and contract analysis \u2014 all on your firm's hardware",
       color: "#38bdf8",
     },
     {
       name: t("verticals.medical"),
       href: "/solutions/medical",
       icon: "\uD83C\uDFE5",
-      stat: 40,
+      stat: 100,
       unit: "%",
-      label: "faster clinical documentation",
-      description: "HIPAA-aligned AI for patient notes, coding, and pre-auth",
+      label: "HIPAA-aligned deployment",
+      description: "Clinical documentation, coding, and pre-auth \u2014 on-premise AI that keeps PHI in the building",
       color: "#22c55e",
     },
     {
       name: t("verticals.auto"),
       href: "/solutions/auto",
       icon: "\uD83D\uDE97",
-      stat: 82,
+      stat: 100,
       unit: "%",
-      label: "reduction in cloud AI costs",
-      description: "Diagnostics, inventory management, and customer service AI",
+      label: "customer data stays on your lot",
+      description: "Deal desk, inventory, and service workflows \u2014 all processed on your dealership's hardware",
       color: "#f59e0b",
     },
     {
       name: t("verticals.trades"),
       href: "/solutions/trades",
       icon: "\uD83D\uDD27",
-      stat: 3,
-      unit: "x",
-      label: "faster estimating speed",
-      description: "AI-powered estimating, scheduling, and operations intelligence",
+      stat: 24,
+      unit: "/7",
+      label: "works on the job site, internet or not",
+      description: "Estimating, scheduling, and project docs \u2014 runs offline when cell service drops",
       color: "#a78bfa",
     },
   ];
@@ -130,7 +130,7 @@ export function IndustryImpactCards() {
           >
             <div className="relative">
               <AnimatedRing
-                percent={ind.stat}
+                percent={100}
                 color={ind.color}
                 visible={visible}
                 delay={i * 200}

@@ -47,10 +47,10 @@ export default function ConsultingPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "Strategy",
-                "Governance",
-                "Data",
-                "Tech",
+                t("consulting.ai360Badge1"),
+                t("consulting.ai360Badge2"),
+                t("consulting.ai360Badge3"),
+                t("consulting.ai360Badge4"),
               ].map((badge) => (
                 <span
                   key={badge}
@@ -84,10 +84,10 @@ export default function ConsultingPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "Business Model",
-                "Operations",
-                "Governance",
-                "Scale",
+                t("consulting.transformBadge1"),
+                t("consulting.transformBadge2"),
+                t("consulting.transformBadge3"),
+                t("consulting.transformBadge4"),
               ].map((badge) => (
                 <span
                   key={badge}
@@ -121,10 +121,10 @@ export default function ConsultingPage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "Governance",
-                "Security",
-                "Intelligence",
-                "Operations",
+                t("consulting.aegisBadge1"),
+                t("consulting.aegisBadge2"),
+                t("consulting.aegisBadge3"),
+                t("consulting.aegisBadge4"),
               ].map((badge) => (
                 <span
                   key={badge}
@@ -152,30 +152,10 @@ export default function ConsultingPage() {
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                icon: "\u{1F3E2}",
-                label: "Fortune 500 Leadership",
-                detail:
-                  "25 years across Honeywell, Invensys, and Schneider Electric — enterprise operations at global scale.",
-              },
-              {
-                icon: "\u{1F30D}",
-                label: "Global Delivery",
-                detail:
-                  "Multimillion-dollar projects implemented across 5 continents — North America, Europe, Asia, Africa, and Latin America.",
-              },
-              {
-                icon: "\u{1F4F0}",
-                label: "Forbes Technology Council",
-                detail:
-                  "Recognized thought leadership in enterprise technology strategy and AI adoption.",
-              },
-              {
-                icon: "\u{1F3C6}",
-                label: "Goldman Sachs 10KSB",
-                detail:
-                  "Alumni of the Goldman Sachs 10,000 Small Businesses program — bridging enterprise and SMB.",
-              },
+              { icon: "\u{1F3E2}", label: t("consulting.pedigree1Label"), detail: t("consulting.pedigree1Detail") },
+              { icon: "\u{1F30D}", label: t("consulting.pedigree2Label"), detail: t("consulting.pedigree2Detail") },
+              { icon: "\u{1F4F0}", label: t("consulting.pedigree3Label"), detail: t("consulting.pedigree3Detail") },
+              { icon: "\u{1F3C6}", label: t("consulting.pedigree4Label"), detail: t("consulting.pedigree4Detail") },
             ].map((item) => (
               <div key={item.label} className="text-center">
                 <div className="mx-auto mb-3 text-2xl">{item.icon}</div>

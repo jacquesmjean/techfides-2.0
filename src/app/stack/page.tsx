@@ -3,138 +3,88 @@
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const stackLayers = [
-  {
-    layer: "Hardware Layer",
-    color: "from-slate-600 to-slate-700",
-    description:
-      "Enterprise-grade compute deployed on-premise. Mac Studio clusters, NVIDIA GPU servers, or custom-spec hardware matched to your workload.",
-    components: [
-      {
-        name: "Compute",
-        detail: "Apple Silicon (M-series) or NVIDIA A100/H100 GPU clusters sized to your model requirements and user concurrency.",
-      },
-      {
-        name: "Storage",
-        detail: "NVMe SSD arrays with RAID redundancy. Your data, your drives, your building. Encrypted at rest with hardware-backed keys.",
-      },
-      {
-        name: "Network",
-        detail: "Isolated VLAN deployment on your existing network. Zero internet dependency for inference. Air-gapped option available.",
-      },
-    ],
-  },
-  {
-    layer: "Inference Engine",
-    color: "from-navy-700 to-navy-800",
-    description:
-      "The core runtime that powers AI inference on your local hardware. Optimized for throughput and latency at enterprise scale.",
-    components: [
-      {
-        name: "Model Runtime",
-        detail: "llama.cpp, vLLM, or Ollama-based serving layer optimized for your specific hardware. Sub-second inference for most queries.",
-      },
-      {
-        name: "Model Manager",
-        detail: "Hot-swap between models without downtime. Run Llama 3, Mistral, CodeLlama, or domain-specific models simultaneously.",
-      },
-      {
-        name: "Quantization Engine",
-        detail: "Optimized model quantization (GGUF, GPTQ, AWQ) to maximize performance on your hardware without sacrificing output quality.",
-      },
-    ],
-  },
-  {
-    layer: "Intelligence Layer",
-    color: "from-electric-600/80 to-electric-700/80",
-    description:
-      "The brains of the stack. RAG pipelines, fine-tuning, and prompt engineering tailored to your industry and data.",
-    components: [
-      {
-        name: "RAG Pipeline",
-        detail: "Retrieval-Augmented Generation built on your documents, databases, and knowledge base. ChromaDB or Weaviate running locally.",
-      },
-      {
-        name: "Fine-Tuning Engine",
-        detail: "LoRA/QLoRA fine-tuning on your proprietary data. Models learn your terminology, workflows, and business logic over time.",
-      },
-      {
-        name: "Prompt Engineering",
-        detail: "Industry-specific system prompts and guardrails. Ensures outputs match your compliance requirements and brand voice.",
-      },
-    ],
-  },
-  {
-    layer: "Application Layer",
-    color: "from-electric-400/80 to-electric-500/80",
-    description:
-      "The interfaces your team actually uses. Web dashboards, API endpoints, and integrations with your existing tools.",
-    components: [
-      {
-        name: "Web Interface",
-        detail: "Clean, internal-facing chat and workflow UI. Role-based access control. No internet required after deployment.",
-      },
-      {
-        name: "REST API",
-        detail: "OpenAI-compatible API running on your network. Drop-in replacement for cloud AI in your existing scripts and tools.",
-      },
-      {
-        name: "Integrations",
-        detail: "Pre-built connectors for EHRs, DMS systems, CRMs, and industry tools. Custom webhook and automation support.",
-      },
-    ],
-  },
-  {
-    layer: "Security & Compliance",
-    color: "from-accent-green/60 to-accent-green/80",
-    description:
-      "Enterprise security at every layer. Audit trails, encryption, access control, and compliance reporting built in — not bolted on.",
-    components: [
-      {
-        name: "Audit Logging",
-        detail: "Every query, every response, every user action logged with timestamps. Export-ready for compliance audits and legal holds.",
-      },
-      {
-        name: "Encryption",
-        detail: "AES-256 at rest, TLS 1.3 in transit (on your LAN). Hardware security modules (HSM) available for key management.",
-      },
-      {
-        name: "Access Control",
-        detail: "RBAC with Active Directory / LDAP integration. SSO support. Granular permissions by model, function, and data scope.",
-      },
-    ],
-  },
-];
-
-const models = [
-  {
-    name: "Llama 3",
-    provider: "Meta",
-    strength: "General-purpose excellence. Strong reasoning, coding, and instruction-following.",
-    sizes: "8B, 70B, 405B",
-  },
-  {
-    name: "Mistral / Mixtral",
-    provider: "Mistral AI",
-    strength: "Exceptional efficiency. High performance at smaller model sizes. Great for constrained hardware.",
-    sizes: "7B, 8x7B, 8x22B",
-  },
-  {
-    name: "CodeLlama",
-    provider: "Meta",
-    strength: "Purpose-built for code generation, review, and technical documentation.",
-    sizes: "7B, 13B, 34B, 70B",
-  },
-  {
-    name: "Domain-Specific",
-    provider: "Various / Custom",
-    strength: "Medical (BioMistral), Legal (SaulLM), Financial models fine-tuned for your vertical.",
-    sizes: "Varies",
-  },
-];
-
 export default function StackPage() {
   const { t } = useI18n();
+
+  const stackLayers = [
+    {
+      layer: t("stack.layer1Name"),
+      color: "from-slate-600 to-slate-700",
+      description: t("stack.layer1Desc"),
+      components: [
+        { name: t("stack.layer1Comp1Name"), detail: t("stack.layer1Comp1Detail") },
+        { name: t("stack.layer1Comp2Name"), detail: t("stack.layer1Comp2Detail") },
+        { name: t("stack.layer1Comp3Name"), detail: t("stack.layer1Comp3Detail") },
+      ],
+    },
+    {
+      layer: t("stack.layer2Name"),
+      color: "from-navy-700 to-navy-800",
+      description: t("stack.layer2Desc"),
+      components: [
+        { name: t("stack.layer2Comp1Name"), detail: t("stack.layer2Comp1Detail") },
+        { name: t("stack.layer2Comp2Name"), detail: t("stack.layer2Comp2Detail") },
+        { name: t("stack.layer2Comp3Name"), detail: t("stack.layer2Comp3Detail") },
+      ],
+    },
+    {
+      layer: t("stack.layer3Name"),
+      color: "from-electric-600/80 to-electric-700/80",
+      description: t("stack.layer3Desc"),
+      components: [
+        { name: t("stack.layer3Comp1Name"), detail: t("stack.layer3Comp1Detail") },
+        { name: t("stack.layer3Comp2Name"), detail: t("stack.layer3Comp2Detail") },
+        { name: t("stack.layer3Comp3Name"), detail: t("stack.layer3Comp3Detail") },
+      ],
+    },
+    {
+      layer: t("stack.layer4Name"),
+      color: "from-electric-400/80 to-electric-500/80",
+      description: t("stack.layer4Desc"),
+      components: [
+        { name: t("stack.layer4Comp1Name"), detail: t("stack.layer4Comp1Detail") },
+        { name: t("stack.layer4Comp2Name"), detail: t("stack.layer4Comp2Detail") },
+        { name: t("stack.layer4Comp3Name"), detail: t("stack.layer4Comp3Detail") },
+      ],
+    },
+    {
+      layer: t("stack.layer5Name"),
+      color: "from-accent-green/60 to-accent-green/80",
+      description: t("stack.layer5Desc"),
+      components: [
+        { name: t("stack.layer5Comp1Name"), detail: t("stack.layer5Comp1Detail") },
+        { name: t("stack.layer5Comp2Name"), detail: t("stack.layer5Comp2Detail") },
+        { name: t("stack.layer5Comp3Name"), detail: t("stack.layer5Comp3Detail") },
+      ],
+    },
+  ];
+
+  const models = [
+    {
+      name: "Llama 3",
+      provider: "Meta",
+      strength: t("stack.modelLlamaStrength"),
+      sizes: "8B, 70B, 405B",
+    },
+    {
+      name: "Mistral / Mixtral",
+      provider: "Mistral AI",
+      strength: t("stack.modelMistralStrength"),
+      sizes: "7B, 8x7B, 8x22B",
+    },
+    {
+      name: "CodeLlama",
+      provider: "Meta",
+      strength: t("stack.modelCodeLlamaStrength"),
+      sizes: "7B, 13B, 34B, 70B",
+    },
+    {
+      name: t("stack.modelDomainName"),
+      provider: t("stack.modelDomainProvider"),
+      strength: t("stack.modelDomainStrength"),
+      sizes: t("stack.modelDomainSizes"),
+    },
+  ];
 
   return (
     <div className="grid-pattern">

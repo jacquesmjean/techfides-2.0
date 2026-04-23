@@ -7,42 +7,12 @@ export default function AboutPage() {
   const { t } = useI18n();
 
   const milestones = [
-    {
-      year: "2000\u20132015",
-      title: "Fortune 500 Leadership",
-      description:
-        "25 years at Honeywell, Invensys, and Schneider Electric \u2014 managing multimillion-dollar technology operations, supporting all corporate functions, and delivering critical infrastructure across five continents.",
-    },
-    {
-      year: "2016",
-      title: "Forbes Technology Council",
-      description:
-        "Recognized for thought leadership in enterprise technology strategy and digital transformation.",
-    },
-    {
-      year: "2017",
-      title: "Goldman Sachs 10KSB",
-      description:
-        "Selected for the Goldman Sachs 10,000 Small Businesses program \u2014 bridging Fortune 500 discipline with SMB agility.",
-    },
-    {
-      year: "2020",
-      title: "TechFides Founded",
-      description:
-        "Launched with a singular mission: bring enterprise-grade technology governance to the underserved middle market.",
-    },
-    {
-      year: "2024",
-      title: "Private AI Pivot",
-      description:
-        "Recognized that SMBs were hemorrhaging to cloud AI costs and data leakage. Built the TechFides Local Stack \u2014 enterprise AI on local hardware.",
-    },
-    {
-      year: "2025",
-      title: "AEGIS Intelligence Operating System",
-      description:
-        "Launched the AEGIS Intelligence Operating System for the hybrid workforce era \u2014 governing, securing, and scaling human + AI + agent operations across six integrated layers.",
-    },
+    { year: t("about.milestone1Year"), title: t("about.milestone1Title"), description: t("about.milestone1Desc") },
+    { year: t("about.milestone2Year"), title: t("about.milestone2Title"), description: t("about.milestone2Desc") },
+    { year: t("about.milestone3Year"), title: t("about.milestone3Title"), description: t("about.milestone3Desc") },
+    { year: t("about.milestone4Year"), title: t("about.milestone4Title"), description: t("about.milestone4Desc") },
+    { year: t("about.milestone5Year"), title: t("about.milestone5Title"), description: t("about.milestone5Desc") },
+    { year: t("about.milestone6Year"), title: t("about.milestone6Title"), description: t("about.milestone6Desc") },
   ];
 
   const offices = [
@@ -72,27 +42,23 @@ export default function AboutPage() {
   const values = [
     {
       icon: "\uD83D\uDEE1\uFE0F",
-      title: "Data Ownership",
-      description:
-        "Your data belongs to you. We deploy AI on hardware you own, in buildings you control. Nothing leaves your premises.",
+      title: t("about.valueOwnership"),
+      description: t("about.valueOwnershipDesc"),
     },
     {
       icon: "\uD83D\uDCA1",
-      title: "Model Agnosticism",
-      description:
-        "We don\u2019t lock you into one vendor. Deploy Llama, Mistral, Phi, or any open model. Switch freely as the landscape evolves.",
+      title: t("about.valueAgnosticism"),
+      description: t("about.valueAgnosticismDesc"),
     },
     {
       icon: "\uD83D\uDCB0",
-      title: "Published Pricing",
-      description:
-        "Every plan is on the pricing page with the monthly price, what's included, and what it costs if you go over. Plan your AI spend like you plan anything else.",
+      title: t("about.valueTransparency"),
+      description: t("about.valueTransparencyDesc"),
     },
     {
       icon: "\uD83C\uDF0D",
-      title: "Global Perspective",
-      description:
-        "Built from 25 years of deploying technology across North America, Europe, Asia, Africa, and Latin America. We understand local nuance at global scale.",
+      title: t("about.valuePerspective"),
+      description: t("about.valuePerspectiveDesc"),
     },
   ];
 

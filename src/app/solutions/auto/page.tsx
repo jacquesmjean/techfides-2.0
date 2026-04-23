@@ -38,11 +38,11 @@ export default function AutoPage() {
         { title: t("solutionAuto.feat6Title"), description: t("solutionAuto.feat6Desc") },
       ]}
       complianceBadges={[
-        "FTC Safeguards Rule",
-        "GLBA Compliant",
-        "DMS Integration",
-        "PCI DSS Ready",
-        "Multi-Rooftop Capable",
+        t("solutionAuto.badge1"),
+        t("solutionAuto.badge2"),
+        t("solutionAuto.badge3"),
+        t("solutionAuto.badge4"),
+        t("solutionAuto.badge5"),
       ]}
       ctaText={t("solutionAuto.ctaText")}
       testimonialQuote={t("solutionAuto.testimonialQuote")}

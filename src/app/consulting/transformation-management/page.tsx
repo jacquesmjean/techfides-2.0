@@ -3,107 +3,84 @@
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const pillars = [
-  {
-    icon: "\u{1F3DB}",
-    name: "Digital Business Model",
-    color: "text-electric-400",
-    borderColor: "border-electric-500/30",
-    bgColor: "bg-electric-500/5",
-    description:
-      "Aligning AI initiatives directly with revenue generation, customer experience strategies, and market positioning.",
-    focusAreas: [
-      "Revenue Model Innovation",
-      "Customer Experience Strategy",
-      "Market Differentiation",
-      "Value Proposition Design",
-    ],
-    outcome: "AI investments that drive top-line growth.",
-  },
-  {
-    icon: "\u26A1",
-    name: "Digital Operations",
-    color: "text-accent-amber",
-    borderColor: "border-accent-amber/30",
-    bgColor: "bg-accent-amber/5",
-    description:
-      "Embedding AI into core workflows, supply chains, and operational processes with full governance and efficiency.",
-    focusAreas: [
-      "Process Automation",
-      "Supply Chain Optimization",
-      "Workflow Integration",
-      "Predictive Maintenance",
-    ],
-    outcome: "Streamlined operations with reduced cost & risk.",
-  },
-  {
-    icon: "\u{1F465}",
-    name: "Digital Office",
-    color: "text-accent-green",
-    borderColor: "border-accent-green/30",
-    bgColor: "bg-accent-green/5",
-    description:
-      "Establishing the governance structures, cross-functional alignment, and decision-making frameworks needed for scale.",
-    focusAreas: [
-      "Transformation Governance",
-      "Change Management",
-      "Talent & Capability Building",
-      "Decision Intelligence",
-    ],
-    outcome: "A resilient organization ready for rapid scale.",
-  },
-];
-
-const engagementModels = [
-  {
-    icon: "\u2699",
-    name: "Strategic Advisory",
-    description:
-      "Ongoing guidance for executive leaders to steer AI strategy, governance, and investment decisions effectively.",
-    benefits: [
-      "Executive Strategic Alignment",
-      "Risk Oversight & Mitigation",
-      "Investment Portfolio Optimization",
-    ],
-  },
-  {
-    icon: "\u{1F465}",
-    name: "Transformation Management",
-    description:
-      "End-to-end program leadership to drive complex AI initiatives from concept to measurable value realization.",
-    benefits: [
-      "Rigorous Program Discipline",
-      "Stakeholder Management",
-      "Value Assurance & Delivery",
-    ],
-    featured: true,
-  },
-  {
-    icon: "\u{1F393}",
-    name: "Capability Building",
-    description:
-      "Helping you build and scale your internal AI Competency Center or Center of Excellence (CoE).",
-    benefits: [
-      "Talent Development & Mentoring",
-      "Process Standardization",
-      "Knowledge Transfer & IP Retention",
-    ],
-  },
-  {
-    icon: "\u2713",
-    name: "Rescue & Turnaround",
-    description:
-      "Rapid intervention for stalled or failing AI initiatives to realign them with business value and operational reality.",
-    benefits: [
-      "Root Cause Analysis",
-      "Rapid Remediation Plan",
-      "Momentum Restoration",
-    ],
-  },
-];
-
 export default function TransformationManagementPage() {
   const { t } = useI18n();
+
+  const pillars = [
+    {
+      icon: "\u{1F3DB}",
+      name: t("transformation.pillar1Name"),
+      color: "text-electric-400",
+      borderColor: "border-electric-500/30",
+      bgColor: "bg-electric-500/5",
+      description: t("transformation.pillar1Desc"),
+      focusAreas: [
+        t("transformation.pillar1Focus1"),
+        t("transformation.pillar1Focus2"),
+        t("transformation.pillar1Focus3"),
+        t("transformation.pillar1Focus4"),
+      ],
+      outcome: t("transformation.pillar1Outcome"),
+    },
+    {
+      icon: "\u26A1",
+      name: t("transformation.pillar2Name"),
+      color: "text-accent-amber",
+      borderColor: "border-accent-amber/30",
+      bgColor: "bg-accent-amber/5",
+      description: t("transformation.pillar2Desc"),
+      focusAreas: [
+        t("transformation.pillar2Focus1"),
+        t("transformation.pillar2Focus2"),
+        t("transformation.pillar2Focus3"),
+        t("transformation.pillar2Focus4"),
+      ],
+      outcome: t("transformation.pillar2Outcome"),
+    },
+    {
+      icon: "\u{1F465}",
+      name: t("transformation.pillar3Name"),
+      color: "text-accent-green",
+      borderColor: "border-accent-green/30",
+      bgColor: "bg-accent-green/5",
+      description: t("transformation.pillar3Desc"),
+      focusAreas: [
+        t("transformation.pillar3Focus1"),
+        t("transformation.pillar3Focus2"),
+        t("transformation.pillar3Focus3"),
+        t("transformation.pillar3Focus4"),
+      ],
+      outcome: t("transformation.pillar3Outcome"),
+    },
+  ];
+
+  const engagementModels = [
+    {
+      icon: "\u2699",
+      name: t("transformation.model1Name"),
+      description: t("transformation.model1Desc"),
+      benefits: [t("transformation.model1Benefit1"), t("transformation.model1Benefit2"), t("transformation.model1Benefit3")],
+    },
+    {
+      icon: "\u{1F465}",
+      name: t("transformation.model2Name"),
+      description: t("transformation.model2Desc"),
+      benefits: [t("transformation.model2Benefit1"), t("transformation.model2Benefit2"), t("transformation.model2Benefit3")],
+      featured: true,
+    },
+    {
+      icon: "\u{1F393}",
+      name: t("transformation.model3Name"),
+      description: t("transformation.model3Desc"),
+      benefits: [t("transformation.model3Benefit1"), t("transformation.model3Benefit2"), t("transformation.model3Benefit3")],
+    },
+    {
+      icon: "\u2713",
+      name: t("transformation.model4Name"),
+      description: t("transformation.model4Desc"),
+      benefits: [t("transformation.model4Benefit1"), t("transformation.model4Benefit2"), t("transformation.model4Benefit3")],
+    },
+  ];
 
   return (
     <div className="grid-pattern">
@@ -139,19 +116,45 @@ export default function TransformationManagementPage() {
         </div>
       </section>
 
-      {/* Transform Your Organization */}
+      {/* What you&apos;re buying */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
-        <h2 className="text-3xl font-bold">
-          Transform Your Organization with AI
+        <h2 className="text-3xl font-bold">{t("transformation.buyingTitle")}</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-slate-400">{t("transformation.buyingBody")}</p>
+        <p className="mt-4 font-semibold text-electric-400">{t("transformation.buyingTagline")}</p>
+      </section>
+
+      {/* Who you work with */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <h2 className="text-center text-3xl font-bold">
+          {t("transformation.whoTitle1")} <span className="text-electric-400">{t("transformation.whoTitle2")}</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-          Our comprehensive AI transformation management service guides your
-          organization through every stage of AI adoption, from strategy and
-          planning to implementation and optimization.
-        </p>
-        <p className="mt-4 font-semibold text-electric-400">
-          Strategic AI Implementation for Enterprise Success
-        </p>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-slate-400">{t("transformation.whoSubtitle")}</p>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-6">
+            <div className="text-3xl">&#127891;</div>
+            <h3 className="mt-4 text-xl font-bold text-electric-400">{t("transformation.expertise1Title")}</h3>
+            <p className="mt-2 text-sm text-slate-400">{t("transformation.expertise1Desc")}</p>
+          </div>
+          <div className="rounded-2xl border border-accent-amber/30 bg-accent-amber/5 p-6">
+            <div className="text-3xl">&#129504;</div>
+            <h3 className="mt-4 text-xl font-bold text-accent-amber">{t("transformation.expertise2Title")}</h3>
+            <p className="mt-2 text-sm text-slate-400">{t("transformation.expertise2Desc")}</p>
+          </div>
+          <div className="rounded-2xl border border-accent-green/30 bg-accent-green/5 p-6">
+            <div className="text-3xl">&#128202;</div>
+            <h3 className="mt-4 text-xl font-bold text-accent-green">{t("transformation.expertise3Title")}</h3>
+            <p className="mt-2 text-sm text-slate-400">{t("transformation.expertise3Desc")}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Where they deploy */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <div className="rounded-2xl border border-slate-800 bg-navy-900/50 p-8 md:p-10">
+          <h2 className="text-2xl font-bold">{t("transformation.deployTitle")}</h2>
+          <p className="mt-3 text-slate-300">{t("transformation.deployBody1")}</p>
+          <p className="mt-4 text-sm text-slate-400">{t("transformation.deployBody2")}</p>
+        </div>
       </section>
 
       {/* The Three Pillars */}
@@ -161,8 +164,7 @@ export default function TransformationManagementPage() {
           <span className="text-electric-400">Transformation</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          We don&apos;t just implement technology; we restructure how value is
-          created, delivered, and governed.
+          Consultants work across three layers at once, restructuring how value is created, delivered, and governed.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {pillars.map((pillar) => (
@@ -195,7 +197,7 @@ export default function TransformationManagementPage() {
               </div>
               <div className="mt-4 border-t border-slate-700/50 pt-4">
                 <p className="text-xs uppercase tracking-wider text-slate-400">
-                  Outcome
+                  {t("transformation.outcome")}
                 </p>
                 <p className={`mt-1 text-sm font-semibold ${pillar.color}`}>
                   {pillar.outcome}
@@ -209,12 +211,11 @@ export default function TransformationManagementPage() {
       {/* Flexible Engagement Models */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <h2 className="text-center text-3xl font-bold">
-          Flexible{" "}
-          <span className="text-electric-400">Engagement Models</span>
+          {t("transformation.modelsTitle1")}{" "}
+          <span className="text-electric-400">{t("transformation.modelsTitle2")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-          We structure our partnership to match your specific needs, maturity,
-          and internal capabilities.
+          {t("transformation.modelsSubtitle")}
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {engagementModels.map((model) => (
@@ -239,7 +240,7 @@ export default function TransformationManagementPage() {
               </p>
               <div className="mt-4">
                 <p className="text-xs uppercase tracking-wider text-slate-400">
-                  Key Benefits
+                  {t("transformation.keyBenefits")}
                 </p>
                 <ul className="mt-2 space-y-1">
                   {model.benefits.map((benefit) => (
@@ -261,32 +262,31 @@ export default function TransformationManagementPage() {
       {/* Measurable Results */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="rounded-2xl border border-electric-500/30 bg-gradient-to-b from-electric-500/5 to-transparent p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-bold">Measurable Results</h2>
+          <h2 className="text-3xl font-bold">{t("transformation.resultsTitle")}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-            We don&apos;t just deliver slides. We deliver operational
-            capabilities and tangible business value.
+            {t("transformation.resultsSubtitle")}
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
             {[
               {
                 icon: "\u2699",
-                title: "Operational Efficiency",
-                desc: "Streamlined processes and reduced manual effort through intelligent automation.",
+                title: t("transformation.result1Title"),
+                desc: t("transformation.result1Desc"),
               },
               {
                 icon: "\u{1F6E1}",
-                title: "Risk Reduction",
-                desc: "Comprehensive governance frameworks that ensure safety, compliance, and ethical use.",
+                title: t("transformation.result2Title"),
+                desc: t("transformation.result2Desc"),
               },
               {
                 icon: "\u{1F4CA}",
-                title: "Accelerated Time-to-Value",
-                desc: "Faster deployment of AI solutions through rigorous program management.",
+                title: t("transformation.result3Title"),
+                desc: t("transformation.result3Desc"),
               },
               {
                 icon: "\u{1F4DA}",
-                title: "Sustainable Capability",
-                desc: "Long-term internal capability built through knowledge transfer and training.",
+                title: t("transformation.result4Title"),
+                desc: t("transformation.result4Desc"),
               },
             ].map((item) => (
               <div
@@ -471,9 +471,7 @@ export default function TransformationManagementPage() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-slate-400">
-            All pricing is fixed-scope SOW based. No hourly billing. No scope
-            creep. Final investment determined by organizational complexity and
-            engagement duration.
+            {t("transformation.pricingNote")}
           </p>
         </div>
       </section>

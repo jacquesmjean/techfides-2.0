@@ -11,29 +11,26 @@ export default function Home() {
 
   const tiers = [
     {
-      name: "Starter",
-      target: "Small practices & offices",
+      name: t("pricing.sovereignS"),
+      target: t("pricing.sovereignSDesc"),
       monthly: "$1,299",
-      agentHours: "20 agent-hours / mo",
+      annual: "$12,999 / yr",
+      hours: "20 agent-hours / mo",
     },
     {
-      name: "Growth",
-      target: "Mid-size firms",
+      name: t("pricing.sovereignM"),
+      target: t("pricing.sovereignMDesc"),
       monthly: "$2,299",
-      agentHours: "40 agent-hours / mo",
+      annual: "$22,999 / yr",
+      hours: "40 agent-hours / mo",
       featured: true,
     },
     {
-      name: "Scale",
-      target: "Production workloads",
+      name: t("pricing.sovereignL"),
+      target: t("pricing.sovereignLDesc"),
       monthly: "$3,999",
-      agentHours: "80 agent-hours / mo",
-    },
-    {
-      name: "Enterprise",
-      target: "AI as core infrastructure",
-      monthly: "$6,999",
-      agentHours: "160 agent-hours / mo",
+      annual: "$39,999 / yr",
+      hours: "80 agent-hours / mo",
     },
   ];
 
@@ -76,22 +73,22 @@ export default function Home() {
       {/* Trust Bar */}
       <TrustBar />
 
-      {/* Why Local / Solution */}
+      {/* What you get / How it works */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 md:grid-cols-2">
-          <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-8">
-            <h2 className="text-2xl font-bold text-red-400">{t("problem.title")}</h2>
+          <div className="rounded-2xl border border-electric-500/20 bg-electric-500/5 p-8">
+            <h2 className="text-2xl font-bold text-electric-400">{t("problem.title")}</h2>
             <ul className="mt-4 space-y-3 text-slate-300">
               <li className="flex gap-3">
-                <span className="text-red-400">&#10005;</span>
+                <span className="text-electric-400">&#10003;</span>
                 {t("problem.item1")}
               </li>
               <li className="flex gap-3">
-                <span className="text-red-400">&#10005;</span>
+                <span className="text-electric-400">&#10003;</span>
                 {t("problem.item2")}
               </li>
               <li className="flex gap-3">
-                <span className="text-red-400">&#10005;</span>
+                <span className="text-electric-400">&#10003;</span>
                 {t("problem.item3")}
               </li>
             </ul>
@@ -145,10 +142,19 @@ export default function Home() {
               <h3 className="text-xl font-bold">{tier.name}</h3>
               <p className="mt-1 text-sm text-slate-400">{tier.target}</p>
               <div className="mt-6">
-                <p className="text-3xl font-bold">{tier.monthly}</p>
-                <p className="text-sm text-slate-400">/mo</p>
+                <p className="text-3xl font-bold">
+                  {tier.monthly}
+                  <span className="text-base font-normal text-slate-400"> / mo</span>
+                </p>
+                <p className="mt-1 text-sm text-slate-400">{tier.annual}</p>
               </div>
-              <p className="mt-4 text-sm text-slate-300">{tier.agentHours}</p>
+              <div className="mt-4">
+                <p className="text-sm text-slate-300">{tier.hours}</p>
+              </div>
+              <div className="mt-4 rounded-lg bg-accent-green/10 px-3 py-1.5 text-center text-sm font-semibold text-accent-green">
+                {t("pricing.installation")}
+              </div>
+              <p className="mt-4 text-sm text-slate-300">{tier.hours}</p>
               <Link
                 href={`/pricing?tier=${i}`}
                 className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"

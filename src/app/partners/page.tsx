@@ -4,70 +4,24 @@ import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/i18n";
 
-const benefits = [
-  {
-    icon: "\u{1F4B0}",
-    title: "Generous Commissions",
-    description:
-      "Commission on the first 12 months of MRR (monthly recurring revenue) per deal closed. No commission on one-time fees, because there aren't any.",
-  },
-  {
-    icon: "\u{1F4E6}",
-    title: "Marketing Collateral",
-    description:
-      "Access branded pitch decks, one-pagers, case studies, and ROI calculators. Everything you need to have the conversation with confidence.",
-  },
-  {
-    icon: "\u{1F4CA}",
-    title: "Lead Tracking Dashboard",
-    description:
-      "Real-time visibility into your referrals. See where each lead stands in the pipeline, from introduction to deployment.",
-  },
-  {
-    icon: "\u{1F91D}",
-    title: "Co-Selling Support",
-    description:
-      "Bring us into the conversation when you need technical depth. We'll join calls, run demos, and help close — you keep the full commission.",
-  },
-  {
-    icon: "\u{1F393}",
-    title: "Partner Training",
-    description:
-      "Monthly webinars on AI trends, product updates, and sales techniques. Become the AI expert in your network.",
-  },
-  {
-    icon: "\u{1F680}",
-    title: "Priority Access",
-    description:
-      "Partners get first look at new verticals, features, and pricing tiers. Your referrals also get priority onboarding.",
-  },
-];
-
-const partnerTypes = [
-  {
-    type: "IT Consultants & MSPs",
-    description:
-      "You already manage their infrastructure. Now offer AI as a service. TechFides deploys, you earn recurring revenue on a client you already own.",
-  },
-  {
-    type: "Business Consultants",
-    description:
-      "Your clients trust your strategic advice. Recommending private AI infrastructure makes you the advisor who brought real cost savings to the table -- and earns you a commission on every deal.",
-  },
-  {
-    type: "Industry Specialists",
-    description:
-      "If you serve legal, medical, auto, or trades verticals, you know the pain points. Connect your clients with the solution and get paid for it.",
-  },
-  {
-    type: "Accountants & Financial Advisors",
-    description:
-      "You see the cloud spend on their P&L. Show them a better way. The ROI calculator practically sells itself.",
-  },
-];
-
 export default function PartnersPage() {
   const { t } = useI18n();
+
+  const benefits = [
+    { icon: "\u{1F4B0}", title: t("partners.benefit1Title"), description: t("partners.benefit1Desc") },
+    { icon: "\u{1F4E6}", title: t("partners.benefit2Title"), description: t("partners.benefit2Desc") },
+    { icon: "\u{1F4CA}", title: t("partners.benefit3Title"), description: t("partners.benefit3Desc") },
+    { icon: "\u{1F91D}", title: t("partners.benefit4Title"), description: t("partners.benefit4Desc") },
+    { icon: "\u{1F393}", title: t("partners.benefit5Title"), description: t("partners.benefit5Desc") },
+    { icon: "\u{1F680}", title: t("partners.benefit6Title"), description: t("partners.benefit6Desc") },
+  ];
+
+  const partnerTypes = [
+    { type: t("partners.type1Title"), description: t("partners.type1Desc") },
+    { type: t("partners.type2Title"), description: t("partners.type2Desc") },
+    { type: t("partners.type3Title"), description: t("partners.type3Desc") },
+    { type: t("partners.type4Title"), description: t("partners.type4Desc") },
+  ];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -154,7 +108,7 @@ export default function PartnersPage() {
             {
               step: "04",
               title: "Get Paid",
-              desc: "Earn commission on the first 12 months of MRR per closed deal.",
+              desc: "Earn commission on the first 12 months of the referred client's subscription. Paid monthly, alongside their billing cycle.",
             },
           ].map((item) => (
             <div key={item.step} className="text-center">
@@ -217,7 +171,13 @@ export default function PartnersPage() {
                 <th className="p-4 font-semibold text-slate-400">Tier</th>
                 <th className="p-4 font-semibold text-slate-400">Monthly</th>
                 <th className="p-4 font-semibold text-slate-400">
-                  Commission (first 12 months of MRR)
+                  Client Subscription
+                </th>
+                <th className="p-4 font-semibold text-slate-400">
+                  Monthly Commission
+                </th>
+                <th className="p-4 font-semibold text-slate-400">
+                  12-Month Total
                 </th>
               </tr>
             </thead>
@@ -225,28 +185,32 @@ export default function PartnersPage() {
               <tr className="bg-slate-950/50">
                 <td className="p-4 font-medium">Starter</td>
                 <td className="p-4 text-slate-300">$1,299 / mo</td>
-                <td className="p-4 text-accent-green">$1,559 – $3,118</td>
+                <td className="p-4 text-accent-green">$260 / mo</td>
+                <td className="p-4 text-accent-green">$3,117</td>
               </tr>
               <tr className="bg-slate-950/50">
                 <td className="p-4 font-medium">Growth</td>
                 <td className="p-4 text-slate-300">$2,299 / mo</td>
-                <td className="p-4 text-accent-green">$2,759 – $5,518</td>
+                <td className="p-4 text-accent-green">$460 / mo</td>
+                <td className="p-4 text-accent-green">$5,517</td>
               </tr>
               <tr className="bg-slate-950/50">
                 <td className="p-4 font-medium">Scale</td>
                 <td className="p-4 text-slate-300">$3,999 / mo</td>
-                <td className="p-4 text-accent-green">$4,799 – $9,598</td>
+                <td className="p-4 text-accent-green">$800 / mo</td>
+                <td className="p-4 text-accent-green">$9,597</td>
               </tr>
               <tr className="bg-slate-950/50">
                 <td className="p-4 font-medium">Enterprise</td>
                 <td className="p-4 text-slate-300">$6,999 / mo</td>
-                <td className="p-4 text-accent-green">$8,399 – $16,798</td>
+                <td className="p-4 text-accent-green">$1,400 / mo</td>
+                <td className="p-4 text-accent-green">$16,797</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-center text-xs text-slate-400">
-          Commission is 10–20% of the first 12 months of MRR per deal closed. Rate scales with partner volume. No commission on one-time fees, because there aren&apos;t any.
+          Commission is 20% of the first 12 months of the referred client&apos;s monthly recurring revenue. Paid monthly, alongside their billing cycle. Top-performing partners unlock higher commission tiers.
         </p>
       </section>
 
@@ -257,24 +221,24 @@ export default function PartnersPage() {
             Already a <span className="text-accent-green">TechFides Client?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-center text-slate-400">
-            Refer a business and earn credit on your subscription. Simple.
+            Refer a business and earn credit on your own subscription. Simple.
           </p>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 md:grid-cols-4">
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-3xl font-bold text-accent-green">$650</p>
+              <p className="text-3xl font-bold text-accent-green">$250</p>
               <p className="mt-1 text-sm text-slate-400">Credit per Starter referral</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-3xl font-bold text-accent-green">$1,150</p>
+              <p className="text-3xl font-bold text-accent-green">$500</p>
               <p className="mt-1 text-sm text-slate-400">Credit per Growth referral</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-3xl font-bold text-accent-green">$2,000</p>
+              <p className="text-3xl font-bold text-accent-green">$1,000</p>
               <p className="mt-1 text-sm text-slate-400">Credit per Scale referral</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-6 text-center">
-              <p className="text-3xl font-bold text-accent-green">$3,500</p>
+              <p className="text-3xl font-bold text-accent-green">$2,500</p>
               <p className="mt-1 text-sm text-slate-400">Credit per Enterprise referral</p>
             </div>
           </div>

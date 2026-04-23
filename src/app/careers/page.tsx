@@ -226,11 +226,11 @@ export default function CareersPage() {
           <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-400">
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-accent-green" />
-              {JOBS.filter((j) => j.type === "full-time").length} Full-Time Roles
+              {JOBS.filter((j) => j.type === "full-time").length} {t("careers.fullTimeRoles")}
             </span>
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-electric-400" />
-              {JOBS.filter((j) => j.type === "internship").length} Internships
+              {JOBS.filter((j) => j.type === "internship").length} {t("careers.internships")}
             </span>
           </div>
         </div>
@@ -240,10 +240,10 @@ export default function CareersPage() {
       <section className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-6 md:grid-cols-4">
           {[
-            { icon: "\uD83C\uDFE2", title: "3 Offices", desc: "Frisco TX, Guadalajara MX, Libreville GA" },
-            { icon: "\uD83C\uDF0D", title: "Remote-First", desc: "Work from anywhere with async-first culture" },
-            { icon: "\uD83D\uDE80", title: "Ship Real AI", desc: "Deploy models on real hardware for real clients" },
-            { icon: "\uD83D\uDCB0", title: "Competitive Pay", desc: "Market-rate salary + equity for full-time roles" },
+            { icon: "\uD83C\uDFE2", title: t("careers.perk1Title"), desc: t("careers.perk1Desc") },
+            { icon: "\uD83C\uDF0D", title: t("careers.perk2Title"), desc: t("careers.perk2Desc") },
+            { icon: "\uD83D\uDE80", title: t("careers.perk3Title"), desc: t("careers.perk3Desc") },
+            { icon: "\uD83D\uDCB0", title: t("careers.perk4Title"), desc: t("careers.perk4Desc") },
           ].map((perk) => (
             <div
               key={perk.title}
@@ -260,7 +260,7 @@ export default function CareersPage() {
       {/* Filters */}
       <section className="mx-auto max-w-5xl px-6">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-medium text-slate-400">Filter:</span>
+          <span className="text-sm font-medium text-slate-400">{t("careers.filter")}:</span>
           {(["all", "full-time", "internship"] as const).map((f) => (
             <button
               key={f}
@@ -271,7 +271,7 @@ export default function CareersPage() {
                   : "border border-slate-700 text-slate-400 hover:text-white"
               }`}
             >
-              {f === "all" ? "All Positions" : f === "full-time" ? "Full-Time" : "Internships"}
+              {f === "all" ? t("careers.allPositions") : f === "full-time" ? t("careers.fullTime") : t("careers.internshipsShort")}
             </button>
           ))}
         </div>
@@ -317,7 +317,7 @@ export default function CareersPage() {
                       <span>{job.location}</span>
                       {job.remote && (
                         <span className="rounded bg-accent-green/10 px-1.5 py-0.5 text-[10px] text-accent-green">
-                          Remote OK
+                          {t("careers.remoteOK")}
                         </span>
                       )}
                       {job.salary && <span className="font-medium text-slate-300">{job.salary}</span>}
@@ -338,7 +338,7 @@ export default function CareersPage() {
                     <div className="mt-6 grid gap-6 md:grid-cols-3">
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-electric-400">
-                          Responsibilities
+                          {t("careers.responsibilities")}
                         </h4>
                         <ul className="mt-3 space-y-2">
                           {job.responsibilities.map((r) => (
@@ -351,7 +351,7 @@ export default function CareersPage() {
                       </div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-electric-400">
-                          Requirements
+                          {t("careers.requirements")}
                         </h4>
                         <ul className="mt-3 space-y-2">
                           {job.requirements.map((r) => (
@@ -364,7 +364,7 @@ export default function CareersPage() {
                       </div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-electric-400">
-                          Nice to Have
+                          {t("careers.niceToHave")}
                         </h4>
                         <ul className="mt-3 space-y-2">
                           {job.niceToHave.map((r) => (
@@ -385,13 +385,13 @@ export default function CareersPage() {
                         }}
                         className="glow-blue rounded-lg bg-electric-500 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-electric-400"
                       >
-                        Apply Now
+                        {t("careers.applyNow")}
                       </button>
                       <a
                         href={`mailto:careers@techfides.com?subject=Application: ${job.title}`}
                         className="rounded-lg border border-slate-700 px-6 py-2.5 text-sm font-semibold text-slate-300 transition-all hover:border-electric-500/50 hover:text-white"
                       >
-                        Email Resume
+                        {t("careers.emailResume")}
                       </a>
                     </div>
                   </div>
@@ -405,20 +405,19 @@ export default function CareersPage() {
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold">
-          Don&apos;t See Your Role?
+          {t("careers.noRoleTitle")}
         </h2>
         <p className="mt-4 text-lg text-slate-400">
-          We&apos;re always looking for exceptional people. Send us your resume
-          and tell us how you&apos;d contribute to private AI.
+          {t("careers.noRoleBody")}
         </p>
         <button
           onClick={() => {
-            setSelectedJob({ id: "general", title: "General Application", department: "engineering", type: "full-time", location: "Any TechFides Office", remote: true, description: "", responsibilities: [], requirements: [], niceToHave: [] });
+            setSelectedJob({ id: "general", title: t("careers.generalApplicationTitle"), department: "engineering", type: "full-time", location: t("careers.anyOffice"), remote: true, description: "", responsibilities: [], requirements: [], niceToHave: [] });
             setApplying(true);
           }}
           className="glow-blue mt-8 inline-block rounded-xl bg-electric-500 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-electric-600"
         >
-          Send General Application
+          {t("careers.sendGeneral")}
         </button>
       </section>
 
@@ -433,7 +432,7 @@ export default function CareersPage() {
               &#x2715;
             </button>
             <h3 className="text-xl font-bold text-electric-400">
-              Apply: {selectedJob?.title}
+              {t("careers.applyTitle")}: {selectedJob?.title}
             </h3>
             <p className="mt-1 text-sm text-slate-400">
               {selectedJob?.department && DEPARTMENT_LABELS[selectedJob.department].label} &middot; {selectedJob?.location}
@@ -442,7 +441,6 @@ export default function CareersPage() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                // In production, POST to API
                 setSubmitted(true);
               }}
               className="mt-6 space-y-4"
@@ -450,7 +448,7 @@ export default function CareersPage() {
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label htmlFor="app-name" className="block text-sm font-medium text-slate-300">
-                    Full Name *
+                    {t("careers.fullName")} *
                   </label>
                   <input
                     id="app-name"
@@ -461,7 +459,7 @@ export default function CareersPage() {
                 </div>
                 <div>
                   <label htmlFor="app-email" className="block text-sm font-medium text-slate-300">
-                    Email *
+                    {t("careers.emailLabel")} *
                   </label>
                   <input
                     id="app-email"
@@ -473,7 +471,7 @@ export default function CareersPage() {
               </div>
               <div>
                 <label htmlFor="app-phone" className="block text-sm font-medium text-slate-300">
-                  Phone
+                  {t("careers.phoneLabel")}
                 </label>
                 <input
                   id="app-phone"
@@ -483,7 +481,7 @@ export default function CareersPage() {
               </div>
               <div>
                 <label htmlFor="app-linkedin" className="block text-sm font-medium text-slate-300">
-                  LinkedIn Profile
+                  {t("careers.linkedInLabel")}
                 </label>
                 <input
                   id="app-linkedin"
@@ -494,18 +492,18 @@ export default function CareersPage() {
               </div>
               <div>
                 <label htmlFor="app-why" className="block text-sm font-medium text-slate-300">
-                  Why TechFides? *
+                  {t("careers.whyLabel")} *
                 </label>
                 <textarea
                   id="app-why"
                   required
                   rows={3}
-                  placeholder="Tell us what excites you about private AI and this role..."
+                  placeholder={t("careers.whyPlaceholder")}
                   className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:border-electric-500 focus:outline-none"
                 />
               </div>
               <p className="text-xs text-slate-500">
-                Also email your resume to{" "}
+                {t("careers.alsoEmail")}{" "}
                 <a href="mailto:careers@techfides.com" className="text-electric-400">
                   careers@techfides.com
                 </a>
@@ -514,7 +512,7 @@ export default function CareersPage() {
                 type="submit"
                 className="glow-blue w-full rounded-lg bg-electric-500 py-3 text-sm font-semibold text-white transition-all hover:bg-electric-400"
               >
-                Submit Application
+                {t("careers.submitApplication")}
               </button>
             </form>
           </div>
@@ -529,11 +527,10 @@ export default function CareersPage() {
               &#10003;
             </div>
             <h3 className="mt-4 text-xl font-bold text-slate-100">
-              Application Received
+              {t("careers.applicationReceived")}
             </h3>
             <p className="mt-2 text-sm text-slate-400">
-              We&apos;ll review your application and get back to you within 5 business days.
-              Check your email for a confirmation.
+              {t("careers.applicationReceivedDesc")}
             </p>
             <button
               onClick={() => {
@@ -542,7 +539,7 @@ export default function CareersPage() {
               }}
               className="mt-6 rounded-lg bg-electric-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-electric-400"
             >
-              Close
+              {t("careers.close")}
             </button>
           </div>
         </div>
