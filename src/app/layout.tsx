@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | TechFides",
   },
   description:
-    "Deploy private AI on your own hardware. No cloud tax. No data leakage. Local AI infrastructure for Legal, Medical, Auto, and Trades businesses.",
+    "Run Llama, Mistral, or Phi on hardware we put in your building. One monthly subscription. Private AI infrastructure for legal, medical, auto, and trades businesses.",
   keywords: [
     "local AI",
     "private AI",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "TechFides",
     title: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
     description:
-      "Deploy private AI on your own hardware. No cloud tax. No data leakage. Transparent pricing starting at $500/mo.",
+      "Private AI on hardware in your building. Monthly subscription — hardware, deployment, and support included. Cancel anytime.",
     images: [
       {
         url: "/images/techfides-logo.png",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     creator: "@tech_fides",
     title: "TechFides | Enterprise AI. Local Infrastructure. Total Control.",
     description:
-      "Deploy private AI on your own hardware. No cloud tax. No data leakage.",
+      "Private AI on hardware in your building. Monthly subscription, hardware included.",
     images: ["/images/techfides-logo.png"],
   },
   robots: {

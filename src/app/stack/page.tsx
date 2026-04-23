@@ -250,7 +250,7 @@ export default function StackPage() {
             <tbody className="divide-y divide-slate-800/50">
               {[
                 ["Data Location", "Vendor's servers", "Your building"],
-                ["Pricing Model", "Per-token / per-seat", "Flat monthly retainer"],
+                ["Pricing Model", "Per-token / per-seat", "Flat monthly subscription"],
                 ["Compliance", "Shared responsibility", "Full control"],
                 ["Internet Required", "Always", "Never (for inference)"],
                 ["Model Lock-In", "Vendor's model only", "Any open model"],

@@ -115,10 +115,10 @@ export const SEQUENCE_TEMPLATES: Record<StrategyAngle, SequenceStep[]> = {
     {
       step: 2,
       label: "The Solution",
-      subjectTemplate: "Own your AI forever — here's how",
+      subjectTemplate: "Private AI on hardware in your building",
       bodyPrompt:
-        "Write a follow-up email introducing Private AI as an alternative to cloud subscriptions. Focus on: one-time setup, predictable monthly retainer, hardware ownership. Reference the Silver/Gold/Platinum tiers. Tone: practical, financial clarity. Max 150 words.",
-      ctaText: "See Transparent Pricing",
+        "Write a follow-up email introducing Private AI as an alternative to cloud subscriptions. Focus on: one monthly subscription (hardware included), data stays in the customer's building, cancel anytime. Reference the four tiers (Starter $1,299, Growth $2,299, Scale $3,999, Enterprise $6,999). Lead with what the product does, not what it isn't. Tone: practical, financial clarity. Max 150 words. Do NOT use phrases like 'stop paying', 'cloud tax', 'no more', 'eliminate'.",
+      ctaText: "See Plans",
       ctaPath: "/pricing",
       delayDays: 3,
     },

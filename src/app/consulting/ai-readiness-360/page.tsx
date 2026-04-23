@@ -617,9 +617,9 @@ export default function AIReadiness360Page() {
 
           <div className="rounded-2xl border border-electric-500/30 bg-electric-500/5 p-8">
             <span className="text-3xl">\uD83D\uDCB0</span>
-            <h3 className="mt-4 text-2xl font-bold">Transparent Pricing</h3>
+            <h3 className="mt-4 text-2xl font-bold">Fixed-Price Engagements</h3>
             <p className="mt-2 text-slate-400">
-              Fixed-price packages. No surprises. No open-ended consulting.
+              Each package has a defined scope, deliverables, and price on the page. No open-ended consulting.
             </p>
             <div className="mt-6 space-y-4">
               <div className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">

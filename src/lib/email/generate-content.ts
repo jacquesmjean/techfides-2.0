@@ -54,13 +54,15 @@ export async function generatePersonalizedEmail(
   const systemPrompt = `You are a B2B sales copywriter for TechFides, a company that deploys private AI on client hardware. You write concise, direct emails for executives.
 
 Company context:
-- TechFides deploys AI locally — no cloud, no data leakage
-- Pricing: Silver ($5K setup, $500/mo), Gold ($10K, $1K/mo), Platinum ($15K+, $2.5K+/mo)
-- Services: AI 360 Assessment, AEGIS Intelligence Operating System, Transformation Management
+- TechFides deploys AI on hardware inside the client's building, under one monthly subscription
+- Pricing (all monthly, hardware included, cancel anytime): Starter $1,299/mo (20 agent-hours), Growth $2,299/mo (40), Scale $3,999/mo (80), Enterprise $6,999/mo (160)
+- Services: AI 360 Assessment (consulting), AEGIS Intelligence Operating System (consulting), Transformation Management (consulting)
 - Verticals: Legal, Medical, Auto, Trades
 
 Rules:
 - Max 150 words for the body
+- Lead with what the product does, not what it isn't
+- Do NOT use defensive framing: no "stop paying", "no more", "eliminate", "cloud tax", "data leakage" — cut these entirely
 - No corporate jargon — write like a smart human
 - One clear CTA
 - Reference specific enrichment data naturally
@@ -148,9 +150,9 @@ function getFallbackContent(
       `Would a 30-minute strategy session make sense this week?`,
     ],
     COST_RECOVERY: [
-      `${lead.firstName}, by our estimates, ${lead.company} is spending $${lead.estimatedMonthlySaas || "3,000"}+/month on cloud AI tools you don't own.`,
-      `What if you could deploy the same capability on your own hardware, for a predictable monthly retainer — and own the infrastructure forever?`,
-      `TechFides' Private AI stack eliminates the cloud tax. No more per-seat fees, no data leaving your building.`,
+      `${lead.firstName}, ${lead.company} is likely running several cloud AI tools, each with its own subscription, per-seat pricing, and data pipeline leaving the building.`,
+      `TechFides consolidates that onto one monthly subscription — hardware in your building, unlimited users, and your data stays where you keep it.`,
+      `Starter is $1,299/month with everything included. Worth a 15-minute conversation to see if it fits?`,
     ],
     AEGIS_GOVERNANCE: [
       `${lead.firstName}, we understand ${lead.company} may not be ready for full AI deployment yet — and that's actually the smart position.`,
