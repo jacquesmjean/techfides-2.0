@@ -1,5 +1,7 @@
 "use client";
 
+import { useI18n } from "@/i18n";
+
 import Link from "next/link";
 
 type BillingCycle = "monthly" | "annual";
@@ -318,7 +320,7 @@ export default function PricingPage() {
           {t("pricingV2.faqTitle1")} <span className="text-electric-400">{t("pricingV2.faqTitle2")}</span>
         </h2>
         <div className="mt-10 space-y-4">
-          {faqs.map((faq) => (
+          {faqs.map((faq, item) => (
             <div
               key={item}
               className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3"
@@ -356,10 +358,10 @@ export default function PricingPage() {
             <tbody>
               {addOns.map((addon) => (
                 <tr
-                  key={addon.label}
+                  key={addon.name}
                   className="border-b border-slate-800/60 text-sm"
                 >
-                  <td className="py-3 pr-4 text-slate-200">{addon.label}</td>
+                  <td className="py-3 pr-4 text-slate-200">{addon.name}</td>
                   <td className="py-3 font-semibold text-electric-400">
                     {addon.price}
                   </td>
@@ -376,7 +378,7 @@ export default function PricingPage() {
           Frequently Asked <span className="text-electric-400">Questions</span>
         </h2>
         <dl className="mt-8 space-y-4">
-          {faqs.map((faq) => (
+          {faqs.map((faq, item) => (
             <div
               key={faq.q}
               className="rounded-xl border border-slate-800 bg-slate-900/50 p-6"

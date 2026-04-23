@@ -154,7 +154,7 @@ export default function Home() {
               <div className="mt-4 rounded-lg bg-accent-green/10 px-3 py-1.5 text-center text-sm font-semibold text-accent-green">
                 {t("pricing.installation")}
               </div>
-              <p className="mt-4 text-sm text-slate-300">{tier.agentHours}</p>
+              <p className="mt-4 text-sm text-slate-300">{tier.hours}</p>
               <Link
                 href={`/pricing?tier=${i}`}
                 className="mt-6 block rounded-lg bg-electric-500 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-electric-600"
