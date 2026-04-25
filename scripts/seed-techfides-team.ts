@@ -73,7 +73,7 @@ const TEAM: SeedPerson[] = [
     type: "FTE",
     region: "US",
     startDate: new Date("2026-04-25"),
-    notes: "Owns operational coordination: HR records, vendor management, scheduling, internal SOPs.",
+    notes: "Operations glue across the entire business — touches financials (AP, expense routing, invoice intake), employee records (HR coordination, onboarding follow-through), operational config (internal SOPs, vendor management, scheduling), and sales follow-up (post-meeting actions, deal-room handoffs, client check-ins). Reports to Jacques M. Jean for ops; coordinates with Kasthuri Henry on financial workflows.",
   },
   {
     name: "Jean-Gardais Monfiston",
