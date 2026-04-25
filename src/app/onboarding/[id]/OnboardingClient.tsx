@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { StripePaymentForm } from "@/components/payments/StripePaymentForm";
 
 /* ─── Types ─── */
 interface SignatureData {
@@ -960,15 +961,9 @@ function StepPayment({
     !!tier &&
     (tier.cta === "Sign & Pay" || tier.cta === undefined);
 
-  const handleStripePayment = () => {
-    setProcessing(true);
-    // In production: redirect to Stripe Checkout or use Stripe Elements
-    // window.location.href = `/api/stripe/checkout?tier=${selectedTier}`;
-    setTimeout(() => {
-      setProcessing(false);
-      onComplete("stripe");
-    }, 2000);
-  };
+  // Stripe flow is handled by <StripePaymentForm /> which manages its own
+  // loading state. The handler used to live here has been replaced by that
+  // component plus the /api/v1/stripe/create-payment-intent + /webhook routes.
 
   const canSubmitInvoice =
     billing.contactName &&
@@ -1149,8 +1144,8 @@ function StepPayment({
 
       {/* ── Stripe Payment ── */}
       {paymentMethod === "stripe" && (
-        <>
-          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-slate-500">
+        <div className="mt-6">
+          <div className="mb-4 flex items-center justify-center gap-2 text-xs text-slate-500">
             <svg
               className="h-4 w-4"
               viewBox="0 0 24 24"
@@ -1161,43 +1156,41 @@ function StepPayment({
             Secured by Stripe &bull; PCI DSS Compliant &bull; 256-bit SSL
           </div>
 
-          <button
-            onClick={handleStripePayment}
-            disabled={processing}
-            className={`mt-6 w-full rounded-lg py-3 text-sm font-semibold transition-all ${
-              processing
-                ? "bg-electric-600 text-white/70"
-                : "bg-electric-500 text-white hover:bg-electric-400"
-            }`}
-          >
-            {processing ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="h-4 w-4 animate-spin"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                  />
-                </svg>
-                Processing Payment...
-              </span>
-            ) : (
-              "Pay Setup Fee via Stripe"
-            )}
-          </button>
-        </>
+          {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? (
+            <StripePaymentForm
+              serviceId={service.id === "sovereign-ai" ? "SOVEREIGN_AI" : service.id === "ai-readiness-360" ? "AI_READINESS_360" : service.id === "transformation-management" ? "TRANSFORMATION_MANAGEMENT" : "AEGIS"}
+              tierId={tier.id}
+              amountCents={dueTodayCents}
+              customerName={billing.contactName || clientName}
+              customerEmail={billing.email}
+              customerCompany={billing.company || clientCompany}
+              returnUrl={typeof window !== "undefined" ? `${window.location.origin}/onboarding/payment-complete` : "/onboarding/payment-complete"}
+              onSuccess={() => onComplete("stripe")}
+              onError={(msg) => console.error("Stripe error:", msg)}
+            />
+          ) : (
+            <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+              <p className="font-semibold">Stripe is not configured yet</p>
+              <p className="mt-1 text-xs">
+                Add <code className="rounded bg-slate-900 px-1">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</code>{" "}
+                and <code className="rounded bg-slate-900 px-1">STRIPE_SECRET_KEY</code> to{" "}
+                <code className="rounded bg-slate-900 px-1">.env.local</code> and restart the dev server.
+                See <code className="rounded bg-slate-900 px-1">/Operations/Stripe-Setup.md</code> for steps.
+              </p>
+              <button
+                onClick={() => onComplete("invoice", generateWorkOrderNumber())}
+                className="mt-3 w-full rounded-lg bg-amber-500/20 py-2 text-xs font-semibold text-amber-200 hover:bg-amber-500/30"
+              >
+                Use Invoice Method Instead
+              </button>
+            </div>
+          )}
+
+          <p className="mt-3 text-[11px] text-slate-500">
+            We accept all major cards. Apple Pay and Google Pay surface
+            automatically when supported by your browser.
+          </p>
+        </div>
       )}
 
       {/* ── Invoice / Alternative Payment ── */}

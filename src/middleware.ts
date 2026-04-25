@@ -47,6 +47,18 @@ export function middleware(req: NextRequest) {
       return NextResponse.next();
     }
 
+    // Stripe webhook authenticates via signature header, not bearer token.
+    if (pathname === "/api/v1/stripe/webhook") {
+      return NextResponse.next();
+    }
+
+    // Public payment intent creation: customers in /onboarding/[id] call this
+    // to start the Stripe flow. Authenticated by virtue of having a valid
+    // /onboarding access code (validated upstream).
+    if (pathname === "/api/v1/stripe/create-payment-intent") {
+      return NextResponse.next();
+    }
+
     return NextResponse.json(
       { error: "Unauthorized" },
       { status: 401 }
