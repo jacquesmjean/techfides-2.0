@@ -24,6 +24,11 @@ model User {
   role          UserRole  @default(VIEWER)
   mfaEnabled    Boolean   @default(false)
   mfaSecret     String?
+  /// bcrypt hash; null until the user completes account setup
+  passwordHash  String?
+  /// Tracks the welcome email lifecycle so the GSE UI can show "Sent X ago"
+  welcomeEmailSentAt DateTime?
+  passwordSetAt      DateTime?
 
   accounts      Account[]
   sessions      Session[]
@@ -73,6 +78,22 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+/// One-time tokens that let a new employee set their password and enable MFA.
+/// Sent inside the welcome email; expires in 72 hours; single-use.
+model UserSetupToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique // URL-safe, ~144 bits entropy
+  email     String // captured at issue time so renames don't break setup
+  expiresAt DateTime
+  consumedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
 }
 
 model AuditLog {

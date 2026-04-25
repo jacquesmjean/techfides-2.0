@@ -59,6 +59,13 @@ export function middleware(req: NextRequest) {
       return NextResponse.next();
     }
 
+    // Account setup completion — the user doesn't have a password yet,
+    // they're trying to set one. Auth happens via the setup token in
+    // the request body, not a session.
+    if (pathname === "/api/v1/auth/setup/complete") {
+      return NextResponse.next();
+    }
+
     return NextResponse.json(
       { error: "Unauthorized" },
       { status: 401 }

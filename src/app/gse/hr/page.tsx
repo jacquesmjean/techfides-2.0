@@ -27,6 +27,20 @@ interface Employee {
   onboardingProgress: number;
   requiredTaskCount: number;
   completedTaskCount: number;
+  // Account / welcome-email state
+  hasUser: boolean;
+  appRole: "ADMIN" | "CLOSER" | "VIEWER" | null;
+  welcomeEmailSentAt: string | null;
+  passwordSetAt: string | null;
+  mfaEnabled: boolean;
+}
+
+function relativeTime(iso: string): string {
+  const seconds = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+  if (seconds < 60) return "just now";
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+  return `${Math.floor(seconds / 86400)}d ago`;
 }
 
 const TIER_COLORS: Record<string, { color: string; bg: string }> = {
@@ -46,13 +60,35 @@ const STATUS_BADGE: Record<string, { color: string; bg: string; label: string }>
 export default function HRPage() {
   const [employees, setEmployees] = useState<Employee[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [sendingId, setSendingId] = useState<string | null>(null);
+  const [sendStatus, setSendStatus] = useState<{ id: string; ok: boolean; message: string } | null>(null);
 
-  useEffect(() => {
+  function reload() {
     fetch("/api/v1/hr/employees")
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((data: Employee[]) => setEmployees(data))
       .catch((e) => setError(e.message ?? "Failed to load"));
+  }
+
+  useEffect(() => {
+    reload();
   }, []);
+
+  async function sendWelcome(id: string) {
+    setSendingId(id);
+    setSendStatus(null);
+    try {
+      const res = await fetch(`/api/v1/hr/employees/${id}/send-welcome-email`, { method: "POST" });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.error ?? `HTTP ${res.status}`);
+      setSendStatus({ id, ok: true, message: "Welcome email sent." });
+      reload();
+    } catch (e) {
+      setSendStatus({ id, ok: false, message: e instanceof Error ? e.message : "Send failed" });
+    } finally {
+      setSendingId(null);
+    }
+  }
 
   if (error) {
     return (
@@ -201,6 +237,7 @@ export default function HRPage() {
                 <th className="p-3 text-left text-[10px] font-medium text-slate-400">ROI</th>
                 <th className="p-3 text-left text-[10px] font-medium text-slate-400">Tier</th>
                 <th className="p-3 text-left text-[10px] font-medium text-slate-400">Pay/mo</th>
+                <th className="p-3 text-left text-[10px] font-medium text-slate-400">Account</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
@@ -234,6 +271,44 @@ export default function HRPage() {
                     </td>
                     <td className="p-3"><span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${cfg.color} ${cfg.bg}`}>{tierKey}</span></td>
                     <td className="p-3 text-xs text-slate-400">${e.payRate.toLocaleString()}</td>
+                    <td className="p-3">
+                      {!e.hasUser ? (
+                        <span className="text-[10px] text-slate-500 italic">no user record</span>
+                      ) : e.passwordSetAt ? (
+                        <div className="flex flex-col">
+                          <span className="text-[10px] font-semibold text-green-400">✓ Active</span>
+                          <span className="text-[9px] text-slate-500">
+                            {e.mfaEnabled ? "MFA on" : "MFA off"}
+                          </span>
+                        </div>
+                      ) : e.welcomeEmailSentAt ? (
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] text-amber-400">
+                            Sent {relativeTime(e.welcomeEmailSentAt)}
+                          </span>
+                          <button
+                            onClick={() => sendWelcome(e.id)}
+                            disabled={sendingId === e.id}
+                            className="rounded border border-slate-700 bg-slate-900 px-2 py-0.5 text-[9px] font-semibold text-slate-300 hover:border-slate-600 disabled:opacity-50"
+                          >
+                            {sendingId === e.id ? "Resending..." : "Resend"}
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => sendWelcome(e.id)}
+                          disabled={sendingId === e.id}
+                          className="rounded-md bg-electric-500 px-2 py-1 text-[10px] font-semibold text-white hover:bg-electric-400 disabled:opacity-50"
+                        >
+                          {sendingId === e.id ? "Sending..." : "Send Welcome"}
+                        </button>
+                      )}
+                      {sendStatus?.id === e.id && (
+                        <p className={`mt-1 text-[9px] ${sendStatus.ok ? "text-green-400" : "text-red-400"}`}>
+                          {sendStatus.message}
+                        </p>
+                      )}
+                    </td>
                   </tr>
                 );
               })}

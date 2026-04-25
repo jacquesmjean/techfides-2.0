@@ -27,17 +27,41 @@ export async function GET() {
     },
   });
 
+  // Pull linked User records in one query so the UI can show
+  // welcome-email status and account-setup state per row.
+  const userIds = employees.map((e) => e.userId).filter((x): x is string => !!x);
+  const users = userIds.length
+    ? await db.user.findMany({
+        where: { id: { in: userIds } },
+        select: {
+          id: true,
+          role: true,
+          welcomeEmailSentAt: true,
+          passwordSetAt: true,
+          mfaEnabled: true,
+        },
+      })
+    : [];
+  const usersById = new Map(users.map((u) => [u.id, u]));
+
   // Roll up onboarding progress per employee
   const enriched = employees.map((e) => {
     const required = e.tasks.filter((t) => t.required);
     const completed = required.filter((t) => t.completedAt !== null);
     const progress = required.length === 0 ? 100 : Math.round((completed.length / required.length) * 100);
+    const user = e.userId ? usersById.get(e.userId) : null;
     const { tasks: _t, ...rest } = e;
     return {
       ...rest,
       onboardingProgress: progress,
       requiredTaskCount: required.length,
       completedTaskCount: completed.length,
+      // Account state for the welcome-email button
+      hasUser: Boolean(user),
+      appRole: user?.role ?? null,
+      welcomeEmailSentAt: user?.welcomeEmailSentAt ?? null,
+      passwordSetAt: user?.passwordSetAt ?? null,
+      mfaEnabled: user?.mfaEnabled ?? false,
     };
   });
 
