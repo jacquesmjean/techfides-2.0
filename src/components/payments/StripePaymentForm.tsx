@@ -75,7 +75,12 @@ export function StripePaymentForm(props: Props) {
         });
         if (!res.ok) {
           const j = await res.json().catch(() => ({}));
-          throw new Error(j.error ?? `HTTP ${res.status}`);
+          // Surface zod issue details when present so the customer (and us)
+          // can tell exactly which field failed.
+          const issueDetail = Array.isArray(j.issues) && j.issues.length > 0
+            ? `: ${j.issues.map((i: { path?: unknown[]; message?: string }) => `${(i.path ?? []).join(".")}: ${i.message ?? "invalid"}`).join("; ")}`
+            : "";
+          throw new Error(`${j.error ?? `HTTP ${res.status}`}${issueDetail}`);
         }
         const data = await res.json();
         if (cancelled) return;

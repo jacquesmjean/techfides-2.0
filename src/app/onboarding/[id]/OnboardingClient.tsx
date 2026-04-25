@@ -1157,17 +1157,70 @@ function StepPayment({
           </div>
 
           {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? (
-            <StripePaymentForm
-              serviceId={service.id === "sovereign-ai" ? "SOVEREIGN_AI" : service.id === "ai-readiness-360" ? "AI_READINESS_360" : service.id === "transformation-management" ? "TRANSFORMATION_MANAGEMENT" : "AEGIS"}
-              tierId={tier.id}
-              amountCents={dueTodayCents}
-              customerName={billing.contactName || clientName}
-              customerEmail={billing.email}
-              customerCompany={billing.company || clientCompany}
-              returnUrl={typeof window !== "undefined" ? `${window.location.origin}/onboarding/payment-complete` : "/onboarding/payment-complete"}
-              onSuccess={() => onComplete("stripe")}
-              onError={(msg) => console.error("Stripe error:", msg)}
-            />
+            <>
+              {/* Compact contact form — required before Stripe Payment Element loads */}
+              <div className="mb-4 rounded-xl border border-slate-700 bg-slate-900 p-4">
+                <p className="text-xs font-semibold text-slate-300">Billing contact</p>
+                <p className="mt-0.5 text-[10px] text-slate-500">
+                  Required by Stripe for receipt and payment processing.
+                </p>
+                <div className="mt-3 grid gap-3 md:grid-cols-3">
+                  <div>
+                    <label className="block text-[10px] font-medium text-slate-400">Full name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={billing.contactName}
+                      onChange={(e) => setBilling({ ...billing, contactName: e.target.value })}
+                      className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-xs text-white focus:border-electric-500 focus:outline-none"
+                      placeholder="Jane Smith"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-medium text-slate-400">Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={billing.email}
+                      onChange={(e) => setBilling({ ...billing, email: e.target.value })}
+                      className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-xs text-white focus:border-electric-500 focus:outline-none"
+                      placeholder="jane@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-medium text-slate-400">Company *</label>
+                    <input
+                      type="text"
+                      required
+                      value={billing.company}
+                      onChange={(e) => setBilling({ ...billing, company: e.target.value })}
+                      className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-xs text-white focus:border-electric-500 focus:outline-none"
+                      placeholder="Acme Inc"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {billing.contactName && billing.email && billing.email.includes("@") && billing.company ? (
+                <StripePaymentForm
+                  serviceId={service.id === "sovereign-ai" ? "SOVEREIGN_AI" : service.id === "ai-readiness-360" ? "AI_READINESS_360" : service.id === "transformation-management" ? "TRANSFORMATION_MANAGEMENT" : "AEGIS"}
+                  tierId={tier.id}
+                  amountCents={dueTodayCents}
+                  customerName={billing.contactName}
+                  customerEmail={billing.email}
+                  customerCompany={billing.company}
+                  returnUrl={typeof window !== "undefined" ? `${window.location.origin}/onboarding/payment-complete` : "/onboarding/payment-complete"}
+                  onSuccess={() => onComplete("stripe")}
+                  onError={(msg) => console.error("Stripe error:", msg)}
+                />
+              ) : (
+                <div className="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center">
+                  <p className="text-sm text-slate-400">
+                    Fill in your name, email, and company above to load secure payment.
+                  </p>
+                </div>
+              )}
+            </>
           ) : (
             <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
               <p className="font-semibold">Stripe is not configured yet</p>
