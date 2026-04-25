@@ -1048,3 +1048,56 @@ enum DocumentStatus {
   EXPIRED
   MISSING
 }
+
+// ============================================================
+// FORECAST — Revenue projection runs
+// ============================================================
+
+model ForecastRun {
+  id          String         @id @default(cuid())
+  period      ForecastPeriod
+  periodStart DateTime // Start of the period this forecast covers (e.g., 2026-01-01 for YEARLY 2026)
+  periodEnd   DateTime // End of the period (inclusive)
+
+  // Headline numbers
+  annualTarget     Int // Goal for the period in dollars
+  ytdClosed        Int // Closed-Won YTD in dollars
+  projectedRevenue Int // Win-rate-adjusted projection from active pipeline + recurring
+  actualRevenue    Int @default(0) // Filled at period close
+  gapToTarget      Int // annualTarget - projectedRevenue (positive = behind)
+
+  // Stage-by-stage breakdown stored as JSON for transparency
+  // Shape: { PROSPECT: {count: N, value: $X, weighted: $Y}, QUALIFIED: {...}, ... }
+  breakdown Json
+
+  // MRR snapshot (recurring revenue from ClientAccount)
+  mrr Int @default(0)
+  arr Int @default(0)
+
+  // Confidence scoring — how accurate have past forecasts been?
+  // 0–100. 100 = recent forecasts perfectly matched actuals.
+  confidence Int @default(50)
+
+  status     ForecastStatus @default(PUBLISHED)
+  computedAt DateTime       @default(now())
+  computedBy String? // "cron" | "manual:userId" | "api"
+  notes      String?        @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([period, periodStart])
+  @@index([status, computedAt])
+}
+
+enum ForecastPeriod {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum ForecastStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
