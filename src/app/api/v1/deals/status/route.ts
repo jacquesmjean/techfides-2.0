@@ -2,15 +2,15 @@
  * PATCH /api/v1/deals/status
  *
  * Updates a deal (lead) to closed-won or closed-lost.
- * When closed-won: auto-creates a Project in the delivery pipeline
- * and triggers the deal-to-project transition.
+ * When closed-won: runs the full client onboarding chain
+ *   (Lead → ClientAccount → Project → on-disk folder).
  * When closed-lost: logs the loss reason for Velocity Engine retraining.
  */
 
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { transitionDealToProject } from "@/lib/velocity/transitions";
+import { onboardClientFromLead } from "@/lib/sales/onboarding";
 
 const StatusSchema = z.object({
   leadId: z.string().min(1),
@@ -65,16 +65,11 @@ export async function PATCH(request: Request) {
     },
   });
 
-  let project = null;
+  let onboarding = null;
 
-  // CLOSED-WON: Auto-create project
+  // CLOSED-WON: Run full onboarding chain (ClientAccount + Project + folder)
   if (status === "closed-won") {
-    const result = await transitionDealToProject({
-      leadId,
-      dealValue: dealValue ?? lead.dealValue,
-      service: lead.service,
-    });
-    project = result.project;
+    onboarding = await onboardClientFromLead(leadId);
   }
 
   // CLOSED-LOST: Log loss reason for retraining
@@ -94,7 +89,12 @@ export async function PATCH(request: Request) {
     success: true,
     leadId,
     status,
-    projectCreated: !!project,
-    projectId: project?.id || null,
+    projectCreated: onboarding?.steps.projectCreated ?? false,
+    projectId: onboarding?.projectId ?? null,
+    clientAccountCreated: onboarding?.steps.clientAccountCreated ?? false,
+    clientAccountId: onboarding?.clientAccountId ?? null,
+    folderScaffolded: onboarding?.steps.folderScaffolded ?? false,
+    folderPath: onboarding?.folderPath ?? null,
+    docsCopied: onboarding?.steps.docsCopied ?? 0,
   });
 }
