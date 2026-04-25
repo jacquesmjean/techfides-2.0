@@ -2,7 +2,8 @@
 // Extends src/lib/gse/types.ts with autonomous AI sales engine tables
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource db {
@@ -27,7 +28,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   auditLogs     AuditLog[]
-  assignedLeads Lead[]    @relation("AssignedTo")
+  assignedLeads Lead[]     @relation("AssignedTo")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -127,7 +128,7 @@ model Lead {
 
   // Metadata
   tags            String[]
-  notes           String? @db.Text
+  notes           String?  @db.Text
   referralPartner String?
 
   // GPS / Territory
@@ -149,16 +150,16 @@ model Lead {
   assignedToId String?
   assignedTo   User?   @relation("AssignedTo", fields: [assignedToId], references: [id])
 
-  activities         Activity[]
-  enrichments        Enrichment[]
-  signals            Signal[]
-  dossiers           Dossier[]
-  nurtureSequences   NurtureSequence[]
-  dealRooms          DealRoom[]
-  surveys            SurveyResponse[]
-  lookalikeJobs      LookalikeJob[]
-  outreachSequences  OutreachSequence[]
-  emailDrafts        EmailDraft[]
+  activities        Activity[]
+  enrichments       Enrichment[]
+  signals           Signal[]
+  dossiers          Dossier[]
+  nurtureSequences  NurtureSequence[]
+  dealRooms         DealRoom[]
+  surveys           SurveyResponse[]
+  lookalikeJobs     LookalikeJob[]
+  outreachSequences OutreachSequence[]
+  emailDrafts       EmailDraft[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -279,20 +280,20 @@ model Enrichment {
   leadId String
 
   // Firmographic
-  companyRevenue      String?
-  companyEmployees    Int?
-  companyIndustry     String?
-  companyTechStack    String[]
+  companyRevenue   String?
+  companyEmployees Int?
+  companyIndustry  String?
+  companyTechStack String[]
 
   // Recent signals
-  recentNews          Json?
-  linkedinActivity    Json?
-  jobPostings         Json?
+  recentNews       Json?
+  linkedinActivity Json?
+  jobPostings      Json?
 
   // Source provider
-  provider            String  // "apollo" | "clay" | "manual"
-  rawJson             Json
-  enrichedAt          DateTime @default(now())
+  provider   String // "apollo" | "clay" | "manual"
+  rawJson    Json
+  enrichedAt DateTime @default(now())
 
   lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
 
@@ -303,7 +304,7 @@ model Signal {
   id        String     @id @default(cuid())
   leadId    String
   type      SignalType
-  source    String     // "instantly" | "postmark" | "website-pixel" | "linkedin"
+  source    String // "instantly" | "postmark" | "website-pixel" | "linkedin"
   url       String?
   metadata  Json?
   createdAt DateTime   @default(now())
@@ -345,16 +346,16 @@ model Dossier {
 }
 
 model OutreachSequence {
-  id              String          @id @default(cuid())
-  leadId          String
-  templateId      String?
-  channel         OutreachChannel
-  status          SequenceStatus  @default(DRAFT)
-  currentStep     Int             @default(0)
-  totalSteps      Int
-  startedAt       DateTime?
-  completedAt     DateTime?
-  pausedReason    String?
+  id           String          @id @default(cuid())
+  leadId       String
+  templateId   String?
+  channel      OutreachChannel
+  status       SequenceStatus  @default(DRAFT)
+  currentStep  Int             @default(0)
+  totalSteps   Int
+  startedAt    DateTime?
+  completedAt  DateTime?
+  pausedReason String?
 
   steps OutreachStep[]
   lead  Lead           @relation(fields: [leadId], references: [id], onDelete: Cascade)
@@ -381,17 +382,17 @@ enum SequenceStatus {
 }
 
 model OutreachStep {
-  id                   String       @id @default(cuid())
-  sequenceId           String
-  order                Int
-  delayDays            Int          @default(0)
-  subject              String?
-  body                 String       @db.Text
+  id                    String     @id @default(cuid())
+  sequenceId            String
+  order                 Int
+  delayDays             Int        @default(0)
+  subject               String?
+  body                  String     @db.Text
   personalizationAnchor String?
-  cta                  String?
-  scheduledFor         DateTime?
-  sentAt               DateTime?
-  status               StepStatus   @default(PENDING)
+  cta                   String?
+  scheduledFor          DateTime?
+  sentAt                DateTime?
+  status                StepStatus @default(PENDING)
 
   sequence OutreachSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
 
@@ -408,15 +409,15 @@ enum StepStatus {
 }
 
 model SequenceTemplate {
-  id           String   @id @default(cuid())
-  name         String
-  vertical     Vertical?
-  channel      OutreachChannel
-  promptJson   Json
+  id              String          @id @default(cuid())
+  name            String
+  vertical        Vertical?
+  channel         OutreachChannel
+  promptJson      Json
   performanceJson Json? // open rate, reply rate, conversion rate
-  active       Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  active          Boolean         @default(true)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
 }
 
 model ScoringWeights {
@@ -437,11 +438,11 @@ model LossReason {
 }
 
 model LookalikeJob {
-  id           String   @id @default(cuid())
+  id           String    @id @default(cuid())
   sourceLeadId String
-  status       String   // "queued" | "running" | "completed" | "failed"
-  resultsCount Int      @default(0)
-  createdAt    DateTime @default(now())
+  status       String // "queued" | "running" | "completed" | "failed"
+  resultsCount Int       @default(0)
+  createdAt    DateTime  @default(now())
   completedAt  DateTime?
 
   sourceLead Lead @relation(fields: [sourceLeadId], references: [id], onDelete: Cascade)
@@ -454,15 +455,15 @@ model LookalikeJob {
 // ============================================================
 
 model NurtureSequence {
-  id            String         @id @default(cuid())
+  id            String        @id @default(cuid())
   leadId        String
   name          String
-  status        NurtureStatus  @default(SCHEDULED)
-  currentStep   Int            @default(0)
+  status        NurtureStatus @default(SCHEDULED)
+  currentStep   Int           @default(0)
   triggerReason String
   startedAt     DateTime?
 
-  lead  Lead           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  lead  Lead          @relation(fields: [leadId], references: [id], onDelete: Cascade)
   steps NurtureStep[]
 
   createdAt DateTime @default(now())
@@ -479,14 +480,14 @@ enum NurtureStatus {
 }
 
 model NurtureStep {
-  id         String   @id @default(cuid())
+  id         String    @id @default(cuid())
   sequenceId String
   order      Int
-  type       String   // "email" | "wait" | "task" | "condition"
+  type       String // "email" | "wait" | "task" | "condition"
   subject    String?
-  body       String?  @db.Text
+  body       String?   @db.Text
   waitDays   Int?
-  completed  Boolean  @default(false)
+  completed  Boolean   @default(false)
   sentAt     DateTime?
 
   sequence NurtureSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
@@ -499,7 +500,7 @@ model DealRoom {
   accessCode String         @unique
   expiresAt  DateTime
 
-  lead      Lead                @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  lead      Lead               @relation(fields: [leadId], references: [id], onDelete: Cascade)
   documents DealRoomDocument[]
   payments  DealRoomPayment[]
 
@@ -519,11 +520,11 @@ enum DealRoomStatus {
 }
 
 model DealRoomDocument {
-  id         String  @id @default(cuid())
+  id         String    @id @default(cuid())
   dealRoomId String
   name       String
-  type       String  // "sow" | "contract" | "technical" | "nda" | "invoice"
-  status     String  @default("draft")
+  type       String // "sow" | "contract" | "technical" | "nda" | "invoice"
+  status     String    @default("draft")
   url        String?
   signedAt   DateTime?
 
@@ -531,12 +532,12 @@ model DealRoomDocument {
 }
 
 model DealRoomPayment {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   dealRoomId    String
   amount        Float
-  currency      Currency @default(USD)
-  method        String   // "stripe" | "wire" | "ach" | "check"
-  status        String   @default("pending")
+  currency      Currency  @default(USD)
+  method        String // "stripe" | "wire" | "ach" | "check"
+  status        String    @default("pending")
   invoiceNumber String
   paidAt        DateTime?
 
@@ -544,18 +545,18 @@ model DealRoomPayment {
 }
 
 model SurveyResponse {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   leadId      String
-  status      String   @default("pending")
-  locale      String   @default("en")
-  sentAt      DateTime @default(now())
+  status      String    @default("pending")
+  locale      String    @default("en")
+  sentAt      DateTime  @default(now())
   completedAt DateTime?
 
   scores Json?
   nps    Int?
 
-  testimonial             String? @db.Text
-  improvementSuggestions  String? @db.Text
+  testimonial            String? @db.Text
+  improvementSuggestions String? @db.Text
 
   consentTestimonial Boolean @default(false)
   consentLogo        Boolean @default(false)
@@ -567,8 +568,8 @@ model SurveyResponse {
   referralEmail   String?
   referralCompany String?
 
-  successCreditApplied   Boolean @default(false)
-  socialProofPublished   Boolean @default(false)
+  successCreditApplied    Boolean @default(false)
+  socialProofPublished    Boolean @default(false)
   executiveAlertTriggered Boolean @default(false)
 
   lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
@@ -594,9 +595,9 @@ model EmailDraft {
   outlookMessageId String?
 
   // Status
-  status    EmailDraftStatus @default(DRAFT)
-  batchDate DateTime
-  sentAt    DateTime?
+  status       EmailDraftStatus @default(DRAFT)
+  batchDate    DateTime
+  sentAt       DateTime?
   errorMessage String?
 
   // Strategy Engine fields
@@ -651,21 +652,21 @@ model OutreachConfig {
 // ============================================================
 
 model SocialPost {
-  id          String          @id @default(cuid())
+  id          String       @id @default(cuid())
   title       String
-  body        String          @db.Text
+  body        String       @db.Text
   category    PostCategory
   platforms   String[]
-  status      PostStatus      @default(DRAFT)
+  status      PostStatus   @default(DRAFT)
   scheduledAt DateTime?
   publishedAt DateTime?
   approvedAt  DateTime?
   approvedBy  String?
 
-  hashtags    String[]
-  imageUrl    String?
-  ctaUrl      String?
-  ctaText     String?
+  hashtags String[]
+  imageUrl String?
+  ctaUrl   String?
+  ctaText  String?
 
   impressions Int @default(0)
   clicks      Int @default(0)
@@ -675,8 +676,8 @@ model SocialPost {
 
   reviewNotes String? @db.Text
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([status])
   @@index([scheduledAt])
@@ -707,34 +708,34 @@ enum PostStatus {
 // ============================================================
 
 model Project {
-  id          String        @id @default(cuid())
-  name        String
-  clientName  String
-  leadId      String?       // links back to the closed-won Lead
-  service     ServiceType
-  tier        String?       // Silver, Gold, Platinum
-  status      ProjectStatus @default(PLANNING)
+  id         String        @id @default(cuid())
+  name       String
+  clientName String
+  leadId     String? // links back to the closed-won Lead
+  service    ServiceType
+  tier       String? // Silver, Gold, Platinum
+  status     ProjectStatus @default(PLANNING)
 
   // Timeline
-  plannedStart   DateTime?
-  plannedEnd     DateTime?
-  actualStart    DateTime?
-  actualEnd      DateTime?
+  plannedStart DateTime?
+  plannedEnd   DateTime?
+  actualStart  DateTime?
+  actualEnd    DateTime?
 
   // Financials
-  contractValue  Float     @default(0)
-  billedAmount   Float     @default(0)
+  contractValue Float @default(0)
+  billedAmount  Float @default(0)
 
   // Satisfaction
-  clientNps      Int?      // 0-10 NPS score
-  clientFeedback String?   @db.Text
+  clientNps      Int? // 0-10 NPS score
+  clientFeedback String? @db.Text
 
   // Metadata
-  description    String?   @db.Text
-  notes          String?   @db.Text
+  description String? @db.Text
+  notes       String? @db.Text
 
-  assignments    ProjectAssignment[]
-  updates        ProjectUpdate[]
+  assignments ProjectAssignment[]
+  updates     ProjectUpdate[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -752,15 +753,15 @@ enum ProjectStatus {
 }
 
 model ProjectAssignment {
-  id         String  @id @default(cuid())
-  projectId  String
-  name       String  // contractor/employee name
-  email      String?
-  role       String  // "Technical Lead", "AI Engineer", "Consultant", etc.
-  type       String  // "FTE" or "Contractor"
-  region     String? // "US", "MX", "GA"
-  hourlyRate Float?
-  hoursLogged Float  @default(0)
+  id          String  @id @default(cuid())
+  projectId   String
+  name        String // contractor/employee name
+  email       String?
+  role        String // "Technical Lead", "AI Engineer", "Consultant", etc.
+  type        String // "FTE" or "Contractor"
+  region      String? // "US", "MX", "GA"
+  hourlyRate  Float?
+  hoursLogged Float   @default(0)
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
@@ -770,15 +771,15 @@ model ProjectAssignment {
 }
 
 model ProjectUpdate {
-  id         String             @id @default(cuid())
+  id         String            @id @default(cuid())
   projectId  String
   authorName String
   authorRole String?
   type       ProjectUpdateType
   title      String
-  body       String             @db.Text
+  body       String            @db.Text
   hoursSpent Float?
-  blockers   String?            @db.Text
+  blockers   String?           @db.Text
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
@@ -803,22 +804,22 @@ enum ProjectUpdateType {
 // ============================================================
 
 model ClientAccount {
-  id          String              @id @default(cuid())
-  companyName String
-  contactName String
-  email       String              @unique
-  phone       String?
-  tier        String              // Silver, Gold, Platinum
-  service     ServiceType
-  status      ClientAccountStatus @default(ACTIVE)
-  retainerAmount Float            @default(0)
+  id             String              @id @default(cuid())
+  companyName    String
+  contactName    String
+  email          String              @unique
+  phone          String?
+  tier           String // Silver, Gold, Platinum
+  service        ServiceType
+  status         ClientAccountStatus @default(ACTIVE)
+  retainerAmount Float               @default(0)
   retainerStart  DateTime?
   retainerEnd    DateTime?
-  leadId      String?             // original lead
-  projectId   String?             // linked project
-  notes       String?             @db.Text
+  leadId         String? // original lead
+  projectId      String? // linked project
+  notes          String?             @db.Text
 
-  tickets     SupportTicket[]
+  tickets SupportTicket[]
 
   activatedAt   DateTime  @default(now())
   deactivatedAt DateTime?
@@ -831,45 +832,45 @@ model ClientAccount {
 
 enum ClientAccountStatus {
   ACTIVE
-  PAUSED       // temporarily suspended (payment issue, etc.)
-  DEACTIVATED  // retainer ended
-  CHURNED      // client left permanently
+  PAUSED // temporarily suspended (payment issue, etc.)
+  DEACTIVATED // retainer ended
+  CHURNED // client left permanently
 }
 
 model ClientSignoff {
-  id          String   @id @default(cuid())
-  projectId   String
-  clientName  String
-  clientEmail String
-  signedAt    DateTime @default(now())
-  satisfaction Int?    // 1-5 rating
-  feedback    String?  @db.Text
-  signature   String?  // typed name as signature
-  ipAddress   String?
+  id           String   @id @default(cuid())
+  projectId    String
+  clientName   String
+  clientEmail  String
+  signedAt     DateTime @default(now())
+  satisfaction Int? // 1-5 rating
+  feedback     String?  @db.Text
+  signature    String? // typed name as signature
+  ipAddress    String?
 
   @@index([projectId])
 }
 
 model SupportTicket {
-  id              String       @id @default(cuid())
+  id              String         @id @default(cuid())
   clientAccountId String
   subject         String
-  description     String       @db.Text
+  description     String         @db.Text
   priority        TicketPriority @default(MEDIUM)
   status          TicketStatus   @default(OPEN)
-  category        String?      // "technical", "billing", "feature-request", "training"
+  category        String? // "technical", "billing", "feature-request", "training"
 
   // Assignment
-  assignedTo      String?      // consultant name
-  assignedEmail   String?
+  assignedTo    String? // consultant name
+  assignedEmail String?
 
   // Resolution
-  resolution      String?      @db.Text
-  resolvedAt      DateTime?
-  hoursSpent      Float?
+  resolution String?   @db.Text
+  resolvedAt DateTime?
+  hoursSpent Float?
 
   // Satisfaction
-  clientRating    Int?         // 1-5
+  clientRating Int? // 1-5
 
   clientAccount ClientAccount @relation(fields: [clientAccountId], references: [id], onDelete: Cascade)
 
@@ -895,4 +896,155 @@ enum TicketStatus {
   WAITING_CLIENT
   RESOLVED
   CLOSED
+}
+
+// ============================================================
+// HR — EMPLOYEE ONBOARDING
+// ============================================================
+
+model Employee {
+  id    String  @id @default(cuid())
+  name  String
+  email String  @unique
+  phone String?
+
+  // Role + classification
+  role   String // "Technical Sales Engineer", "AI Engineer", etc.
+  type   EmployeeType
+  status EmployeeStatus @default(ONBOARDING)
+  tier   String? // "Top" | "Mid" | "Low" — matches existing /gse/hr UI
+  region Region         @default(US)
+
+  // Dates
+  startDate DateTime?
+  endDate   DateTime?
+
+  // Compensation
+  payRate  Float    @default(0) // monthly rate
+  currency Currency @default(USD)
+
+  // Performance (matches existing /gse/hr UI shape)
+  utilization Int? // 0-100
+  roi         Float? // ROI multiplier (e.g., 3.4x)
+  nps         Float? // 0-10
+
+  // Linkage
+  userId    String? // optional NextAuth User if they log in
+  managerId String?
+
+  // On-disk integration (populated after scaffoldEmployeeFolder)
+  folderPath String?
+
+  notes String? @db.Text
+
+  tasks     EmployeeOnboardingTask[]
+  documents EmployeeDocument[]
+  manager   Employee?                @relation("EmployeeManager", fields: [managerId], references: [id], onDelete: SetNull)
+  reports   Employee[]               @relation("EmployeeManager")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([type])
+  @@index([region])
+  @@index([managerId])
+}
+
+enum EmployeeType {
+  FTE
+  CONTRACTOR
+}
+
+enum EmployeeStatus {
+  ONBOARDING
+  ACTIVE
+  ON_LEAVE
+  TERMINATED
+}
+
+model EmployeeOnboardingTask {
+  id         String @id @default(cuid())
+  employeeId String
+
+  order       Int          @default(0)
+  title       String
+  description String?      @db.Text
+  category    TaskCategory
+  owner       TaskOwner    @default(EMPLOYEE)
+  required    Boolean      @default(true)
+
+  dueDate     DateTime?
+  completedAt DateTime?
+  completedBy String?
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([employeeId])
+  @@index([category])
+}
+
+enum TaskCategory {
+  HIRING
+  ONBOARDING
+  COMPLIANCE
+  TRAINING
+  TECH_SETUP
+  COMPENSATION
+}
+
+enum TaskOwner {
+  EMPLOYEE
+  MANAGER
+  HR
+  IT
+}
+
+model EmployeeDocument {
+  id         String @id @default(cuid())
+  employeeId String
+
+  type   DocumentType
+  name   String
+  status DocumentStatus @default(PENDING)
+
+  url       String? // on-disk path or external link
+  signedAt  DateTime?
+  expiresAt DateTime?
+
+  notes String? @db.Text
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([employeeId])
+  @@index([type])
+  @@index([status])
+}
+
+enum DocumentType {
+  NDA
+  IP_ASSIGNMENT
+  IC_AGREEMENT // contractor agreement
+  OFFER_LETTER // FTE offer
+  W9 // contractor tax form
+  W4 // FTE tax form
+  I9 // FTE employment eligibility
+  DIRECT_DEPOSIT
+  BACKGROUND_CHECK
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  SENT
+  SIGNED
+  RECEIVED
+  EXPIRED
+  MISSING
 }
