@@ -425,141 +425,174 @@ function StepNDA({
 }
 
 /* ─── Service Definitions ─── */
+// Tier shape: every service offers tier-based engagement options.
+// `priceLabel` is the display text shown to the client; the actual amount
+// charged for ranged engagements is `priceMin` (deposit basis). For
+// subscription services (Private AI), `priceMin` is the monthly amount.
+type ServiceTier = {
+  id: string;
+  name: string;
+  subtitle: string;
+  priceLabel: string;
+  priceMin: number;
+  priceMax?: number;
+  retainer?: string;
+  duration: string;
+  highlights: string[];
+  badge?: "MOST POPULAR" | "FEATURED" | "EMERGENCY";
+  cta?: "Sign & Pay" | "Request Proposal" | "Contact for Scoping" | "Start with Discovery";
+};
+
 const SERVICE_CATALOG = [
   {
     id: "sovereign-ai",
-    name: "Private AI Deployment",
-    subtitle: "The TechFides Local Stack",
+    name: "Private AI",
+    subtitle: "Monthly subscription. Hardware included.",
     icon: "&#9889;",
     description:
-      "End-to-end deployment of enterprise AI on your local infrastructure. Full data privacy with no cloud dependency.",
+      "Your hardware, your data, your building. One price. No setup fees. Cancel anytime. Hardware loaned, deployment, monitoring, updates, and support included in every plan.",
     scope: [
-      "Assessment of current IT infrastructure and AI readiness",
-      "Selection and configuration of AI models (Llama 3, Mistral, Phi, etc.) based on client requirements",
-      "Deployment of the TechFides Local Stack on client-owned hardware",
-      "Integration with existing business workflows and applications",
-      "Staff training and comprehensive documentation",
-      "Ongoing support and optimization during the retainer period",
+      "Hardware loaned and deployed on-site (returns in a prepaid shipping box on cancellation)",
+      "On-premise LLM stack (Llama, Mistral, or equivalent) configured for your workflows",
+      "Deployment + monitoring + updates + support included monthly",
+      "Unlimited users on every plan",
+      "Agent-hour allotment scales by tier; overage billed per hour at the tier rate",
+      "30-day cancellation notice; no setup fees",
     ],
     deliverables: [
-      "Fully deployed and configured AI infrastructure on local hardware",
-      "Custom model fine-tuning for client-specific use cases",
-      "Integration documentation and API reference",
-      "Staff training sessions (recorded for future reference)",
-      "90-day post-deployment support plan",
+      "Hardware delivery and on-site provisioning",
+      "Production-ready Private AI stack from day one",
+      "Workflow configuration for your business",
+      "Continuous monitoring + monthly updates",
+      "Support inbox and quarterly check-ins",
     ],
     timeline: [
-      { phase: "Discovery & Assessment", duration: "Week 1\u20132", milestone: "Infrastructure Report" },
-      { phase: "Configuration & Setup", duration: "Week 3\u20134", milestone: "Stack Deployed" },
-      { phase: "Integration & Testing", duration: "Week 5\u20136", milestone: "UAT Complete" },
-      { phase: "Training & Handoff", duration: "Week 7\u20138", milestone: "Go Live" },
+      { phase: "Order + Hardware Ship", duration: "Week 1", milestone: "Hardware Arrives" },
+      { phase: "Install + Configure", duration: "Week 2", milestone: "Stack Deployed" },
+      { phase: "Workflow Tuning", duration: "Week 3", milestone: "Production Use Begins" },
+      { phase: "Ongoing", duration: "Monthly", milestone: "Updates + Monitoring + Support" },
     ],
     clientResponsibilities:
-      "Client shall: (a) provide timely access to hardware, network, and personnel; (b) designate a primary point of contact; (c) ensure hardware meets minimum specifications as outlined; (d) complete review cycles within 5 business days to maintain the timeline.",
+      "Client shall: (a) provide network and physical space for hardware; (b) designate a primary point of contact; (c) honor the 30-day cancellation notice if discontinuing; (d) return loaned hardware in the prepaid shipping box upon cancellation.",
+    tiers: [
+      { id: "starter", name: "Starter", subtitle: "Small practices & offices", priceLabel: "$1,299/mo", priceMin: 1299, duration: "Monthly \u00b7 20 agent-hours \u00b7 $65/hr overage", highlights: ["20 agent-hours/mo", "$65/hr overage", "Hardware loaned", "Deployment + monitoring + updates"], cta: "Sign & Pay" as const },
+      { id: "growth", name: "Growth", subtitle: "Mid-size firms running AI across multiple teams", priceLabel: "$2,299/mo", priceMin: 2299, duration: "Monthly \u00b7 40 agent-hours \u00b7 $60/hr overage", highlights: ["40 agent-hours/mo", "$60/hr overage", "Hardware loaned", "Deployment + monitoring + updates"], badge: "MOST POPULAR" as const, cta: "Sign & Pay" as const },
+      { id: "scale", name: "Scale", subtitle: "Production workloads", priceLabel: "$3,999/mo", priceMin: 3999, duration: "Monthly \u00b7 80 agent-hours \u00b7 $55/hr overage", highlights: ["80 agent-hours/mo", "$55/hr overage", "Hardware loaned", "Deployment + monitoring + updates"], cta: "Sign & Pay" as const },
+      { id: "enterprise", name: "Enterprise", subtitle: "AI as core infrastructure", priceLabel: "$6,999/mo", priceMin: 6999, duration: "Monthly \u00b7 160 agent-hours \u00b7 $50/hr overage", highlights: ["160 agent-hours/mo", "$50/hr overage", "Hardware loaned", "Deployment + monitoring + updates"], cta: "Sign & Pay" as const },
+    ] as ServiceTier[],
   },
   {
     id: "ai-readiness-360",
     name: "AI Readiness 360\u2122",
-    subtitle: "Strategic Assessment",
+    subtitle: "A 14-day distributed AI intelligence system",
     icon: "&#128269;",
     description:
-      "Comprehensive 360-degree assessment of your organization\u2019s AI readiness across technology, people, process, and data.",
+      "This is not an assessment. It is a system of record for AI Transformation. A structured 14-day engagement with a secure digital portal \u2014 your team accesses the assessment via a private link, no software to install. Final investment can be higher based on number of business locations.",
     scope: [
-      "Executive interviews and stakeholder alignment sessions",
-      "Technology infrastructure audit and gap analysis",
-      "Data maturity and governance assessment",
-      "Workforce readiness and skills gap evaluation",
-      "Process optimization opportunity mapping",
-      "Competitive AI landscape analysis for your vertical",
+      "Portal setup and team onboarding (Days 1\u20133)",
+      "Distributed assessment completion across stakeholders (Days 4\u201310)",
+      "Systems evidence and document upload (Days 8\u201312)",
+      "AI-powered analysis and scoring (Days 10\u201314)",
+      "Executive briefing and roadmap delivery (Day 15)",
+      "Multi-location and multi-region scoping for enterprise engagements",
     ],
     deliverables: [
-      "AI Readiness Scorecard with detailed ratings across 8 dimensions",
-      "Executive summary and board-ready presentation",
-      "Technology roadmap with prioritized recommendations",
-      "Data governance framework and action plan",
-      "Training needs assessment and upskilling roadmap",
-      "ROI projections and business case for AI investment",
+      "Opportunity Pipeline \u2014 high-value automation areas, AI quick wins, and strategic use cases mapped by impact, effort, and risk",
+      "Priority Roadmap \u2014 sequenced execution plan: fix critical risks first, unlock quick wins second, build foundations third, scale strategically fourth",
+      "Executive Briefing Package \u2014 60-second snapshot, narrative summary, and downloadable PDF for Go/No-Go decisions",
+      "Repeatable transformation framework",
+      "Standardized AI adoption metrics",
+      "Measurable progress over time",
     ],
     timeline: [
-      { phase: "Kickoff & Stakeholder Interviews", duration: "Week 1", milestone: "Kickoff Complete" },
-      { phase: "Infrastructure & Data Audit", duration: "Week 2\u20133", milestone: "Audit Report" },
-      { phase: "Analysis & Scoring", duration: "Week 4", milestone: "Scorecard Draft" },
-      { phase: "Roadmap & Recommendations", duration: "Week 5", milestone: "Final Deliverable" },
-      { phase: "Executive Presentation", duration: "Week 6", milestone: "Board Presentation" },
+      { phase: "Portal Setup & Onboarding", duration: "Days 1\u20133", milestone: "Team Ready" },
+      { phase: "Distributed Assessment", duration: "Days 4\u201310", milestone: "Assessment Complete" },
+      { phase: "Systems Evidence", duration: "Days 8\u201312", milestone: "Evidence Uploaded" },
+      { phase: "AI Analysis & Scoring", duration: "Days 10\u201314", milestone: "Scoring Complete" },
+      { phase: "Executive Briefing", duration: "Day 15", milestone: "Roadmap Delivered" },
     ],
     clientResponsibilities:
-      "Client shall: (a) provide access to key stakeholders for interviews; (b) grant access to IT infrastructure documentation; (c) share relevant data governance policies; (d) designate an internal champion to coordinate schedules and access.",
+      "Client shall: (a) designate a project champion and assessment participants; (b) ensure stakeholders complete the distributed assessment within the 7-day window; (c) provide systems evidence and supporting documentation by Day 12; (d) attend the Day 15 executive briefing; (e) confirm number of business locations at scoping for accurate pricing.",
+    tiers: [
+      { id: "smb", name: "SMB / Mid-Market", subtitle: "Up to 20 participants, single region", priceLabel: "$45,000", priceMin: 45000, duration: "15-day delivery", highlights: ["Up to 20 participants", "Single region", "All 3 deliverables", "AI-powered analysis"], cta: "Sign & Pay" as const },
+      { id: "enterprise", name: "Enterprise", subtitle: "Unlimited participants, multi-region, multi-BU", priceLabel: "Up to $85,000", priceMin: 45000, priceMax: 85000, duration: "15-day delivery (extends with locations)", highlights: ["Unlimited participants", "Multi-region & multi-BU", "Final investment scales with locations", "Custom scoping available"], cta: "Request Proposal" as const },
+    ] as ServiceTier[],
   },
   {
     id: "transformation-management",
     name: "AI Transformation Management",
-    subtitle: "Enterprise Change Leadership",
+    subtitle: "Resource-based program leadership (PM AI)",
     icon: "&#128640;",
     description:
-      "End-to-end transformation management for organizations implementing AI at scale. From strategy through execution.",
+      "Transparent, fixed-scope pricing aligned to your transformation maturity. Every engagement includes executive briefing, stakeholder alignment, and a governed delivery framework. All pricing is fixed-scope SOW based. No hourly billing. No scope creep. Final investment determined by organizational complexity and engagement duration.",
     scope: [
-      "Transformation strategy development and executive alignment",
-      "Change management framework design and implementation",
-      "Program management office (PMO) setup and governance",
-      "Multi-workstream coordination and dependency management",
-      "Organizational change management and communication planning",
-      "KPI framework design and performance tracking",
-      "Risk management and mitigation planning",
+      "Executive briefing and program kickoff",
+      "Stakeholder alignment and governance setup",
+      "Fixed-scope SOW with governed delivery framework",
+      "Resource-based program management aligned to selected tier",
+      "Operational efficiency, risk reduction, accelerated time-to-value, and sustainable capability outcomes",
     ],
     deliverables: [
-      "Transformation roadmap with phased implementation plan",
-      "Change management playbook customized to your organization",
-      "PMO governance framework and decision-making matrices",
-      "Stakeholder communication plan and executive dashboards",
-      "Training curriculum and organizational readiness assessment",
-      "Monthly progress reports with KPI tracking",
-      "Risk register with mitigation strategies",
+      "Streamlined processes and reduced manual effort through intelligent automation",
+      "Comprehensive governance frameworks ensuring safety, compliance, and ethical use",
+      "Faster deployment of AI solutions through rigorous program management",
+      "Long-term internal capability built through knowledge transfer and training",
+      "Tier-specific deliverables (see selected engagement tier below)",
     ],
     timeline: [
-      { phase: "Strategy & Planning", duration: "Month 1", milestone: "Transformation Charter" },
-      { phase: "Foundation & Governance", duration: "Month 2", milestone: "PMO Operational" },
-      { phase: "Wave 1 Execution", duration: "Month 3\u20134", milestone: "First Wins Delivered" },
-      { phase: "Wave 2 Execution", duration: "Month 5\u20136", milestone: "Scale Achieved" },
-      { phase: "Optimization & Transition", duration: "Month 7\u20138", milestone: "Handoff Complete" },
+      { phase: "Executive Briefing & Alignment", duration: "Week 1", milestone: "Charter Approved" },
+      { phase: "Governance Setup", duration: "Weeks 2\u20134", milestone: "PMO Operational" },
+      { phase: "Execution", duration: "Tier-dependent", milestone: "Milestones per Tier" },
+      { phase: "Knowledge Transfer & Closeout", duration: "Final 4 weeks", milestone: "Hand-off Complete" },
     ],
     clientResponsibilities:
-      "Client shall: (a) provide executive sponsorship and active participation; (b) allocate internal resources as agreed; (c) make timely decisions per governance framework; (d) fund and support required organizational changes; (e) provide access to all relevant systems and data.",
+      "Client shall: (a) provide executive sponsorship and active participation; (b) allocate internal resources as agreed; (c) make timely decisions per governance framework; (d) provide access to relevant systems and data; (e) confirm engagement complexity and duration at scoping.",
+    tiers: [
+      { id: "strategic-advisory", name: "Strategic Advisory", subtitle: "Ongoing executive guidance", priceLabel: "$50,000\u2013$95,000", priceMin: 50000, priceMax: 95000, duration: "6-month engagement cycle", highlights: ["Quarterly executive sessions", "AI strategy & governance review", "Investment portfolio optimization", "Board-ready deliverables"], cta: "Sign & Pay" as const },
+      { id: "transformation-mgmt", name: "Transformation Mgmt", subtitle: "End-to-end program leadership", priceLabel: "$125,000\u2013$250,000", priceMin: 125000, priceMax: 250000, duration: "12-month engagement cycle", highlights: ["Full program governance", "Stakeholder management", "Value assurance & delivery", "Change management framework", "Cross-functional PMO integration"], badge: "MOST POPULAR" as const, cta: "Request Proposal" as const },
+      { id: "capability-building", name: "Capability Building", subtitle: "Internal CoE development", priceLabel: "$175,000\u2013$350,000", priceMin: 175000, priceMax: 350000, duration: "18-month engagement cycle", highlights: ["AI Center of Excellence setup", "Talent development & mentoring", "Process standardization", "Knowledge transfer & IP retention", "Internal tooling & frameworks"], cta: "Request Proposal" as const },
+      { id: "rescue-turnaround", name: "Rescue & Turnaround", subtitle: "Rapid intervention for stalled programs", priceLabel: "$85,000\u2013$200,000", priceMin: 85000, priceMax: 200000, duration: "90-day sprint engagement", highlights: ["Root cause analysis (Week 1)", "Rapid remediation plan", "Momentum restoration", "Stakeholder realignment", "Governance reset"], badge: "EMERGENCY" as const, cta: "Sign & Pay" as const },
+    ] as ServiceTier[],
   },
   {
     id: "aegis",
-    name: "AEGIS Intelligence Operating System",
-    subtitle: "The Intelligence Operating System for the Hybrid Workforce Era",
+    name: "AEGIS",
+    subtitle: "Clear value. Governed scale. Retainer-backed.",
     icon: "&#9881;",
     description:
-      "Implementation of the AEGIS Intelligence Operating System \u2014 a comprehensive framework for governing, securing, and scaling hybrid human + AI + agent operations.",
+      "AEGIS engagements land your company in a running governance operating model \u2014 not a PDF, not a slide deck. Core and above require a managed retainer so the system we install continues to run. Diagnostic engagements touch all six layers at audit depth. Core and Enterprise engagements ship all 18 artifacts in their finished form, then hand them to a running managed-governance retainer.",
     scope: [
-      "Current-state operational assessment and process mapping",
-      "AEGIS platform configuration and customization",
-      "Digital workflow design and automation implementation",
-      "Integration with existing enterprise systems (ERP, CRM, HRIS, etc.)",
-      "AI-powered analytics and decision-support layer deployment",
-      "User training and adoption management",
-      "Ongoing platform optimization and feature releases",
+      "AI readiness scan across 6 layers",
+      "Shadow AI inventory and spend audit",
+      "Prioritized 90-day governance roadmap",
+      "Governance operating model activated (not just documented)",
+      "All 18 AEGIS artifacts shipped (Core and above)",
+      "Monthly review + quarterly board pack (Core and above)",
+      "Annual re-diagnostic included in retainer",
     ],
     deliverables: [
-      "Fully configured AEGIS platform on client infrastructure",
-      "Digital process maps for all in-scope operational workflows",
-      "Custom automation rules and AI decision-support models",
-      "Enterprise system integration (APIs and data pipelines)",
-      "Operations dashboard with real-time KPI tracking",
-      "User training program and certification for key personnel",
-      "12-month platform optimization and support plan",
+      "AI readiness scan deliverable",
+      "Shadow AI inventory + spend audit",
+      "90-day governance roadmap",
+      "Executive summary + board-ready deck",
+      "All 18 AEGIS artifacts (Core and above)",
+      "Running governance operating model",
+      "Vertical + regulatory mapping (HIPAA, SOC 2, NIST AI RMF \u2014 Enterprise)",
     ],
     timeline: [
-      { phase: "Assessment & Design", duration: "Month 1\u20132", milestone: "Blueprint Approved" },
-      { phase: "Platform Build & Config", duration: "Month 3\u20134", milestone: "Platform Ready" },
-      { phase: "Integration & Migration", duration: "Month 5\u20136", milestone: "Systems Connected" },
-      { phase: "UAT & Training", duration: "Month 7\u20138", milestone: "UAT Sign-off" },
-      { phase: "Go Live & Stabilization", duration: "Month 9\u201310", milestone: "Go Live" },
-      { phase: "Optimization", duration: "Month 11\u201312", milestone: "Optimization Report" },
+      { phase: "Readiness Scan", duration: "Week 1", milestone: "6-Layer Audit Complete" },
+      { phase: "Roadmap & Proposal", duration: "Week 2", milestone: "Diagnostic Deliverable" },
+      { phase: "Implementation", duration: "Tier-dependent", milestone: "Artifacts Shipped" },
+      { phase: "Retainer Live", duration: "Ongoing (Core+)", milestone: "Governance Operating" },
     ],
     clientResponsibilities:
-      "Client shall: (a) provide dedicated project team with decision-making authority; (b) grant access to all in-scope systems and data; (c) allocate internal IT resources for integration support; (d) participate in weekly status meetings; (e) complete UAT within agreed timelines; (f) fund required infrastructure upgrades.",
+      "Client shall: (a) provide access to systems and personnel for the readiness scan; (b) execute the managed retainer agreement before Core implementation begins; (c) participate in monthly review and quarterly board pack cadence; (d) ensure governance operating model adoption.",
+    tiers: [
+      { id: "diagnostic", name: "Diagnostic", subtitle: "Your on-ramp to Core", priceLabel: "$15,000\u2013$35,000", priceMin: 15000, priceMax: 35000, duration: "One-time \u00b7 2-week delivery", highlights: ["AI readiness scan across 6 layers", "Shadow AI inventory + spend audit", "Prioritized 90-day governance roadmap", "Executive summary + board-ready deck", "Scoped proposal for Core Implementation"], cta: "Start with Discovery" as const },
+      { id: "core", name: "Core Implementation", subtitle: "Mid-market & professional firms", priceLabel: "$75,000\u2013$150,000", priceMin: 75000, priceMax: 150000, retainer: "+ $5K\u2013$10K/mo managed governance \u2014 required", duration: "90 days", highlights: ["All 18 artifacts shipped in 90 days", "Governance operating model activated", "Monthly review + quarterly board pack", "Annual re-diagnostic included in retainer", "Engagement closes only when retainer is live"], badge: "FEATURED" as const, cta: "Request Proposal" as const },
+      { id: "enterprise", name: "Enterprise Execution", subtitle: "Multi-site & regulated industries", priceLabel: "$150,000\u2013$400,000", priceMin: 150000, priceMax: 400000, retainer: "+ $15K/mo managed governance \u2014 required", duration: "Multi-quarter", highlights: ["Organization-wide deployment across BUs or sites", "Vertical + regulatory mapping (HIPAA, SOC 2, NIST AI RMF)", "Named fractional CISO + dedicated program manager", "Board-level reporting + quarterly executive review", "Retainer scales with scope \u2014 not optional"], cta: "Request Proposal" as const },
+      { id: "government", name: "Government & Institutional", subtitle: "Federal, state & multilateral", priceLabel: "Custom", priceMin: 150000, duration: "Scoped per engagement", highlights: ["FedRAMP-aligned deployment posture", "Private data controls + multi-agency coordination", "Dedicated security team", "Custom retainer structure"], cta: "Contact for Scoping" as const },
+    ] as ServiceTier[],
   },
 ];
 
@@ -569,9 +602,10 @@ function StepSOW({
   onComplete,
 }: {
   clientName: string;
-  onComplete: (sig: SignatureData, serviceId: string) => void;
+  onComplete: (sig: SignatureData, serviceId: string, tierId: string) => void;
 }) {
   const [selectedService, setSelectedService] = useState("");
+  const [selectedTier, setSelectedTier] = useState("");
   const [signature, setSignature] = useState<SignatureData>({
     name: clientName,
     title: "",
@@ -581,9 +615,17 @@ function StepSOW({
   });
 
   const service = SERVICE_CATALOG.find((s) => s.id === selectedService);
+  const tier = service?.tiers?.find((t) => t.id === selectedTier);
+
+  // Reset tier when service changes
+  const handleSelectService = (serviceId: string) => {
+    setSelectedService(serviceId);
+    setSelectedTier("");
+  };
 
   const canSubmit =
     selectedService &&
+    selectedTier &&
     signature.name &&
     signature.title &&
     signature.company &&
@@ -601,13 +643,13 @@ function StepSOW({
       {/* Service Selection */}
       <div className="mt-8">
         <label className="text-sm font-semibold text-slate-300">
-          Select Your Service *
+          1. Select Your Service *
         </label>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {SERVICE_CATALOG.map((svc) => (
             <button
               key={svc.id}
-              onClick={() => setSelectedService(svc.id)}
+              onClick={() => handleSelectService(svc.id)}
               className={`rounded-xl border p-4 text-left transition-all ${
                 selectedService === svc.id
                   ? "border-electric-500 bg-electric-500/10 ring-1 ring-electric-500"
@@ -633,6 +675,65 @@ function StepSOW({
           ))}
         </div>
       </div>
+
+      {/* Tier Selection — appears after service is chosen */}
+      {service && service.tiers && service.tiers.length > 0 && (
+        <div className="mt-8">
+          <label className="text-sm font-semibold text-slate-300">
+            2. Select Engagement Tier *
+          </label>
+          <p className="mt-1 text-xs text-slate-500">
+            Pick the engagement level that fits your scope. Final price reflects
+            organizational complexity at scoping.
+          </p>
+          <div className={`mt-3 grid gap-3 ${service.tiers.length >= 4 ? "sm:grid-cols-2 lg:grid-cols-4" : service.tiers.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+            {service.tiers.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => setSelectedTier(t.id)}
+                className={`rounded-xl border p-4 text-left transition-all ${
+                  selectedTier === t.id
+                    ? "border-electric-500 bg-electric-500/10 ring-1 ring-electric-500"
+                    : "border-slate-700 bg-slate-900 hover:border-slate-600"
+                }`}
+              >
+                {t.badge && (
+                  <span
+                    className={`mb-2 inline-block rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
+                      t.badge === "MOST POPULAR"
+                        ? "bg-electric-500/20 text-electric-300"
+                        : t.badge === "FEATURED"
+                        ? "bg-electric-500/20 text-electric-300"
+                        : "bg-amber-500/20 text-amber-300"
+                    }`}
+                  >
+                    {t.badge}
+                  </span>
+                )}
+                <p className="text-sm font-bold text-white">{t.name}</p>
+                <p className="mt-0.5 text-[11px] text-slate-500">{t.subtitle}</p>
+                <p className="mt-3 text-lg font-bold text-electric-400">
+                  {t.priceLabel}
+                </p>
+                {t.retainer && (
+                  <p className="mt-0.5 text-[10px] text-amber-400">
+                    {t.retainer}
+                  </p>
+                )}
+                <p className="mt-1 text-[10px] text-slate-500">{t.duration}</p>
+                <ul className="mt-3 space-y-1 text-[11px] text-slate-400">
+                  {t.highlights.slice(0, 4).map((h, i) => (
+                    <li key={i} className="flex items-start gap-1.5">
+                      <span className="mt-0.5 text-accent-green">&#10003;</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Dynamic SOW Content */}
       {service && (
@@ -697,11 +798,42 @@ function StepSOW({
           <h4 className="mt-5 font-semibold text-white">
             4. Pricing &amp; Payment
           </h4>
-          <p className="mt-2 text-slate-400">
-            As agreed in the proposal, fees are structured as a fixed-scope
-            Statement of Work. No hourly billing. The setup fee is due upon
-            signature; the monthly retainer begins upon Go Live.
-          </p>
+          {tier ? (
+            <>
+              <div className="mt-2 rounded-lg border border-electric-500/30 bg-electric-500/5 p-3 text-slate-300">
+                <p className="text-xs uppercase tracking-wide text-electric-300">
+                  Selected Tier
+                </p>
+                <p className="mt-1 text-base font-bold text-white">
+                  {tier.name}
+                  <span className="ml-2 text-sm text-slate-400">
+                    &mdash; {tier.subtitle}
+                  </span>
+                </p>
+                <p className="mt-1 text-lg font-bold text-electric-400">
+                  {tier.priceLabel}
+                </p>
+                {tier.retainer && (
+                  <p className="mt-0.5 text-xs text-amber-400">
+                    {tier.retainer}
+                  </p>
+                )}
+                <p className="mt-1 text-xs text-slate-500">{tier.duration}</p>
+              </div>
+              <p className="mt-3 text-slate-400">
+                Fees are structured as a fixed-scope Statement of Work. No hourly
+                billing. No scope creep. Final investment may scale based on
+                organizational complexity, locations, and engagement duration.
+                {service.id === "sovereign-ai"
+                  ? " Monthly subscription begins upon hardware delivery; cancel anytime with 30 days' notice."
+                  : " Deposit is due upon signature; balance per the schedule below."}
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 italic text-slate-500">
+              Select an engagement tier above to lock in pricing.
+            </p>
+          )}
 
           <h4 className="mt-5 font-semibold text-white">
             5. Client Responsibilities
@@ -739,7 +871,7 @@ function StepSOW({
       <ESignature signature={signature} setSignature={setSignature} />
 
       <button
-        onClick={() => canSubmit && service && onComplete(signature, service.id)}
+        onClick={() => canSubmit && service && tier && onComplete(signature, service.id, tier.id)}
         disabled={!canSubmit}
         className={`mt-8 w-full rounded-lg py-3 text-sm font-semibold transition-all ${
           canSubmit
@@ -747,9 +879,17 @@ function StepSOW({
             : "cursor-not-allowed bg-slate-800 text-slate-500"
         }`}
       >
-        {selectedService
-          ? "Sign SOW & Continue to Payment"
-          : "Select a Service to Continue"}
+        {!selectedService
+          ? "Select a Service to Continue"
+          : !selectedTier
+          ? "Select an Engagement Tier"
+          : tier?.cta === "Request Proposal"
+          ? "Sign SOW & Request Proposal"
+          : tier?.cta === "Contact for Scoping"
+          ? "Sign SOW & Schedule Scoping"
+          : tier?.cta === "Start with Discovery"
+          ? "Sign SOW & Start with Discovery"
+          : "Sign SOW & Continue to Payment"}
       </button>
     </div>
   );
@@ -770,13 +910,16 @@ function StepPayment({
   onComplete,
   clientName,
   clientCompany,
+  serviceId,
+  tierId,
 }: {
   onComplete: (method: PaymentMethod, workOrder?: string) => void;
   clientName: string;
   clientCompany: string;
+  serviceId: string;
+  tierId: string;
 }) {
   const [processing, setProcessing] = useState(false);
-  const [selectedTier, setSelectedTier] = useState("sovereign-m");
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("stripe");
   const [invoiceSubmitted, setInvoiceSubmitted] = useState(false);
   const [billing, setBilling] = useState<BillingInfo>({
@@ -793,31 +936,29 @@ function StepPayment({
     preferredMethod: "",
   });
 
-  const tiers = [
-    {
-      id: "silver",
-      name: "Silver",
-      desc: "Solo / Boutique",
-      setup: "$5,000",
-      monthly: "$500/mo",
-    },
-    {
-      id: "gold",
-      name: "Gold",
-      desc: "Single-Site Mid",
-      setup: "$10,000",
-      monthly: "$1,000/mo",
-    },
-    {
-      id: "platinum",
-      name: "Platinum",
-      desc: "Multi-Site / Enterprise",
-      setup: "$15,000+",
-      monthly: "$2,500+/mo",
-    },
-  ];
+  // Resolve the selected service + tier from the catalog
+  const service = SERVICE_CATALOG.find((s) => s.id === serviceId);
+  const tier = service?.tiers?.find((t) => t.id === tierId);
 
-  const selectedTierData = tiers.find((t) => t.id === selectedTier);
+  // For subscription services (Private AI), the "due today" amount is the
+  // first monthly. For fixed-scope engagements, the deposit is 50% of priceMin
+  // (the floor of the engagement range).
+  const isSubscription = serviceId === "sovereign-ai";
+  const dueTodayCents = !tier
+    ? 0
+    : isSubscription
+    ? tier.priceMin * 100
+    : Math.round(tier.priceMin * 0.5) * 100;
+  const dueTodayLabel = !tier
+    ? "—"
+    : isSubscription
+    ? tier.priceLabel
+    : `$${(dueTodayCents / 100).toLocaleString()} (50% deposit)`;
+  // Gate: tiers that say "Request Proposal" or "Contact for Scoping" don't
+  // accept a Stripe payment in-line. Show the tier as "talk to us" instead.
+  const isInlinePayable =
+    !!tier &&
+    (tier.cta === "Sign & Pay" || tier.cta === undefined);
 
   const handleStripePayment = () => {
     setProcessing(true);
@@ -853,46 +994,79 @@ function StepPayment({
     }, 1500);
   };
 
+  // If the previous step didn't pass a service+tier, bail safely.
+  if (!service || !tier) {
+    return (
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-2xl font-bold">Setup <span className="text-electric-400">Payment</span></h2>
+        <p className="mt-4 text-sm text-slate-400">
+          No engagement tier was selected. Please return to the SOW step and choose
+          your service and tier.
+        </p>
+      </div>
+    );
+  }
+
+  // Proposal/Scoping tiers — surface a contact CTA instead of payment.
+  if (!isInlinePayable) {
+    return (
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-2xl font-bold">
+          Next: <span className="text-electric-400">{tier.cta === "Contact for Scoping" ? "Scoping Call" : "Proposal"}</span>
+        </h2>
+        <p className="mt-2 text-sm text-slate-400">
+          The {tier.name} tier is scoped per engagement. We don&apos;t collect payment
+          here &mdash; your TechFides contact will reach out to schedule a call.
+        </p>
+        <div className="mt-8 rounded-xl border border-electric-500/30 bg-electric-500/5 p-6">
+          <p className="text-xs uppercase tracking-wide text-electric-300">Selected Engagement</p>
+          <p className="mt-1 text-lg font-bold text-white">{service.name} &mdash; {tier.name}</p>
+          <p className="mt-1 text-2xl font-bold text-electric-400">{tier.priceLabel}</p>
+          {tier.retainer && <p className="mt-0.5 text-xs text-amber-400">{tier.retainer}</p>}
+          <p className="mt-2 text-xs text-slate-500">{tier.duration}</p>
+        </div>
+        <button
+          onClick={() => onComplete("invoice", generateWorkOrderNumber())}
+          className="mt-8 w-full rounded-lg bg-electric-500 py-3 text-sm font-semibold text-white transition-all hover:bg-electric-400 active:scale-[0.98]"
+        >
+          {tier.cta === "Contact for Scoping" ? "Confirm Scoping Request" : "Confirm Proposal Request"}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-3xl">
       <h2 className="text-2xl font-bold">
         Setup <span className="text-electric-400">Payment</span>
       </h2>
       <p className="mt-2 text-sm text-slate-400">
-        Select your tier and choose how you&apos;d like to pay.
+        {isSubscription
+          ? "Confirm your subscription and choose how you'd like to pay."
+          : "Confirm the engagement and pay your deposit to lock the SOW."}
       </p>
 
-      {/* Tier Selection */}
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        {tiers.map((tier) => (
-          <button
-            key={tier.id}
-            onClick={() => setSelectedTier(tier.id)}
-            className={`rounded-xl border p-5 text-left transition-all ${
-              selectedTier === tier.id
-                ? "border-electric-500 bg-electric-500/10 ring-1 ring-electric-500"
-                : "border-slate-700 bg-slate-900 hover:border-slate-600"
-            }`}
-          >
-            <p className="text-sm font-bold">{tier.name}</p>
-            <p className="mt-0.5 text-xs text-slate-500">{tier.desc}</p>
-            <p className="mt-3 text-xl font-bold text-electric-400">
-              {tier.setup}
+      {/* Selected engagement summary (replaces the old Silver/Gold/Platinum tier picker) */}
+      <div className="mt-8 rounded-xl border border-electric-500/30 bg-electric-500/5 p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-wider text-electric-300">
+              Selected Engagement
             </p>
-            <p className="text-xs text-slate-400">Setup fee (one-time)</p>
-            <p className="mt-2 text-sm font-semibold text-slate-300">
-              {tier.monthly}
+            <p className="mt-1 text-base font-bold text-white">
+              {service.name} &mdash; {tier.name}
             </p>
-            <p className="text-xs text-slate-400">Monthly subscription</p>
-          </button>
-        ))}
+            <p className="mt-0.5 text-xs text-slate-400">{tier.subtitle}</p>
+            <p className="mt-2 text-[11px] text-slate-500">{tier.duration}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-2xl font-bold text-electric-400">{tier.priceLabel}</p>
+            {tier.retainer && (
+              <p className="mt-0.5 text-xs text-amber-400">{tier.retainer}</p>
+            )}
+          </div>
+        </div>
       </div>
-
-      {/* TODO(PR-1 follow-up): tiers array + setup/monthly structure on this page is
-          wired to the old Silver/Gold/Platinum SOW+retainer model. Refactor to the
-          new Starter/Growth/Scale/Enterprise subscription model (prices from
-          i18n pricing.tiers). Requires Prisma schema review for setupFee /
-          retainerAmount fields. Tracked in Projects/TechFides-Site-Rebuild/Decisions.md §3. */}
 
       {/* Payment Method Tabs */}
       <div className="mt-8">
@@ -938,27 +1112,35 @@ function StepPayment({
         <div className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">
             <span className="text-slate-400">
-              Setup Fee ({selectedTierData?.name})
+              {isSubscription ? "Monthly Subscription" : "Engagement Fee"} ({tier.name})
             </span>
-            <span className="font-semibold">{selectedTierData?.setup}</span>
+            <span className="font-semibold">{tier.priceLabel}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-slate-400">Installation</span>
-            <span className="font-semibold text-accent-green">$0</span>
-          </div>
+          {!isSubscription && (
+            <div className="flex justify-between">
+              <span className="text-slate-400">Deposit (50%)</span>
+              <span className="font-semibold text-accent-green">
+                ${(dueTodayCents / 100).toLocaleString()}
+              </span>
+            </div>
+          )}
           <div className="border-t border-slate-700 pt-2">
             <div className="flex justify-between">
               <span className="font-semibold">
                 {paymentMethod === "stripe" ? "Due Today" : "Invoice Amount"}
               </span>
               <span className="text-lg font-bold text-electric-400">
-                {selectedTierData?.setup}
+                {dueTodayLabel}
               </span>
             </div>
           </div>
         </div>
         <p className="mt-3 text-xs text-slate-500">
-          Monthly subscription of {selectedTierData?.monthly} begins upon Go Live.
+          {isSubscription
+            ? `Subscription of ${tier.priceLabel} continues monthly. Cancel anytime with 30 days' notice. Hardware returns in a prepaid shipping box.`
+            : tier.retainer
+            ? `Balance due per the SOW schedule. ${tier.retainer}.`
+            : "Balance due per the SOW schedule. Final investment may scale with organizational complexity."}
           {paymentMethod === "stripe"
             ? " Processed securely via Stripe."
             : " Invoiced per your selected payment method."}
@@ -1951,6 +2133,7 @@ export default function OnboardingClient() {
   const [workOrderNum, setWorkOrderNum] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [selectedServiceId, setSelectedServiceId] = useState("");
+  const [selectedTierId, setSelectedTierId] = useState("");
 
   if (!authenticated) {
     return (
@@ -1996,9 +2179,10 @@ export default function OnboardingClient() {
         {currentStep === 2 && (
           <StepSOW
             clientName={ndaSignature?.name || ""}
-            onComplete={(sig, serviceId) => {
+            onComplete={(sig, serviceId, tierId) => {
               setSowSignature(sig);
               setSelectedServiceId(serviceId);
+              setSelectedTierId(tierId);
               setCurrentStep(3);
             }}
           />
@@ -2007,6 +2191,8 @@ export default function OnboardingClient() {
           <StepPayment
             clientName={ndaSignature?.name || ""}
             clientCompany={ndaSignature?.company || sowSignature?.company || ""}
+            serviceId={selectedServiceId}
+            tierId={selectedTierId}
             onComplete={(method, wo) => {
               setPaymentMethod(method);
               if (wo) setWorkOrderNum(wo);
