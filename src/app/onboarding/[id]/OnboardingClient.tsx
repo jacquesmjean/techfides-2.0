@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { StripePaymentForm } from "@/components/payments/StripePaymentForm";
+import { TECHFIDES_MUTUAL_NDA } from "@/lib/nda/nda-text";
 
 /* ─── Types ─── */
 interface SignatureData {
@@ -330,81 +331,22 @@ function StepNDA({
 
       <div className="mt-8 max-h-[50vh] overflow-y-auto rounded-xl border border-slate-800 bg-navy-900/30 p-6 text-sm leading-relaxed text-slate-300">
         <h3 className="text-base font-bold text-white">
-          MUTUAL NON-DISCLOSURE AGREEMENT
+          {TECHFIDES_MUTUAL_NDA.title}
         </h3>
-        <p className="mt-3 text-slate-400">
-          This Mutual Non-Disclosure Agreement (&ldquo;Agreement&rdquo;) is
-          entered into by and between TechFides LLC, a Texas limited liability
-          company (&ldquo;TechFides&rdquo;), and the undersigned party
-          (&ldquo;Client&rdquo;), collectively referred to as the
-          &ldquo;Parties.&rdquo;
-        </p>
+        <p className="mt-3 text-slate-400">{TECHFIDES_MUTUAL_NDA.preamble}</p>
 
-        <h4 className="mt-5 font-semibold text-white">
-          1. Definition of Confidential Information
-        </h4>
-        <p className="mt-2 text-slate-400">
-          &ldquo;Confidential Information&rdquo; means any non-public,
-          proprietary, or trade secret information disclosed by either Party,
-          including but not limited to: business strategies, financial data,
-          technical architectures, AI model configurations, client lists,
-          pricing structures, deployment methodologies, and any information
-          marked as &ldquo;confidential&rdquo; or that a reasonable person would
-          understand to be confidential.
-        </p>
+        {TECHFIDES_MUTUAL_NDA.sections.map((s) => (
+          <div key={s.number}>
+            <h4 className="mt-5 font-semibold text-white">
+              {s.number}. {s.title}
+            </h4>
+            <p className="mt-2 whitespace-pre-line text-slate-400">{s.body}</p>
+          </div>
+        ))}
 
-        <h4 className="mt-5 font-semibold text-white">
-          2. Obligations of Receiving Party
-        </h4>
-        <p className="mt-2 text-slate-400">
-          Each Party agrees to: (a) hold all Confidential Information in strict
-          confidence; (b) not disclose Confidential Information to any third
-          party without prior written consent; (c) use Confidential Information
-          solely for the purpose of evaluating or performing services under the
-          business relationship; (d) protect Confidential Information using no
-          less than reasonable care; (e) limit access to Confidential
-          Information to personnel with a need to know.
-        </p>
-
-        <h4 className="mt-5 font-semibold text-white">3. Exclusions</h4>
-        <p className="mt-2 text-slate-400">
-          Confidential Information does not include information that: (a) is or
-          becomes publicly available through no fault of the receiving Party;
-          (b) was already known to the receiving Party prior to disclosure; (c)
-          is independently developed without use of Confidential Information;
-          (d) is rightfully received from a third party without restriction.
-        </p>
-
-        <h4 className="mt-5 font-semibold text-white">4. Term</h4>
-        <p className="mt-2 text-slate-400">
-          This Agreement shall remain in effect for three (3) years from the
-          date of execution. The obligation to protect Confidential Information
-          disclosed during this term shall survive expiration or termination
-          for an additional two (2) years.
-        </p>
-
-        <h4 className="mt-5 font-semibold text-white">
-          5. Return of Materials
-        </h4>
-        <p className="mt-2 text-slate-400">
-          Upon termination or written request, each Party shall promptly return
-          or destroy all Confidential Information in its possession and certify
-          such destruction in writing.
-        </p>
-
-        <h4 className="mt-5 font-semibold text-white">6. Governing Law</h4>
-        <p className="mt-2 text-slate-400">
-          This Agreement shall be governed by the laws of the State of Texas,
-          without regard to conflict of law principles. Any disputes shall be
-          resolved in Collin County, Texas.
-        </p>
-
-        <h4 className="mt-5 font-semibold text-white">7. Remedies</h4>
-        <p className="mt-2 text-slate-400">
-          Both Parties acknowledge that a breach of this Agreement may cause
-          irreparable harm for which monetary damages are inadequate.
-          Accordingly, either Party may seek injunctive relief in addition to
-          any other available remedies.
+        <p className="mt-5 text-slate-400">{TECHFIDES_MUTUAL_NDA.closing}</p>
+        <p className="mt-3 text-xs text-slate-500">
+          NDA version {TECHFIDES_MUTUAL_NDA.version}
         </p>
       </div>
 
@@ -1201,7 +1143,7 @@ function StepPayment({
                 </div>
               </div>
 
-              {billing.contactName && billing.email && billing.email.includes("@") && billing.company ? (
+              {billing.contactName.trim().length >= 2 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(billing.email) && billing.company.trim().length >= 2 ? (
                 <StripePaymentForm
                   serviceId={service.id === "sovereign-ai" ? "SOVEREIGN_AI" : service.id === "ai-readiness-360" ? "AI_READINESS_360" : service.id === "transformation-management" ? "TRANSFORMATION_MANAGEMENT" : "AEGIS"}
                   tierId={tier.id}
