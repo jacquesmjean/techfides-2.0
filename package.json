@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build",
+    "postinstall": "prisma generate",
     "db:up": "docker compose up -d postgres redis",
     "db:down": "docker compose down",
     "db:generate": "prisma generate",
