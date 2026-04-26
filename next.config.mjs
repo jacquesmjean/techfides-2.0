@@ -1,8 +1,19 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: "export",  // Uncomment for GitHub Pages build
   images: {
     unoptimized: true,
+  },
+  // Lock the Turbopack workspace root to THIS directory so it doesn't
+  // wander into ~/package-lock.json or the _Archive snapshot when
+  // multiple lockfiles exist on the machine.
+  turbopack: {
+    root: __dirname,
   },
   // Update this to your GitHub repo name for GitHub Pages
   // basePath: "/techfides-2.0",
